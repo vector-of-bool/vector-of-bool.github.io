@@ -17,7 +17,7 @@ title: "vector<bool>{ true, true, false };"
 email: vectorofbool@gmail.com
 description: The creations of a mad template specialization
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://192.168.29.170:4000" # the base hostname & protocol for your site
+url: "https://vector-of-bool.github.io" # the base hostname & protocol for your site
 twitter_username: jekyllrb
 github_username:  jekyll
 
