@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include head.html %}
+
+<body class=online>
+
+  {% include header.html %}
+
+  <div class="page-container">
+    <vb-content aria-label="Content">
+      <div backdrop></div>
+      <div clipper>
+        <div holder></div>
+        <div content>
+          <noscript class='vb-noscript adnomition'>
+            <h3>javascript nooooo</h3>
+            <p>
+              You seem to be browsing with JavaScript disabled. This site contains
+              no trackers, beacons, ads, or any other annoying elements.
+            </p>
+            <p>
+              This site uses JavaScript for its true purpose: To enhance the user
+              experience. A lot of work was put into making this site as fast and
+              reponsive as possible, but these enhancements require JavaScript to
+              function. Please consider whitelisting this site.
+            </p>
+            <p>
+              Nevertheless, this site <em>does</em> and <em>always will</em> work
+              without scripting enabled. Please enjoy.
+            </p>
+          </noscript>
+          <div class="admonition offline-warning">
+            <h3>Note</h3>
+            Unable to connect to network. Content may be out of date.
+          </div>
+          {{content}}
+        </div>
+      </div>
+    </vb-content>
+  </div>
+
+  <link is=custom-style rel="stylesheet" href="/css/extra-styles.css">
+  <paper-toast id=toast></paper-toast>
+</body>
+
+</html>

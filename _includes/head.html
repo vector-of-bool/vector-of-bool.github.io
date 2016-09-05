@@ -1,0 +1,27 @@
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>{% if page.title %}{{page.title|escape}}{% else %}{{site.title|escape}}{% endif %}</title>
+  <meta name="description" content="{{page.excerpt | default: site.description | normalize_whitespace | escape}}">
+
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepand: site.url }}">
+  <link rel="alternate" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" type="application/rss+xml" title="{{site.title|escape}}">
+
+  <base href="{{site.baseurl | prepend: site.url}}/">
+
+  <style>
+    {% include inline-styles.css %}
+  </style>
+  <script>
+    function lazyLoadRest() {
+      var link = document.createElement('link');
+      link.rel = 'import';
+      link.href = 'elements.html';
+      link.async = true;
+      document.head.appendChild(link);
+    }
+  </script>
+  <script defer src=prepare.js></script>
+  <link rel=import href="/bower_components/polymer/polymer.html" onload=lazyLoadRest() async>
+  <link rel="preload" href="/">
+</head>
