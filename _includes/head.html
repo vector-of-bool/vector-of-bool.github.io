@@ -3,6 +3,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <title>{% if page.title %}{{page.title|escape}}{% else %}{{site.title|escape}}{% endif %}</title>
   <meta name="description" content="{{page.excerpt | default: site.description | normalize_whitespace | escape}}">
+  <link rel="icon" href="favicon.png" type="image/png">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepand: site.url }}">
   <link rel="alternate" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" type="application/rss+xml" title="{{site.title|escape}}">
