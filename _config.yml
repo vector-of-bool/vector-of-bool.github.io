@@ -15,11 +15,12 @@
 # in the templates via {{ site.myvariable }}.
 title: "vector<bool>{ true, true, false };"
 email: vectorofbool@gmail.com
-description: The creations of a mad template specialization
+description: The creations of a mad(dening) template specialization
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://vector-of-bool.github.io" # the base hostname & protocol for your site
+# url: "https://vector-of-bool.github.io" # the base hostname & protocol for your site
+url: "http://localhost:4000"
 twitter_username: jekyllrb
-github_username:  jekyll
+github_username:  vector-of-bool
 
 # Build settings
 markdown: kramdown
@@ -28,3 +29,11 @@ theme: minima
 image:
   source: assets/images/_fullsize
   presets: {}
+
+digits: [1,2,3,4,5,6,7,8,9]
+
+gems:
+  - jekyll-minifier
+
+jekyll-minifier:
+  exclude: '*.js'

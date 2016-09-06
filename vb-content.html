@@ -22,9 +22,9 @@
 
       :host ::content [holder] {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
+        top: 0;
+        left: 0;
+        right: 0;
         pointer-events: none;
       }
     </style>
@@ -119,8 +119,8 @@
         otherContent.classList.toggle('override-img-styles', true);
         // Set our height to the height of the new content. This is animated with a transition.
         const oldHeight = this.offsetHeight;
-        this.style.height = otherContent.offsetHeight + 20 + 'px';
-        const newHeight = this.offsetHeight;
+        const newHeight = otherContent.offsetHeight;
+        this.style.height = newHeight + 'px';
         // Remove the image size overrides now that we've calculated our new size
         otherContent.classList.toggle('override-img-styles', false);
         // this.backdrop.animate([
@@ -130,8 +130,8 @@
         //   duration: 300,
         // });
         this.clipper.animate([
-          {height: oldHeight - 20 + 'px'},
-          {height: newHeight - 20 + 'px'}
+          {height: oldHeight + 'px'},
+          {height: newHeight + 'px'}
         ], {
           duration: 300,
           fill: 'both',

@@ -23,4 +23,4 @@ gem "minima"
 #   gem "jekyll-github-metadata", "~> 1.0"
 # end
 
-gem "mini_magick"
+gem "jekyll-minifier"

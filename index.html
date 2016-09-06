@@ -1,22 +1,29 @@
 ---
-layout: default
+layout: page-noheader
+
+digits: [1,2,3,4,5,6,7,8,9]
 ---
 
 <platinum-sw-register auto-register clients-claim>
   <platinum-sw-fetch path="network-test.html" handler="networkOnly"></platinum-sw-fetch>
-  <platinum-sw-cache default-cache-strategy="fastest"></platinum-sw-cache>
+  <platinum-sw-fetch path="/" handler="networkOnly"></platinum-sw-fetch>
+  <platinum-sw-fetch path="/20../.*" handler="fastest"></platinum-sw-fetch>
+  <platinum-sw-cache default-cache-strategy="networkFirst"></platinum-sw-cache>
 </platinum-sw-register>
 
 <p>
-  This site is still under cunstruction. Watch this space for something exciting!
+  This site is still under construction. Watch this space for something exciting!
 </p>
 
+<h2>Recent Posts</h2>
 <div class="post-list">
   {% for post in site.posts %}
-  <a class="post-link" href="{{ post.url | prepent: site.baseurl }}">
-    {{post.title | escape}}
+  <a class="post-link" href="{{ post.url | prepent: site.baseurl }}"
+    style="background-color: #{{site.digits | sample:6}}">
+    <div class="post-link__title">{{post.title | escape}}</div>
+    <div class="post-link__date">{{post.date | date_to_string}}</div>
   </a>
   {% endfor %}
 </div>
 
-<!--<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>-->
+<p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>

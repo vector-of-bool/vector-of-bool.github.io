@@ -1,3 +1,4 @@
+
 html {
   overflow-y: scroll;
 }
@@ -7,10 +8,17 @@ body {
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
   text-shadow: 0 2px 3px rgba(0,0,0,0.8);
   margin: 0;
-  max-width: 950px;
-  margin: 30px auto;
-  margin-top: 30px;
+  /*max-width: 1500px;*/
+  /*margin: 30px auto;*/
+  /*margin-top: 30px;*/
   transition: 300ms margin linear;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.flex {
+  flex: 1;
 }
 
 :link {
@@ -24,7 +32,7 @@ body {
 header.banner {
   background-color: #444;
   background-image: linear-gradient(to bottom,#555,#333);
-  border-radius: 10px;
+  z-index: 10;
   box-shadow:
     0px 1px 3px rgba(0,0,0,0.5),
     0px 1px 15px rgba(0,0,0,0.3),
@@ -85,7 +93,6 @@ div.pages {
   box-shadow:
     inset -0.5px -1px rgba(0,0,0,0.3),
     inset 0.5px 1px 3px rgba(0,0,0,0.4);
-  /*background-image: linear-gradient(to bottom, #666, #777);*/
 }
 
 header.banner h1>a {
@@ -103,8 +110,9 @@ header .subtitle {
 }
 
 vb-content {
-  max-width: 700px;
-  margin: 0 auto;
+  width: 900px;
+  margin-left: 15px;
+  transition: 300ms all;
 
   display: block;
 
@@ -113,8 +121,34 @@ vb-content {
 
 vb-content [clipper] {
   overflow: hidden;
-  padding: 10px;
   position: relative;
+}
+
+.post .post-header {
+  background-color: #{{ site.digits | sample: 6 }};
+  background-image: linear-gradient(to bottom, rgba(0, 0,0,0.0), rgba(0,0,0,0.3));
+}
+
+.post .post-content {
+  padding: 10px;
+}
+
+.post-content *:first-child {
+  margin-top: 0;
+}
+
+.post .post-header {
+  padding: 20px;
+  border-bottom: 1px solid #333;
+  box-shadow:
+    0 0 15px rgba(0,0,0,0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset -0 -1px 0 rgba(0,0,0,0.5);
+}
+
+.post .post-header h1 {
+  border: none;
+  margin-top: 0;
 }
 
 vb-content > [backdrop] {
@@ -132,6 +166,7 @@ vb-content > [backdrop] {
 }
 
 vb-content [content] {
+  z-index: -1;
   display: -mx-flexbox;
   display: -webkit-flex;
   display: flex;
@@ -155,6 +190,72 @@ vb-content div[content]:not(.override-img-styles) img {
   width: 100% !important;
   height: auto !important;
 }
+/*
+vb-sidebar {
+  margin-left: 10px;
+  z-index: -1;
+  display: inline-block;
+  background-color: #444;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
+  border-radius: 2.5px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  align-self: flex-start;
+  padding: 10px;
+}*/
+
+vb-footer {
+  position: relative;
+  margin-top: 30px;
+  min-height: 150px;
+  padding: 0 20px;
+  background-color: #555;
+  box-shadow: 0 -1px 0 rgba(0,0,0,0.6);
+  overflow: hidden;
+  transition: 300ms margin;
+  display: flex;
+  align-items: center;
+}
+
+vb-footer > :not(:first-child) {
+  margin-left: 20px;
+  max-width: 200px;
+}
+
+vb-footer > div {
+  border-left: 1px solid white;
+  padding-left: 20px;
+  height: 100px;
+}
+
+vb-footer img.me {
+  border-radius: 100px;
+  width: 100px;
+  height: 100px;
+  border: 10px solid #333;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+vb-footer .who {
+  max-width: 200px;
+}
+
+vb-footer h2,
+vb-footer p {
+  margin: 0;
+}
+
+vb-footer::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  right: -10px;
+  top: -15px;
+  height: 15px;
+  box-shadow:
+    0 2px 3px rgba(0,0,0,0.4),
+    0 2px 8px rgba(0,0,0,0.3);
+}
 
 .page-heading {
   margin: 0;
@@ -170,13 +271,16 @@ vb-content div[content]:not(.override-img-styles) img {
   -o-flex-direction: row;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 a.post-link {
-  width: 100px;
-  height: 100px;
+  width: 160px;
+  height: 160px;
   padding: 5px;
+  margin: 10px;
   display: inline-flex;
+  flex-direction: column;
   background-color: #555;
   text-align: center;
   justify-content: center;
@@ -184,17 +288,37 @@ a.post-link {
   border-radius: 5000px;
   word-wrap: break-word;
   white-space: normal;
-  border: 5px solid #bbb;
-  color: #eee;
-  font-weight: bold;
+  border: 15px solid #bbb;
   text-decoration: none;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  background-clip: border;
+  border-color: rgba(255, 255, 255, 0.4);
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+}
+
+.post-list {
+  margin-top: 15px;
+}
+
+.post-link__title {
+  font-size: 18pt;
+  color: #eee;
+  font-weight: bold;
+}
+
+.post-link__date {
+  color: #ddd;
+  font-size: 12pt;
+  white-space: nowrap;
+}
+
+div.page-container {
+  display: flex;
 }
 
 div.page-container h1,
@@ -265,8 +389,17 @@ body:not(.online) div.offline-warning {
 
 @media (max-width: 960px) {
   body {
-    margin: 5px;
     max-width: none;
+  }
+
+  vb-content {
+    margin: 0;
+    width: 100%;
+    max-width: unset;
+  }
+
+  vb-content > [backdrop] {
+    border-radius: 0;
   }
 }
 
@@ -281,6 +414,30 @@ body:not(.online) div.offline-warning {
   header.banner h1 {
     white-space: nowrap;
     font-size: 18pt;
+  }
+}
+
+@media (max-width: 500px) {
+  vb-footer {
+    margin-top: 0;
+    padding: 20px 0;
+    flex-direction: column;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+
+  vb-footer > :not(:first-child) {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  vb-footer > div {
+    width: 200px;
+    height: unset;
+    border-left: none;
+    border-top: 1px solid white;
+    padding: 0;
+    padding-top: 20px;
   }
 }
 

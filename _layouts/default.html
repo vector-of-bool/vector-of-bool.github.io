@@ -13,7 +13,12 @@
       <div clipper>
         <div holder></div>
         <div content>
-          <noscript class='vb-noscript adnomition'>
+          <div class="admonition offline-warning">
+            <h3>Note</h3>
+            Unable to connect to network. Content may be out of date.
+          </div>
+          {{content}}
+          <noscript class='vb-noscript admonition'>
             <h3>javascript nooooo</h3>
             <p>
               You seem to be browsing with JavaScript disabled. This site contains
@@ -30,17 +35,28 @@
               without scripting enabled. Please enjoy.
             </p>
           </noscript>
-          <div class="admonition offline-warning">
-            <h3>Note</h3>
-            Unable to connect to network. Content may be out of date.
-          </div>
-          {{content}}
         </div>
       </div>
     </vb-content>
   </div>
+  <div class="flex"></div>
+  <vb-footer>
+    <img class=me src="favicon.png">
+    <div class="who">
+      <h2>Hey there,</h2>
+      <p>
+        I am a developer living and working in the United States.
+      </p>
+    </div>
+    <div class="stuff">
+      <h2>My Stuff</h2>
+      <p>
+        You can find my creations on <a href="https://github.com/vector-of-bool">GitHub</a>.
+      </p>
+    </div>
+  </vb-footer>
 
-  <link is=custom-style rel="stylesheet" href="/css/extra-styles.css">
+  <link rel="stylesheet" href="/css/extra-styles.css">
   <paper-toast id=toast></paper-toast>
 </body>
 
