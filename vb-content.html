@@ -129,12 +129,12 @@
         // ], {
         //   duration: 300,
         // });
+        this.clipper.style.height = newHeight + 'px';
         this.clipper.animate([
           {height: oldHeight + 'px'},
           {height: newHeight + 'px'}
         ], {
           duration: 300,
-          fill: 'both',
         });
         // this.style.transform = 'scaleY(' + oldHeight / newHeight + ')';
         // Animate the new content into place.
@@ -149,6 +149,8 @@
         this.content = this.nextContent;
         const dom = Polymer.dom(this.clipper);
         dom.appendChild(this.nextContent);
+        this.style.height = null;
+        this.clipper.style.height = null;
         this.nextContent = null;
         // Update the page title since our link handler doesn't
         document.title = pair[0].title;
