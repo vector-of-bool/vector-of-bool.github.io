@@ -110,8 +110,9 @@ header .subtitle {
 }
 
 vb-content {
-  width: 900px;
-  margin-left: 15px;
+  min-width: 900px;
+  max-width: 900px;
+  margin: 0 auto;
   transition: 300ms all;
 
   display: block;
@@ -133,7 +134,11 @@ vb-content [clipper] {
   padding: 10px;
 }
 
-.post-content *:first-child {
+.post p{
+  line-height: 1.3em;
+}
+
+.post-content > *:first-child {
   margin-top: 0;
 }
 
@@ -142,8 +147,8 @@ vb-content [clipper] {
   border-bottom: 1px solid #333;
   box-shadow:
     0 0 15px rgba(0,0,0,0.7),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset -0 -1px 0 rgba(0,0,0,0.5);
+    inset 1px 1px 0 rgba(120, 120, 120, 0.3),
+    inset -1px -1px 0 rgba(0,0,0,0.5);
 }
 
 .post .post-header h1 {
@@ -151,18 +156,22 @@ vb-content [clipper] {
   margin-top: 0;
 }
 
+.container-rect {
+  background-color: #444;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
+  box-sizing: border-box;
+}
+
 vb-content > [backdrop] {
   z-index: -10;
   position: absolute;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #444;
-  border-radius: 5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
 }
 
 vb-content [content] {
@@ -190,19 +199,6 @@ vb-content div[content]:not(.override-img-styles) img {
   width: 100% !important;
   height: auto !important;
 }
-/*
-vb-sidebar {
-  margin-left: 10px;
-  z-index: -1;
-  display: inline-block;
-  background-color: #444;
-  box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
-  border-radius: 2.5px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  align-self: flex-start;
-  padding: 10px;
-}*/
 
 vb-footer {
   position: relative;
@@ -319,6 +315,7 @@ a.post-link {
 
 div.page-container {
   display: flex;
+  flex-direction: column;
 }
 
 div.page-container h1,
@@ -326,8 +323,8 @@ div.page-container h2,
 div.page-container h3 {
   color: #fcfcfc;
   border-bottom: 1px solid #ddd;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 30px;
+  margin-bottom: 15px;
 }
 
 div.page-container p {
@@ -375,6 +372,34 @@ div.offline-warning {
   transition: 300ms padding, 300ms border-width, 300ms margin, 300ms max-height;
 }
 
+.comments-container {
+  max-width: 900px;
+  /*margin: 20px;*/
+  align-self: left;
+  transition: 300ms margin;
+  padding: 10px;
+  background-color: #3d3d3d;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: 1px solid #777;
+}
+
+.comments-reveal-button {
+  text-align: center;
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #555;
+  border: 1px solid #222;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: 50ms background-color, 50ms transform;
+}
+
+.comments-reveal-button:active {
+  background-color: #444;
+  transform: translateY(2px);
+}
+
 body.online div.offline-warning {
   max-height: 0;
   padding: 0;
@@ -396,6 +421,12 @@ body:not(.online) div.offline-warning {
     margin: 0;
     width: 100%;
     max-width: unset;
+    min-width: unset;
+  }
+
+  .comments-container {
+    margin: 10px;
+    margin-bottom: 0;
   }
 
   vb-content > [backdrop] {

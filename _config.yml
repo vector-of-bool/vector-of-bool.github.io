@@ -24,6 +24,7 @@ github_username:  vector-of-bool
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 theme: minima
 
 image:

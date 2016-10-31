@@ -9,7 +9,7 @@
 
   <div class="page-container">
     <vb-content aria-label="Content">
-      <div backdrop></div>
+      <div backdrop class=container-rect></div>
       <div clipper>
         <div holder></div>
         <div content>
@@ -22,7 +22,8 @@
             <h3>javascript nooooo</h3>
             <p>
               You seem to be browsing with JavaScript disabled. This site contains
-              no trackers, beacons, ads, or any other annoying elements.
+              no trackers, beacons, ads, or any other annoying elements unless
+              you opt-in.
             </p>
             <p>
               This site uses JavaScript for its true purpose: To enhance the user
@@ -35,6 +36,29 @@
               without scripting enabled. Please enjoy.
             </p>
           </noscript>
+          {% if page.comments %}
+          <template id=disqus-tmpl>
+            <div id="disqus_thread"></div>
+            <script>
+              var disqus_config = function () {
+                  this.page.url = 'https://vector-of-bool.github.io/' + location.pathname;
+                  this.page.identifier = '{{ page.title | slugify }}';
+              };
+              (function() {
+                var d = document, s = d.createElement('script');
+                s.src = '//vector-of-bool.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+              })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+          </template>
+          {% endif %}
+          {% if page.comments %}
+          <div class="comments-container container-rect" id=comments-container>
+            <div aria-label="Reveal comments" tabindex="0" class="comments-reveal-button" onclick=revealComments()>Click for Comments</div>
+          </div>
+          {% endif %}
         </div>
       </div>
     </vb-content>
@@ -57,6 +81,7 @@
   </vb-footer>
 
   <link rel="stylesheet" href="/css/extra-styles.css">
+  <link rel="stylesheet" href="/css/syntax.css">
   <paper-toast id=toast></paper-toast>
 </body>
 

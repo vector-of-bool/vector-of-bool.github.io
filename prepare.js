@@ -2,6 +2,19 @@ Polymer = {
   lazyRegister: true
 };
 
+function revealComments() {
+  var el = document.getElementById('comments-container');
+  const but = el.querySelector('.comments-reveal-button');
+  if (but) {
+    el.removeChild(but);
+  }
+  const tmpl = document.getElementById('disqus-tmpl');
+  if (tmpl) {
+    const clone = document.importNode(tmpl.content, true);
+    el.appendChild(clone);
+  }
+}
+
 (function() {
   const haveWebComponents =
       ('registerElement' in document &&
@@ -31,9 +44,8 @@ Polymer = {
 
 setTimeout(() => {
   const req = fetch('network-test.html');
-  const timer = new Promise(resolve => {
-    setInterval(() => resolve('timeout'), 3000);
-  });
+  const timer =
+      new Promise(resolve => { setInterval(() => resolve('timeout'), 3000); });
   function showOffline() {
     document.getElementById('toast').show({
       text: 'Unable to connect. Browsing offline.',
@@ -41,14 +53,16 @@ setTimeout(() => {
     });
     document.body.classList.remove('online');
   };
-  Promise.race([req, timer]).then(res => {
-    if (res === 'timeout') {
-      showOffline();
-    } else {
-      console.log(res);
-    }
-  }).catch(exc => {
-    console.error('Request failed', exc);
-    showOffline();
-  });
+  Promise.race([req, timer])
+      .then(res => {
+        if (res === 'timeout') {
+          showOffline();
+        } else {
+          console.log(res);
+        }
+      })
+      .catch(exc => {
+        console.error('Request failed', exc);
+        showOffline();
+      });
 }, 3000);
