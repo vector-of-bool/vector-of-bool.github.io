@@ -43,3 +43,7 @@ div.highlighter-rouge > pre.highlight {
 .aside.note {
   background-color: rgb(50, 50, 200);
 }
+
+.aside.warning {
+  background-color: orange;
+}

@@ -1,8 +1,18 @@
 ---
 layout: post
-title: The Curious Case of std::in_place
+title: The Curious Case of std::in_place [Outdated]
 comments: true
 ---
+
+<div class="aside warning" markdown="1">
+UPDATE: This post is no longer relevant to the C++ standard as of proposal paper
+[p0504r0](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0504r0.html),
+which changed the definitions of the `std::in_place` tag and its friends. This
+post will remain in-tact for posterity, but be aware that it no longer
+corresponds with the actual contents C++ standard library. Nevertheless, the
+information contained herein may be useful to someone some day, and is a good
+excersize in understanding some interesting metaprogramming techniques.
+</div>
 
 # Preface
 
