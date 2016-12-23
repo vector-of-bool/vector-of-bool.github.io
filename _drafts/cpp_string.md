@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Ruminations on std::string
+title: Ruminations on C++ Strings
 comments: true
 ---
 
-# Ruminations On `std::string`
+# Ruminations On C++ Strings
 
 `std::string` isn't perfect. In fact, I would dare to say it is fatally flawed.
 In order to understand some of the problems that arise from `std::string`, it
@@ -42,7 +42,7 @@ the call site? Is it safe to write to that string? So many problems!
 
 The concept of the `NUL`-terminated character array is so intrinsic to C that
 it is specifically baked into the language: A character array literal, which is
-a sequence of characters enclosed in double quotes, is defined to have an
+a character sequence enclosed in double quotes, is defined to have an
 implicit `NUL` character added to the end inserted by the compiler.
 
 We cannot forget about `char*`'s evil twin: `wchar_t*`!
@@ -86,7 +86,7 @@ a lot more to ask for.]
 How about comparing strings? Got you covered. Comparing `char*` strings with
 the `==` operator sounds like it should do the right thing, yeah? Of course not.
 You need to use `strcmp`. Well, in C++ we can overload `operator==` to just
-"do the right thing". [Hint: `std::string` maybe _doesn't_ do the right thing].
+"do the right thing". [Hint: `std::string` _doesn't_ do the right thing].
 
 And sorting strings? Well, lexicographical comparisons just automatically
 happen with `operator<`. Now you can binary search your strings, sort your
@@ -136,7 +136,7 @@ a bit of code to perform. This increases the cost of copying even further.
 ## Monoliths
 
 C++, especially more recently, has focused largely on making our types _simple_
-and _extensible_. A type should only have member functions which offer the basis
+and _composable_. A type should only have member functions which offer the basis
 operations. For a type `T`, there is some set of "basis" operations and
 _salient attributes_ which can describe an instance of `T`. The (possibly
 infinite) set of operations and observations you can perform on `T` must be
@@ -164,3 +164,48 @@ function to `std::string` that performs the feature. `split`, `lower`,
 `upper`, `join`. These aren't bad string operations. They just aren't basis
 operations for `std::string`. Having a few convenience methods is okay. Having
 every conceivable string algorithm as a member function is not.
+
+## Unicode? Text Elements? Characters? Code Points? Code Units? Graphemes? Glyphs?
+
+`std::string` does not acknowledge some very important aspects of working with
+text. The most problematic of these errors is the conflation that `char` is
+somehow significant in working with text. It is unfortunate that C decided to
+name this small integral type `char`, and has led to an enormous amount of
+confusion for programmers trying to come to grips with text processing. We know
+that `std::string` is actually just an array of `char`s, but that doesn't afford
+us much in the way of working with text outside of what is able to be
+represented with 8 bits for each character.
+
+The subject of text and character encoding is far beyond my knowledge. I am
+_far_ from qualified to discuss the diverse and complex problems being worked
+on by the Unicode Consortium. I defer to more knowledgable people than me to
+discuss these topics. Again, I recommend James McNellis's presentation on the
+subject.
+
+# A Solution?
+
+In James's presentation, he references C++ developers' proclivity to invent a
+newer, shinier, and rounder wheel when faced with a new problem. I'm sorry to
+say, I will perpetuate the stereotype and propose adopting a new set of
+types and function to represent and manipulate text: The problems of
+`std::string` are too ingrained into its design, and the design itself is
+already too bloated. I think it best to distance our better, shinier, rounder,
+and all-around-better APIs from the old and error-prone. It is much easier to
+tell and teach newcomers to "use type A instead of type B" than "use type A,
+but not features X, Y, and Z".
+
+## A `unicode` Type
+
+What good would a programming post be without something concrete? I've written
+a library on what _I, personally,_ would like from a C++ text type. It contains
+a few types and objects, actually, the most prominent being `unicode`.
+`unicode` features a number of significant differences from `std::basic_string`,
+in no particular order:
+
+- Immutability. You cannot manipulate the contents in-place. You are able to
+  re-assign the entire `unicode` object, but not individual characters inside.
+  This may seem limiting at first, but lends to some very important properties,
+  which I outline later in this post.
+- No `begin()` or `end()`. Iterating over `unicode` requires that you specify
+  how you wish to traverse it.
+- No `
