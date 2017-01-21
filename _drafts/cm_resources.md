@@ -191,7 +191,7 @@ add_library(cmrc::base ALIAS cmrc-base)
 
 Now, as soon as `CMakeRC.cmake` is included, there will be a target `cmrc::base`
 that can be linked to so that anyone can get the proper include directories. We
-can propogate that further by modifying `cmrc_add_resource_library`:
+can propagate that further by modifying `cmrc_add_resource_library`:
 
 ```cmake
 function(cmrc_add_resource_library name)
@@ -217,8 +217,8 @@ by the program at runtime.
 So, how do we do that?
 
 Well, we need to generate a source file that can be read by the compiler. CMake
-has great support for this via `add_custom_command`! Let's define a function
-called, `_cmrc_generate_intermediate_cpp`, which will generate an intermediate
+has great support for this via `add_custom_command`! Let's define a function,
+called `_cmrc_generate_intermediate_cpp`, which will generate an intermediate
 C++ file containing such a character array:
 
 ```cmake
@@ -280,7 +280,7 @@ function(cmrc_add_resource_library name)
 endfunction()
 ```
 
-Currently, we error if the resource it outside the source directory. That's
+Currently, we error if the resource it outside of the source directory. That's
 pretty bad, but we'll get to that later, as it requires a bit of trickery to get
 right.
 
@@ -309,7 +309,7 @@ When I was initially thinking about how to solve this resource-compiling
 problem, the one thing that made me immediately think that CMake was up to the
 task was one very specific and rarely used CMake feature: `file(READ HEX)`. Yep,
 CMake's `file(READ)` command lets you read in the bytes of a file as a sequence
-of hexadecimal digits, if you just specify the `HEX` keyword on the end. And
+of hexadecimal digits, just by using the `HEX` keyword on the end. And
 what can we do with those digits? Well, we can use them to generate character
 literals, of course! Here's a simple example:
 
@@ -333,7 +333,7 @@ You'll see the contents of the file printed to standard out, but as a
 comma-separated list of character literals:
 
 ```
-'\x48', '\x65', '\x6c', '\x6c', '\x6f', '\x2c', '\x20', '\x77', '\x6f', '\x72', '\x6c', '\x64', '\x21'
+'\x48', '\x65', '\x6c', '\x6c', '\x6f', '\x2c', '\x20', '\x77', '\x6f', '\x72', '\x6c', '\x64', '\x21',
 ```
 
 Integrating this into our existing `CMakeRC.cmake` is very simple:
@@ -370,8 +370,8 @@ There's a problem, though: We've named the two pointers `file_begin` and
 only compile one resource into our binary, ever! That's pretty useless...
 
 In addition, how do we go about accessing the contents from `cmrc::open`? We
-could just return pointer to `file_begin` and `file_end`, but we want to get rid
-of those and somehow access based on filename. Hm...
+could just return a pointer to `file_begin` and `file_end`, but we want to get
+rid of names those and somehow access based on filename. Hm...
 
 ## Step 4: Encoding the Filesystem Structure
 
@@ -395,8 +395,8 @@ endfunction()
 ```
 
 We do not manipulation of the path: We assume that the caller of
-`_cm_encode_fpath` will pass us in the path that they want encoded, exactly as
-they want it. To make us of this, we need to change up
+`_cm_encode_fpath` will pass us in the path that they want to be encoded,
+exactly as they want it. To make us of this, we need to change up
 `_cmrc_generate_intermediate_cpp` a little bit:
 
 ```cmake
@@ -467,7 +467,7 @@ will be compiled to a different object file using a different symbol.
 
 The final step will be to generate some code to actually access the resource
 files at runtime. We can do this by generating a simple C++ file for the
-library which references each file by name and the corrsponding symbol names.
+library which references each file by name and the corresponding symbol names.
 This will require that we slightly modify just about everything we've done at
 least a little bit. For this simple use case, we can maintain a single global
 lookup table for all the resources that are loaded at runtime. Here's what
@@ -556,8 +556,8 @@ We can now see the definition of that `CMRC_INIT` macro as well. We'll get to
 that shortly. For now, we can leave it aside.
 
 The `resource` class is beginning to be filled out. It honestly doesn't need
-much. We can create it from two pointers, and the `begin()` and `end()` will
-return those pointers.
+much. We can create it from two pointers, and the `begin()` and `end()` member
+functions will return those pointers.
 
 There are two considerable changes to `cmrc_add_resource_library`:
 
@@ -656,7 +656,7 @@ There are two important new things going on here:
    decision much more clear soon. We use two target properties to generate the
    file: `CMRC_EXTERN_DECLS` and `CMRC_TABLE_POPULATE`, both of which are
    properties containing lines of C++ code which will declare the resource
-   pointers and populate the lookup table, repsectively.
+   pointers and populate the lookup table, respectively.
 2. As we loop through and generate each resource file's object file, we append
    to the aforementioned target properties the relevant lines of C++ code that
    will both declare the resource pointers and populate the lookup table for
@@ -681,7 +681,7 @@ tried to get aroud this requirement:
      nothing in the translation unit is referenced from another TU, that TU can
      have no effect on the rest of the program. This is an important linker
      optimization. There _are_ ways to get around it, such as using specific
-     linker flags to tell it to never discard any symbols, or to specifically
+     linker flags to tell it to never discard any symbols or to specifically
      link in a given object file. I myself was unable to find a way to get these
      to work in a cross-platform manner using CMake.
 2. Define a global constructor using `__attribute__ ((constructor))`
@@ -755,7 +755,7 @@ add_test(flower flower ${CMAKE_CURRENT_SOURCE_DIR}/flower.jpg)
 
 We just need to add a `flower.jpg` file into the source directory. The
 particular image is unimportant, but I've chosen a 2.5 MB image from WikiMedia
-commonds in the public domain, [found here](https://upload.wikimedia.org/wikipedia/commons/0/0c/White_and_yellow_flower.JPG).
+Commons in the public domain, [found here](https://upload.wikimedia.org/wikipedia/commons/0/0c/White_and_yellow_flower.JPG).
 
 Running CTest again, the `flower` test will fail because the resource size is
 zero! That's because we haven't added it to the `hello` resource library.
