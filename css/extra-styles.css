@@ -31,7 +31,7 @@ div.highlighter-rouge > pre.highlight {
 .aside {
   border-radius: 6px;
   padding: 10px;
-  margin-right: 20px;
+  /*margin-right: 20px;*/
   background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
   box-shadow:
     0 5px 15px rgba(0,0,0,0.6),

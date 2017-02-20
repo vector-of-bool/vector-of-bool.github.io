@@ -138,7 +138,8 @@ vb-content [clipper] {
   line-height: 1.3em;
 }
 
-.post-content > *:first-child {
+.post-content > *:first-child,
+div.aside > *:first-child {
   margin-top: 0;
 }
 
@@ -374,8 +375,7 @@ div.offline-warning {
 
 .comments-container {
   max-width: 900px;
-  /*margin: 20px;*/
-  align-self: left;
+  align-self: stretch;
   transition: 300ms margin;
   padding: 10px;
   background-color: #3d3d3d;
