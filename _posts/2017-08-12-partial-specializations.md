@@ -47,14 +47,14 @@ we don't need any silly partial specializations.
 
 ## Not So Fast!
 
-The above example isn't contrived. It's a very common pattern. Unfortunately:
-It doesn't work in all circumstances.
+The above example isn't contrived. It's a very common pattern. Unfortunately,
+this doesn't work in all circumstances.
 
 ## A Real Use Case
 
 Suppose we want to write a JSON serialization library. We want to support
 dumping and loading of custom types to JSON, and we want users of our library
-to be able to extend our library to opaquely handle their own types.
+to be able to extend our library to transparently handle their own types.
 
 How can we go about this? The typical past case has looked like this:
 
@@ -76,7 +76,7 @@ T from_json(json_data j) {
 }
 ~~~
 
-It works like this: We ask for a specialization of ``serialize`` for the type
+It works like this: we ask for a specialization of ``serialize`` for the type
 `T`. We leave the primary template undefined, so that an unsupported type just
 becomes a compiler error. Our library provides an array of basic definitions
 of ``serialize`` for many common types (``int``, ``float``, ``string``,
@@ -131,7 +131,7 @@ Now, anyone who ``#include``s our ``my_integer`` header will immediately get the
 ``json_lib`` headers pulled in. Booo. This means that our users must have
 the include paths set up properly, and ``json_lib`` is now polluting their
 namespace. Moving the *definition* of the static ``to_json`` and ``from_json``
-functions to an implementation file won't help: The declarations must still
+functions to an implementation file won't help: the declarations must still
 be visible to the compiler at all times.
 
 ## A Different API?
@@ -154,7 +154,7 @@ Here, we have several ``to_json`` functions, none of which need to be function
 templates or template specializations, since they can use overloading on their
 parameter types.
 
-The story is different with ``from_json``: It has no parameters to overload,
+The story is different with ``from_json``: it has no parameters to overload,
 just the single ``json_data`` parameter. We *cannot* use overloading (*yet*.
 Continue on, dear reader).
 
@@ -234,7 +234,7 @@ template <typename T> void from_json(json_data j, my_container<T>& out) {
 
 Pfft. We're programming in C++! We know better than output parameters! /s
 
-In all seriousness: This has a few (potentially serious) problems:
+In all seriousness: this has a few (potentially serious) problems:
 
 1. Users of `from_json` must now declare their variable before calling
     ``from_json`` on it. Ew. Now users are unable to use ``const``, since the
@@ -321,7 +321,7 @@ be complete types.
 We can declare our ``to_json`` and even our ``from_json`` within the namespace
 of their respective types, since ADL will find them.
 
-The only big problem is with ``type``: Who provides it? Does ``json_lib``
+The only big problem is with ``type``: who provides it? Does ``json_lib``
 provide it? It's a fairly general type. In fact, we could *technically* use just
 about any of the unary templates declared in ``type_traits``. The contents
 don't matter. It's all about the template arguments.
