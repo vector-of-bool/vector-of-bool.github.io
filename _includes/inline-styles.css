@@ -157,11 +157,45 @@ div.aside > *:first-child {
   margin-top: 0;
 }
 
-.container-rect {
+.container-rect,
+vb-project {
   background-color: #444;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
   box-sizing: border-box;
+}
+
+vb-project {
+  margin: 10px;
+}
+
+vb-project .header {
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid #222;
+  background-color: #333;
+  box-sizing: border-box;
+}
+
+vb-project .body {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  display: -mx-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
+  -o-flex-direction: row;
+  flex-direction: row;
+  text-align: justify;
+}
+
+vb-project .body .icon-container {
+  float: left;
+  width: 128px;
+  flex-shrink: 0;
 }
 
 vb-content > [backdrop] {
@@ -173,6 +207,18 @@ vb-content > [backdrop] {
   right: 0;
   bottom: 0;
   left: 0;
+}
+
+.column {
+  display: -mx-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  text-align: justify;
 }
 
 vb-content [content] {
