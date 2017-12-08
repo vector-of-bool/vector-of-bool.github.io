@@ -107,7 +107,8 @@
       }.bind(this));
       // this.style.height = this.offsetHeight - 20 + 'px';
       // Load the document using XHR
-      const docPromise = this._loadDocument(document.location);
+      const loc = document.location;
+      const docPromise = this._loadDocument(loc.href);
       docPromise.then(function(newDoc) {
         // Pull out the content node from the page
         const otherContent = document.importNode(newDoc.querySelector('vb-content [content]'), true);
