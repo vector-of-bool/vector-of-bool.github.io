@@ -27,8 +27,14 @@ markdown: kramdown
 highlighter: rouge
 theme: minima
 
-keep_files:
-  - docs
+# keep_files:
+#   - docs
+
+include:
+  - _static
+  - _images
+  - _sources
+  - _*.html
 
 image:
   source: assets/images/_fullsize
