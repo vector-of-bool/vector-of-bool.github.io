@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting Started &mdash; CMakeTools 0.11.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.11.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CMakeTools 0.11.0 documentation" href="index.html" />
+    <link rel="next" title="CMake Kits" href="kits.html" />
+    <link rel="prev" title="CMake Tools for Visual Studio Code" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="kits.html" title="CMake Kits"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="CMake Tools for Visual Studio Code"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Assuming you already have a CMake project to configure, skip to the
+<a class="reference internal" href="#configuring"><em>Configuring Your Project</em></a> section.</p>
+<div class="section" id="configuring-your-project">
+<span id="configuring"></span><h2>Configuring Your Project<a class="headerlink" href="#configuring-your-project" title="Permalink to this headline">¶</a></h2>
+<p>Configuring a project is simple, but has two steps before configuration can take
+place.</p>
+<div class="section" id="pre-configure-steps">
+<h3>Pre-Configure Steps<a class="headerlink" href="#pre-configure-steps" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="selecting-a-kit">
+<h4>Selecting a Kit<a class="headerlink" href="#selecting-a-kit" title="Permalink to this headline">¶</a></h4>
+<p>Before we can configure, you must select a <em>Kit</em>.</p>
+<dl class="docutils">
+<dt>What are kits?</dt>
+<dd>Kits represent a <em>toolchain</em>: A set of compilers, linkers, or other tools
+that will be used to build a project. If you have no Kit selected, CMake
+Tools will start by asking you to select a Kit.</dd>
+</dl>
+<p>When first opening a project, a status bar item will read <strong>No Kit Selected</strong>:</p>
+<img alt="_images/no_kits.png" class="align-center" src="_images/no_kits.png" />
+<p>To select a kit, click this statusbar button, or run the <em>Select a Kit</em> command
+from the command palette. A quick-pick will appear:</p>
+<img alt="_images/kit_selector.png" class="align-center" src="_images/kit_selector.png" />
+<p>Upon choosing a kit, the statusbar button will display the name of the active
+kit:</p>
+<img alt="_images/kit_selected.png" class="align-center" src="_images/kit_selected.png" />
+<p>The chosen kit will be remembered between sessions. Should the availability of
+the kit change, the statusbar item may revert and you will be required to select
+a kit again.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you try to configure your project without an active Kit selected, you
+will be prompted to choose one before configuring can proceed.</p>
+</div>
+<p>CMake Tools will use the compilers/toolchain from the kit when building your
+project.</p>
+<p>Find out more on the <a class="reference internal" href="kits.html#kits"><em>CMake Kits</em></a> page.</p>
+</div>
+<div class="section" id="selecting-a-variant">
+<h4>Selecting a Variant<a class="headerlink" href="#selecting-a-variant" title="Permalink to this headline">¶</a></h4>
+<p>Similar to selecting a kit, we must select a <em>Variant</em>.</p>
+<dl class="docutils">
+<dt>What are variants?</dt>
+<dd>Variants represent a set of common compilation options that change the type
+of binaries that will be emitted. This includes Debug, Release, MinSizeRel,
+etc.</dd>
+</dl>
+<img alt="_images/no_variant.png" class="align-center" src="_images/no_variant.png" />
+<p>To select a variant, click this statusbar button, or run the <em>Set build type</em>
+command from the command palette. A quick-pick will appear:</p>
+<img alt="_images/variant_selector.png" class="align-center" src="_images/variant_selector.png" />
+<p>The active build variant will be displayed on the same statusbar button, along
+with the project name and extension status.</p>
+<p>Find out more on the <a class="reference internal" href="variants.html#variants"><em>CMake Variants</em></a> page.</p>
+</div>
+</div>
+<div class="section" id="running-configuration">
+<h3>Running Configuration<a class="headerlink" href="#running-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Configuration can be run by clicking the project button in the statusbar and
+changing the build type, by running the <em>CMake: Configure</em> command from the
+command palette, or by running a build when configuration has not yet taken
+place.</p>
+<p>When configuration runs, the <em>CMake/Build</em> output panel will reveal and show
+the live output from CMake as configuration runs:</p>
+<img alt="_images/configure_output.png" class="align-center" src="_images/configure_output.png" />
+<p>At this point, CMake Tools has loaded information about your project and you are
+free to roam about the cabin.</p>
+</div>
+</div>
+<div class="section" id="building-your-project">
+<h2>Building Your Project<a class="headerlink" href="#building-your-project" title="Permalink to this headline">¶</a></h2>
+<p>More important than just configuring, you probably want to <em>build</em> your project
+as well.</p>
+<p>Building is simple: Run the <em>CMake: Build</em> command from the command palette:</p>
+<img alt="_images/build_command.png" class="align-center" src="_images/build_command.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default keybinding for this command is <tt class="docutils literal"><span class="pre">F7</span></tt>.</p>
+</div>
+<p>You can also press the <em>Build</em> button in the statusbar:</p>
+<img alt="_images/build_button.png" class="align-center" src="_images/build_button.png" />
+<p>While the the build is running, the <em>Build</em> button will be replaced with a
+build progress bar:</p>
+<img alt="_images/build_progress.png" class="align-center" src="_images/build_progress.png" />
+<p>The build can be stopped by clicking the <em>Stop</em> button.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#configuring-your-project">Configuring Your Project</a><ul>
+<li><a class="reference internal" href="#pre-configure-steps">Pre-Configure Steps</a><ul>
+<li><a class="reference internal" href="#selecting-a-kit">Selecting a Kit</a></li>
+<li><a class="reference internal" href="#selecting-a-variant">Selecting a Variant</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#running-configuration">Running Configuration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-your-project">Building Your Project</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">CMake Tools for Visual Studio Code</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="kits.html"
+                        title="next chapter">CMake Kits</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/getting_started.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="kits.html" title="CMake Kits"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="CMake Tools for Visual Studio Code"
+             >previous</a> |</li>
+        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

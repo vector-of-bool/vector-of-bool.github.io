@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>CMake Variants &mdash; CMakeTools 0.11.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.11.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CMakeTools 0.11.0 documentation" href="index.html" />
+    <link rel="next" title="Configuring CMake Tools" href="configuring.html" />
+    <link rel="prev" title="CMake Kits" href="kits.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="configuring.html" title="Configuring CMake Tools"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="kits.html" title="CMake Kits"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="cmake-variants">
+<span id="variants"></span><h1>CMake Variants<a class="headerlink" href="#cmake-variants" title="Permalink to this headline">¶</a></h1>
+<p>CMake Tools introduces the concept of <em>CMake Variants</em>, a way to group together
+and combine a common set of build options and give them a useful name. The main
+interface for creating and building variants is <tt class="docutils literal"><span class="pre">cmake-variants.json</span></tt>, or
+<tt class="docutils literal"><span class="pre">cmake-variants.yaml</span></tt>.</p>
+<p>For smaller or simple projects, providing a custom <tt class="docutils literal"><span class="pre">cmake-variants.yaml</span></tt> is
+unnecessary, and the default CMake build types will work just fine.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>CMake Tools provides a YAML validation schema, which is only checked in the
+editor when using the <em>YAML Support by Red Hat</em> extension.</p>
+<p>You can use either <tt class="docutils literal"><span class="pre">cmake-variants.json</span></tt> or <tt class="docutils literal"><span class="pre">cmake-variants.yaml</span></tt>. Both
+will have the same end result.</p>
+<p class="last">The examples in this page will use the YAML format, but everything can be
+done in the JSON format as well.</p>
+</div>
+<div class="section" id="what-does-it-look-like">
+<h2>What does it look like?<a class="headerlink" href="#what-does-it-look-like" title="Permalink to this headline">¶</a></h2>
+<p>A simple two-option <tt class="docutils literal"><span class="pre">cmake-variants.yaml</span></tt> might look like this:</p>
+<img alt="_images/variants_yaml.png" class="align-center" src="_images/variants_yaml.png" />
+<p>This file defines two variant options: <em>buildType</em> and <em>useOpenGL</em>. They each
+have two settings of their own, defined by the <tt class="docutils literal"><span class="pre">choices</span></tt> key.</p>
+<p>In total, the number of possible variants is defined by the cartesian product
+of the possible choices. Two options with two settings each creates <em>four</em>
+variants. When we ask to change the build type, CMake Tools will present each
+possible combination in a quickpick:</p>
+<img alt="_images/custom_variant_selector.png" class="align-center" src="_images/custom_variant_selector.png" />
+<p>When a <tt class="docutils literal"><span class="pre">cmake-variants.json</span></tt> or <tt class="docutils literal"><span class="pre">cmake-variants.yaml</span></tt> file is present, the
+options defined therein will replace the default set of variants CMake Tools
+would otherwise present. This allows a project owner to define their own set of
+common build configurations that can be distributed downstream.</p>
+</div>
+<div class="section" id="the-variant-schema">
+<h2>The Variant Schema<a class="headerlink" href="#the-variant-schema" title="Permalink to this headline">¶</a></h2>
+<p>The root of the variants must be an object, where each key represents a
+tweakable variant option. In the example above, we expose a <tt class="docutils literal"><span class="pre">buildType</span></tt> option
+for what kind of <tt class="docutils literal"><span class="pre">CMAKE_BUILD_TYPE</span></tt> we want. We also expose a <tt class="docutils literal"><span class="pre">useOpenGL</span></tt>
+boolean option.</p>
+<div class="section" id="variant-settings">
+<h3>Variant Settings<a class="headerlink" href="#variant-settings" title="Permalink to this headline">¶</a></h3>
+<p>Each <em>setting</em> in the variant is also an object, with the following keys:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">default</span></tt></dt>
+<dd>A string to set as the default value for the variant option. The string here
+must correspond with an option from <tt class="docutils literal"><span class="pre">choices</span></tt></dd>
+<dt><tt class="docutils literal"><span class="pre">description</span></tt></dt>
+<dd>An optional string to describe what the option controls. CMake Tools ignores
+this string.</dd>
+<dt><tt class="docutils literal"><span class="pre">choices</span></tt></dt>
+<dd>A mapping of possible options for the setting. A variant setting can have an
+arbitrary number of possible options. See the section below on options.</dd>
+</dl>
+</div>
+<div class="section" id="variant-options">
+<h3>Variant Options<a class="headerlink" href="#variant-options" title="Permalink to this headline">¶</a></h3>
+<p>Variant options appear under the <tt class="docutils literal"><span class="pre">choices</span></tt> key for a variant setting. Each is
+required to have an unique name, but the name itself is unimportant to CMake
+Tools.</p>
+<p>The option is itself a map with the following keys:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">short</span></tt></dt>
+<dd>A short human-readable string to describe the option.</dd>
+<dt><tt class="docutils literal"><span class="pre">long</span></tt></dt>
+<dd>A lengthier human-readable string to describe the option. This value is
+optional.</dd>
+<dt><tt class="docutils literal"><span class="pre">buildType</span></tt></dt>
+<dd>An optional string to set for <tt class="docutils literal"><span class="pre">CMAKE_BUILD_TYPE</span></tt> when the option is
+active.</dd>
+<dt><tt class="docutils literal"><span class="pre">linkage</span></tt></dt>
+<dd>Either <tt class="docutils literal"><span class="pre">static</span></tt> or <tt class="docutils literal"><span class="pre">shared</span></tt>. Sets the value of
+<tt class="docutils literal"><span class="pre">CMAKE_BUILD_SHARED_LIBS</span></tt>. This value is optional.</dd>
+<dt><tt class="docutils literal"><span class="pre">settings</span></tt></dt>
+<dd>A map of arbitrary CMake cache options to pass via the CMake command line
+with <tt class="docutils literal"><span class="pre">-D</span></tt>. Similar to the <tt class="docutils literal"><span class="pre">cmake.configureSettings</span></tt> in
+<tt class="docutils literal"><span class="pre">settings.json</span></tt>.</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">CMake Variants</a><ul>
+<li><a class="reference internal" href="#what-does-it-look-like">What does it look like?</a></li>
+<li><a class="reference internal" href="#the-variant-schema">The Variant Schema</a><ul>
+<li><a class="reference internal" href="#variant-settings">Variant Settings</a></li>
+<li><a class="reference internal" href="#variant-options">Variant Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="kits.html"
+                        title="previous chapter">CMake Kits</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="configuring.html"
+                        title="next chapter">Configuring CMake Tools</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/variants.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="configuring.html" title="Configuring CMake Tools"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="kits.html" title="CMake Kits"
+             >previous</a> |</li>
+        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

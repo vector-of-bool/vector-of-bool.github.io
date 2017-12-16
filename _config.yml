@@ -27,6 +27,9 @@ markdown: kramdown
 highlighter: rouge
 theme: minima
 
+keep_files:
+  - docs
+
 image:
   source: assets/images/_fullsize
   presets: {}

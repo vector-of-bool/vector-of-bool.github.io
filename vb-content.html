@@ -59,10 +59,8 @@
     }
     _bindGivenLinks(links) {
       Array.from(links).forEach(function(link) {
-        if (!link.href.startsWith(document.origin)) {
-          if (link._eventsStolen || !link.href.startsWith(location.origin) || !link.href.endsWith('.html'))
-            return;
-        }
+        if (link._eventsStolen || !link.href.startsWith(location.origin) || !link.href.endsWith('.html') || link.pathname.startsWith('/docs/'))
+          return;
         if (link._eventsStolen)
           return;
         link._eventsStolen = true;

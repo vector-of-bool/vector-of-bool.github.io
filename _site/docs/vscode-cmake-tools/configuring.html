@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring CMake Tools &mdash; CMakeTools 0.11.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.11.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="CMakeTools 0.11.0 documentation" href="index.html" />
+    <link rel="prev" title="CMake Variants" href="variants.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="variants.html" title="CMake Variants"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="configuring-cmake-tools">
+<span id="settings"></span><h1>Configuring CMake Tools<a class="headerlink" href="#configuring-cmake-tools" title="Permalink to this headline">¶</a></h1>
+<p>CMake Tools supports a variety of settings that can be set at the user or
+workspace level via VSCode&#8217;s <tt class="docutils literal"><span class="pre">settings.json</span></tt> file. This page talks about
+the available options and how they are used.</p>
+<p>Options marked with <em>Supports substitution</em> allow variable references to appear
+in their strings. See the <a class="reference internal" href="#var-subs"><em>Variable Substitution</em></a> section</p>
+<div class="section" id="available-settings">
+<h2>Available Settings<a class="headerlink" href="#available-settings" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cmake-builddirectory">
+<h3><tt class="docutils literal"><span class="pre">cmake.buildDirectory</span></tt><a class="headerlink" href="#cmake-builddirectory" title="Permalink to this headline">¶</a></h3>
+<p>Specify the build directory (The root directory where <tt class="docutils literal"><span class="pre">CMakeCache.txt</span></tt> will
+be generated).</p>
+<ul class="simple">
+<li>Default: <tt class="docutils literal"><span class="pre">${workspaceRoot}/build</span></tt>.</li>
+<li><em>Supports substitution</em></li>
+</ul>
+</div>
+<div class="section" id="cmake-installprefix">
+<h3><tt class="docutils literal"><span class="pre">cmake.installPrefix</span></tt><a class="headerlink" href="#cmake-installprefix" title="Permalink to this headline">¶</a></h3>
+<p>If specified, sets a value for <tt class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></tt> when running CMake
+configure. If not, no value will be passed.</p>
+<ul class="simple">
+<li>Default: <tt class="docutils literal"><span class="pre">null</span></tt> (Unspecified)</li>
+</ul>
+</div>
+<div class="section" id="cmake-sourcedirectory">
+<h3><tt class="docutils literal"><span class="pre">cmake.sourceDirectory</span></tt><a class="headerlink" href="#cmake-sourcedirectory" title="Permalink to this headline">¶</a></h3>
+<p>Directory where the root <tt class="docutils literal"><span class="pre">CMakeLists.txt</span></tt> will be found.</p>
+<ul class="simple">
+<li>Default: <tt class="docutils literal"><span class="pre">${workspaceRoot}</span></tt></li>
+<li><em>Supports substitution</em></li>
+</ul>
+</div>
+<div class="section" id="cmake-savebeforebuild">
+<h3><tt class="docutils literal"><span class="pre">cmake.saveBeforeBuild</span></tt><a class="headerlink" href="#cmake-savebeforebuild" title="Permalink to this headline">¶</a></h3>
+<p>If <tt class="docutils literal"><span class="pre">true</span></tt> (the default), saves open text documents when build or configure is
+invoked before running CMake.</p>
+<ul class="simple">
+<li>Default: <tt class="docutils literal"><span class="pre">true</span></tt></li>
+</ul>
+</div>
+</div>
+<div class="section" id="variable-substitution">
+<span id="var-subs"></span><h2>Variable Substitution<a class="headerlink" href="#variable-substitution" title="Permalink to this headline">¶</a></h2>
+<p>Some options support the replacement of variable values in their string value
+using <tt class="docutils literal"><span class="pre">${variable}</span></tt> syntax.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Configuring CMake Tools</a><ul>
+<li><a class="reference internal" href="#available-settings">Available Settings</a><ul>
+<li><a class="reference internal" href="#cmake-builddirectory"><tt class="docutils literal"><span class="pre">cmake.buildDirectory</span></tt></a></li>
+<li><a class="reference internal" href="#cmake-installprefix"><tt class="docutils literal"><span class="pre">cmake.installPrefix</span></tt></a></li>
+<li><a class="reference internal" href="#cmake-sourcedirectory"><tt class="docutils literal"><span class="pre">cmake.sourceDirectory</span></tt></a></li>
+<li><a class="reference internal" href="#cmake-savebeforebuild"><tt class="docutils literal"><span class="pre">cmake.saveBeforeBuild</span></tt></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#variable-substitution">Variable Substitution</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="variants.html"
+                        title="previous chapter">CMake Variants</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/configuring.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="variants.html" title="CMake Variants"
+             >previous</a> |</li>
+        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>

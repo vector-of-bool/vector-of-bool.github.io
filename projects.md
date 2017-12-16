@@ -25,6 +25,7 @@ permalink: /projects/
           <li>
             <a href="https://marketplace.visualstudio.com/items?itemName=vector-of-bool.cmake-tools">Visual Studio Code Extension Marketplace</a>
           </li>
+          <li><a href="docs/vscode-cmake-tools/index.html">End-User Documentation</a></li>
         </ul>
       </div>
     </div>
