@@ -242,6 +242,10 @@ vb-content h5 {
   text-align: initial;
 }
 
+vb-content h1 {
+  font-size: 30px;
+}
+
 vb-content div[content]:not(.override-img-styles) img {
   width: 100% !important;
   height: auto !important;
