@@ -80,6 +80,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_src_util_.html#_killtree" class="tsd-kind-icon">_kill<wbr>Tree</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#cmakeify" class="tsd-kind-icon">cmakeify</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter"><a href="_src_util_.html#dropnulls" class="tsd-kind-icon">drop<wbr>Nulls</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#escapestringforregex" class="tsd-kind-icon">escape<wbr>String<wbr>For<wbr>Regex</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#ismulticonfgenerator" class="tsd-kind-icon">is<wbr>Multi<wbr>Conf<wbr>Generator</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#istruthy" class="tsd-kind-icon">is<wbr>Truthy</a></li>
@@ -97,6 +98,8 @@
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#replacevars" class="tsd-kind-icon">replace<wbr>Vars</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#splitcommandline" class="tsd-kind-icon">split<wbr>Command<wbr>Line</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#termproc" class="tsd-kind-icon">term<wbr>Proc</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#thisextension" class="tsd-kind-icon">this<wbr>Extension</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#thisextensionpath" class="tsd-kind-icon">this<wbr>Extension<wbr>Path</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#versionequals" class="tsd-kind-icon">version<wbr>Equals</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#versiongreater" class="tsd-kind-icon">version<wbr>Greater</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_src_util_.html#versionless" class="tsd-kind-icon">version<wbr>Less</a></li>
@@ -117,7 +120,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L186">src/util.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L186">src/util.ts:186</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -140,7 +143,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L154">src/util.ts:154</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L154">src/util.ts:154</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -150,6 +153,35 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_util_.cmakevalue.html" class="tsd-signature-type">CMakeValue</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+					<a name="dropnulls" class="tsd-anchor"></a>
+					<h3>drop<wbr>Nulls</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">drop<wbr>Nulls&lt;T&gt;<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L314">src/util.ts:314</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>T</h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>items: <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -163,7 +195,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L12">src/util.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L12">src/util.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -191,7 +223,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L223">src/util.ts:223</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L223">src/util.ts:223</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -214,7 +246,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L82">src/util.ts:82</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L82">src/util.ts:82</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -239,13 +271,13 @@
 					<a name="map" class="tsd-anchor"></a>
 					<h3>map</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">map&lt;In, Out&gt;<span class="tsd-signature-symbol">(</span>iter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">In</span><span class="tsd-signature-symbol">&gt;</span>, proj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">map&lt;In, Out&gt;<span class="tsd-signature-symbol">(</span>iter<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">In</span><span class="tsd-signature-symbol">&gt;</span>, proj<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L105">src/util.ts:105</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L105">src/util.ts:105</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -295,7 +327,7 @@
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterator</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Out</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -309,7 +341,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L277">src/util.ts:277</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L277">src/util.ts:277</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -332,7 +364,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L49">src/util.ts:49</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L49">src/util.ts:49</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -373,7 +405,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L96">src/util.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L96">src/util.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -416,7 +448,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L295">src/util.ts:295</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L295">src/util.ts:295</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -439,7 +471,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L233">src/util.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L233">src/util.ts:233</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -462,7 +494,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L129">src/util.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L129">src/util.ts:129</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -491,7 +523,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L124">src/util.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L124">src/util.ts:124</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -528,7 +560,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L111">src/util.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L111">src/util.ts:111</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
@@ -587,7 +619,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L35">src/util.ts:35</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L35">src/util.ts:35</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -625,7 +657,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L23">src/util.ts:23</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L23">src/util.ts:23</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -669,7 +701,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L68">src/util.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L68">src/util.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -700,7 +732,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L213">src/util.ts:213</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L213">src/util.ts:213</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -723,7 +755,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L178">src/util.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L178">src/util.ts:178</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -737,6 +769,40 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="thisextension" class="tsd-anchor"></a>
+					<h3>this<wbr>Extension</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">this<wbr>Extension<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Extension</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L304">src/util.ts:304</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Extension</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="thisextensionpath" class="tsd-anchor"></a>
+					<h3>this<wbr>Extension<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">this<wbr>Extension<wbr>Path<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L312">src/util.ts:312</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
 					<a name="versionequals" class="tsd-anchor"></a>
 					<h3>version<wbr>Equals</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
@@ -746,7 +812,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L265">src/util.ts:265</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L265">src/util.ts:265</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -772,7 +838,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L247">src/util.ts:247</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L247">src/util.ts:247</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -798,7 +864,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/55c3057/src/util.ts#L273">src/util.ts:273</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/43b448c/src/util.ts#L273">src/util.ts:273</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -822,80 +888,8 @@
 					<li class="globals  ">
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_api_.html">"src/api"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_cache_.html">"src/cache"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_cache_editor_.html">"src/cache-<wbr>editor"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_cmake_tools_.html">"src/cmake-<wbr>tools"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_cms_client_.html">"src/cms-<wbr>client"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_cms_driver_.html">"src/cms-<wbr>driver"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_compdb_.html">"src/compdb"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_config_.html">"src/config"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_ctest_.html">"src/ctest"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_diagnostics_.html">"src/diagnostics"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_dirs_.html">"src/dirs"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_driver_.html">"src/driver"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_extension_.html">"src/extension"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_kit_.html">"src/kit"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_legacy_driver_.html">"src/legacy-<wbr>driver"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_logging_.html">"src/logging"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_pr_.html">"src/pr"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_proc_.html">"src/proc"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_rollbar_.html">"src/rollbar"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_state_.html">"src/state"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_status_.html">"src/status"</a>
-					</li>
 					<li class="current tsd-kind-external-module">
 						<a href="_src_util_.html">"src/util"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_src_variant_.html">"src/variant"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_test_extension_test_.html">"test/extension.test"</a>
-					</li>
-					<li class=" tsd-kind-external-module">
-						<a href="_test_index_.html">"test/index"</a>
 					</li>
 				</ul>
 			</nav>
@@ -912,6 +906,9 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_src_util_.html#cmakeify" class="tsd-kind-icon">cmakeify</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-has-type-parameter">
+						<a href="_src_util_.html#dropnulls" class="tsd-kind-icon">drop<wbr>Nulls</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_src_util_.html#escapestringforregex" class="tsd-kind-icon">escape<wbr>String<wbr>For<wbr>Regex</a>
@@ -963,6 +960,12 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_src_util_.html#termproc" class="tsd-kind-icon">term<wbr>Proc</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_src_util_.html#thisextension" class="tsd-kind-icon">this<wbr>Extension</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_src_util_.html#thisextensionpath" class="tsd-kind-icon">this<wbr>Extension<wbr>Path</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_src_util_.html#versionequals" class="tsd-kind-icon">version<wbr>Equals</a>
