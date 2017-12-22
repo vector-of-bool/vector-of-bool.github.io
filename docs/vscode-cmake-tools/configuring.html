@@ -90,8 +90,38 @@ invoked before running CMake.</p>
 </div>
 <div class="section" id="variable-substitution">
 <span id="var-subs"></span><h2>Variable Substitution<a class="headerlink" href="#variable-substitution" title="Permalink to this headline">¶</a></h2>
-<p>Some options support the replacement of variable values in their string value
-using <tt class="docutils literal"><span class="pre">${variable}</span></tt> syntax.</p>
+<p>Some options support the replacement of special values in their string value
+using <tt class="docutils literal"><span class="pre">${variable}</span></tt> syntax. The following built-in variables are expanded:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">${workspaceRoot}</span></tt></dt>
+<dd>The full path to the workspace root directory</dd>
+<dt><tt class="docutils literal"><span class="pre">${workspaceRootFolderName}</span></tt></dt>
+<dd>The name of the leaf directory in the workspace directory path</dd>
+<dt><tt class="docutils literal"><span class="pre">${buildType}</span></tt></dt>
+<dd>The current CMake build type, eg. <tt class="docutils literal"><span class="pre">Debug</span></tt>, <tt class="docutils literal"><span class="pre">Release</span></tt>, <tt class="docutils literal"><span class="pre">MinSizeRel</span></tt></dd>
+<dt><tt class="docutils literal"><span class="pre">${generator}</span></tt></dt>
+<dd>The name of the CMake generator, eg. <tt class="docutils literal"><span class="pre">Ninja</span></tt></dd>
+<dt><tt class="docutils literal"><span class="pre">${projectName}</span></tt></dt>
+<dd>The name of the CMake project. Isn&#8217;t expanded fully until project has been
+configured once. Before configuring, expands to &#8220;Unknown Project&#8221;.</dd>
+<dt><tt class="docutils literal"><span class="pre">${userHome}</span></tt></dt>
+<dd>The full path to the current user&#8217;s home directory</dd>
+</dl>
+<div class="section" id="environment-variables">
+<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>Additionally, environment variables may be substituted with <tt class="docutils literal"><span class="pre">${env:VARNAME}</span></tt>
+syntax, where the string for the <tt class="docutils literal"><span class="pre">VARNAME</span></tt> environment variable will be
+replaced. If the named environment variable is undefined, an empty string
+will be expanded instead.</p>
+</div>
+<div class="section" id="command-substitution">
+<h3>Command Substitution<a class="headerlink" href="#command-substitution" title="Permalink to this headline">¶</a></h3>
+<p>CMake Tools also supports expanding of VSCode commands, similar to
+<tt class="docutils literal"><span class="pre">launch.json</span></tt>. Running a command <tt class="docutils literal"><span class="pre">${command:foo.bar}</span></tt> will execute the
+<tt class="docutils literal"><span class="pre">foo.bar</span></tt> VSCode command and replace the string value. Beware of long-running
+commands! It is unspecified how many times CMake Tools will execute a command
+for a given expansion.</p>
+</div>
 </div>
 </div>
 
@@ -114,7 +144,11 @@ using <tt class="docutils literal"><span class="pre">${variable}</span></tt> syn
 <li><a class="reference internal" href="#cmake-savebeforebuild"><tt class="docutils literal"><span class="pre">cmake.saveBeforeBuild</span></tt></a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#variable-substitution">Variable Substitution</a></li>
+<li><a class="reference internal" href="#variable-substitution">Variable Substitution</a><ul>
+<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li><a class="reference internal" href="#command-substitution">Command Substitution</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
