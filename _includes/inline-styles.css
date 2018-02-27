@@ -134,7 +134,8 @@ vb-content [clipper] {
   padding: 30px;
 }
 
-.post p{
+.post p,
+.post li {
   line-height: 1.5em;
 }
 
@@ -251,7 +252,8 @@ vb-content div[content]:not(.override-img-styles) img {
   height: auto !important;
 }
 
-ol > :not(:first-child) {
+ol > :not(:first-child),
+ul > :not(:first-child) {
   margin-top: 10px;
 }
 
@@ -378,8 +380,14 @@ div.page-container h2,
 div.page-container h3 {
   color: #fcfcfc;
   border-bottom: 1px solid #ddd;
-  margin-top: 40px;
   margin-bottom: 15px;
+}
+
+
+div.page-container h1:not(:first-child),
+div.page-container h2:not(:first-child),
+div.page-container h3:not(:first-child) {
+  margin-top: 40px;
 }
 
 div.page-container p {
