@@ -6,7 +6,7 @@ body {
   background-color: #333;
   color: #eee;
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
-  text-shadow: 0 2px 3px rgba(0,0,0,0.8);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
   margin: 0;
   /*max-width: 1500px;*/
   /*margin: 30px auto;*/
@@ -131,11 +131,11 @@ vb-content [clipper] {
 }
 
 .post .post-content {
-  padding: 10px;
+  padding: 30px;
 }
 
 .post p{
-  line-height: 1.3em;
+  line-height: 1.5em;
 }
 
 .post-content > *:first-child,
@@ -249,6 +249,10 @@ vb-content h1 {
 vb-content div[content]:not(.override-img-styles) img {
   width: 100% !important;
   height: auto !important;
+}
+
+ol > :not(:first-child) {
+  margin-top: 10px;
 }
 
 vb-footer {
@@ -374,12 +378,12 @@ div.page-container h2,
 div.page-container h3 {
   color: #fcfcfc;
   border-bottom: 1px solid #ddd;
-  margin-top: 30px;
+  margin-top: 40px;
   margin-bottom: 15px;
 }
 
 div.page-container p {
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
 .post-meta {

@@ -16,9 +16,9 @@ a.post-link:hover {
 div.highlighter-rouge,
 code.highlighter-rouge {
   border: 1px solid rgba(0,0,0,0.3);
-  /*padding: 2px;*/
-  border-radius: 3px;
-  background-image: linear-gradient(to bottom, rgba(0,0,0, 0.2), rgba(0,0,0, 0.2));
+  padding: 1px;
+  border-radius: 2px;
+  background-color: rgba(0,0,0, 0.2);
 }
 
 div.highlighter-rouge > pre.highlight {
