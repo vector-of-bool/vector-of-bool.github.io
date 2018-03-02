@@ -235,16 +235,18 @@ vb-content [content] {
   text-align: justify;
 }
 
-vb-content h1,
+vb-content h1:not(.post-title),
 vb-content h2,
 vb-content h3,
 vb-content h4,
-vb-content h5 {
+vb-content h5,
+vb-content h6 {
   text-align: initial;
+  margin-left: 15px;
 }
 
 vb-content h1 {
-  font-size: 30px;
+  font-size: 35px;
 }
 
 vb-content div[content]:not(.override-img-styles) img {
@@ -379,12 +381,10 @@ div.page-container h1,
 div.page-container h2,
 div.page-container h3 {
   color: #fcfcfc;
-  border-bottom: 1px solid #ddd;
   margin-bottom: 15px;
 }
 
 
-div.page-container h1:not(:first-child),
 div.page-container h2:not(:first-child),
 div.page-container h3:not(:first-child) {
   margin-top: 40px;
@@ -392,6 +392,12 @@ div.page-container h3:not(:first-child) {
 
 div.page-container p {
   margin-top: 24px;
+}
+
+div.post-content h1 {
+  font-style: italic;
+  margin-left: 30px;
+  margin-top: 45px;
 }
 
 .post-meta {
