@@ -1,33 +1,23 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>Configuring CMake Tools &mdash; CMakeTools 0.11.0 documentation</title>
-    
+    <title>Configuring CMake Tools &#8212; CMakeTools 0.11.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '0.11.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="CMakeTools 0.11.0 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="CMake Variants" href="variants.html" /> 
-  </head>
-  <body>
-    <div class="related">
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -36,89 +26,89 @@
         <li class="right" >
           <a href="variants.html" title="CMake Variants"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">CMakeTools 0.11.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
-          <div class="body">
+          <div class="body" role="main">
             
   <div class="section" id="configuring-cmake-tools">
 <span id="settings"></span><h1>Configuring CMake Tools<a class="headerlink" href="#configuring-cmake-tools" title="Permalink to this headline">¶</a></h1>
 <p>CMake Tools supports a variety of settings that can be set at the user or
-workspace level via VSCode&#8217;s <tt class="docutils literal"><span class="pre">settings.json</span></tt> file. This page talks about
+workspace level via VSCode’s <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> file. This page talks about
 the available options and how they are used.</p>
 <p>Options marked with <em>Supports substitution</em> allow variable references to appear
-in their strings. See the <a class="reference internal" href="#var-subs"><em>Variable Substitution</em></a> section</p>
+in their strings. See the <a class="reference internal" href="#var-subs"><span class="std std-ref">Variable Substitution</span></a> section</p>
 <div class="section" id="available-settings">
 <h2>Available Settings<a class="headerlink" href="#available-settings" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="cmake-builddirectory">
-<h3><tt class="docutils literal"><span class="pre">cmake.buildDirectory</span></tt><a class="headerlink" href="#cmake-builddirectory" title="Permalink to this headline">¶</a></h3>
-<p>Specify the build directory (The root directory where <tt class="docutils literal"><span class="pre">CMakeCache.txt</span></tt> will
+<h3><code class="docutils literal notranslate"><span class="pre">cmake.buildDirectory</span></code><a class="headerlink" href="#cmake-builddirectory" title="Permalink to this headline">¶</a></h3>
+<p>Specify the build directory (The root directory where <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> will
 be generated).</p>
 <ul class="simple">
-<li>Default: <tt class="docutils literal"><span class="pre">${workspaceRoot}/build</span></tt>.</li>
+<li>Default: <code class="docutils literal notranslate"><span class="pre">${workspaceRoot}/build</span></code>.</li>
 <li><em>Supports substitution</em></li>
 </ul>
 </div>
 <div class="section" id="cmake-installprefix">
-<h3><tt class="docutils literal"><span class="pre">cmake.installPrefix</span></tt><a class="headerlink" href="#cmake-installprefix" title="Permalink to this headline">¶</a></h3>
-<p>If specified, sets a value for <tt class="docutils literal"><span class="pre">CMAKE_INSTALL_PREFIX</span></tt> when running CMake
+<h3><code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code><a class="headerlink" href="#cmake-installprefix" title="Permalink to this headline">¶</a></h3>
+<p>If specified, sets a value for <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> when running CMake
 configure. If not, no value will be passed.</p>
 <ul class="simple">
-<li>Default: <tt class="docutils literal"><span class="pre">null</span></tt> (Unspecified)</li>
+<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
 </ul>
 </div>
 <div class="section" id="cmake-sourcedirectory">
-<h3><tt class="docutils literal"><span class="pre">cmake.sourceDirectory</span></tt><a class="headerlink" href="#cmake-sourcedirectory" title="Permalink to this headline">¶</a></h3>
-<p>Directory where the root <tt class="docutils literal"><span class="pre">CMakeLists.txt</span></tt> will be found.</p>
+<h3><code class="docutils literal notranslate"><span class="pre">cmake.sourceDirectory</span></code><a class="headerlink" href="#cmake-sourcedirectory" title="Permalink to this headline">¶</a></h3>
+<p>Directory where the root <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> will be found.</p>
 <ul class="simple">
-<li>Default: <tt class="docutils literal"><span class="pre">${workspaceRoot}</span></tt></li>
+<li>Default: <code class="docutils literal notranslate"><span class="pre">${workspaceRoot}</span></code></li>
 <li><em>Supports substitution</em></li>
 </ul>
 </div>
 <div class="section" id="cmake-savebeforebuild">
-<h3><tt class="docutils literal"><span class="pre">cmake.saveBeforeBuild</span></tt><a class="headerlink" href="#cmake-savebeforebuild" title="Permalink to this headline">¶</a></h3>
-<p>If <tt class="docutils literal"><span class="pre">true</span></tt> (the default), saves open text documents when build or configure is
+<h3><code class="docutils literal notranslate"><span class="pre">cmake.saveBeforeBuild</span></code><a class="headerlink" href="#cmake-savebeforebuild" title="Permalink to this headline">¶</a></h3>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> (the default), saves open text documents when build or configure is
 invoked before running CMake.</p>
 <ul class="simple">
-<li>Default: <tt class="docutils literal"><span class="pre">true</span></tt></li>
+<li>Default: <code class="docutils literal notranslate"><span class="pre">true</span></code></li>
 </ul>
 </div>
 </div>
 <div class="section" id="variable-substitution">
 <span id="var-subs"></span><h2>Variable Substitution<a class="headerlink" href="#variable-substitution" title="Permalink to this headline">¶</a></h2>
 <p>Some options support the replacement of special values in their string value
-using <tt class="docutils literal"><span class="pre">${variable}</span></tt> syntax. The following built-in variables are expanded:</p>
+using <code class="docutils literal notranslate"><span class="pre">${variable}</span></code> syntax. The following built-in variables are expanded:</p>
 <dl class="docutils">
-<dt><tt class="docutils literal"><span class="pre">${workspaceRoot}</span></tt></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">${workspaceRoot}</span></code></dt>
 <dd>The full path to the workspace root directory</dd>
-<dt><tt class="docutils literal"><span class="pre">${workspaceRootFolderName}</span></tt></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">${workspaceRootFolderName}</span></code></dt>
 <dd>The name of the leaf directory in the workspace directory path</dd>
-<dt><tt class="docutils literal"><span class="pre">${buildType}</span></tt></dt>
-<dd>The current CMake build type, eg. <tt class="docutils literal"><span class="pre">Debug</span></tt>, <tt class="docutils literal"><span class="pre">Release</span></tt>, <tt class="docutils literal"><span class="pre">MinSizeRel</span></tt></dd>
-<dt><tt class="docutils literal"><span class="pre">${generator}</span></tt></dt>
-<dd>The name of the CMake generator, eg. <tt class="docutils literal"><span class="pre">Ninja</span></tt></dd>
-<dt><tt class="docutils literal"><span class="pre">${projectName}</span></tt></dt>
-<dd>The name of the CMake project. Isn&#8217;t expanded fully until project has been
-configured once. Before configuring, expands to &#8220;Unknown Project&#8221;.</dd>
-<dt><tt class="docutils literal"><span class="pre">${userHome}</span></tt></dt>
-<dd>The full path to the current user&#8217;s home directory</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">${buildType}</span></code></dt>
+<dd>The current CMake build type, eg. <code class="docutils literal notranslate"><span class="pre">Debug</span></code>, <code class="docutils literal notranslate"><span class="pre">Release</span></code>, <code class="docutils literal notranslate"><span class="pre">MinSizeRel</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">${generator}</span></code></dt>
+<dd>The name of the CMake generator, eg. <code class="docutils literal notranslate"><span class="pre">Ninja</span></code></dd>
+<dt><code class="docutils literal notranslate"><span class="pre">${projectName}</span></code></dt>
+<dd>The name of the CMake project. Isn’t expanded fully until project has been
+configured once. Before configuring, expands to “Unknown Project”.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">${userHome}</span></code></dt>
+<dd>The full path to the current user’s home directory</dd>
 </dl>
 <div class="section" id="environment-variables">
 <h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
-<p>Additionally, environment variables may be substituted with <tt class="docutils literal"><span class="pre">${env:VARNAME}</span></tt>
-syntax, where the string for the <tt class="docutils literal"><span class="pre">VARNAME</span></tt> environment variable will be
+<p>Additionally, environment variables may be substituted with <code class="docutils literal notranslate"><span class="pre">${env:VARNAME}</span></code>
+syntax, where the string for the <code class="docutils literal notranslate"><span class="pre">VARNAME</span></code> environment variable will be
 replaced. If the named environment variable is undefined, an empty string
 will be expanded instead.</p>
 </div>
 <div class="section" id="command-substitution">
 <h3>Command Substitution<a class="headerlink" href="#command-substitution" title="Permalink to this headline">¶</a></h3>
 <p>CMake Tools also supports expanding of VSCode commands, similar to
-<tt class="docutils literal"><span class="pre">launch.json</span></tt>. Running a command <tt class="docutils literal"><span class="pre">${command:foo.bar}</span></tt> will execute the
-<tt class="docutils literal"><span class="pre">foo.bar</span></tt> VSCode command and replace the string value. Beware of long-running
+<code class="docutils literal notranslate"><span class="pre">launch.json</span></code>. Running a command <code class="docutils literal notranslate"><span class="pre">${command:foo.bar}</span></code> will execute the
+<code class="docutils literal notranslate"><span class="pre">foo.bar</span></code> VSCode command and replace the string value. Beware of long-running
 commands! It is unspecified when and how many times CMake Tools will execute a
 command for a given expansion.</p>
 </div>
@@ -129,7 +119,7 @@ command for a given expansion.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar">
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
@@ -138,10 +128,10 @@ command for a given expansion.</p>
   <ul>
 <li><a class="reference internal" href="#">Configuring CMake Tools</a><ul>
 <li><a class="reference internal" href="#available-settings">Available Settings</a><ul>
-<li><a class="reference internal" href="#cmake-builddirectory"><tt class="docutils literal"><span class="pre">cmake.buildDirectory</span></tt></a></li>
-<li><a class="reference internal" href="#cmake-installprefix"><tt class="docutils literal"><span class="pre">cmake.installPrefix</span></tt></a></li>
-<li><a class="reference internal" href="#cmake-sourcedirectory"><tt class="docutils literal"><span class="pre">cmake.sourceDirectory</span></tt></a></li>
-<li><a class="reference internal" href="#cmake-savebeforebuild"><tt class="docutils literal"><span class="pre">cmake.saveBeforeBuild</span></tt></a></li>
+<li><a class="reference internal" href="#cmake-builddirectory"><code class="docutils literal notranslate"><span class="pre">cmake.buildDirectory</span></code></a></li>
+<li><a class="reference internal" href="#cmake-installprefix"><code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code></a></li>
+<li><a class="reference internal" href="#cmake-sourcedirectory"><code class="docutils literal notranslate"><span class="pre">cmake.sourceDirectory</span></code></a></li>
+<li><a class="reference internal" href="#cmake-savebeforebuild"><code class="docutils literal notranslate"><span class="pre">cmake.saveBeforeBuild</span></code></a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#variable-substitution">Variable Substitution</a><ul>
@@ -156,29 +146,30 @@ command for a given expansion.</p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="variants.html"
                         title="previous chapter">CMake Variants</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="_sources/configuring.txt"
-           rel="nofollow">Show Source</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/configuring.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related">
+    <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -187,12 +178,12 @@ command for a given expansion.</p>
         <li class="right" >
           <a href="variants.html" title="CMake Variants"
              >previous</a> |</li>
-        <li><a href="index.html">CMakeTools 0.11.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">CMakeTools 0.11.0 documentation</a> &#187;</li> 
       </ul>
     </div>
-    <div class="footer">
-        &copy; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
     </div>
   </body>
 </html>
