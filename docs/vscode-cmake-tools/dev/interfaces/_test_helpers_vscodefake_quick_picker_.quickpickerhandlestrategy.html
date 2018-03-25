@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;src/dirs&quot; | cmake-tools</title>
+	<title>QuickPickerHandleStrategy | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,53 +54,89 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="_src_dirs_.html">&quot;src/dirs&quot;</a>
+					<a href="../modules/_test_helpers_vscodefake_quick_picker_.html">&quot;test/helpers/vscodefake/quick-picker&quot;</a>
+				</li>
+				<li>
+					<a href="_test_helpers_vscodefake_quick_picker_.quickpickerhandlestrategy.html">QuickPickerHandleStrategy</a>
 				</li>
 			</ul>
-			<h1>External module &quot;src/dirs&quot;</h1>
+			<h1>Interface QuickPickerHandleStrategy</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>This module defines important directories and paths to the extension</p>
-					</div>
-				</div>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">QuickPickerHandleStrategy</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/_test_helpers_vscodefake_quick_picker_.selectkitpickerhandle.html" class="tsd-signature-type">SelectKitPickerHandle</a></li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Classes</h3>
+						<section class="tsd-index-section ">
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module tsd-is-not-exported"><a href="../classes/_src_dirs_.dirs.html" class="tsd-kind-icon">Dirs</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_test_helpers_vscodefake_quick_picker_.quickpickerhandlestrategy.html#identifier" class="tsd-kind-icon">identifier</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Variables</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_src_dirs_.html#dirs-1" class="tsd-kind-icon">dirs</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_test_helpers_vscodefake_quick_picker_.quickpickerhandlestrategy.html#handlequickpick" class="tsd-kind-icon">handle<wbr>Quick<wbr>Pick</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="dirs-1" class="tsd-anchor"></a>
-					<h3>dirs</h3>
-					<div class="tsd-signature tsd-kind-icon">dirs<span class="tsd-signature-symbol">:</span> <a href="../classes/_src_dirs_.dirs.html" class="tsd-signature-type">Dirs</a><span class="tsd-signature-symbol"> =&nbsp;new Dirs()</span></div>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="identifier" class="tsd-anchor"></a>
+					<h3>identifier</h3>
+					<div class="tsd-signature tsd-kind-icon">identifier<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/57eee9a/src/dirs.ts#L51">src/dirs.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/test/helpers/vscodefake/quick-picker.ts#L4">test/helpers/vscodefake/quick-picker.ts:4</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="handlequickpick" class="tsd-anchor"></a>
+					<h3>handle<wbr>Quick<wbr>Pick</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">handle<wbr>Quick<wbr>Pick<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/test/helpers/vscodefake/quick-picker.ts#L6">test/helpers/vscodefake/quick-picker.ts:6</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>items: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -111,18 +147,30 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_src_dirs_.html">"src/dirs"</a>
+						<a href="../modules/_test_helpers_vscodefake_quick_picker_.html">"test/helpers/vscodefake/quick-<wbr>picker"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../classes/_src_dirs_.dirs.html" class="tsd-kind-icon">Dirs</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_test_helpers_vscodefake_quick_picker_.selectkitpickerhandle.html" class="tsd-kind-icon">Select<wbr>Kit<wbr>Picker<wbr>Handle</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="_src_dirs_.html#dirs-1" class="tsd-kind-icon">dirs</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_test_helpers_vscodefake_quick_picker_.quickpickerhandlestrategy.html" class="tsd-kind-icon">Quick<wbr>Picker<wbr>Handle<wbr>Strategy</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_test_helpers_vscodefake_quick_picker_.quickpickerhandlestrategy.html#identifier" class="tsd-kind-icon">identifier</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_test_helpers_vscodefake_quick_picker_.quickpickerhandlestrategy.html#handlequickpick" class="tsd-kind-icon">handle<wbr>Quick<wbr>Pick</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 				</ul>
 			</nav>
 		</div>
