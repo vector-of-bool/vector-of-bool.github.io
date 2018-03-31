@@ -117,6 +117,12 @@ active.</dd>
 <dd>A map of arbitrary CMake cache options to pass via the CMake command line
 with <code class="docutils literal notranslate"><span class="pre">-D</span></code>. Similar to the <code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code> in
 <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">env</span></code></dt>
+<dd>A map of key-value string pairs specifying additional environment variables
+to set during CMake <em>configure</em> (not build). These environment variables
+take precedence over environment variables from <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>, the
+currently set <a class="reference internal" href="kits.html#kits"><span class="std std-ref">kit</span></a>, and environment variables set by the
+system.</dd>
 </dl>
 </div>
 </div>

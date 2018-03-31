@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Nag | cmake-tools</title>
+	<title>ExpansionVars | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,82 +54,131 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_src_nag_.html">&quot;src/nag&quot;</a>
+					<a href="../modules/_src_expand_.html">&quot;src/expand&quot;</a>
 				</li>
 				<li>
-					<a href="_src_nag_.nag.html">Nag</a>
+					<a href="_src_expand_.expansionvars.html">ExpansionVars</a>
 				</li>
 			</ul>
-			<h1>Interface Nag</h1>
+			<h1>Interface ExpansionVars</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Key-value type for variable expansions</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Nag</span>
+						<a href="_src_expand_.requiredexpansioncontextvars.html" class="tsd-signature-type">RequiredExpansionContextVars</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">ExpansionVars</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
+			</section>
+			<section class="tsd-panel tsd-kind-interface tsd-parent-kind-external-module">
+				<h3 class="tsd-before-signature">Indexable</h3>
+				<div class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span></div>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Key-value type for variable expansions</p>
+					</div>
+				</div>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-inherited">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_nag_.nag.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_nag_.nag.html#items" class="tsd-kind-icon">items</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_nag_.nag.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_nag_.nag.html#resetseconds" class="tsd-kind-icon">reset<wbr>Seconds</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_expand_.expansionvars.html#buildtype" class="tsd-kind-icon">build<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_expand_.expansionvars.html#generator" class="tsd-kind-icon">generator</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_expand_.expansionvars.html#projectname" class="tsd-kind-icon">project<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_expand_.expansionvars.html#userhome" class="tsd-kind-icon">user<wbr>Home</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_expand_.expansionvars.html#workspaceroot" class="tsd-kind-icon">workspace<wbr>Root</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_src_expand_.expansionvars.html#workspacerootfoldername" class="tsd-kind-icon">workspace<wbr>Root<wbr>Folder<wbr>Name</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="id" class="tsd-anchor"></a>
-					<h3>id</h3>
-					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="buildtype" class="tsd-anchor"></a>
+					<h3>build<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">build<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_expand_.requiredexpansioncontextvars.html">RequiredExpansionContextVars</a>.<a href="_src_expand_.requiredexpansioncontextvars.html#buildtype">buildType</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/nag.ts#L27">src/nag.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/expand.ts#L23">src/expand.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="items" class="tsd-anchor"></a>
-					<h3>items</h3>
-					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <a href="_src_nag_.nagitem.html" class="tsd-signature-type">NagItem</a><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="generator" class="tsd-anchor"></a>
+					<h3>generator</h3>
+					<div class="tsd-signature tsd-kind-icon">generator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_expand_.requiredexpansioncontextvars.html">RequiredExpansionContextVars</a>.<a href="_src_expand_.requiredexpansioncontextvars.html#generator">generator</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/nag.ts#L26">src/nag.ts:26</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/expand.ts#L25">src/expand.ts:25</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="projectname" class="tsd-anchor"></a>
+					<h3>project<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">project<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_expand_.requiredexpansioncontextvars.html">RequiredExpansionContextVars</a>.<a href="_src_expand_.requiredexpansioncontextvars.html#projectname">projectName</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/nag.ts#L25">src/nag.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/expand.ts#L26">src/expand.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="resetseconds" class="tsd-anchor"></a>
-					<h3>reset<wbr>Seconds</h3>
-					<div class="tsd-signature tsd-kind-icon">reset<wbr>Seconds<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="userhome" class="tsd-anchor"></a>
+					<h3>user<wbr>Home</h3>
+					<div class="tsd-signature tsd-kind-icon">user<wbr>Home<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_expand_.requiredexpansioncontextvars.html">RequiredExpansionContextVars</a>.<a href="_src_expand_.requiredexpansioncontextvars.html#userhome">userHome</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/nag.ts#L28">src/nag.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/expand.ts#L27">src/expand.ts:27</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="workspaceroot" class="tsd-anchor"></a>
+					<h3>workspace<wbr>Root</h3>
+					<div class="tsd-signature tsd-kind-icon">workspace<wbr>Root<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_expand_.requiredexpansioncontextvars.html">RequiredExpansionContextVars</a>.<a href="_src_expand_.requiredexpansioncontextvars.html#workspaceroot">workspaceRoot</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/expand.ts#L22">src/expand.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="workspacerootfoldername" class="tsd-anchor"></a>
+					<h3>workspace<wbr>Root<wbr>Folder<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">workspace<wbr>Root<wbr>Folder<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_src_expand_.requiredexpansioncontextvars.html">RequiredExpansionContextVars</a>.<a href="_src_expand_.requiredexpansioncontextvars.html#workspacerootfoldername">workspaceRootFolderName</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/expand.ts#L24">src/expand.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,59 +191,50 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_src_nag_.html">"src/nag"</a>
+						<a href="../modules/_src_expand_.html">"src/expand"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_src_nag_.nagmanager.html" class="tsd-kind-icon">Nag<wbr>Manager</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_expand_.expansionoptions.html" class="tsd-kind-icon">Expansion<wbr>Options</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_nag_.nag.html" class="tsd-kind-icon">Nag</a>
+						<a href="_src_expand_.expansionvars.html" class="tsd-kind-icon">Expansion<wbr>Vars</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_nag_.nag.html#id" class="tsd-kind-icon">id</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_expand_.expansionvars.html#buildtype" class="tsd-kind-icon">build<wbr>Type</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_nag_.nag.html#items" class="tsd-kind-icon">items</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_expand_.expansionvars.html#generator" class="tsd-kind-icon">generator</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_nag_.nag.html#message" class="tsd-kind-icon">message</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_expand_.expansionvars.html#projectname" class="tsd-kind-icon">project<wbr>Name</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_nag_.nag.html#resetseconds" class="tsd-kind-icon">reset<wbr>Seconds</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_expand_.expansionvars.html#userhome" class="tsd-kind-icon">user<wbr>Home</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_expand_.expansionvars.html#workspaceroot" class="tsd-kind-icon">workspace<wbr>Root</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_src_expand_.expansionvars.html#workspacerootfoldername" class="tsd-kind-icon">workspace<wbr>Root<wbr>Folder<wbr>Name</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_nag_.nagitem.html" class="tsd-kind-icon">Nag<wbr>Item</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_src_nag_.nagstate.html" class="tsd-kind-icon">Nag<wbr>State</a>
+						<a href="_src_expand_.requiredexpansioncontextvars.html" class="tsd-kind-icon">Required<wbr>Expansion<wbr>Context<wbr>Vars</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_src_nag_.html#nag_remote_url" class="tsd-kind-icon">NAG_<wbr>REMOTE_<wbr>URL</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_src_nag_.html#open" class="tsd-kind-icon">open</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_src_nag_.html#getorinitnagstate" class="tsd-kind-icon">get<wbr>OrInit<wbr>Nag<wbr>State</a>
+						<a href="../modules/_src_expand_.html#log" class="tsd-kind-icon">log</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_src_nag_.html#parsenagdata" class="tsd-kind-icon">parse<wbr>Nag<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_src_nag_.html#parsenagyaml" class="tsd-kind-icon">parse<wbr>NagYAML</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_src_nag_.html#writenagstate" class="tsd-kind-icon">write<wbr>Nag<wbr>State</a>
+						<a href="../modules/_src_expand_.html#expandstring" class="tsd-kind-icon">expand<wbr>String</a>
 					</li>
 				</ul>
 			</nav>

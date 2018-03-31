@@ -125,6 +125,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_sourcedirectory" class="tsd-kind-icon">_source<wbr>Directory</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_variantbuildtype" class="tsd-kind-icon">_variant<wbr>Build<wbr>Type</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_variantconfiguresettings" class="tsd-kind-icon">_variant<wbr>Configure<wbr>Settings</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_variantenv" class="tsd-kind-icon">_variant<wbr>Env</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_variantlinkage" class="tsd-kind-icon">_variant<wbr>Linkage</a></li>
 							</ul>
 						</section>
@@ -132,7 +133,6 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_compilerkit" class="tsd-kind-icon">_compiler<wbr>Kit</a></li>
-								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_replacements" class="tsd-kind-icon">_replacements</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_toolchainfilekit" class="tsd-kind-icon">_toolchain<wbr>File<wbr>Kit</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-private"><a href="_src_driver_.cmakedriver.html#_vskit" class="tsd-kind-icon">_vs<wbr>Kit</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#alltargetname" class="tsd-kind-icon">all<wbr>Target<wbr>Name</a></li>
@@ -142,6 +142,7 @@
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#compilerid" class="tsd-kind-icon">compilerID</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#currentbuildtype" class="tsd-kind-icon">current<wbr>Build<wbr>Type</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#executabletargets" class="tsd-kind-icon">executable<wbr>Targets</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#expansionoptions" class="tsd-kind-icon">expansion<wbr>Options</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#generatorname" class="tsd-kind-icon">generator<wbr>Name</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#installdir" class="tsd-kind-icon">install<wbr>Dir</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#isbusy" class="tsd-kind-icon">is<wbr>Busy</a></li>
@@ -178,8 +179,8 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_src_driver_.cmakedriver.html#dosetkit" class="tsd-kind-icon">do<wbr>Set<wbr>Kit</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="_src_driver_.cmakedriver.html#dosetprojectname" class="tsd-kind-icon">do<wbr>Set<wbr>Project<wbr>Name</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#executecommand" class="tsd-kind-icon">execute<wbr>Command</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#expandstring" class="tsd-kind-icon">expand<wbr>String</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#getbestgenerator" class="tsd-kind-icon">get<wbr>Best<wbr>Generator</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#getconfiguretimeenvironment" class="tsd-kind-icon">get<wbr>Configure<wbr>Time<wbr>Environment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#getexpandedconfigureenvironment" class="tsd-kind-icon">get<wbr>Expanded<wbr>Configure<wbr>Environment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#getexpandedenvironment" class="tsd-kind-icon">get<wbr>Expanded<wbr>Environment</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_driver_.cmakedriver.html#getkitenvironmentvariablesobject" class="tsd-kind-icon">get<wbr>Kit<wbr>Environment<wbr>Variables<wbr>Object</a></li>
@@ -206,7 +207,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L74">src/driver.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L73">src/driver.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -234,7 +235,7 @@
 					<div class="tsd-signature tsd-kind-icon">_binary<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L391">src/driver.ts:391</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L345">src/driver.ts:345</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -244,7 +245,7 @@
 					<div class="tsd-signature tsd-kind-icon">_current<wbr>Process<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_src_proc_.subprocess.html" class="tsd-signature-type">Subprocess</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L713">src/driver.ts:713</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L666">src/driver.ts:666</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,7 +261,7 @@
 					<div class="tsd-signature tsd-kind-icon">_install<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L397">src/driver.ts:397</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L351">src/driver.ts:351</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -270,7 +271,7 @@
 					<div class="tsd-signature tsd-kind-icon">_is<wbr>Busy<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L354">src/driver.ts:354</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L307">src/driver.ts:307</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -280,7 +281,7 @@
 					<div class="tsd-signature tsd-kind-icon">_kit<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_kit_.html#kit" class="tsd-signature-type">Kit</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L123">src/driver.ts:123</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L132">src/driver.ts:132</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -299,7 +300,7 @@
 					<div class="tsd-signature tsd-kind-icon">_kit<wbr>Environment<wbr>Variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, string&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L95">src/driver.ts:95</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L94">src/driver.ts:94</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -314,7 +315,7 @@
 					<div class="tsd-signature tsd-kind-icon">_on<wbr>Reconfigured<wbr>Emitter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;void&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L550">src/driver.ts:550</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L504">src/driver.ts:504</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -324,7 +325,7 @@
 					<div class="tsd-signature tsd-kind-icon">_project<wbr>Name<wbr>Changed<wbr>Emitter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L108">src/driver.ts:108</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L117">src/driver.ts:117</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -334,7 +335,7 @@
 					<div class="tsd-signature tsd-kind-icon">_source<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L363">src/driver.ts:363</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L316">src/driver.ts:316</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -344,7 +345,7 @@
 					<div class="tsd-signature tsd-kind-icon">_variant<wbr>Build<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> =&nbsp;&quot;Debug&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L326">src/driver.ts:326</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L273">src/driver.ts:273</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -359,7 +360,7 @@
 					<div class="tsd-signature tsd-kind-icon">_variant<wbr>Configure<wbr>Settings<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_variant_.html#configurearguments" class="tsd-signature-type">ConfigureArguments</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L331">src/driver.ts:331</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L278">src/driver.ts:278</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -369,12 +370,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_variantenv" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _variant<wbr>Env</h3>
+					<div class="tsd-signature tsd-kind-icon">_variant<wbr>Env<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_src_proc_.environmentvariables.html" class="tsd-signature-type">EnvironmentVariables</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L288">src/driver.ts:288</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Environment variables defined by the current variant</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_variantlinkage" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _variant<wbr>Linkage</h3>
 					<div class="tsd-signature tsd-kind-icon">_variant<wbr>Linkage<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"static"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"shared"</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L336">src/driver.ts:336</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L283">src/driver.ts:283</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -396,7 +412,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L131">src/driver.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L140">src/driver.ts:140</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -415,34 +431,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
-					<a name="_replacements" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _replacements</h3>
-					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> _replacements<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L162">src/driver.ts:162</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get replacements from the state manager and update driver relevant
-									ones.</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
-							<ul class="tsd-parameters">
-								<li class="tsd-parameter-index-signature">
-									<h5><span class="tsd-signature-symbol">[</span>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
 					<a name="_toolchainfilekit" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _toolchain<wbr>File<wbr>Kit</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
@@ -452,7 +440,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L142">src/driver.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L151">src/driver.ts:151</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -480,7 +468,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L153">src/driver.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L162">src/driver.ts:162</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -508,7 +496,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L423">src/driver.ts:423</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L377">src/driver.ts:377</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -525,7 +513,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L390">src/driver.ts:390</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L344">src/driver.ts:344</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -547,7 +535,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L402">src/driver.ts:402</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L356">src/driver.ts:356</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -571,7 +559,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L777">src/driver.ts:777</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L732">src/driver.ts:732</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -594,7 +582,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L435">src/driver.ts:435</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L389">src/driver.ts:389</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -619,7 +607,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L413">src/driver.ts:413</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L367">src/driver.ts:367</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -642,7 +630,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L65">src/driver.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L64">src/driver.ts:64</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -651,6 +639,28 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_api_.executabletarget.html" class="tsd-signature-type">ExecutableTarget</a><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="expansionoptions" class="tsd-anchor"></a>
+					<h3>expansion<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> expansionOptions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_expand_.expansionoptions.html" class="tsd-signature-type">ExpansionOptions</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L195">src/driver.ts:195</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The options that will be passed to <code>expand.expandString</code> for this driver.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_expand_.expansionoptions.html" class="tsd-signature-type">ExpansionOptions</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -664,7 +674,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L421">src/driver.ts:421</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L375">src/driver.ts:375</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -690,7 +700,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L396">src/driver.ts:396</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L350">src/driver.ts:350</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -715,7 +725,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L353">src/driver.ts:353</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L306">src/driver.ts:306</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -737,7 +747,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L415">src/driver.ts:415</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L369">src/driver.ts:369</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -754,7 +764,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L455">src/driver.ts:455</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L409">src/driver.ts:409</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
@@ -774,7 +784,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L382">src/driver.ts:382</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L336">src/driver.ts:336</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -796,7 +806,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L55">src/driver.ts:55</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L54">src/driver.ts:54</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,7 +828,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L107">src/driver.ts:107</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L116">src/driver.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -840,7 +850,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L551">src/driver.ts:551</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L505">src/driver.ts:505</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">vscode.Event</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -857,7 +867,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L110">src/driver.ts:110</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L119">src/driver.ts:119</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -874,7 +884,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L362">src/driver.ts:362</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L315">src/driver.ts:315</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -902,7 +912,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L60">src/driver.ts:60</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L59">src/driver.ts:59</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -927,7 +937,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L779">src/driver.ts:779</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L734">src/driver.ts:734</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -950,7 +960,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L656">src/driver.ts:656</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L609">src/driver.ts:609</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -974,7 +984,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L715">src/driver.ts:715</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L668">src/driver.ts:668</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1000,7 +1010,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L367">src/driver.ts:367</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L320">src/driver.ts:320</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1017,7 +1027,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L297">src/driver.ts:297</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L244">src/driver.ts:244</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1040,7 +1050,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L74">src/driver.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L73">src/driver.ts:73</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1065,7 +1075,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L634">src/driver.ts:634</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L587">src/driver.ts:587</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1091,7 +1101,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L46">src/driver.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L45">src/driver.ts:45</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1122,7 +1132,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L321">src/driver.ts:321</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L268">src/driver.ts:268</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1145,7 +1155,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L553">src/driver.ts:553</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L507">src/driver.ts:507</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1171,7 +1181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L86">src/driver.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L85">src/driver.ts:85</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1188,13 +1198,13 @@
 					<a name="doconfigure" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagProtected">Protected</span> do<wbr>Configure</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-						<li class="tsd-signature tsd-kind-icon">do<wbr>Configure<span class="tsd-signature-symbol">(</span>extra_args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, consumer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">proc.OutputConsumer</span>, environment<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">proc.EnvironmentVariables</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">do<wbr>Configure<span class="tsd-signature-symbol">(</span>extra_args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, consumer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">proc.OutputConsumer</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L38">src/driver.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L39">src/driver.ts:39</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1209,9 +1219,6 @@
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> consumer: <span class="tsd-signature-type">proc.OutputConsumer</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> environment: <span class="tsd-signature-type">proc.EnvironmentVariables</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1229,7 +1236,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L787">src/driver.ts:787</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L742">src/driver.ts:742</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1246,7 +1253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L50">src/driver.ts:50</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L49">src/driver.ts:49</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1263,7 +1270,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L48">src/driver.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L47">src/driver.ts:47</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -1280,7 +1287,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L365">src/driver.ts:365</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L318">src/driver.ts:318</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1315,7 +1322,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L319">src/driver.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L266">src/driver.ts:266</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1353,7 +1360,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L111">src/driver.ts:111</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L120">src/driver.ts:120</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1376,7 +1383,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L277">src/driver.ts:277</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L224">src/driver.ts:224</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1399,42 +1406,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="expandstring" class="tsd-anchor"></a>
-					<h3>expand<wbr>String</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">expand<wbr>String<span class="tsd-signature-symbol">(</span>instr<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, env<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">proc.EnvironmentVariables</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L218">src/driver.ts:218</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Replace ${variable} references in the given string with their corresponding
-									values.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>instr: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The input string</p>
-									</div>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> env: <span class="tsd-signature-type">proc.EnvironmentVariables</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A string with the variable references replaced</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
 					<a name="getbestgenerator" class="tsd-anchor"></a>
 					<h3>get<wbr>Best<wbr>Generator</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
@@ -1444,7 +1415,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L496">src/driver.ts:496</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L450">src/driver.ts:450</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1453,6 +1424,28 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_kit_.cmakegenerator.html" class="tsd-signature-type">CMakeGenerator</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getconfiguretimeenvironment" class="tsd-anchor"></a>
+					<h3>get<wbr>Configure<wbr>Time<wbr>Environment</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Configure<wbr>Time<wbr>Environment<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_proc_.environmentvariables.html" class="tsd-signature-type">EnvironmentVariables</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L106">src/driver.ts:106</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the environment variables that should be set at CMake-configure time.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_src_proc_.environmentvariables.html" class="tsd-signature-type">EnvironmentVariables</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1466,7 +1459,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L205">src/driver.ts:205</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L183">src/driver.ts:183</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1489,7 +1482,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L194">src/driver.ts:194</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L171">src/driver.ts:171</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1512,7 +1505,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L100">src/driver.ts:100</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L99">src/driver.ts:99</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1534,7 +1527,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L484">src/driver.ts:484</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L438">src/driver.ts:438</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_kit_.cmakegenerator.html" class="tsd-signature-type">CMakeGenerator</a><span class="tsd-signature-symbol">[]</span></h4>
@@ -1551,7 +1544,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L291">src/driver.ts:291</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L238">src/driver.ts:238</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1582,7 +1575,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L342">src/driver.ts:342</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L294">src/driver.ts:294</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1613,7 +1606,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L763">src/driver.ts:763</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L718">src/driver.ts:718</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1635,7 +1628,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L470">src/driver.ts:470</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L424">src/driver.ts:424</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1661,7 +1654,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/2d83dcf/src/driver.ts#L793">src/driver.ts:793</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/driver.ts#L748">src/driver.ts:748</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1746,13 +1739,13 @@
 								<a href="_src_driver_.cmakedriver.html#_variantconfiguresettings" class="tsd-kind-icon">_variant<wbr>Configure<wbr>Settings</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_src_driver_.cmakedriver.html#_variantenv" class="tsd-kind-icon">_variant<wbr>Env</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_src_driver_.cmakedriver.html#_variantlinkage" class="tsd-kind-icon">_variant<wbr>Linkage</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
 								<a href="_src_driver_.cmakedriver.html#_compilerkit" class="tsd-kind-icon">_compiler<wbr>Kit</a>
-							</li>
-							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
-								<a href="_src_driver_.cmakedriver.html#_replacements" class="tsd-kind-icon">_replacements</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-private">
 								<a href="_src_driver_.cmakedriver.html#_toolchainfilekit" class="tsd-kind-icon">_toolchain<wbr>File<wbr>Kit</a>
@@ -1780,6 +1773,9 @@
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_src_driver_.cmakedriver.html#executabletargets" class="tsd-kind-icon">executable<wbr>Targets</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_src_driver_.cmakedriver.html#expansionoptions" class="tsd-kind-icon">expansion<wbr>Options</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_src_driver_.cmakedriver.html#generatorname" class="tsd-kind-icon">generator<wbr>Name</a>
@@ -1875,10 +1871,10 @@
 								<a href="_src_driver_.cmakedriver.html#executecommand" class="tsd-kind-icon">execute<wbr>Command</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_driver_.cmakedriver.html#expandstring" class="tsd-kind-icon">expand<wbr>String</a>
+								<a href="_src_driver_.cmakedriver.html#getbestgenerator" class="tsd-kind-icon">get<wbr>Best<wbr>Generator</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_src_driver_.cmakedriver.html#getbestgenerator" class="tsd-kind-icon">get<wbr>Best<wbr>Generator</a>
+								<a href="_src_driver_.cmakedriver.html#getconfiguretimeenvironment" class="tsd-kind-icon">get<wbr>Configure<wbr>Time<wbr>Environment</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_src_driver_.cmakedriver.html#getexpandedconfigureenvironment" class="tsd-kind-icon">get<wbr>Expanded<wbr>Configure<wbr>Environment</a>
