@@ -41,7 +41,28 @@
             
   <div class="section" id="cmake-kits">
 <span id="kits"></span><h1>CMake Kits<a class="headerlink" href="#cmake-kits" title="Permalink to this headline">¶</a></h1>
-<p><strong>Kits</strong> define the tools used to configure and build a project.</p>
+<p>A <em>kit</em> encompasses project-agnostic and configuration-agnostic information
+about how to build code. A kit can include:</p>
+<ul class="simple">
+<li><em>A set of compilers for some set of languages</em> - These are locked at specific
+versions such that you can switch your compiler version quickly and easily.</li>
+<li><em>A Visual Studio installation</em> - Building for VS is more complicated than
+simply finding the necessary compiler executable. Visual C++ requires certain
+environment variables to be set to tell it how to find and link to the
+Visual C++ toolchain headers and libraries.</li>
+<li>A toolchain file! This is the lowest-level way to instruct CMake how to
+compile and link for a target. CMake Tools handles toolchain files using
+kits.</li>
+</ul>
+<p>Kits are mostly CMake-generator-agnostic, although Visual Studio kits will have
+a “preferred” generator that will be used as a fallback to ensure a matching
+MSBuild and .sln generator is used for the Visual C++ compiler.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you use <a class="reference external" href="https://ninja-build.org/">Ninja</a> there is no need to worry
+about Visual Studio CMake Generators. CMake Tools will prefer Ninja if it is
+present unless configured otherwise.</p>
+</div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">If you change the active Kit while a project is configured, the project
@@ -49,17 +70,46 @@ configuration will be re-generated with the chosen kit.</p>
 </div>
 <div class="section" id="how-are-kits-found-and-defined">
 <h2>How Are Kits Found and Defined?<a class="headerlink" href="#how-are-kits-found-and-defined" title="Permalink to this headline">¶</a></h2>
-<p>Upon first startup, CMake Tools will scan the system for available toolchains.
-It looks in certain directories for the presence of compilers or Visual Studio
-installations (using <code class="docutils literal notranslate"><span class="pre">vswhere</span></code>) to populate the initial list of Kits.</p>
-<p>The list of kits is stored in a user-local file, which you can edit by invoking
-<em>Edit CMake Kits</em> from the command palette. It will open the <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>
-file:</p>
+<p>Upon first startup, CMake Tools will <a class="reference internal" href="#kit-scan"><span class="std std-ref">scan the system</span></a> for
+available toolchains. It looks in certain directories for the presence of
+compilers or Visual Studio installations (using <code class="docutils literal notranslate"><span class="pre">vswhere</span></code>) to populate the
+initial list of Kits.</p>
+<div class="section" id="user-local-kits">
+<span id="id1"></span><h3>User-Local Kits<a class="headerlink" href="#user-local-kits" title="Permalink to this headline">¶</a></h3>
+<p>User-local kits are kits that are available to a particular user for all
+projects open with CMake Tools.</p>
+<p>The user-local list of kits is stored in a user-owned file, which you can edit
+by invoking <em>Edit CMake Kits</em> from the command palette. It will open the
+<code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code> file:</p>
 <img alt="_images/kits_json.png" class="align-center" src="_images/kits_json.png" />
+<p>This file can be manually modified to define new global kits, and the contents
+of this file will also be automatically controlled by CMake Tools via the
+<a class="reference internal" href="#kit-scan"><span class="std std-ref">automated kit scanning</span></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Don’t modify any of the kits that CMake Tools defines itself: It will
+overwrite any modifications during <a class="reference internal" href="#kit-scan"><span class="std std-ref">kit scanning</span></a>. See
+below for more information.</p>
+</div>
+</div>
+<div class="section" id="project-kits">
+<h3>Project Kits<a class="headerlink" href="#project-kits" title="Permalink to this headline">¶</a></h3>
+<p>The default user-local kits are available for all projects using CMake Tools
+for a user. In addition, one can define project-local kits by creating a
+<code class="docutils literal notranslate"><span class="pre">.vscode/cmake-kits.json</span></code> file in the project directory. The contents of this
+file must be managed manually, but CMake Tools will automatically reload and
+refresh when it sees this file added, removed, or changed. When changing kits,
+both user-local and project-local kits will be available for selection.</p>
+<p>An example usage of project-local kits is if the project defines its own
+CMake toolchain file(s). A <a class="reference internal" href="#kits-types-toolchain"><span class="std std-ref">toolchain kit</span></a> can be defined
+that specifies this file to be loaded. The <code class="docutils literal notranslate"><span class="pre">.vscode/cmake-kits.json</span></code> file can
+be committed to source control and shared with other developers for easier
+collaboration on the named toolchain.</p>
+</div>
 <div class="section" id="scanning-process">
-<h3>Scanning Process<a class="headerlink" href="#scanning-process" title="Permalink to this headline">¶</a></h3>
-<p>The contents of this file can be updated by running <em>Scan for Kits</em> in the
-command palette. The following steps are taken to find available kits:</p>
+<span id="kit-scan"></span><h3>Scanning Process<a class="headerlink" href="#scanning-process" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference internal" href="#user-local-kits"><span class="std std-ref">User-Local Kits</span></a> can be updated by running <em>Scan for Kits</em> in the
+command palette. The following process occurs to find available kits:</p>
 <ol class="arabic">
 <li><p class="first"><strong>Search the current PATH for compilers</strong></p>
 <blockquote>
@@ -82,18 +132,17 @@ compiler binary names and how to parse its version information.</p>
 </li>
 <li><p class="first"><strong>Ask VSWhere about Visual Studio installations</strong></p>
 <blockquote>
-<div><p>CMake tools will search for an installed <code class="docutils literal notranslate"><span class="pre">vswhere.exe</span></code> executable and
-invoke it to ask about existing Visual Studio instances installed on
-the system.</p>
+<div><p>CMake tools includes a bundled <code class="docutils literal notranslate"><span class="pre">vswhere.exe</span></code> which it uses to ask about
+existing Visual Studio instances installed on the system.</p>
 <p>For each of <code class="docutils literal notranslate"><span class="pre">x86</span></code>, <code class="docutils literal notranslate"><span class="pre">amd64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_amd64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_arm</span></code>, <code class="docutils literal notranslate"><span class="pre">amd64_arm</span></code>,
 and <code class="docutils literal notranslate"><span class="pre">amd64_x86</span></code>, CMake Tools will check for installed Visual C++
 environments. A kit is generated for each existing MSVC toolchain.</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Save results to cmake-kits.json</strong></p>
+<li><p class="first"><strong>Save results to the user-local kits file</strong></p>
 <blockquote>
-<div><p>When finished, the <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code> file will be updated with the new
-kit information.</p>
+<div><p>When finished, the <a class="reference internal" href="#user-local-kits"><span class="std std-ref">user-local</span></a> <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>
+file will be updated with the new kit information.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> of each kit is generated from the kit compiler
@@ -109,12 +158,18 @@ and update existing ones.</p>
 </div>
 </div>
 <div class="section" id="kit-types">
-<h2>Kit Types<a class="headerlink" href="#kit-types" title="Permalink to this headline">¶</a></h2>
+<span id="kits-types"></span><h2>Kit Types<a class="headerlink" href="#kit-types" title="Permalink to this headline">¶</a></h2>
 <p>CMake defines three types of kits: <em>compiler kits</em>, <em>Visual Studio kits</em>, and
 <em>toolchain file kits</em>. They are distinguished by the properties present in
 their definition in <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="configuring.html#configuring-how"><span class="std std-ref">How CMake Tools Configures</span></a> - Explains how kits are applied during configuration</li>
+</ul>
+</div>
 <div class="section" id="compiler-kits">
-<h3>Compiler Kits<a class="headerlink" href="#compiler-kits" title="Permalink to this headline">¶</a></h3>
+<span id="kits-types-compiler"></span><h3>Compiler Kits<a class="headerlink" href="#compiler-kits" title="Permalink to this headline">¶</a></h3>
 <p>A compiler kit simply lists the paths to compilers for CMake languages.</p>
 <p>The most common CMake languages are <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code>, and CMake Tools has
 built-in support for finding these, but any language can be specified:</p>
@@ -130,7 +185,7 @@ built-in support for finding these, but any language can be specified:</p>
 </div>
 </div>
 <div class="section" id="toolchain-kits">
-<h3>Toolchain Kits<a class="headerlink" href="#toolchain-kits" title="Permalink to this headline">¶</a></h3>
+<span id="kits-types-toolchain"></span><h3>Toolchain Kits<a class="headerlink" href="#toolchain-kits" title="Permalink to this headline">¶</a></h3>
 <p>CMake Tools will not automatically detect them, but you can also specify a
 CMake toolchain file as a kit:</p>
 <div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -142,7 +197,7 @@ CMake toolchain file as a kit:</p>
 <p>CMake Tools will pass this path for <code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> during configure.</p>
 </div>
 <div class="section" id="visual-studio-kits">
-<h3>Visual Studio Kits<a class="headerlink" href="#visual-studio-kits" title="Permalink to this headline">¶</a></h3>
+<span id="kits-types-vs"></span><h3>Visual Studio Kits<a class="headerlink" href="#visual-studio-kits" title="Permalink to this headline">¶</a></h3>
 <p>CMake Tools will automatically setup the environment for working with Visual C++
 when you use a Visual Studio code. It is advised to let CMake Tools
 generate the kits first, then duplicate them and modify them.</p>
@@ -159,14 +214,16 @@ Visual Studio target architecture that would be passed to the <code class="docut
 file when entering the VS dev environment.</p>
 </div>
 <div class="section" id="common-options">
-<h3>Common Options<a class="headerlink" href="#common-options" title="Permalink to this headline">¶</a></h3>
+<span id="kits-common"></span><h3>Common Options<a class="headerlink" href="#common-options" title="Permalink to this headline">¶</a></h3>
 <p>All kit types also support some additional options:</p>
-<dl class="docutils">
+<dl class="docutils" id="kits-common-preferredgenerator">
 <dt><code class="docutils literal notranslate"><span class="pre">preferredGenerator</span></code></dt>
 <dd>The CMake generator that should be used with this kit if not the default.
 CMake Tools will still search in <code class="docutils literal notranslate"><span class="pre">cmake.preferredGenerators</span></code> from
 <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>, but will fall back to this option if no generator
 from the user settings is available</dd>
+</dl>
+<dl class="docutils" id="kits-common-cmakesettings">
 <dt><code class="docutils literal notranslate"><span class="pre">cmakeSettings</span></code></dt>
 <dd><p class="first">A JSON object that will be passed as a list of cache settings when running
 CMake configure. Don’t use this for project-specific settings and options:
@@ -192,6 +249,8 @@ options that can be passed as cache variables.</p>
   <ul>
 <li><a class="reference internal" href="#">CMake Kits</a><ul>
 <li><a class="reference internal" href="#how-are-kits-found-and-defined">How Are Kits Found and Defined?</a><ul>
+<li><a class="reference internal" href="#user-local-kits">User-Local Kits</a></li>
+<li><a class="reference internal" href="#project-kits">Project Kits</a></li>
 <li><a class="reference internal" href="#scanning-process">Scanning Process</a></li>
 </ul>
 </li>

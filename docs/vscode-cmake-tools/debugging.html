@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Target Debugging and Launching &#8212; CMake Tools 0.11.0 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuring CMake Tools" href="settings.html" />
+    <link rel="prev" title="CMake Building" href="building.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="settings.html" title="Configuring CMake Tools"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="building.html" title="CMake Building"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 0.11.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="target-debugging-and-launching">
+<span id="debugging"></span><h1>Target Debugging and Launching<a class="headerlink" href="#target-debugging-and-launching" title="Permalink to this headline">¶</a></h1>
+<p>CMake Tools removes some of the friction required in setting up debugging.
+Because C and C++ projects may define multiple (sometimes dozens or even h
+hundreds) of executables, creating a <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> may be difficult, tedious,
+and error-prone.</p>
+<p>If you define any executable targets via CMake, CMake Tools will be aware of
+them and allow you to start a debugger on them.</p>
+<div class="section" id="selecting-a-launch-target">
+<h2>Selecting a Launch Target<a class="headerlink" href="#selecting-a-launch-target" title="Permalink to this headline">¶</a></h2>
+<p>The “launch target” or “debug target” is initially unset. The first time you try
+to run target debugging, CMake Tools will ask you to specify a target, which
+will be persisted between sessions.</p>
+<p>The active launch target is shown in the status bar to the right of the <em>Debug</em>
+button:</p>
+<img alt="_images/launch_target.png" class="align-center" src="_images/launch_target.png" />
+<p>Pressing this button will show the launch target selector and lets one change
+the active launch target.</p>
+</div>
+<div class="section" id="quick-debugging">
+<h2>Quick Debugging<a class="headerlink" href="#quick-debugging" title="Permalink to this headline">¶</a></h2>
+<p>Quick-debugging lets you start a debugger on a target without ever creating
+a <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At the moment, only the debugger from Microsoft’s <code class="docutils literal notranslate"><span class="pre">vscode-cpptools</span></code>
+extension is supported with quick-debugging. See <a class="reference internal" href="#debugging-launch-json"><span class="std std-ref">Debugging with CMake Tools and launch.json</span></a>
+below for using <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> and other debuggers.</p>
+</div>
+<p>Quick debugging can be started using the <em>CMake: Debug Target</em> command from
+the command pallette, or by pressing the associated hotkey (the default is
+<kbd class="kbd docutils literal notranslate">Ctrl+F5</kbd>).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Quick-debugging does not let you specify program arguments or other
+debugging options. See <a class="reference internal" href="#debugging-launch-json"><span class="std std-ref">Debugging with CMake Tools and launch.json</span></a> for more options.</p>
+</div>
+</div>
+<div class="section" id="debugging-with-cmake-tools-and-launch-json">
+<span id="debugging-launch-json"></span><h2>Debugging with CMake Tools and <code class="docutils literal notranslate"><span class="pre">launch.json</span></code><a class="headerlink" href="#debugging-with-cmake-tools-and-launch-json" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, more flexibility is needed for debugging, including setting things
+like the working directory or command line arguments. In addition, one may want
+to use a debugger other than the one included with Microsoft’s
+<code class="docutils literal notranslate"><span class="pre">vscode-cpptools</span></code>.</p>
+<p>All these things can be done using <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>. The primary obstacle to
+using <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> is that the path to the executable binary might be
+difficult to know in advance. CMake Tools can help by using
+<em>Command substitution</em> in <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>. This is already used by things like
+the process selection when attaching to a running process. It works by simply
+specifying a a command-based substitution in the appropriate field of
+<code class="docutils literal notranslate"><span class="pre">launch.json</span></code>.</p>
+<p>Here is a minimal example of a <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> that uses the
+<code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> to start a debugger on the active selected launch
+target:</p>
+<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;(gdb) Launch&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;cppdbg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+            <span class="o">//</span> <span class="n">Resolved</span> <span class="n">by</span> <span class="n">CMake</span> <span class="n">Tools</span><span class="p">:</span>
+            <span class="s2">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;${command:cmake.launchTargetPath}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;stopAtEntry&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+            <span class="s2">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{workspaceFolder}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;externalConsole&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+            <span class="s2">&quot;MIMode&quot;</span><span class="p">:</span> <span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;setupCommands&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Enable pretty-printing for gdb&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;-enable-pretty-printing&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ignoreFailures&quot;</span><span class="p">:</span> <span class="n">true</span>
+                <span class="p">}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The value of the <code class="docutils literal notranslate"><span class="pre">program</span></code> attribute is resolved by CMake Tools to the
+absolute path to the program to run.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A successful <a class="reference internal" href="configuring.html#configuring"><span class="std std-ref">configure</span></a> must be executed before
+<code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> will resolve correctly.</p>
+</div>
+</div>
+<div class="section" id="running-targets-without-a-debugger">
+<h2>Running Targets Without a Debugger<a class="headerlink" href="#running-targets-without-a-debugger" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes one will want to just run a target and see its output. This can
+be done with the <em>CMake: Execute the current target without a debugger</em> command,
+or the associated keybinding (the default is <kbd class="kbd docutils literal notranslate">Shift+F5</kbd>).</p>
+<p>The output of the target will be shown in an integrated terminal.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Target Debugging and Launching</a><ul>
+<li><a class="reference internal" href="#selecting-a-launch-target">Selecting a Launch Target</a></li>
+<li><a class="reference internal" href="#quick-debugging">Quick Debugging</a></li>
+<li><a class="reference internal" href="#debugging-with-cmake-tools-and-launch-json">Debugging with CMake Tools and <code class="docutils literal notranslate"><span class="pre">launch.json</span></code></a></li>
+<li><a class="reference internal" href="#running-targets-without-a-debugger">Running Targets Without a Debugger</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="building.html"
+                        title="previous chapter">CMake Building</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="settings.html"
+                        title="next chapter">Configuring CMake Tools</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/debugging.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="settings.html" title="Configuring CMake Tools"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="building.html" title="CMake Building"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 0.11.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+    </div>
+  </body>
+</html>

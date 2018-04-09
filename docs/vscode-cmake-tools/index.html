@@ -38,13 +38,16 @@
   <div class="section" id="cmake-tools-for-visual-studio-code">
 <h1>CMake Tools for Visual Studio Code<a class="headerlink" href="#cmake-tools-for-visual-studio-code" title="Permalink to this headline">¶</a></h1>
 <p>CMake Tools is an extension designed to make working with CMake-based projects
-a breeze.</p>
+as easy as possible. If you are new, check the <a class="reference internal" href="getting_started.html#getting-started"><span class="std std-ref">Getting Started</span></a> docs. Also
+check the <a class="reference internal" href="how_do_i.html#how-do-i"><span class="std std-ref">How Do I…</span></a> docs and the <a class="reference internal" href="faq.html#faq"><span class="std std-ref">Frequently Asked Questions</span></a>.</p>
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#cmake-tools-quick-start">CMake Tools’ <em>Quick Start</em></a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#configuring-your-project">Configuring Your Project</a></li>
 <li class="toctree-l2"><a class="reference internal" href="getting_started.html#building-your-project">Building Your Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#accessing-build-results">Accessing Build Results</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="kits.html">CMake Kits</a><ul>
@@ -55,11 +58,61 @@ a breeze.</p>
 <li class="toctree-l1"><a class="reference internal" href="variants.html">CMake Variants</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="variants.html#what-does-it-look-like">What does it look like?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="variants.html#the-variant-schema">The Variant Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants.html#how-variants-are-applied">How Variants Are Applied</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variants.html#a-big-example">A Big Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="configuring.html">Configuring CMake Tools</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configuring.html#available-settings">Available Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configuring.html#variable-substitution">Variable Substitution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuring.html">CMake Configuring</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuring.html#a-crash-course-on-cmake-s-configuration-process">A Crash-Course on CMake’s Configuration Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring.html#how-cmake-tools-configures">How CMake Tools Configures</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring.html#configuring-outside-of-cmake-tools">Configuring Outside of CMake Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuring.html#a-clean-configure">A “Clean” Configure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="building.html">CMake Building</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="building.html#the-default-target">The Default Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#building-a-single-target">Building a Single Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#how-cmake-tools-builds">How CMake Tools Builds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="building.html#cleaning-up">Cleaning Up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Target Debugging and Launching</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#selecting-a-launch-target">Selecting a Launch Target</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#quick-debugging">Quick Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-with-cmake-tools-and-launch-json">Debugging with CMake Tools and <code class="docutils literal notranslate"><span class="pre">launch.json</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#running-targets-without-a-debugger">Running Targets Without a Debugger</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Configuring CMake Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#available-settings">Available Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#variable-substitution">Variable Substitution</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting CMake Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#reset-the-extension-state">Reset the Extension State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#increasing-the-log-level">Increasing the Log Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#checking-the-log-file">Checking the Log File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#check-for-a-github-issue">Check for a GitHub Issue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#ask-around-the-support-chat">Ask Around the Support Chat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#open-a-github-issue">Open a GitHub Issue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-can-i-get-help">How Can I Get Help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#what-about-cmake-language-support">What About CMake Language Support?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#i-m-new-to-cmake-help">I’m New to CMake. Help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-does-it-work-with-c-and-c-intellisense">How Does it Work with C and C++ IntelliSense?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#how-do-i-xyz">How Do I <code class="docutils literal notranslate"><span class="pre">&lt;XYZ&gt;</span></code>?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#will-cmake-tools-ever-support-xyz">Will CMake Tools Ever Support <code class="docutils literal notranslate"><span class="pre">&lt;XYZ&gt;</span></code>?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="how_do_i.html">How Do I…</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="how_do_i.html#create-a-new-project">Create a New Project?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_do_i.html#configure-a-project">Configure a Project?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_do_i.html#build-a-project">Build a Project?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_do_i.html#debug-a-project">Debug a Project?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_do_i.html#pass-command-line-argument-to-the-debugger">Pass Command Line Argument to the Debugger?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="how_do_i.html#set-up-include-paths-for-c-intellisense">Set Up Include Paths for C++ IntelliSense?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="development.html">How to Contribute</a><ul>

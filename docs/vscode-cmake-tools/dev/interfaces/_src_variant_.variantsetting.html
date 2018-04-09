@@ -67,6 +67,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>A possible variant setting with a list of options</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -83,8 +90,8 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_variant_.variantsetting.html#choices" class="tsd-kind-icon">choices</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_variant_.variantsetting.html#default_" class="tsd-kind-icon">default_</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_variant_.variantsetting.html#description" class="tsd-kind-icon">description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_variant_.variantsetting.html#default" class="tsd-kind-icon">default</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_variant_.variantsetting.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,32 +102,47 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="choices" class="tsd-anchor"></a>
 					<h3>choices</h3>
-					<div class="tsd-signature tsd-kind-icon">choices<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">choices<span class="tsd-signature-symbol">:</span> <a href="_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L37">src/variant.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L106">src/variant.ts:106</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The options available for this setting.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="default_" class="tsd-anchor"></a>
-					<h3>default_</h3>
-					<div class="tsd-signature tsd-kind-icon">default_<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="default" class="tsd-anchor"></a>
+					<h3>default</h3>
+					<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L36">src/variant.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L102">src/variant.ts:102</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The default option choice for this variant</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="description" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> description</h3>
-					<div class="tsd-signature tsd-kind-icon">description<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L35">src/variant.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L98">src/variant.ts:98</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The name of the setting.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -141,13 +163,25 @@
 						<a href="../classes/_src_variant_.variantmanager.html" class="tsd-kind-icon">Variant<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_variant_.configurearguments.html" class="tsd-kind-icon">Configure<wbr>Arguments</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_variant_.varfileoption.html" class="tsd-kind-icon">Var<wbr>File<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_variant_.varfileroot.html" class="tsd-kind-icon">Var<wbr>File<wbr>Root</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_variant_.varfilesetting.html" class="tsd-kind-icon">Var<wbr>File<wbr>Setting</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_src_variant_.variantcollection.html" class="tsd-kind-icon">Variant<wbr>Collection</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_src_variant_.variantcombination.html" class="tsd-kind-icon">Variant<wbr>Combination</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_variant_.variantconfigurationoptions.html" class="tsd-kind-icon">Variant<wbr>Configuration<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_variant_.variantfilecontent.html" class="tsd-kind-icon">Variant<wbr>File<wbr>Content</a>
+						<a href="_src_variant_.variantoption.html" class="tsd-kind-icon">Variant<wbr>Option</a>
 					</li>
 				</ul>
 				<ul class="current">
@@ -158,23 +192,20 @@
 								<a href="_src_variant_.variantsetting.html#choices" class="tsd-kind-icon">choices</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_variant_.variantsetting.html#default_" class="tsd-kind-icon">default_</a>
+								<a href="_src_variant_.variantsetting.html#default" class="tsd-kind-icon">default</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_variant_.variantsetting.html#description" class="tsd-kind-icon">description</a>
+								<a href="_src_variant_.variantsetting.html#name" class="tsd-kind-icon">name</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_src_variant_.html#configurearguments" class="tsd-kind-icon">Configure<wbr>Arguments</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_src_variant_.html#variantset" class="tsd-kind-icon">Variant<wbr>Set</a>
-					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_src_variant_.html#log" class="tsd-kind-icon">log</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_src_variant_.html#processvariantfiledata" class="tsd-kind-icon">process<wbr>Variant<wbr>File<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
 						<a href="../modules/_src_variant_.html#default_variants" class="tsd-kind-icon">DEFAULT_<wbr>VARIANTS</a>

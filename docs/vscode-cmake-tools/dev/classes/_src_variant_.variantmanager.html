@@ -96,7 +96,6 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_variant_.variantmanager.html#_activevariantchanged" class="tsd-kind-icon">_active<wbr>Variant<wbr>Changed</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_variant_.variantmanager.html#_variantfilewatcher" class="tsd-kind-icon">_variant<wbr>File<wbr>Watcher</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_src_variant_.variantmanager.html#_variants" class="tsd-kind-icon">_variants</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -121,6 +120,12 @@
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_variant_.variantmanager.html#variantconfigurationoptionsforkws" class="tsd-kind-icon">variant<wbr>Configuration<wbr>Options<wbr>ForKWs</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-private"><a href="_src_variant_.variantmanager.html#_variants" class="tsd-kind-icon">_variants</a></li>
+							</ul>
+						</section>
 					</div>
 				</section>
 			</section>
@@ -136,7 +141,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L94">src/variant.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L189">src/variant.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -168,7 +173,7 @@
 					<div class="tsd-signature tsd-kind-icon">_active<wbr>Variant<wbr>Changed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;void&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L84">src/variant.ts:84</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L179">src/variant.ts:179</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -178,27 +183,12 @@
 					<div class="tsd-signature tsd-kind-icon">_variant<wbr>File<wbr>Watcher<span class="tsd-signature-symbol">:</span> <a href="_src_watcher_.multiwatcher.html" class="tsd-signature-type">MultiWatcher</a><span class="tsd-signature-symbol"> =&nbsp;new MultiWatcher()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L89">src/variant.ts:89</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L184">src/variant.ts:184</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Watches for changes to the variants file on the filesystem</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_variants" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _variants</h3>
-					<div class="tsd-signature tsd-kind-icon">_variants<span class="tsd-signature-symbol">:</span> <a href="../modules/_src_variant_.html#variantset" class="tsd-signature-type">VariantSet</a><span class="tsd-signature-symbol"> =&nbsp;new Map()</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L81">src/variant.ts:81</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>The variants available for this project</p>
 						</div>
 					</div>
 				</section>
@@ -209,16 +199,16 @@
 					<a name="activevariantoptions" class="tsd-anchor"></a>
 					<h3>active<wbr>Variant<wbr>Options</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> activeVariantOptions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> activeVariantOptions<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L250">src/variant.ts:250</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L311">src/variant.ts:311</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -232,7 +222,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L205">src/variant.ts:205</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L268">src/variant.ts:268</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
@@ -249,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L83">src/variant.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L178">src/variant.ts:178</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -269,7 +259,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L120">src/variant.ts:120</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L215">src/variant.ts:215</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -292,7 +282,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L91">src/variant.ts:91</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L186">src/variant.ts:186</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -309,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L315">src/variant.ts:315</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L377">src/variant.ts:377</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -326,7 +316,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L323">src/variant.ts:323</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L385">src/variant.ts:385</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -337,22 +327,22 @@
 					<a name="mergevariantconfigurations" class="tsd-anchor"></a>
 					<h3>merge<wbr>Variant<wbr>Configurations</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">merge<wbr>Variant<wbr>Configurations<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a></li>
+						<li class="tsd-signature tsd-kind-icon">merge<wbr>Variant<wbr>Configurations<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L233">src/variant.ts:233</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L295">src/variant.ts:295</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>options: <a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>options: <a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -366,7 +356,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L303">src/variant.ts:303</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L365">src/variant.ts:365</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -389,7 +379,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L282">src/variant.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L344">src/variant.ts:344</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -406,7 +396,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L308">src/variant.ts:308</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L370">src/variant.ts:370</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -423,13 +413,13 @@
 					<a name="variantconfigurationoptionsforkws" class="tsd-anchor"></a>
 					<h3>variant<wbr>Configuration<wbr>Options<wbr>ForKWs</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">variant<wbr>Configuration<wbr>Options<wbr>ForKWs<span class="tsd-signature-symbol">(</span>keywordSetting<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">variant<wbr>Configuration<wbr>Options<wbr>ForKWs<span class="tsd-signature-symbol">(</span>keywordSetting<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/b37131b/src/variant.ts#L207">src/variant.ts:207</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L270">src/variant.ts:270</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -438,12 +428,40 @@
 									<h5>keywordSetting: <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-signature-type">VariantConfigurationOptions</a><span class="tsd-signature-symbol">[]</span>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_src_variant_.variantoption.html" class="tsd-signature-type">VariantOption</a><span class="tsd-signature-symbol">[]</span>
 								<span class="tsd-signature-symbol"> | </span>
 								<span class="tsd-signature-type">string</span>
 							</h4>
 						</li>
 					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-private">
+					<a name="_variants" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _variants</h3>
+					<div class="tsd-signature tsd-kind-icon">_variants<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L176">src/variant.ts:176</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The variants available for this project</p>
+						</div>
+					</div>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_variants.settings" class="tsd-anchor"></a>
+						<h3>settings</h3>
+						<div class="tsd-signature tsd-kind-icon">settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4c48bd6/src/variant.ts#L176">src/variant.ts:176</a></li>
+							</ul>
+						</aside>
+					</section>
 				</section>
 			</section>
 		</div>
@@ -473,9 +491,6 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_src_variant_.variantmanager.html#_variantfilewatcher" class="tsd-kind-icon">_variant<wbr>File<wbr>Watcher</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_src_variant_.variantmanager.html#_variants" class="tsd-kind-icon">_variants</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
 								<a href="_src_variant_.variantmanager.html#activevariantoptions" class="tsd-kind-icon">active<wbr>Variant<wbr>Options</a>
@@ -513,30 +528,42 @@
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_src_variant_.variantmanager.html#variantconfigurationoptionsforkws" class="tsd-kind-icon">variant<wbr>Configuration<wbr>Options<wbr>ForKWs</a>
 							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-private">
+								<a href="_src_variant_.variantmanager.html#_variants" class="tsd-kind-icon">_variants</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_src_variant_.configurearguments.html" class="tsd-kind-icon">Configure<wbr>Arguments</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_src_variant_.varfileoption.html" class="tsd-kind-icon">Var<wbr>File<wbr>Option</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_src_variant_.varfileroot.html" class="tsd-kind-icon">Var<wbr>File<wbr>Root</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_src_variant_.varfilesetting.html" class="tsd-kind-icon">Var<wbr>File<wbr>Setting</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_src_variant_.variantcollection.html" class="tsd-kind-icon">Variant<wbr>Collection</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_src_variant_.variantcombination.html" class="tsd-kind-icon">Variant<wbr>Combination</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_src_variant_.variantconfigurationoptions.html" class="tsd-kind-icon">Variant<wbr>Configuration<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_src_variant_.variantfilecontent.html" class="tsd-kind-icon">Variant<wbr>File<wbr>Content</a>
+						<a href="../interfaces/_src_variant_.variantoption.html" class="tsd-kind-icon">Variant<wbr>Option</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_src_variant_.variantsetting.html" class="tsd-kind-icon">Variant<wbr>Setting</a>
 					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_src_variant_.html#configurearguments" class="tsd-kind-icon">Configure<wbr>Arguments</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_src_variant_.html#variantset" class="tsd-kind-icon">Variant<wbr>Set</a>
-					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_src_variant_.html#log" class="tsd-kind-icon">log</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_src_variant_.html#processvariantfiledata" class="tsd-kind-icon">process<wbr>Variant<wbr>File<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module">
 						<a href="../modules/_src_variant_.html#default_variants" class="tsd-kind-icon">DEFAULT_<wbr>VARIANTS</a>

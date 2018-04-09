@@ -6,7 +6,7 @@
   <head>
         <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring CMake Tools &#8212; CMake Tools 0.11.0 documentation</title>
+    <title>CMake Configuring &#8212; CMake Tools 0.11.0 documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -15,7 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="How to Contribute" href="development.html" />
+    <link rel="next" title="CMake Building" href="building.html" />
     <link rel="prev" title="CMake Variants" href="variants.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -25,7 +25,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="development.html" title="How to Contribute"
+          <a href="building.html" title="CMake Building"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="variants.html" title="CMake Variants"
@@ -39,136 +39,170 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="configuring-cmake-tools">
-<span id="settings"></span><h1>Configuring CMake Tools<a class="headerlink" href="#configuring-cmake-tools" title="Permalink to this headline">¶</a></h1>
-<p>CMake Tools supports a variety of settings that can be set at the user or
-workspace level via VSCode’s <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> file. This page talks about
-the available options and how they are used.</p>
-<p>Options marked with <em>Supports substitution</em> allow variable references to appear
-in their strings. See the <a class="reference internal" href="#var-subs"><span class="std std-ref">cmake.configureArgs</span></a> section</p>
-<div class="section" id="available-settings">
-<h2>Available Settings<a class="headerlink" href="#available-settings" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="cmake-builddirectory">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.buildDirectory</span></code><a class="headerlink" href="#cmake-builddirectory" title="Permalink to this headline">¶</a></h3>
-<p>Specify the build directory (The root directory where <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> will
-be generated).</p>
+  <div class="section" id="cmake-configuring">
+<span id="configuring"></span><h1>CMake Configuring<a class="headerlink" href="#cmake-configuring" title="Permalink to this headline">¶</a></h1>
+<p>CMake Tools wraps the CMake <em>configure</em> process separately from the <em>build</em>
+process.</p>
+<div class="section" id="a-crash-course-on-cmake-s-configuration-process">
+<h2>A Crash-Course on CMake’s Configuration Process<a class="headerlink" href="#a-crash-course-on-cmake-s-configuration-process" title="Permalink to this headline">¶</a></h2>
+<p>For those new to CMake, <em>Configure</em> refers to the process of detecting
+requirements and generating the build files that will produce the final
+compiled artifacts.</p>
+<p>To understand how CMake Tools interacts with CMake’s configure process, a few
+things must be discussed:</p>
+<ul>
+<li><p class="first">The <em>CMake Cache</em> is a list of key-value pairs that persist between
+executions of the configure process. It contains a few different types of
+values:</p>
 <ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">${workspaceRoot}/build</span></code>.</li>
-<li><em>Supports substitution</em></li>
+<li>Values that are often heavy or slow to compute, such as whether a <code class="docutils literal notranslate"><span class="pre">-flag</span></code>
+or <code class="docutils literal notranslate"><span class="pre">#include</span></code> file is supported by the compiler.</li>
+<li>Values that rarely change, such as the path to a header/library.</li>
+<li>Values that offer control to the developer, such as <code class="docutils literal notranslate"><span class="pre">BUILD_TESTING</span></code>
+to determine whether or not to build test libraries/executables.</li>
+</ul>
+</li>
+<li><p class="first"><em>Cache initializer arguments</em> are the arguments passed to CMake that set
+values in the cache before any CMake scripts are executed. This lets one
+control build settings. On the CMake command line, these appear as <code class="docutils literal notranslate"><span class="pre">-D</span></code>
+arguments <a class="footnote-reference" href="#cache-init" id="id1">[1]</a>.</p>
+</li>
+<li><p class="first">Unless overwritten or deleted, values in the CMake Cache will persist between
+executions of CMake.</p>
+</li>
+<li><p class="first">The result of a <em>configure</em> depends on the CMake <em>Generator</em>. The <em>Generator</em>
+tells CMake what kind of tool will be used to compile and generate the results
+of the build, since CMake doesn’t do the build itself. There are several
+families of generators available:</p>
+<ul class="simple">
+<li><em>Ninja</em> - Emits files for the <a class="reference external" href="https://ninja-build.org/">Ninja build tool</a>.
+This is the generator CMake Tools will always try first, unless configured
+otherwise. (See <a class="reference internal" href="settings.html#conf-cmake-preferredgenerators"><span class="std std-ref">cmake.preferredGenerators</span></a>).</li>
+<li><em>Makefile</em> - Emits a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> for the project that can be built via
+<code class="docutils literal notranslate"><span class="pre">make</span></code>.</li>
+<li><em>Visual Studio</em> - Emits visual studio solutions and project files. There are
+many different Visual Studio generators, so it is recommended to let CMake
+Tools automatically determine the appropriate generator.</li>
+</ul>
+<p>Regardless of generator, CMake Tools will always support building from within
+Visual Studio Code. Choosing a particular generator is unimportant
+<a class="footnote-reference" href="#use-ninja" id="id2">[2]</a>.</p>
+</li>
+</ul>
+<table class="docutils footnote" frame="void" id="cache-init" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>CMake also supports a <code class="docutils literal notranslate"><span class="pre">-C</span></code> argument, but this isn’t used by or
+configurable from CMake Tools.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="use-ninja" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>But you should use <a class="reference external" href="https://ninja-build.org/">Ninja</a>.</td></tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="how-cmake-tools-configures">
+<span id="configuring-how"></span><h2>How CMake Tools Configures<a class="headerlink" href="#how-cmake-tools-configures" title="Permalink to this headline">¶</a></h2>
+<p>CMake Tools speaks to CMake over <em>CMake Server</em>, a execution mode of CMake
+wherein a persistent connection is held open to query information and get
+project information.</p>
+<p>When CMake Tools runs the configure step, it takes a few things into
+consideration to run the configuration:</p>
+<ol class="arabic">
+<li><p class="first"><em>The active kit</em> - <a class="reference internal" href="kits.html#kits"><span class="std std-ref">CMake Tools’ Kits</span></a> tell CMake Tools about the
+toolchains available on your system that can be used with CMake to build
+your projects.</p>
+<ul class="simple">
+<li>For <a class="reference internal" href="kits.html#kits-types-toolchain"><span class="std std-ref">Toolchain Kits</span></a>, CMake Tools sets the CMake cache variable
+<code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> to the path to the file specified by the kit.</li>
+<li>For <a class="reference internal" href="kits.html#kits-types-compiler"><span class="std std-ref">Compiler Kits</span></a>, CMake Tools sets the <code class="docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_COMPILER</span></code>
+cache variable to point to the path for each <code class="docutils literal notranslate"><span class="pre">&lt;LANG&gt;</span></code> defined in the
+kit.</li>
+<li>For <a class="reference internal" href="kits.html#kits-types-vs"><span class="std std-ref">Visual Studio Kits</span></a>, CMake Tools starts the CMake Server process with the
+environment variables necessary to use the selected Visual Studio
+installation. It also sets <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> to <code class="docutils literal notranslate"><span class="pre">cl.exe</span></code> to force
+CMake to detect the Visual C++ compiler as the primary compiler, even if
+other compilers like GCC are present on the <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>.</li>
+</ul>
+<p>Each kit may also define additional cache variable settings requires for the
+kit to operate. A kit may also define a <code class="docutils literal notranslate"><span class="pre">preferredGenerator</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="kits.html#kits"><span class="std std-ref">CMake Kits</span></a> - Describes how Kits work</li>
+<li><a class="reference internal" href="kits.html#kits-types"><span class="std std-ref">Kit Types</span></a> - The different types of kits</li>
 </ul>
 </div>
-<div class="section" id="cmake-installprefix">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code><a class="headerlink" href="#cmake-installprefix" title="Permalink to this headline">¶</a></h3>
-<p>If specified, sets a value for <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> when running CMake
-configure. If not, no value will be passed.
-<em>Note that if ``CMAKE_INSTALL_PREFIX`` is set via ``cmake.configureArgs`` or
-``cmake.configureSettings``, ``cmake.installPrefix`` will be ignored.</em></p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
+</li>
+<li><p class="first"><em>The generator to use</em> - CMake Tools tries not to let CMake decide implicitly
+on which generator to use. Instead it tries to detect a “preferred” generator
+from a variety of sources, stopping when it finds a valid generator:</p>
+<ol class="arabic simple">
+<li>The config setting <a class="reference internal" href="settings.html#conf-cmake-generator"><span class="std std-ref">cmake.generator</span></a>.</li>
+<li>The config setting <a class="reference internal" href="settings.html#conf-cmake-preferredgenerators"><span class="std std-ref">cmake.preferredGenerators</span></a> - Each element
+in this list is checked for validity, and if one matches, it is chosen.
+The list has a reasonable default that will work for most environments.</li>
+<li>The kit’s <a class="reference internal" href="kits.html#kits-common-preferredgenerator"><span class="std std-ref">preferredGenerator</span></a>
+attribute. Automatically generated Visual Studio kits will set this
+attribute to the Visual Studio generator matching their version.</li>
+<li>If no generator is found, CMake Tools produces an error.</li>
+</ol>
+</li>
+<li><p class="first"><em>The configuration options</em> - CMake Tools has a variety of locations where
+configuration options can be defined. They are searched in order and merged
+together, with later searches taking precedence in case of overlapping keys:</p>
+<ol class="arabic simple">
+<li>The <a class="reference internal" href="settings.html#conf-cmake-configuresettings"><span class="std std-ref">cmake.configureSettings</span></a> option from <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">settings</span></code> value from the active <a class="reference internal" href="variants.html#variants-opts"><span class="std std-ref">Variant Options</span></a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set based on <a class="reference internal" href="variants.html#variants-opts"><span class="std std-ref">Variant Options</span></a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> is set based on <a class="reference internal" href="variants.html#variants-opts"><span class="std std-ref">Variant Options</span></a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> is set based on <a class="reference internal" href="settings.html#conf-cmake-installprefix"><span class="std std-ref">cmake.installPrefix</span></a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> is set for <a class="reference internal" href="kits.html#kits-types-toolchain"><span class="std std-ref">Toolchain Kits</span></a>.</li>
+<li>The <a class="reference internal" href="kits.html#kits-common-cmakesettings"><span class="std std-ref">cmakeSettings</span></a> attribute on the
+active kit.</li>
+</ol>
+<p>Additionally, <a class="reference internal" href="settings.html#conf-cmake-configureargs"><span class="std std-ref">cmake.configureArgs</span></a> are passed <em>before</em> any of
+the above.</p>
+</li>
+<li><p class="first"><em>The configure environment</em> - CMake Tools sets environment variables for the
+child process it runs for CMake. Like the configuration options, values are
+merged from different sources, with later sources taking precedence:</p>
+<ol class="arabic simple">
+<li>The environment variables required by the active <a class="reference internal" href="kits.html#kits"><span class="std std-ref">kit</span></a>.</li>
+<li>The value of <a class="reference internal" href="settings.html#conf-cmake-environment"><span class="std std-ref">cmake.environment</span></a>.</li>
+<li>The value of <a class="reference internal" href="settings.html#conf-cmake-configureenvironment"><span class="std std-ref">cmake.configureEnvironment</span></a>.</li>
+<li>The environment variables required by the active <a class="reference internal" href="variants.html#variants"><span class="std std-ref">variant</span></a>.</li>
+</ol>
+</li>
+</ol>
+<p>All of the above are taken into account to perform the configure. Once finished,
+CMake Tools will load project information from CMake and generate diagnostics
+based on CMake’s output. <a class="reference internal" href="building.html#building"><span class="std std-ref">You are now ready to build!</span></a></p>
 </div>
-<div class="section" id="cmake-sourcedirectory">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.sourceDirectory</span></code><a class="headerlink" href="#cmake-sourcedirectory" title="Permalink to this headline">¶</a></h3>
-<p>Directory where the root <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> will be found.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">${workspaceRoot}</span></code></li>
-<li><em>Supports substitution</em></li>
-</ul>
+<div class="section" id="configuring-outside-of-cmake-tools">
+<h2>Configuring Outside of CMake Tools<a class="headerlink" href="#configuring-outside-of-cmake-tools" title="Permalink to this headline">¶</a></h2>
+<p>CMake Tools is built to play nicely with an external CMake process. If you
+choose to run CMake from another command line or other IDE/tool, all should
+work successfully (provided the host environment is set up properly).</p>
+<p>Nevertheless, be aware: CMake Tools will be unaware of any changes made by an
+external CMake process, and you will need to re-run the CMake configure within
+CMake Tools to have up-to-date project information.</p>
 </div>
-<div class="section" id="cmake-savebeforebuild">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.saveBeforeBuild</span></code><a class="headerlink" href="#cmake-savebeforebuild" title="Permalink to this headline">¶</a></h3>
-<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> (the default), saves open text documents when build or configure is
-invoked before running CMake.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">true</span></code></li>
-</ul>
-</div>
-<div class="section" id="cmake-configureargs">
-<span id="var-subs"></span><h3><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code><a class="headerlink" href="#cmake-configureargs" title="Permalink to this headline">¶</a></h3>
-<p>A list containing CMake configure arguments, which will be
-passed onto CMake when configuring.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
-</div>
-<div class="section" id="cmake-configuresettings">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code><a class="headerlink" href="#cmake-configuresettings" title="Permalink to this headline">¶</a></h3>
-<p>An object containing <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">:</span> <span class="pre">value</span></code> pairs, which will be
-passed onto CMake when configuring.
-It does the same thing as passing <code class="docutils literal notranslate"><span class="pre">-DVAR_NAME=ON</span></code> via
-<code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code>.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
-</div>
-<div class="section" id="cmake-environment">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.environment</span></code><a class="headerlink" href="#cmake-environment" title="Permalink to this headline">¶</a></h3>
-<p>An object containing <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">:</span> <span class="pre">value</span></code> pairs of environment variables,
-which will be passed onto CMake when configuring and to the compiler.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
-</div>
-<div class="section" id="cmake-configureenvironment">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.configureEnvironment</span></code><a class="headerlink" href="#cmake-configureenvironment" title="Permalink to this headline">¶</a></h3>
-<p>An object containing <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">:</span> <span class="pre">value</span></code> pairs of environment variables,
-which will be passed onto CMake <em>ONLY</em> when configuring.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
-</div>
-<div class="section" id="cmake-buildenvironment">
-<h3><code class="docutils literal notranslate"><span class="pre">cmake.buildEnvironment</span></code><a class="headerlink" href="#cmake-buildenvironment" title="Permalink to this headline">¶</a></h3>
-<p>An object containing <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">:</span> <span class="pre">value</span></code> pairs of environment variables,
-which will be passed <em>ONLY</em> onto the compiler.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
-</div>
-</div>
-<div class="section" id="variable-substitution">
-<h2>Variable Substitution<a class="headerlink" href="#variable-substitution" title="Permalink to this headline">¶</a></h2>
-<p>Some options support the replacement of special values in their string value
-using <code class="docutils literal notranslate"><span class="pre">${variable}</span></code> syntax. The following built-in variables are expanded:</p>
-<dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">${workspaceRoot}</span></code></dt>
-<dd>The full path to the workspace root directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${workspaceRootFolderName}</span></code></dt>
-<dd>The name of the leaf directory in the workspace directory path</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${buildType}</span></code></dt>
-<dd>The current CMake build type, eg. <code class="docutils literal notranslate"><span class="pre">Debug</span></code>, <code class="docutils literal notranslate"><span class="pre">Release</span></code>, <code class="docutils literal notranslate"><span class="pre">MinSizeRel</span></code></dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${generator}</span></code></dt>
-<dd>The name of the CMake generator, eg. <code class="docutils literal notranslate"><span class="pre">Ninja</span></code></dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${projectName}</span></code></dt>
-<dd>The name of the CMake project. Isn’t expanded fully until project has been
-configured once. Before configuring, expands to “Unknown Project”.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${userHome}</span></code></dt>
-<dd>The full path to the current user’s home directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${variant_identifier}</span></code></dt>
-<dd><em>Replace ``variant_identifier`` with your variant identifier.</em>
-The currently selected choice of the given variant identifier.</dd>
-</dl>
-<div class="section" id="environment-variables">
-<h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
-<p>Additionally, environment variables may be substituted with <code class="docutils literal notranslate"><span class="pre">${env:VARNAME}</span></code>
-and <code class="docutils literal notranslate"><span class="pre">${env.VARNAME}</span></code> syntax, where the string for the <code class="docutils literal notranslate"><span class="pre">VARNAME</span></code> environment
-variable will be replaced. If the named environment variable is undefined, an empty
-string will be expanded instead.</p>
-</div>
-<div class="section" id="command-substitution">
-<h3>Command Substitution<a class="headerlink" href="#command-substitution" title="Permalink to this headline">¶</a></h3>
-<p>CMake Tools also supports expanding of VSCode commands, similar to
-<code class="docutils literal notranslate"><span class="pre">launch.json</span></code>. Running a command <code class="docutils literal notranslate"><span class="pre">${command:foo.bar}</span></code> will execute the
-<code class="docutils literal notranslate"><span class="pre">foo.bar</span></code> VSCode command and replace the string value. Beware of long-running
-commands! It is unspecified when and how many times CMake Tools will execute a
-command for a given expansion.</p>
-</div>
+<div class="section" id="a-clean-configure">
+<h2>A “Clean” Configure<a class="headerlink" href="#a-clean-configure" title="Permalink to this headline">¶</a></h2>
+<p>CMake Tools also has the concept of a “clean configure,” executed by running
+<em>CMake: Delete cached built settings and reconfigure</em>. The process consists
+simply of deleting the <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code> file and <code class="docutils literal notranslate"><span class="pre">CMakeFiles</span></code> directory
+from the build directory. This is enough to reset all of CMake’s default state.
+Should additional cleaning be necessary, it must be done by hand.</p>
+<p>This process is required for certain build system changes, but may be convenient
+as a “reset” if you have tweaked any configuration settings outside of CMake
+Tools.</p>
+<p>CMake Tools will also do this <em>automatically</em> if you change the active
+<a class="reference internal" href="kits.html#kits"><span class="std std-ref">kit</span></a>. CMake can’t yet properly handle changing the toolchain
+without deleting the configuration data.</p>
 </div>
 </div>
 
@@ -183,24 +217,11 @@ command for a given expansion.</p>
             </a></p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Configuring CMake Tools</a><ul>
-<li><a class="reference internal" href="#available-settings">Available Settings</a><ul>
-<li><a class="reference internal" href="#cmake-builddirectory"><code class="docutils literal notranslate"><span class="pre">cmake.buildDirectory</span></code></a></li>
-<li><a class="reference internal" href="#cmake-installprefix"><code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code></a></li>
-<li><a class="reference internal" href="#cmake-sourcedirectory"><code class="docutils literal notranslate"><span class="pre">cmake.sourceDirectory</span></code></a></li>
-<li><a class="reference internal" href="#cmake-savebeforebuild"><code class="docutils literal notranslate"><span class="pre">cmake.saveBeforeBuild</span></code></a></li>
-<li><a class="reference internal" href="#cmake-configureargs"><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code></a></li>
-<li><a class="reference internal" href="#cmake-configuresettings"><code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code></a></li>
-<li><a class="reference internal" href="#cmake-environment"><code class="docutils literal notranslate"><span class="pre">cmake.environment</span></code></a></li>
-<li><a class="reference internal" href="#cmake-configureenvironment"><code class="docutils literal notranslate"><span class="pre">cmake.configureEnvironment</span></code></a></li>
-<li><a class="reference internal" href="#cmake-buildenvironment"><code class="docutils literal notranslate"><span class="pre">cmake.buildEnvironment</span></code></a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#variable-substitution">Variable Substitution</a><ul>
-<li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
-<li><a class="reference internal" href="#command-substitution">Command Substitution</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">CMake Configuring</a><ul>
+<li><a class="reference internal" href="#a-crash-course-on-cmake-s-configuration-process">A Crash-Course on CMake’s Configuration Process</a></li>
+<li><a class="reference internal" href="#how-cmake-tools-configures">How CMake Tools Configures</a></li>
+<li><a class="reference internal" href="#configuring-outside-of-cmake-tools">Configuring Outside of CMake Tools</a></li>
+<li><a class="reference internal" href="#a-clean-configure">A “Clean” Configure</a></li>
 </ul>
 </li>
 </ul>
@@ -209,8 +230,8 @@ command for a given expansion.</p>
   <p class="topless"><a href="variants.html"
                         title="previous chapter">CMake Variants</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="development.html"
-                        title="next chapter">How to Contribute</a></p>
+  <p class="topless"><a href="building.html"
+                        title="next chapter">CMake Building</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -241,7 +262,7 @@ command for a given expansion.</p>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="development.html" title="How to Contribute"
+          <a href="building.html" title="CMake Building"
              >next</a> |</li>
         <li class="right" >
           <a href="variants.html" title="CMake Variants"

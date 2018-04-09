@@ -40,18 +40,42 @@
           <div class="body" role="main">
             
   <div class="section" id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>Assuming you already have a CMake project to configure, skip to the
-<a class="reference internal" href="#configuring"><span class="std std-ref">Configuring Your Project</span></a> section.</p>
+<a class="reference internal" href="#gs-configuring"><span class="std std-ref">Configuring Your Project</span></a> section.</p>
+<div class="section" id="cmake-tools-quick-start">
+<span id="gs-quickstart"></span><h2>CMake Tools’ <em>Quick Start</em><a class="headerlink" href="#cmake-tools-quick-start" title="Permalink to this headline">¶</a></h2>
+<p>CMake Tools provides a <em>CMake: Quick Start</em> command to quickly generate a very
+bare-bones CMake project that can be configured and built with minimal friction.</p>
+<p>Start by selecting <em>CMake: Quick Start</em> from the command palette:</p>
+<img alt="_images/quickstart.png" class="align-center" src="_images/quickstart.png" />
+<p>CMake Tools will then prompt you for the following information:</p>
+<ol class="arabic simple">
+<li><em>The project name</em> - Will be written to the generated <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> and
+a few initial source files.</li>
+<li><em>The project type</em> - Decides what initial source files to write. Not hugely
+important as the project can be tweaked arbitrarily after generation.
+Currently offers two choices:<ul>
+<li><em>Library</em> - Writes an <code class="docutils literal notranslate"><span class="pre">add_library()</span></code> command and a basic source and
+header file.</li>
+<li><em>Executable</em> - Writes an <code class="docutils literal notranslate"><span class="pre">add_executable()</span></code> command and a basic source
+file with a <em>Hello, world</em> style <code class="docutils literal notranslate"><span class="pre">main()</span></code> function.</li>
+</ul>
+</li>
+</ol>
+<p>Once this information is collected, CMake will try an initial configure and
+build of the project straight away.</p>
+</div>
 <div class="section" id="configuring-your-project">
-<span id="configuring"></span><h2>Configuring Your Project<a class="headerlink" href="#configuring-your-project" title="Permalink to this headline">¶</a></h2>
+<span id="gs-configuring"></span><h2>Configuring Your Project<a class="headerlink" href="#configuring-your-project" title="Permalink to this headline">¶</a></h2>
 <p>Configuring a project is simple, but has two steps before configuration can take
 place.</p>
 <div class="section" id="pre-configure-steps">
 <h3>Pre-Configure Steps<a class="headerlink" href="#pre-configure-steps" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="selecting-a-kit">
 <h4>Selecting a Kit<a class="headerlink" href="#selecting-a-kit" title="Permalink to this headline">¶</a></h4>
-<p>Before we can configure, you must select a <em>Kit</em>.</p>
+<p>Before we can configure, you must select a <em>Kit</em>.
+<a class="reference internal" href="kits.html#kits"><span class="std std-ref">(Read more about kits)</span></a>.</p>
 <dl class="docutils">
 <dt>What are kits?</dt>
 <dd>Kits represent a <em>toolchain</em>: A set of compilers, linkers, or other tools
@@ -80,22 +104,22 @@ project.</p>
 </div>
 <div class="section" id="selecting-a-variant">
 <h4>Selecting a Variant<a class="headerlink" href="#selecting-a-variant" title="Permalink to this headline">¶</a></h4>
-<p>Similar to selecting a kit, we must select a <em>Variant</em>.</p>
-<dl class="docutils">
-<dt>What are variants?</dt>
-<dd>Variants represent a set of common compilation options that change the type
-of binaries that will be emitted. This includes Debug, Release, MinSizeRel,
-etc.</dd>
-</dl>
+<p>Similar to selecting a kit, we must select a <em>Variant</em>.
+<a class="reference internal" href="variants.html#variants"><span class="std std-ref">(Read more about variants)</span></a>.</p>
+<p>Before selecting a variant, the variant slot on the statusbar will read <em>Unknown</em>:</p>
 <img alt="_images/no_variant.png" class="align-center" src="_images/no_variant.png" />
 <p>To select a variant, click this statusbar button, or run the <em>Set build type</em>
 command from the command palette. A quick-pick will appear:</p>
 <img alt="_images/variant_selector.png" class="align-center" src="_images/variant_selector.png" />
 <p>The active build variant will be displayed on the same statusbar button, along
 with the project name and extension status.</p>
-<p>CMake Tools will load up the default variant when it doesn’t detect a prior
-selection. For the default variant, this will be <code class="docutils literal notranslate"><span class="pre">Debug</span></code>.</p>
-<p>Find out more on the <a class="reference internal" href="variants.html#variants"><span class="std std-ref">CMake Variants</span></a> page.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Just like with kits, CMake will ask you which variant to build if you
+haven’t already made a selection.</p>
+</div>
+<p>Variants can be customized to a wide variety of purposes. Find out more on the
+<a class="reference internal" href="variants.html#variants"><span class="std std-ref">CMake Variants</span></a> page.</p>
 </div>
 </div>
 <div class="section" id="running-configuration">
@@ -109,10 +133,16 @@ the live output from CMake as configuration runs:</p>
 <img alt="_images/configure_output.png" class="align-center" src="_images/configure_output.png" />
 <p>At this point, CMake Tools has loaded information about your project and you are
 free to roam about the cabin.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="configuring.html#configuring"><span class="std std-ref">CMake Configuring</span></a></li>
+</ul>
+</div>
 </div>
 </div>
 <div class="section" id="building-your-project">
-<h2>Building Your Project<a class="headerlink" href="#building-your-project" title="Permalink to this headline">¶</a></h2>
+<span id="gs-building"></span><h2>Building Your Project<a class="headerlink" href="#building-your-project" title="Permalink to this headline">¶</a></h2>
 <p>More important than just configuring, you probably want to <em>build</em> your project
 as well.</p>
 <p>Building is simple: Run the <em>CMake: Build</em> command from the command palette:</p>
@@ -127,6 +157,19 @@ as well.</p>
 build progress bar:</p>
 <img alt="_images/build_progress.png" class="align-center" src="_images/build_progress.png" />
 <p>The build can be stopped by clicking the <em>Stop</em> button.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<ul class="last simple">
+<li><a class="reference internal" href="building.html#building"><span class="std std-ref">CMake Building</span></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="accessing-build-results">
+<h2>Accessing Build Results<a class="headerlink" href="#accessing-build-results" title="Permalink to this headline">¶</a></h2>
+<p>By default, CMake Tools writes build output to the <code class="docutils literal notranslate"><span class="pre">build/</span></code> subdirectory of
+your source tree, so build results are visible from the file explorer within
+Visual Studio Code. This can be changed by changing the
+<a class="reference internal" href="settings.html#conf-cmake-builddirectory"><span class="std std-ref">cmake.buildDirectory</span></a> setting.</p>
 </div>
 </div>
 
@@ -142,6 +185,7 @@ build progress bar:</p>
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#cmake-tools-quick-start">CMake Tools’ <em>Quick Start</em></a></li>
 <li><a class="reference internal" href="#configuring-your-project">Configuring Your Project</a><ul>
 <li><a class="reference internal" href="#pre-configure-steps">Pre-Configure Steps</a><ul>
 <li><a class="reference internal" href="#selecting-a-kit">Selecting a Kit</a></li>
@@ -152,6 +196,7 @@ build progress bar:</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#building-your-project">Building Your Project</a></li>
+<li><a class="reference internal" href="#accessing-build-results">Accessing Build Results</a></li>
 </ul>
 </li>
 </ul>

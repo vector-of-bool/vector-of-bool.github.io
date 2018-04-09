@@ -15,7 +15,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Configuring CMake Tools" href="configuring.html" />
+    <link rel="next" title="CMake Configuring" href="configuring.html" />
     <link rel="prev" title="CMake Kits" href="kits.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -25,7 +25,7 @@
           <a href="genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="configuring.html" title="Configuring CMake Tools"
+          <a href="configuring.html" title="CMake Configuring"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="kits.html" title="CMake Kits"
@@ -45,8 +45,22 @@
 and combine a common set of build options and give them a useful name. The main
 interface for creating and building variants is <code class="docutils literal notranslate"><span class="pre">cmake-variants.json</span></code>, or
 <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code>.</p>
+<p>The idea of “variants” are separate from the concept of toolchains/toolsets,
+which are handled via <a class="reference internal" href="kits.html#kits"><span class="std std-ref">Kits</span></a>.</p>
+<p>By default, if no variants file is present, CMake Tools will load four variants,
+each corresponding to a default CMake build type: <em>Release</em>, <em>Debug</em>,
+<em>MinSizeRel</em>, and <em>RelWithDebInfo</em>. Selecting one of these variants will
+configure and build with that build type.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">CMake Tools does not presently respect <code class="docutils literal notranslate"><span class="pre">CMAKE_CONFIGURATION_TYPES</span></code>. Only
+the default four will be present. A custom variant file is required to load
+these build types.</p>
+</div>
 <p>For smaller or simple projects, providing a custom <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> is
-unnecessary, and the default CMake build types will work just fine.</p>
+unnecessary, and the default CMake build types will work just fine. Large
+projects with more complex configuration options make want to specify
+additional build variants.</p>
 <p>The variants file can be placed in the root of the project directory, or in the
 <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> subdirectory for the project.</p>
 <div class="admonition note">
@@ -60,14 +74,14 @@ done in the JSON format as well.</p>
 </div>
 <div class="section" id="what-does-it-look-like">
 <h2>What does it look like?<a class="headerlink" href="#what-does-it-look-like" title="Permalink to this headline">¶</a></h2>
-<p>A simple two-option <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> might look like this:</p>
+<p>A simple two-setting <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> might look like this:</p>
 <img alt="_images/variants_yaml.png" class="align-center" src="_images/variants_yaml.png" />
-<p>This file defines two variant options: <em>buildType</em> and <em>useOpenGL</em>. They each
-have two settings of their own, defined by the <code class="docutils literal notranslate"><span class="pre">choices</span></code> key.</p>
+<p>This file defines two variant <strong>settings</strong>: <em>buildType</em> and <em>useOpenGL</em>. They
+each have two <strong>options</strong> defined by the <code class="docutils literal notranslate"><span class="pre">choices</span></code> key.</p>
 <p>In total, the number of possible variants is defined by the cartesian product
-of the possible choices. Two options with two settings each creates <em>four</em>
-variants. When we ask to change the build type, CMake Tools will present each
-possible combination in a quickpick:</p>
+of the possible choices. Two <strong>settings</strong> each with two <strong>options</strong> creates
+<em>four</em> variants. When we ask to change the build type, CMake Tools will present
+each possible combination in a quickpick:</p>
 <img alt="_images/custom_variant_selector.png" class="align-center" src="_images/custom_variant_selector.png" />
 <p>When a <code class="docutils literal notranslate"><span class="pre">cmake-variants.json</span></code> or <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> file is present, the
 options defined therein will replace the default set of variants CMake Tools
@@ -79,14 +93,14 @@ common build configurations that can be distributed downstream.</p>
 <p>The root of the variants must be an object, where each key represents a
 tweakable variant option. In the example above, we expose a <code class="docutils literal notranslate"><span class="pre">buildType</span></code> option
 for what kind of <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> we want. We also expose a <code class="docutils literal notranslate"><span class="pre">useOpenGL</span></code>
-boolean option.</p>
+that controls the <code class="docutils literal notranslate"><span class="pre">ENABLE_OPENGL</span></code> CMake option.</p>
 <div class="section" id="variant-settings">
 <h3>Variant Settings<a class="headerlink" href="#variant-settings" title="Permalink to this headline">¶</a></h3>
-<p>Each <em>setting</em> in the variant is also an object, with the following keys:</p>
+<p>Each <em>setting</em> in the variant is an object with the following keys:</p>
 <dl class="docutils">
 <dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt>
 <dd>A string to set as the default value for the variant option. The string here
-must correspond with an option from <code class="docutils literal notranslate"><span class="pre">choices</span></code></dd>
+must correspond to an option from <code class="docutils literal notranslate"><span class="pre">choices</span></code>.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt>
 <dd>An optional string to describe what the option controls. CMake Tools ignores
 this string.</dd>
@@ -96,7 +110,7 @@ arbitrary number of possible options. See the section below on options.</dd>
 </dl>
 </div>
 <div class="section" id="variant-options">
-<h3>Variant Options<a class="headerlink" href="#variant-options" title="Permalink to this headline">¶</a></h3>
+<span id="variants-opts"></span><h3>Variant Options<a class="headerlink" href="#variant-options" title="Permalink to this headline">¶</a></h3>
 <p>Variant options appear under the <code class="docutils literal notranslate"><span class="pre">choices</span></code> key for a variant setting. Each is
 required to have an unique name, but the name itself is unimportant to CMake
 Tools.</p>
@@ -104,20 +118,19 @@ Tools.</p>
 <dl class="docutils">
 <dt><code class="docutils literal notranslate"><span class="pre">short</span></code></dt>
 <dd>A short human-readable string to describe the option.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">long</span></code></dt>
-<dd>A lengthier human-readable string to describe the option. This value is
-optional.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">buildType</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">long</span></code> (Optional)</dt>
+<dd>A lengthier human-readable string to describe the option.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">buildType</span></code> (Optional)</dt>
 <dd>An optional string to set for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> when the option is
 active.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">linkage</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">linkage</span></code> (Optional)</dt>
 <dd>Either <code class="docutils literal notranslate"><span class="pre">static</span></code> or <code class="docutils literal notranslate"><span class="pre">shared</span></code>. Sets the value of
 <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_SHARED_LIBS</span></code>. This value is optional.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">settings</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">settings</span></code> (Optional)</dt>
 <dd>A map of arbitrary CMake cache options to pass via the CMake command line
 with <code class="docutils literal notranslate"><span class="pre">-D</span></code>. Similar to the <code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code> in
 <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">env</span></code></dt>
+<dt><code class="docutils literal notranslate"><span class="pre">env</span></code> (Optional)</dt>
 <dd>A map of key-value string pairs specifying additional environment variables
 to set during CMake <em>configure</em> (not build). These environment variables
 take precedence over environment variables from <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>, the
@@ -125,6 +138,113 @@ currently set <a class="reference internal" href="kits.html#kits"><span class="s
 system.</dd>
 </dl>
 </div>
+</div>
+<div class="section" id="how-variants-are-applied">
+<h2>How Variants Are Applied<a class="headerlink" href="#how-variants-are-applied" title="Permalink to this headline">¶</a></h2>
+<p>A variant is a specific combination of one <em>option</em> from each of the defined
+<em>settings</em>. When CMake Tools executes the configure step, it will use the
+values from the currently active variant to determine the values to pass to the
+CMake process:</p>
+<ol class="arabic simple">
+<li>Properties from all active options are merged. For <code class="docutils literal notranslate"><span class="pre">env</span></code> and <code class="docutils literal notranslate"><span class="pre">settings</span></code>,
+the objects themselves are merged. The merge order is unspecified, so
+conflicting properties in options will result in unspecified behavior.</li>
+<li>All <code class="docutils literal notranslate"><span class="pre">settings</span></code> from the chosen options are passed as <code class="docutils literal notranslate"><span class="pre">-D</span></code> arguments to
+the CMake process.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">buildType</span></code> is used for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code>, the <code class="docutils literal notranslate"><span class="pre">--config</span></code>
+parameter to the build (For multi-conf generators), and for the CTest
+<code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If not
+specified, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> will not be set on the CMake command line.</li>
+<li>The environment variables from <code class="docutils literal notranslate"><span class="pre">env</span></code> are set for the CMake process.</li>
+</ol>
+</div>
+<div class="section" id="a-big-example">
+<h2>A Big Example<a class="headerlink" href="#a-big-example" title="Permalink to this headline">¶</a></h2>
+<p>Suppose the following variants file:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">debug</span>
+  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">debug</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Debug</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Emit debug information</span>
+      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Debug</span>
+    <span class="l l-Scalar l-Scalar-Plain">release</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Release</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Optimize generated code</span>
+      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Release</span>
+    <span class="l l-Scalar l-Scalar-Plain">asan</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asan</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Instrument with Address Sanitizer</span>
+      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asan</span>
+    <span class="l l-Scalar l-Scalar-Plain">tsan</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Tsan</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Instrument with Thread Sanitizer</span>
+      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Tsan</span>
+
+<span class="l l-Scalar l-Scalar-Plain">linkage</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">static</span>
+  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">static</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Static</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create static libraries</span>
+      <span class="l l-Scalar l-Scalar-Plain">linkage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">static</span>
+    <span class="l l-Scalar l-Scalar-Plain">shared</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Shared</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create shared libraries/DLLs</span>
+      <span class="l l-Scalar l-Scalar-Plain">linkage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">shared</span>
+
+<span class="l l-Scalar l-Scalar-Plain">engine</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ogl</span>
+  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">ogl</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL rendering</span>
+      <span class="l l-Scalar l-Scalar-Plain">settings</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL</span>
+    <span class="l l-Scalar l-Scalar-Plain">d3d</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D rendering</span>
+      <span class="l l-Scalar l-Scalar-Plain">settings</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D</span>
+    <span class="l l-Scalar l-Scalar-Plain">vulkan</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan rendering</span>
+      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan</span>
+    <span class="l l-Scalar l-Scalar-Plain">software</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Software</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Software rendering</span>
+      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Software</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">boost</span>
+  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">boost</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Boost.Asio</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Use Boost.Asio for networking</span>
+      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">NETWORK</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Boost</span>
+    <span class="l l-Scalar l-Scalar-Plain">asio</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asio</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Use standalone-Asio for networking</span>
+      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">NETWORK</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asio</span>
+    <span class="l l-Scalar l-Scalar-Plain">net-ts</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">NetTS</span>
+      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Use the C++ Networking TS for networking</span>
+      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">NETWORK</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">net-ts</span>
+</pre></div>
+</div>
+<p>CMake Tools will present the cartesian product of all options, meaning the
+above will produce 4 × 2 × 4 × 3 = <em>ninety-six</em> different variants:</p>
+<img alt="_images/many_variants.png" class="align-center" src="_images/many_variants.png" />
+<p>Of course this is quite a lot of possible variants, but such is the way with
+some complex software. CMake Tools will readily any helpfully show all
+combinations, and persist the selection between sessions.</p>
 </div>
 </div>
 
@@ -146,6 +266,8 @@ system.</dd>
 <li><a class="reference internal" href="#variant-options">Variant Options</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#how-variants-are-applied">How Variants Are Applied</a></li>
+<li><a class="reference internal" href="#a-big-example">A Big Example</a></li>
 </ul>
 </li>
 </ul>
@@ -155,7 +277,7 @@ system.</dd>
                         title="previous chapter">CMake Kits</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="configuring.html"
-                        title="next chapter">Configuring CMake Tools</a></p>
+                        title="next chapter">CMake Configuring</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -186,7 +308,7 @@ system.</dd>
           <a href="genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="configuring.html" title="Configuring CMake Tools"
+          <a href="configuring.html" title="CMake Configuring"
              >next</a> |</li>
         <li class="right" >
           <a href="kits.html" title="CMake Kits"
