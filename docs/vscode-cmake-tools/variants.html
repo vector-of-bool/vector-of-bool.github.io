@@ -59,7 +59,7 @@ these build types.</p>
 </div>
 <p>For smaller or simple projects, providing a custom <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> is
 unnecessary, and the default CMake build types will work just fine. Large
-projects with more complex configuration options make want to specify
+projects with more complex configuration options may want to specify
 additional build variants.</p>
 <p>The variants file can be placed in the root of the project directory, or in the
 <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> subdirectory for the project.</p>
@@ -77,11 +77,12 @@ done in the JSON format as well.</p>
 <p>A simple two-setting <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> might look like this:</p>
 <img alt="_images/variants_yaml.png" class="align-center" src="_images/variants_yaml.png" />
 <p>This file defines two variant <strong>settings</strong>: <em>buildType</em> and <em>useOpenGL</em>. They
-each have two <strong>options</strong> defined by the <code class="docutils literal notranslate"><span class="pre">choices</span></code> key.</p>
-<p>In total, the number of possible variants is defined by the cartesian product
-of the possible choices. Two <strong>settings</strong> each with two <strong>options</strong> creates
-<em>four</em> variants. When we ask to change the build type, CMake Tools will present
-each possible combination in a quickpick:</p>
+each have two <strong>options</strong> defined by the <code class="docutils literal notranslate"><span class="pre">choices</span></code> key. A combination of the
+<strong>options</strong> from a set of <strong>settings</strong> forms a <strong>variant</strong>.</p>
+<p>In total, the number of possible <strong>variants</strong> is defined by the cartesian
+product of the possible choices. Two <strong>settings</strong> each with two <strong>options</strong>
+creates <em>four</em> variants. When we ask to change the build type, CMake Tools will
+present each possible combination in a quickpick:</p>
 <img alt="_images/custom_variant_selector.png" class="align-center" src="_images/custom_variant_selector.png" />
 <p>When a <code class="docutils literal notranslate"><span class="pre">cmake-variants.json</span></code> or <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code> file is present, the
 options defined therein will replace the default set of variants CMake Tools
@@ -96,11 +97,11 @@ for what kind of <code class="docutils literal notranslate"><span class="pre">CM
 that controls the <code class="docutils literal notranslate"><span class="pre">ENABLE_OPENGL</span></code> CMake option.</p>
 <div class="section" id="variant-settings">
 <h3>Variant Settings<a class="headerlink" href="#variant-settings" title="Permalink to this headline">¶</a></h3>
-<p>Each <em>setting</em> in the variant is an object with the following keys:</p>
+<p>Each <em>setting</em> in the variant is an object with only the following keys:</p>
 <dl class="docutils">
 <dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt>
-<dd>A string to set as the default value for the variant option. The string here
-must correspond to an option from <code class="docutils literal notranslate"><span class="pre">choices</span></code>.</dd>
+<dd>A string to set as the default <em>choice</em> for the variant option. The string
+here must correspond to an option from <code class="docutils literal notranslate"><span class="pre">choices</span></code>.</dd>
 <dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt>
 <dd>An optional string to describe what the option controls. CMake Tools ignores
 this string.</dd>
@@ -114,7 +115,8 @@ arbitrary number of possible options. See the section below on options.</dd>
 <p>Variant options appear under the <code class="docutils literal notranslate"><span class="pre">choices</span></code> key for a variant setting. Each is
 required to have an unique name, but the name itself is unimportant to CMake
 Tools.</p>
-<p>The option is itself a map with the following keys:</p>
+<p>A choice may specify any of the following options (the only requirement is the
+<code class="docutils literal notranslate"><span class="pre">short</span></code>):</p>
 <dl class="docutils">
 <dt><code class="docutils literal notranslate"><span class="pre">short</span></code></dt>
 <dd>A short human-readable string to describe the option.</dd>
@@ -137,6 +139,7 @@ take precedence over environment variables from <code class="docutils literal no
 currently set <a class="reference internal" href="kits.html#kits"><span class="std std-ref">kit</span></a>, and environment variables set by the
 system.</dd>
 </dl>
+<p>The above options are only valid under entries in the <code class="docutils literal notranslate"><span class="pre">choices</span></code> map.</p>
 </div>
 </div>
 <div class="section" id="how-variants-are-applied">
@@ -152,7 +155,7 @@ conflicting properties in options will result in unspecified behavior.</li>
 <li>All <code class="docutils literal notranslate"><span class="pre">settings</span></code> from the chosen options are passed as <code class="docutils literal notranslate"><span class="pre">-D</span></code> arguments to
 the CMake process.</li>
 <li>The <code class="docutils literal notranslate"><span class="pre">buildType</span></code> is used for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code>, the <code class="docutils literal notranslate"><span class="pre">--config</span></code>
-parameter to the build (For multi-conf generators), and for the CTest
+flag for the build (For multi-conf generators), and for the CTest
 <code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</li>
 <li>If <code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code>. If
 <code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If not

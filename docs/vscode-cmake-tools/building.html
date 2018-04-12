@@ -64,7 +64,7 @@ includes Ninja and Makefile generators. MSBuild does not emit this
 information, so no progress bar will be visible.</p>
 </div>
 <p>The results of the build will be written to the directory specified by
-<a class="reference internal" href="settings.html#conf-cmake-builddirectory"><span class="std std-ref">cmake.buildDirectory</span></a>. This default to a subdirectory of the project
+<a class="reference internal" href="settings.html#conf-cmake-builddirectory"><span class="std std-ref">cmake.buildDirectory</span></a>. This defaults to a subdirectory of the project
 directory, so the build results will be visible within the project explorer.
 The exact file paths will depend on the CMake project configuration.</p>
 <div class="section" id="the-default-target">
@@ -94,8 +94,8 @@ associated hotkey (defaults to <kbd class="kbd docutils literal notranslate">Shi
 <span id="building-how"></span><h2>How CMake Tools Builds<a class="headerlink" href="#how-cmake-tools-builds" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="build-flags">
 <h3>Build Flags<a class="headerlink" href="#build-flags" title="Permalink to this headline">¶</a></h3>
-<p>CMake Tools builds using the <code class="docutils literal notranslate"><span class="pre">--build</span></code> flag to CMake. This flag is used as
-a generator-agnostic build invocation tool. CMake tools also passes
+<p>CMake Tools builds by passing the <code class="docutils literal notranslate"><span class="pre">--build</span></code> flag to CMake. This flag is used
+as a generator-agnostic build invocation tool. CMake tools also passes
 <code class="docutils literal notranslate"><span class="pre">--config</span> <span class="pre">&lt;build-type&gt;</span></code> based on the current build type from the active
 <a class="reference internal" href="variants.html#variants"><span class="std std-ref">variant</span></a>. This instructs multi-conf build tools on what
 configuration they should build.</p>

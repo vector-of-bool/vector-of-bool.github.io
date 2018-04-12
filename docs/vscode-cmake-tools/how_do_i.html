@@ -83,7 +83,7 @@ information.</p>
 <div class="section" id="set-up-include-paths-for-c-intellisense">
 <span id="hdi-intellisense"></span><h2>Set Up Include Paths for C++ IntelliSense?<a class="headerlink" href="#set-up-include-paths-for-c-intellisense" title="Permalink to this headline">¶</a></h2>
 <p>CMake Tool’s won’t do this on its own, but you can <a class="reference external" href="https://github.com/Microsoft/vscode-cpptools/blob/f5b2d3018253447b462aa5eb73c2099c68ebb24e/Documentation/Getting%20started%20with%20IntelliSense%20configuration.md">use compile_commands.json
-in conjunction with Microsoft’s cpptools extension.</a>.</p>
+in conjunction with Microsoft’s cpptools extension</a>.</p>
 <p>Set the value of <code class="docutils literal notranslate"><span class="pre">compileCommands</span></code> to point to <code class="docutils literal notranslate"><span class="pre">&lt;build-dir&gt;/compile_commands.json</span></code>,
 where <code class="docutils literal notranslate"><span class="pre">&lt;build-dir&gt;</span></code> is the build directory used by CMake Tools. The default
 build directory is <code class="docutils literal notranslate"><span class="pre">${workspaceRoot}/build</span></code>, so the default value of

@@ -45,7 +45,7 @@
 workspace level via VSCode’s <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> file. This page talks about
 the available options and how they are used.</p>
 <p>Options marked with <em>Supports substitution</em> allow variable references to appear
-in their strings. See the <a class="reference internal" href="#var-subs"><span class="std std-ref">cmake.configureArgs</span></a> section</p>
+in their strings. See the <a class="reference internal" href="#var-subs"><span class="std std-ref">Variable Substitution</span></a> section</p>
 <div class="section" id="available-settings">
 <h2>Available Settings<a class="headerlink" href="#available-settings" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="cmake-builddirectory">
@@ -60,13 +60,16 @@ be generated).</p>
 <div class="section" id="cmake-installprefix">
 <span id="conf-cmake-installprefix"></span><h3><code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code><a class="headerlink" href="#cmake-installprefix" title="Permalink to this headline">¶</a></h3>
 <p>If specified, sets a value for <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> when running CMake
-configure. If not, no value will be passed.
-<em>Note that if ``CMAKE_INSTALL_PREFIX`` is set via ``cmake.configureArgs`` or
-``cmake.configureSettings``, ``cmake.installPrefix`` will be ignored.</em></p>
+configure. If not, no value will be passed.</p>
 <ul class="simple">
 <li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
 <li><em>Supports substitution</em></li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> is set via <code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code> or
+<code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code> will be ignored.</p>
+</div>
 </div>
 <div class="section" id="cmake-sourcedirectory">
 <h3><code class="docutils literal notranslate"><span class="pre">cmake.sourceDirectory</span></code><a class="headerlink" href="#cmake-sourcedirectory" title="Permalink to this headline">¶</a></h3>
@@ -84,15 +87,6 @@ invoked before running CMake.</p>
 <li>Default: <code class="docutils literal notranslate"><span class="pre">true</span></code></li>
 </ul>
 </div>
-<div class="section" id="cmake-configureargs">
-<span id="var-subs"></span><h3><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code><a class="headerlink" href="#cmake-configureargs" title="Permalink to this headline">¶</a></h3>
-<p>A list containing CMake configure arguments, which will be
-passed onto CMake when configuring.</p>
-<ul class="simple">
-<li>Default: <code class="docutils literal notranslate"><span class="pre">null</span></code> (Unspecified)</li>
-<li><em>Supports substitution</em></li>
-</ul>
-</div>
 <div class="section" id="cmake-configuresettings">
 <span id="conf-cmake-configuresettings"></span><h3><code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code><a class="headerlink" href="#cmake-configuresettings" title="Permalink to this headline">¶</a></h3>
 <p>An object containing <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">:</span> <span class="pre">value</span></code> pairs, which will be
@@ -104,8 +98,8 @@ It does the same thing as passing <code class="docutils literal notranslate"><sp
 <li><em>Supports substitution</em></li>
 </ul>
 </div>
-<div class="section" id="conf-cmake-configureargs">
-<span id="id1"></span><h3><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code><a class="headerlink" href="#conf-cmake-configureargs" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="cmake-configureargs">
+<span id="conf-cmake-configureargs"></span><h3><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code><a class="headerlink" href="#cmake-configureargs" title="Permalink to this headline">¶</a></h3>
 <p>Arguments to CMake that will be passed during the configure process.</p>
 <ul class="simple">
 <li>Default: <code class="docutils literal notranslate"><span class="pre">[]</span></code> (Empty array, no arguments)</li>
@@ -200,7 +194,7 @@ to the CMake Tools log file. This file is useful for
 </div>
 </div>
 <div class="section" id="variable-substitution">
-<h2>Variable Substitution<a class="headerlink" href="#variable-substitution" title="Permalink to this headline">¶</a></h2>
+<span id="var-subs"></span><h2>Variable Substitution<a class="headerlink" href="#variable-substitution" title="Permalink to this headline">¶</a></h2>
 <p>Some options support the replacement of special values in their string value
 using <code class="docutils literal notranslate"><span class="pre">${variable}</span></code> syntax. The following built-in variables are expanded:</p>
 <dl class="docutils">
@@ -256,9 +250,8 @@ command for a given expansion.</p>
 <li><a class="reference internal" href="#cmake-installprefix"><code class="docutils literal notranslate"><span class="pre">cmake.installPrefix</span></code></a></li>
 <li><a class="reference internal" href="#cmake-sourcedirectory"><code class="docutils literal notranslate"><span class="pre">cmake.sourceDirectory</span></code></a></li>
 <li><a class="reference internal" href="#cmake-savebeforebuild"><code class="docutils literal notranslate"><span class="pre">cmake.saveBeforeBuild</span></code></a></li>
-<li><a class="reference internal" href="#cmake-configureargs"><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code></a></li>
 <li><a class="reference internal" href="#cmake-configuresettings"><code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code></a></li>
-<li><a class="reference internal" href="#conf-cmake-configureargs"><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code></a></li>
+<li><a class="reference internal" href="#cmake-configureargs"><code class="docutils literal notranslate"><span class="pre">cmake.configureArgs</span></code></a></li>
 <li><a class="reference internal" href="#cmake-environment"><code class="docutils literal notranslate"><span class="pre">cmake.environment</span></code></a></li>
 <li><a class="reference internal" href="#cmake-configureenvironment"><code class="docutils literal notranslate"><span class="pre">cmake.configureEnvironment</span></code></a></li>
 <li><a class="reference internal" href="#cmake-buildenvironment"><code class="docutils literal notranslate"><span class="pre">cmake.buildEnvironment</span></code></a></li>
