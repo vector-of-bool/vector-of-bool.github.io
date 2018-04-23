@@ -47,6 +47,16 @@ hundreds) of executables, creating a <code class="docutils literal notranslate">
 and error-prone.</p>
 <p>If you define any executable targets via CMake, CMake Tools will be aware of
 them and allow you to start a debugger on them.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Debugging is only supported when using <em>CMake Server</em> mode. This mode will
+be enabled automatically on CMake versions at least as new as 3.7.2, but is
+completely unavailable on older CMake versions.</p>
+<p class="last">Target debugging used to be supported on prior versions, but was difficult
+and error-prone, creating more problems than it solved. If you are running
+an older CMake version and wish to use target debugging, you’ll have to
+update your CMake version.</p>
+</div>
 <div class="section" id="selecting-a-launch-target">
 <h2>Selecting a Launch Target<a class="headerlink" href="#selecting-a-launch-target" title="Permalink to this headline">¶</a></h2>
 <p>The “launch target” or “debug target” is initially unset. The first time you try

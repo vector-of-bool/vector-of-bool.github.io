@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CMakeInputsContent | cmake-tools</title>
+	<title>InputFile | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_src_cms_client_.html">&quot;src/cms-client&quot;</a>
+					<a href="../modules/_src_dirty_.html">&quot;src/dirty&quot;</a>
 				</li>
 				<li>
-					<a href="_src_cms_client_.cmakeinputscontent.html">CMakeInputsContent</a>
+					<a href="_src_dirty_.inputfile.html">InputFile</a>
 				</li>
 			</ul>
-			<h1>Interface CMakeInputsContent</h1>
+			<h1>Class InputFile</h1>
 		</div>
 	</div>
 </header>
@@ -71,12 +71,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CMakeInputsContent</span>
-						<ul class="tsd-hierarchy">
-							<li>
-								<a href="_src_cms_client_.cmakeinputsreply.html" class="tsd-signature-type">CMakeInputsReply</a>
-							</li>
-						</ul>
+						<span class="target">InputFile</span>
 					</li>
 				</ul>
 			</section>
@@ -85,47 +80,91 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_cms_client_.cmakeinputscontent.html#buildfiles" class="tsd-kind-icon">build<wbr>Files</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_cms_client_.cmakeinputscontent.html#cmakerootdirectory" class="tsd-kind-icon">cmake<wbr>Root<wbr>Directory</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_src_cms_client_.cmakeinputscontent.html#sourcedirectory" class="tsd-kind-icon">source<wbr>Directory</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_src_dirty_.inputfile.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_src_dirty_.inputfile.html#checkoutofdate" class="tsd-kind-icon">check<wbr>Out<wbr>OfDate</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_src_dirty_.inputfile.html#create" class="tsd-kind-icon">create</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="buildfiles" class="tsd-anchor"></a>
-					<h3>build<wbr>Files</h3>
-					<div class="tsd-signature tsd-kind-icon">build<wbr>Files<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/eec87bd/src/cms-client.ts#L271">src/cms-client.ts:271</a></li>
-						</ul>
-					</aside>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Input<wbr>File<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mtime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_src_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/eec87bd/src/dirty.ts#L11">src/dirty.ts:11</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>mtime: <span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_src_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="cmakerootdirectory" class="tsd-anchor"></a>
-					<h3>cmake<wbr>Root<wbr>Directory</h3>
-					<div class="tsd-signature tsd-kind-icon">cmake<wbr>Root<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/eec87bd/src/cms-client.ts#L272">src/cms-client.ts:272</a></li>
-						</ul>
-					</aside>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="checkoutofdate" class="tsd-anchor"></a>
+					<h3>check<wbr>Out<wbr>OfDate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">check<wbr>Out<wbr>OfDate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/eec87bd/src/dirty.ts#L14">src/dirty.ts:14</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="sourcedirectory" class="tsd-anchor"></a>
-					<h3>source<wbr>Directory</h3>
-					<div class="tsd-signature tsd-kind-icon">source<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/eec87bd/src/cms-client.ts#L273">src/cms-client.ts:273</a></li>
-						</ul>
-					</aside>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="create" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_src_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/eec87bd/src/dirty.ts#L28">src/dirty.ts:28</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_src_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -136,7 +175,7 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_src_cms_client_.html">"src/cms-<wbr>client"</a>
+						<a href="../modules/_src_dirty_.html">"src/dirty"</a>
 					</li>
 				</ul>
 			</nav>
@@ -144,22 +183,25 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_src_cms_client_.cmakeinputscontent.html" class="tsd-kind-icon">CMake<wbr>Inputs<wbr>Content</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_src_dirty_.inputfile.html" class="tsd-kind-icon">Input<wbr>File</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_cms_client_.cmakeinputscontent.html#buildfiles" class="tsd-kind-icon">build<wbr>Files</a>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_src_dirty_.inputfile.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_cms_client_.cmakeinputscontent.html#cmakerootdirectory" class="tsd-kind-icon">cmake<wbr>Root<wbr>Directory</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_src_dirty_.inputfile.html#checkoutofdate" class="tsd-kind-icon">check<wbr>Out<wbr>OfDate</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_src_cms_client_.cmakeinputscontent.html#sourcedirectory" class="tsd-kind-icon">source<wbr>Directory</a>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_src_dirty_.inputfile.html#create" class="tsd-kind-icon">create</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_src_dirty_.inputfileset.html" class="tsd-kind-icon">Input<wbr>File<wbr>Set</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
