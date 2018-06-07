@@ -42,7 +42,6 @@ header.banner {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  clip-path: content-box;
 }
 
 header.banner > div.title {
