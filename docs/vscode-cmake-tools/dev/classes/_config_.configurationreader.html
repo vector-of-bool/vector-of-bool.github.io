@@ -1,0 +1,1660 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ConfigurationReader | cmake-tools</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">cmake-tools</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../index.html">Globals</a>
+				</li>
+				<li>
+					<a href="../modules/_config_.html">&quot;config&quot;</a>
+				</li>
+				<li>
+					<a href="_config_.configurationreader.html">ConfigurationReader</a>
+				</li>
+			</ul>
+			<h1>Class ConfigurationReader</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This class exposes a number of readonly properties which can be used to
+							access configuration options. Each property corresponds to a value in
+							<code>settings.json</code>. See <code>package.json</code> for CMake Tools to see the information
+							on each property. An underscore in a property name corresponds to a dot <code>.</code>
+						in the setting name.</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">ConfigurationReader</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">Disposable</span></li>
+				</ul>
+			</section>
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_config_.configurationreader.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Properties</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_config_.configurationreader.html#_configdata" class="tsd-kind-icon">_config<wbr>Data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_config_.configurationreader.html#_updatesubscription" class="tsd-kind-icon">_update<wbr>Subscription</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Accessors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#autorestartbuild" class="tsd-kind-icon">auto<wbr>Restart<wbr>Build</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#buildargs" class="tsd-kind-icon">build<wbr>Args</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#buildbeforerun" class="tsd-kind-icon">build<wbr>Before<wbr>Run</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#builddirectory" class="tsd-kind-icon">build<wbr>Directory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#buildenvironment" class="tsd-kind-icon">build<wbr>Environment</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#buildtoolargs" class="tsd-kind-icon">build<wbr>Tool<wbr>Args</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#cacheinit" class="tsd-kind-icon">cache<wbr>Init</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#clearoutputbeforebuild" class="tsd-kind-icon">clear<wbr>Output<wbr>Before<wbr>Build</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#configdata" class="tsd-kind-icon">config<wbr>Data</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#configureargs" class="tsd-kind-icon">configure<wbr>Args</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#configureenvironment" class="tsd-kind-icon">configure<wbr>Environment</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#configuresettings" class="tsd-kind-icon">configure<wbr>Settings</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#ctestargs" class="tsd-kind-icon">ctest<wbr>Args</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#ctest_paralleljobs" class="tsd-kind-icon">ctest_<wbr>parallel<wbr>Jobs</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#debugconfig" class="tsd-kind-icon">debug<wbr>Config</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#defaultvariants" class="tsd-kind-icon">default<wbr>Variants</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#emscriptensearchdirs" class="tsd-kind-icon">emscripten<wbr>Search<wbr>Dirs</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#enableoutputparsers" class="tsd-kind-icon">enable<wbr>Output<wbr>Parsers</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#enabletracelogging" class="tsd-kind-icon">enable<wbr>Trace<wbr>Logging</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#environment" class="tsd-kind-icon">environment</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#generator" class="tsd-kind-icon">generator</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#installprefix" class="tsd-kind-icon">install<wbr>Prefix</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#logginglevel" class="tsd-kind-icon">logging<wbr>Level</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#mingwsearchdirs" class="tsd-kind-icon">mingw<wbr>Search<wbr>Dirs</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#numctestjobs" class="tsd-kind-icon">numCTest<wbr>Jobs</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#numjobs" class="tsd-kind-icon">num<wbr>Jobs</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#paralleljobs" class="tsd-kind-icon">parallel<wbr>Jobs</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#parsebuilddiagnostics" class="tsd-kind-icon">parse<wbr>Build<wbr>Diagnostics</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#platform" class="tsd-kind-icon">platform</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#preferredgenerators" class="tsd-kind-icon">preferred<wbr>Generators</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#raw_cmakepath" class="tsd-kind-icon">raw_<wbr>cmake<wbr>Path</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#raw_ctestpath" class="tsd-kind-icon">raw_<wbr>ctest<wbr>Path</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#savebeforebuild" class="tsd-kind-icon">save<wbr>Before<wbr>Build</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#sourcedirectory" class="tsd-kind-icon">source<wbr>Directory</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#testenvironment" class="tsd-kind-icon">test<wbr>Environment</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#toolset" class="tsd-kind-icon">toolset</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_config_.configurationreader.html#usecmakeserver" class="tsd-kind-icon">useCMake<wbr>Server</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_config_.configurationreader.html#dispose" class="tsd-kind-icon">dispose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter"><a href="_config_.configurationreader.html#onchange" class="tsd-kind-icon">on<wbr>Change</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_config_.configurationreader.html#update" class="tsd-kind-icon">update</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_config_.configurationreader.html#updatepartial" class="tsd-kind-icon">update<wbr>Partial</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_config_.configurationreader.html#createfordirectory" class="tsd-kind-icon">create<wbr>For<wbr>Directory</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_config_.configurationreader.html#loadforpath" class="tsd-kind-icon">load<wbr>For<wbr>Path</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
+							<h3>Object literals</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-private"><a href="_config_.configurationreader.html#_emitters" class="tsd-kind-icon">_emitters</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Configuration<wbr>Reader<span class="tsd-signature-symbol">(</span>_configData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_config_.configurationreader.html" class="tsd-signature-type">ConfigurationReader</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L66">config.ts:66</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_configData: <a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_config_.configurationreader.html" class="tsd-signature-type">ConfigurationReader</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_configdata" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _config<wbr>Data</h3>
+					<div class="tsd-signature tsd-kind-icon">_config<wbr>Data<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L68">config.ts:68</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_updatesubscription" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _update<wbr>Subscription</h3>
+					<div class="tsd-signature tsd-kind-icon">_update<wbr>Subscription<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">vscode.Disposable</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L66">config.ts:66</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Accessors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="autorestartbuild" class="tsd-anchor"></a>
+					<h3>auto<wbr>Restart<wbr>Build</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> autoRestartBuild<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L139">config.ts:139</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="buildargs" class="tsd-anchor"></a>
+					<h3>build<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> buildArgs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L155">config.ts:155</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="buildbeforerun" class="tsd-anchor"></a>
+					<h3>build<wbr>Before<wbr>Run</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> buildBeforeRun<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L135">config.ts:135</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="builddirectory" class="tsd-anchor"></a>
+					<h3>build<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> buildDirectory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L127">config.ts:127</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="buildenvironment" class="tsd-anchor"></a>
+					<h3>build<wbr>Environment</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> buildEnvironment<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L177">config.ts:177</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="buildtoolargs" class="tsd-anchor"></a>
+					<h3>build<wbr>Tool<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> buildToolArgs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L157">config.ts:157</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="cacheinit" class="tsd-anchor"></a>
+					<h3>cache<wbr>Init</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> cacheInit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L143">config.ts:143</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="clearoutputbeforebuild" class="tsd-anchor"></a>
+					<h3>clear<wbr>Output<wbr>Before<wbr>Build</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> clearOutputBeforeBuild<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L137">config.ts:137</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="configdata" class="tsd-anchor"></a>
+					<h3>config<wbr>Data</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> configData<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L70">config.ts:70</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="configureargs" class="tsd-anchor"></a>
+					<h3>configure<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> configureArgs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L153">config.ts:153</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="configureenvironment" class="tsd-anchor"></a>
+					<h3>configure<wbr>Environment</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> configureEnvironment<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L175">config.ts:175</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="configuresettings" class="tsd-anchor"></a>
+					<h3>configure<wbr>Settings</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> configureSettings<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L141">config.ts:141</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="ctestargs" class="tsd-anchor"></a>
+					<h3>ctest<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> ctestArgs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L183">config.ts:183</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="ctest_paralleljobs" class="tsd-anchor"></a>
+					<h3>ctest_<wbr>parallel<wbr>Jobs</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> ctest_parallelJobs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L161">config.ts:161</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="debugconfig" class="tsd-anchor"></a>
+					<h3>debug<wbr>Config</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> debugConfig<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L171">config.ts:171</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="defaultvariants" class="tsd-anchor"></a>
+					<h3>default<wbr>Variants</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> defaultVariants<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L181">config.ts:181</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Object</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="emscriptensearchdirs" class="tsd-anchor"></a>
+					<h3>emscripten<wbr>Search<wbr>Dirs</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> emscriptenSearchDirs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L205">config.ts:205</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="enableoutputparsers" class="tsd-anchor"></a>
+					<h3>enable<wbr>Output<wbr>Parsers</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> enableOutputParsers<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L165">config.ts:165</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="enabletracelogging" class="tsd-anchor"></a>
+					<h3>enable<wbr>Trace<wbr>Logging</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> enableTraceLogging<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L213">config.ts:213</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="environment" class="tsd-anchor"></a>
+					<h3>environment</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> environment<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L173">config.ts:173</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="generator" class="tsd-anchor"></a>
+					<h3>generator</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> generator<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L147">config.ts:147</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="installprefix" class="tsd-anchor"></a>
+					<h3>install<wbr>Prefix</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> installPrefix<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L129">config.ts:129</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="logginglevel" class="tsd-anchor"></a>
+					<h3>logging<wbr>Level</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> loggingLevel<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../modules/_config_.html#loglevelkey" class="tsd-signature-type">LogLevelKey</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L207">config.ts:207</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../modules/_config_.html#loglevelkey" class="tsd-signature-type">LogLevelKey</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="mingwsearchdirs" class="tsd-anchor"></a>
+					<h3>mingw<wbr>Search<wbr>Dirs</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> mingwSearchDirs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L203">config.ts:203</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="numctestjobs" class="tsd-anchor"></a>
+					<h3>numCTest<wbr>Jobs</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> numCTestJobs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L195">config.ts:195</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="numjobs" class="tsd-anchor"></a>
+					<h3>num<wbr>Jobs</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> numJobs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L187">config.ts:187</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="paralleljobs" class="tsd-anchor"></a>
+					<h3>parallel<wbr>Jobs</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> parallelJobs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L159">config.ts:159</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="parsebuilddiagnostics" class="tsd-anchor"></a>
+					<h3>parse<wbr>Build<wbr>Diagnostics</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> parseBuildDiagnostics<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L163">config.ts:163</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="platform" class="tsd-anchor"></a>
+					<h3>platform</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> platform<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L151">config.ts:151</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="preferredgenerators" class="tsd-anchor"></a>
+					<h3>preferred<wbr>Generators</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> preferredGenerators<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L145">config.ts:145</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="raw_cmakepath" class="tsd-anchor"></a>
+					<h3>raw_<wbr>cmake<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> raw_cmakePath<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L167">config.ts:167</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="raw_ctestpath" class="tsd-anchor"></a>
+					<h3>raw_<wbr>ctest<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> raw_ctestPath<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L169">config.ts:169</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="savebeforebuild" class="tsd-anchor"></a>
+					<h3>save<wbr>Before<wbr>Build</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> saveBeforeBuild<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L133">config.ts:133</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="sourcedirectory" class="tsd-anchor"></a>
+					<h3>source<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> sourceDirectory<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L131">config.ts:131</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="testenvironment" class="tsd-anchor"></a>
+					<h3>test<wbr>Environment</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> testEnvironment<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L179">config.ts:179</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="toolset" class="tsd-anchor"></a>
+					<h3>toolset</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> toolset<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L149">config.ts:149</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">null</span>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
+					<a name="usecmakeserver" class="tsd-anchor"></a>
+					<h3>useCMake<wbr>Server</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> useCMakeServer<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L185">config.ts:185</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="dispose" class="tsd-anchor"></a>
+					<h3>dispose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L72">config.ts:72</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+					<a name="onchange" class="tsd-anchor"></a>
+					<h3>on<wbr>Change</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+						<li class="tsd-signature tsd-kind-icon">on<wbr>Change&lt;K&gt;<span class="tsd-signature-symbol">(</span>setting<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">K</span>, cb<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.Disposable</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L257">config.ts:257</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Watch for changes on a particular setting</p>
+								</div>
+							</div>
+							<h4 class="tsd-type-parameters-title">Type parameters</h4>
+							<ul class="tsd-type-parameters">
+								<li>
+									<h4>K<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">keyof ExtensionConfigurationSettings</span></h4>
+								</li>
+							</ul>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>setting: <span class="tsd-signature-type">K</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The name of the setting to watch</p>
+									</div>
+								</li>
+								<li>
+									<h5>cb: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>A callback when the setting changes</p>
+									</div>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter-siganture">
+											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
+												<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExtensionConfigurationSettings[K]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											</ul>
+											<ul class="tsd-descriptions">
+												<li class="tsd-description">
+													<h4 class="tsd-parameters-title">Parameters</h4>
+													<ul class="tsd-parameters">
+														<li>
+															<h5>value: <span class="tsd-signature-type">ExtensionConfigurationSettings[K]</span></h5>
+														</li>
+													</ul>
+													<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+												</li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">vscode.Disposable</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="update" class="tsd-anchor"></a>
+					<h3>update</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span>newData<span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L109">config.ts:109</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newData: <a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="updatepartial" class="tsd-anchor"></a>
+					<h3>update<wbr>Partial</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Partial<span class="tsd-signature-symbol">(</span>newData<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L110">config.ts:110</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>newData: <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="createfordirectory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> create<wbr>For<wbr>Directory</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">create<wbr>For<wbr>Directory<span class="tsd-signature-symbol">(</span>dirPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_config_.configurationreader.html" class="tsd-signature-type">ConfigurationReader</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L84">config.ts:84</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get a configuration object relevant to the given workspace directory. This
+									supports multiple workspaces having differing configs.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>dirPath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_config_.configurationreader.html" class="tsd-signature-type">ConfigurationReader</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="loadforpath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> load<wbr>For<wbr>Path</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">load<wbr>For<wbr>Path<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L96">config.ts:96</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-signature-type">ExtensionConfigurationSettings</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
+				<h2>Object literals</h2>
+				<section class="tsd-panel tsd-member tsd-kind-object-literal tsd-parent-kind-class tsd-is-private">
+					<a name="_emitters" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _emitters</h3>
+					<div class="tsd-signature tsd-kind-icon">_emitters<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L215">config.ts:215</a></li>
+						</ul>
+					</aside>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.autorestartbuild-1" class="tsd-anchor"></a>
+						<h3>auto<wbr>Restart<wbr>Build</h3>
+						<div class="tsd-signature tsd-kind-icon">auto<wbr>Restart<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L235">config.ts:235</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.buildargs-1" class="tsd-anchor"></a>
+						<h3>build<wbr>Args</h3>
+						<div class="tsd-signature tsd-kind-icon">build<wbr>Args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L230">config.ts:230</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.buildbeforerun-1" class="tsd-anchor"></a>
+						<h3>build<wbr>Before<wbr>Run</h3>
+						<div class="tsd-signature tsd-kind-icon">build<wbr>Before<wbr>Run<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L221">config.ts:221</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.builddirectory-1" class="tsd-anchor"></a>
+						<h3>build<wbr>Directory</h3>
+						<div class="tsd-signature tsd-kind-icon">build<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L217">config.ts:217</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.buildenvironment-1" class="tsd-anchor"></a>
+						<h3>build<wbr>Environment</h3>
+						<div class="tsd-signature tsd-kind-icon">build<wbr>Environment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;HardEnv&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L243">config.ts:243</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.buildtoolargs-1" class="tsd-anchor"></a>
+						<h3>build<wbr>Tool<wbr>Args</h3>
+						<div class="tsd-signature tsd-kind-icon">build<wbr>Tool<wbr>Args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L231">config.ts:231</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.cacheinit-1" class="tsd-anchor"></a>
+						<h3>cache<wbr>Init</h3>
+						<div class="tsd-signature tsd-kind-icon">cache<wbr>Init<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string|string[]|null&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L224">config.ts:224</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.clearoutputbeforebuild-1" class="tsd-anchor"></a>
+						<h3>clear<wbr>Output<wbr>Before<wbr>Build</h3>
+						<div class="tsd-signature tsd-kind-icon">clear<wbr>Output<wbr>Before<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L222">config.ts:222</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.cmakepath" class="tsd-anchor"></a>
+						<h3>cmake<wbr>Path</h3>
+						<div class="tsd-signature tsd-kind-icon">cmake<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L216">config.ts:216</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.configureargs-1" class="tsd-anchor"></a>
+						<h3>configure<wbr>Args</h3>
+						<div class="tsd-signature tsd-kind-icon">configure<wbr>Args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L229">config.ts:229</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.configureenvironment-1" class="tsd-anchor"></a>
+						<h3>configure<wbr>Environment</h3>
+						<div class="tsd-signature tsd-kind-icon">configure<wbr>Environment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;HardEnv&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L242">config.ts:242</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.configuresettings-1" class="tsd-anchor"></a>
+						<h3>configure<wbr>Settings</h3>
+						<div class="tsd-signature tsd-kind-icon">configure<wbr>Settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;{[key: string]: any}&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L223">config.ts:223</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.ctest" class="tsd-anchor"></a>
+						<h3>ctest</h3>
+						<div class="tsd-signature tsd-kind-icon">ctest<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;{parallelJobs: number;}&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L234">config.ts:234</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.ctestargs-1" class="tsd-anchor"></a>
+						<h3>ctest<wbr>Args</h3>
+						<div class="tsd-signature tsd-kind-icon">ctest<wbr>Args<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L240">config.ts:240</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.ctestpath" class="tsd-anchor"></a>
+						<h3>ctest<wbr>Path</h3>
+						<div class="tsd-signature tsd-kind-icon">ctest<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L233">config.ts:233</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.debugconfig-1" class="tsd-anchor"></a>
+						<h3>debug<wbr>Config</h3>
+						<div class="tsd-signature tsd-kind-icon">debug<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;object&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L238">config.ts:238</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.defaultvariants-1" class="tsd-anchor"></a>
+						<h3>default<wbr>Variants</h3>
+						<div class="tsd-signature tsd-kind-icon">default<wbr>Variants<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;object&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L239">config.ts:239</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.emscriptensearchdirs-1" class="tsd-anchor"></a>
+						<h3>emscripten<wbr>Search<wbr>Dirs</h3>
+						<div class="tsd-signature tsd-kind-icon">emscripten<wbr>Search<wbr>Dirs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L246">config.ts:246</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.enabletracelogging-1" class="tsd-anchor"></a>
+						<h3>enable<wbr>Trace<wbr>Logging</h3>
+						<div class="tsd-signature tsd-kind-icon">enable<wbr>Trace<wbr>Logging<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L248">config.ts:248</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.enabledoutputparsers" class="tsd-anchor"></a>
+						<h3>enabled<wbr>Output<wbr>Parsers</h3>
+						<div class="tsd-signature tsd-kind-icon">enabled<wbr>Output<wbr>Parsers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L237">config.ts:237</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.environment-1" class="tsd-anchor"></a>
+						<h3>environment</h3>
+						<div class="tsd-signature tsd-kind-icon">environment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;HardEnv&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L241">config.ts:241</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.generator-1" class="tsd-anchor"></a>
+						<h3>generator</h3>
+						<div class="tsd-signature tsd-kind-icon">generator<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string|null&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L226">config.ts:226</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.installprefix-1" class="tsd-anchor"></a>
+						<h3>install<wbr>Prefix</h3>
+						<div class="tsd-signature tsd-kind-icon">install<wbr>Prefix<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string|null&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L218">config.ts:218</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.logginglevel-1" class="tsd-anchor"></a>
+						<h3>logging<wbr>Level</h3>
+						<div class="tsd-signature tsd-kind-icon">logging<wbr>Level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">"debug"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"info"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"warning"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"error"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"trace"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"note"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"fatal"</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;LogLevelKey&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L249">config.ts:249</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.mingwsearchdirs-1" class="tsd-anchor"></a>
+						<h3>mingw<wbr>Search<wbr>Dirs</h3>
+						<div class="tsd-signature tsd-kind-icon">mingw<wbr>Search<wbr>Dirs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L245">config.ts:245</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.paralleljobs-1" class="tsd-anchor"></a>
+						<h3>parallel<wbr>Jobs</h3>
+						<div class="tsd-signature tsd-kind-icon">parallel<wbr>Jobs<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;number&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L232">config.ts:232</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.parsebuilddiagnostics-1" class="tsd-anchor"></a>
+						<h3>parse<wbr>Build<wbr>Diagnostics</h3>
+						<div class="tsd-signature tsd-kind-icon">parse<wbr>Build<wbr>Diagnostics<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L236">config.ts:236</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.platform-1" class="tsd-anchor"></a>
+						<h3>platform</h3>
+						<div class="tsd-signature tsd-kind-icon">platform<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string|null&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L228">config.ts:228</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.preferredgenerators-1" class="tsd-anchor"></a>
+						<h3>preferred<wbr>Generators</h3>
+						<div class="tsd-signature tsd-kind-icon">preferred<wbr>Generators<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string[]&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L225">config.ts:225</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.savebeforebuild-1" class="tsd-anchor"></a>
+						<h3>save<wbr>Before<wbr>Build</h3>
+						<div class="tsd-signature tsd-kind-icon">save<wbr>Before<wbr>Build<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L220">config.ts:220</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.sourcedirectory-1" class="tsd-anchor"></a>
+						<h3>source<wbr>Directory</h3>
+						<div class="tsd-signature tsd-kind-icon">source<wbr>Directory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L219">config.ts:219</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.testenvironment-1" class="tsd-anchor"></a>
+						<h3>test<wbr>Environment</h3>
+						<div class="tsd-signature tsd-kind-icon">test<wbr>Environment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_config_.hardenv.html" class="tsd-signature-type">HardEnv</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;HardEnv&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L244">config.ts:244</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.toolset-1" class="tsd-anchor"></a>
+						<h3>toolset</h3>
+						<div class="tsd-signature tsd-kind-icon">toolset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;string|null&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L227">config.ts:227</a></li>
+							</ul>
+						</aside>
+					</section>
+					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
+						<a name="_emitters.usecmakeserver-1" class="tsd-anchor"></a>
+						<h3>useCMake<wbr>Server</h3>
+						<div class="tsd-signature tsd-kind-icon">useCMake<wbr>Server<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;boolean&gt;()</span></div>
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/config.ts#L247">config.ts:247</a></li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="../index.html"><em>Globals</em></a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_config_.html">"config"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="_config_.configurationreader.html" class="tsd-kind-icon">Configuration<wbr>Reader</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_config_.configurationreader.html#_configdata" class="tsd-kind-icon">_config<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_config_.configurationreader.html#_updatesubscription" class="tsd-kind-icon">_update<wbr>Subscription</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#autorestartbuild" class="tsd-kind-icon">auto<wbr>Restart<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#buildargs" class="tsd-kind-icon">build<wbr>Args</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#buildbeforerun" class="tsd-kind-icon">build<wbr>Before<wbr>Run</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#builddirectory" class="tsd-kind-icon">build<wbr>Directory</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#buildenvironment" class="tsd-kind-icon">build<wbr>Environment</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#buildtoolargs" class="tsd-kind-icon">build<wbr>Tool<wbr>Args</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#cacheinit" class="tsd-kind-icon">cache<wbr>Init</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#clearoutputbeforebuild" class="tsd-kind-icon">clear<wbr>Output<wbr>Before<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#configdata" class="tsd-kind-icon">config<wbr>Data</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#configureargs" class="tsd-kind-icon">configure<wbr>Args</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#configureenvironment" class="tsd-kind-icon">configure<wbr>Environment</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#configuresettings" class="tsd-kind-icon">configure<wbr>Settings</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#ctestargs" class="tsd-kind-icon">ctest<wbr>Args</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#ctest_paralleljobs" class="tsd-kind-icon">ctest_<wbr>parallel<wbr>Jobs</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#debugconfig" class="tsd-kind-icon">debug<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#defaultvariants" class="tsd-kind-icon">default<wbr>Variants</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#emscriptensearchdirs" class="tsd-kind-icon">emscripten<wbr>Search<wbr>Dirs</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#enableoutputparsers" class="tsd-kind-icon">enable<wbr>Output<wbr>Parsers</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#enabletracelogging" class="tsd-kind-icon">enable<wbr>Trace<wbr>Logging</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#environment" class="tsd-kind-icon">environment</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#generator" class="tsd-kind-icon">generator</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#installprefix" class="tsd-kind-icon">install<wbr>Prefix</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#logginglevel" class="tsd-kind-icon">logging<wbr>Level</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#mingwsearchdirs" class="tsd-kind-icon">mingw<wbr>Search<wbr>Dirs</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#numctestjobs" class="tsd-kind-icon">numCTest<wbr>Jobs</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#numjobs" class="tsd-kind-icon">num<wbr>Jobs</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#paralleljobs" class="tsd-kind-icon">parallel<wbr>Jobs</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#parsebuilddiagnostics" class="tsd-kind-icon">parse<wbr>Build<wbr>Diagnostics</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#platform" class="tsd-kind-icon">platform</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#preferredgenerators" class="tsd-kind-icon">preferred<wbr>Generators</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#raw_cmakepath" class="tsd-kind-icon">raw_<wbr>cmake<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#raw_ctestpath" class="tsd-kind-icon">raw_<wbr>ctest<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#savebeforebuild" class="tsd-kind-icon">save<wbr>Before<wbr>Build</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#sourcedirectory" class="tsd-kind-icon">source<wbr>Directory</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#testenvironment" class="tsd-kind-icon">test<wbr>Environment</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#toolset" class="tsd-kind-icon">toolset</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#usecmakeserver" class="tsd-kind-icon">useCMake<wbr>Server</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#dispose" class="tsd-kind-icon">dispose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-has-type-parameter">
+								<a href="_config_.configurationreader.html#onchange" class="tsd-kind-icon">on<wbr>Change</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#update" class="tsd-kind-icon">update</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_config_.configurationreader.html#updatepartial" class="tsd-kind-icon">update<wbr>Partial</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_config_.configurationreader.html#createfordirectory" class="tsd-kind-icon">create<wbr>For<wbr>Directory</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_config_.configurationreader.html#loadforpath" class="tsd-kind-icon">load<wbr>For<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-private">
+								<a href="_config_.configurationreader.html#_emitters" class="tsd-kind-icon">_emitters</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_config_.extensionconfigurationsettings.html" class="tsd-kind-icon">Extension<wbr>Configuration<wbr>Settings</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_config_.hardenv.html" class="tsd-kind-icon">Hard<wbr>Env</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-has-type-parameter tsd-is-not-exported">
+						<a href="../modules/_config_.html#emittersof" class="tsd-kind-icon">Emitters<wbr>Of</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_config_.html#loglevelkey" class="tsd-kind-icon">Log<wbr>Level<wbr>Key</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>

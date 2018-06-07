@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>CMake Kits &#8212; CMake Tools 0.11.0 documentation</title>
+    <title>CMake Kits &#8212; CMake Tools 1.0.0
+ documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -30,7 +31,8 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 0.11.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.0.0
+ documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -67,6 +69,11 @@ present unless configured otherwise.</p>
 <p class="first admonition-title">Note</p>
 <p class="last">If you change the active Kit while a project is configured, the project
 configuration will be re-generated with the chosen kit.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using a kit is recommended but optional. Opting-out of using kits will
+cause CMake to perform its own automatic detection.</p>
 </div>
 <div class="section" id="how-are-kits-found-and-defined">
 <h2>How Are Kits Found and Defined?<a class="headerlink" href="#how-are-kits-found-and-defined" title="Permalink to this headline">¶</a></h2>
@@ -157,20 +164,22 @@ and update existing ones.</p>
 </ol>
 </div>
 </div>
-<div class="section" id="kit-types">
-<span id="kits-types"></span><h2>Kit Types<a class="headerlink" href="#kit-types" title="Permalink to this headline">¶</a></h2>
-<p>CMake defines three types of kits: <em>compiler kits</em>, <em>Visual Studio kits</em>, and
-<em>toolchain file kits</em>. They are distinguished by the properties present in
-their definition in <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>.</p>
+<div class="section" id="kit-options">
+<span id="kits-types"></span><h2>Kit Options<a class="headerlink" href="#kit-options" title="Permalink to this headline">¶</a></h2>
+<p>CMake defines several different options that can be specified on each kit in
+their definition in <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>, and these options can be
+mixed-and-matched as needed. For example, A single kit may request a
+Visual Studio environment while specifying <code class="docutils literal notranslate"><span class="pre">clang-cl</span></code> as a compiler.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
 <li><a class="reference internal" href="configuring.html#configuring-how"><span class="std std-ref">How CMake Tools Configures</span></a> - Explains how kits are applied during configuration</li>
 </ul>
 </div>
-<div class="section" id="compiler-kits">
-<span id="kits-types-compiler"></span><h3>Compiler Kits<a class="headerlink" href="#compiler-kits" title="Permalink to this headline">¶</a></h3>
-<p>A compiler kit simply lists the paths to compilers for CMake languages.</p>
+<div class="section" id="compilers">
+<span id="kits-types-compiler"></span><h3>Compilers<a class="headerlink" href="#compilers" title="Permalink to this headline">¶</a></h3>
+<p>Specifying language compilers is as simple as listing the paths to compilers
+for CMake languages.</p>
 <p>The most common CMake languages are <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code>, and CMake Tools has
 built-in support for finding these, but any language can be specified:</p>
 <div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -184,10 +193,10 @@ built-in support for finding these, but any language can be specified:</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="toolchain-kits">
-<span id="kits-types-toolchain"></span><h3>Toolchain Kits<a class="headerlink" href="#toolchain-kits" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="toolchain">
+<span id="kits-types-toolchain"></span><h3>Toolchain<a class="headerlink" href="#toolchain" title="Permalink to this headline">¶</a></h3>
 <p>CMake Tools will not automatically detect them, but you can also specify a
-CMake toolchain file as a kit:</p>
+CMake toolchain file in a kit:</p>
 <div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">,</span>
     <span class="s2">&quot;toolchainFile&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/emscripten/toolchain.cmake&quot;</span>
@@ -196,8 +205,8 @@ CMake toolchain file as a kit:</p>
 </div>
 <p>CMake Tools will pass this path for <code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> during configure.</p>
 </div>
-<div class="section" id="visual-studio-kits">
-<span id="kits-types-vs"></span><h3>Visual Studio Kits<a class="headerlink" href="#visual-studio-kits" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="visual-studio">
+<span id="kits-types-vs"></span><h3>Visual Studio<a class="headerlink" href="#visual-studio" title="Permalink to this headline">¶</a></h3>
 <p>CMake Tools will automatically setup the environment for working with Visual C++
 when you use a Visual Studio code. It is advised to let CMake Tools
 generate the kits first, then duplicate them and modify them.</p>
@@ -212,10 +221,16 @@ generate the kits first, then duplicate them and modify them.</p>
 obtained from VSWhere. The <code class="docutils literal notranslate"><span class="pre">visualStudioArchitecture</span></code> key corresponds to a
 Visual Studio target architecture that would be passed to the <code class="docutils literal notranslate"><span class="pre">vcvarsall.bat</span></code>
 file when entering the VS dev environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To use Visual C++, <em>both</em> of <code class="docutils literal notranslate"><span class="pre">visualStudio</span></code> and
+<code class="docutils literal notranslate"><span class="pre">visualStudioArchitecture</span></code> <em>must</em> be specified. Omitting one will not
+work.</p>
 </div>
-<div class="section" id="common-options">
-<span id="kits-common"></span><h3>Common Options<a class="headerlink" href="#common-options" title="Permalink to this headline">¶</a></h3>
-<p>All kit types also support some additional options:</p>
+</div>
+<div class="section" id="generic-options">
+<span id="kits-common"></span><h3>Generic Options<a class="headerlink" href="#generic-options" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the above options, the following may be specified:</p>
 <dl class="docutils" id="kits-common-preferredgenerator">
 <dt><code class="docutils literal notranslate"><span class="pre">preferredGenerator</span></code></dt>
 <dd>The CMake generator that should be used with this kit if not the default.
@@ -254,11 +269,11 @@ options that can be passed as cache variables.</p>
 <li><a class="reference internal" href="#scanning-process">Scanning Process</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#kit-types">Kit Types</a><ul>
-<li><a class="reference internal" href="#compiler-kits">Compiler Kits</a></li>
-<li><a class="reference internal" href="#toolchain-kits">Toolchain Kits</a></li>
-<li><a class="reference internal" href="#visual-studio-kits">Visual Studio Kits</a></li>
-<li><a class="reference internal" href="#common-options">Common Options</a></li>
+<li><a class="reference internal" href="#kit-options">Kit Options</a><ul>
+<li><a class="reference internal" href="#compilers">Compilers</a></li>
+<li><a class="reference internal" href="#toolchain">Toolchain</a></li>
+<li><a class="reference internal" href="#visual-studio">Visual Studio</a></li>
+<li><a class="reference internal" href="#generic-options">Generic Options</a></li>
 </ul>
 </li>
 </ul>
@@ -306,12 +321,13 @@ options that can be passed as cache variables.</p>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 0.11.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.0.0
+ documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>

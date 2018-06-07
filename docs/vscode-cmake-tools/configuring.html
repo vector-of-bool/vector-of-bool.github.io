@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>CMake Configuring &#8212; CMake Tools 0.11.0 documentation</title>
+    <title>CMake Configuring &#8212; CMake Tools 1.0.0
+ documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -30,7 +31,8 @@
         <li class="right" >
           <a href="variants.html" title="CMake Variants"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 0.11.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.0.0
+ documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -115,12 +117,12 @@ consideration to run the configuration:</p>
 toolchains available on your system that can be used with CMake to build
 your projects.</p>
 <ul class="simple">
-<li>For <a class="reference internal" href="kits.html#kits-types-toolchain"><span class="std std-ref">Toolchain Kits</span></a>, CMake Tools sets the CMake cache variable
+<li>For <a class="reference internal" href="kits.html#kits-types-toolchain"><span class="std std-ref">Toolchain</span></a>, CMake Tools sets the CMake cache variable
 <code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> to the path to the file specified by the kit.</li>
-<li>For <a class="reference internal" href="kits.html#kits-types-compiler"><span class="std std-ref">Compiler Kits</span></a>, CMake Tools sets the <code class="docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_COMPILER</span></code>
+<li>For <a class="reference internal" href="kits.html#kits-types-compiler"><span class="std std-ref">Compilers</span></a>, CMake Tools sets the <code class="docutils literal notranslate"><span class="pre">CMAKE_&lt;LANG&gt;_COMPILER</span></code>
 cache variable to point to the path for each <code class="docutils literal notranslate"><span class="pre">&lt;LANG&gt;</span></code> defined in the
 kit.</li>
-<li>For <a class="reference internal" href="kits.html#kits-types-vs"><span class="std std-ref">Visual Studio Kits</span></a>, CMake Tools starts the CMake Server process with the
+<li>For <a class="reference internal" href="kits.html#kits-types-vs"><span class="std std-ref">Visual Studio</span></a>, CMake Tools starts the CMake Server process with the
 environment variables necessary to use the selected Visual Studio
 installation. It also sets <code class="docutils literal notranslate"><span class="pre">CC</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code> to <code class="docutils literal notranslate"><span class="pre">cl.exe</span></code> to force
 CMake to detect the Visual C++ compiler as the primary compiler, even if
@@ -132,7 +134,7 @@ kit to operate. A kit may also define a <code class="docutils literal notranslat
 <p class="first admonition-title">See also</p>
 <ul class="last simple">
 <li><a class="reference internal" href="kits.html#kits"><span class="std std-ref">CMake Kits</span></a> - Describes how Kits work</li>
-<li><a class="reference internal" href="kits.html#kits-types"><span class="std std-ref">Kit Types</span></a> - The different types of kits</li>
+<li><a class="reference internal" href="kits.html#kits-types"><span class="std std-ref">Kit Options</span></a> - The different types of kits</li>
 </ul>
 </div>
 </li>
@@ -159,7 +161,7 @@ together, with later searches taking precedence in case of overlapping keys:</p>
 <li><code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set based on <a class="reference internal" href="variants.html#variants-opts"><span class="std std-ref">Variant Options</span></a>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> is set based on <a class="reference internal" href="variants.html#variants-opts"><span class="std std-ref">Variant Options</span></a>.</li>
 <li><code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> is set based on <a class="reference internal" href="settings.html#conf-cmake-installprefix"><span class="std std-ref">cmake.installPrefix</span></a>.</li>
-<li><code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> is set for <a class="reference internal" href="kits.html#kits-types-toolchain"><span class="std std-ref">Toolchain Kits</span></a>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">CMAKE_TOOLCHAIN_FILE</span></code> is set for <a class="reference internal" href="kits.html#kits-types-toolchain"><span class="std std-ref">Toolchain</span></a>.</li>
 <li>The <a class="reference internal" href="kits.html#kits-common-cmakesettings"><span class="std std-ref">cmakeSettings</span></a> attribute on the
 active kit.</li>
 </ol>
@@ -267,12 +269,13 @@ without deleting the configuration data.</p>
         <li class="right" >
           <a href="variants.html" title="CMake Variants"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 0.11.0 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.0.0
+ documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>
