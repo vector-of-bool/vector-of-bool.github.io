@@ -105,7 +105,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L27">kit.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L31">kit.ts:31</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -115,7 +115,7 @@
 					<div class="tsd-signature tsd-kind-icon">platform<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L29">kit.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L33">kit.ts:33</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -125,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">toolset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L28">kit.ts:28</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L32">kit.ts:32</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -144,9 +144,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_kit_.kitmanager.html" class="tsd-kind-icon">Kit<wbr>Manager</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
@@ -172,6 +169,9 @@
 						<a href="_kit_.kit.html" class="tsd-kind-icon">Kit</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_kit_.kitscanoptions.html" class="tsd-kind-icon">Kit<wbr>Scan<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_kit_.vsinstallation.html" class="tsd-kind-icon">VSInstallation</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
@@ -179,6 +179,9 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#msvc_environment_variables" class="tsd-kind-icon">MSVC_<wbr>ENVIRONMENT_<wbr>VARIABLES</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#user_kits_filepath" class="tsd-kind-icon">USER_<wbr>KITS_<wbr>FILEPATH</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#log" class="tsd-kind-icon">log</a>
@@ -189,8 +192,14 @@
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#convertmingwdirstosearchpaths" class="tsd-kind-icon">convert<wbr>Mingw<wbr>Dirs<wbr>ToSearch<wbr>Paths</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_kit_.html#descriptionforkit" class="tsd-kind-icon">description<wbr>For<wbr>Kit</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#effectivekitenvironment" class="tsd-kind-icon">effective<wbr>Kit<wbr>Environment</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#findclcompilerpath" class="tsd-kind-icon">findCLCompiler<wbr>Path</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#getclangversion" class="tsd-kind-icon">get<wbr>Clang<wbr>Version</a>
@@ -203,6 +212,18 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_kit_.html#kitifcompiler" class="tsd-kind-icon">kit<wbr>IfCompiler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitsavailableinworkspacedirectory" class="tsd-kind-icon">kits<wbr>Available<wbr>InWorkspace<wbr>Directory</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitsforworkspacedirectory" class="tsd-kind-icon">kits<wbr>For<wbr>Workspace<wbr>Directory</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitspathforworkspacedirectorypath" class="tsd-kind-icon">kits<wbr>Path<wbr>For<wbr>Workspace<wbr>Directory<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitspathforworkspacefolder" class="tsd-kind-icon">kits<wbr>Path<wbr>For<wbr>Workspace<wbr>Folder</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_kit_.html#readkitsfile" class="tsd-kind-icon">read<wbr>Kits<wbr>File</a>

@@ -85,6 +85,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#cmakesettings" class="tsd-kind-icon">cmake<wbr>Settings</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#compilers" class="tsd-kind-icon">compilers</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#environmentvariables" class="tsd-kind-icon">environment<wbr>Variables</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#keep" class="tsd-kind-icon">keep</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#preferredgenerator" class="tsd-kind-icon">preferred<wbr>Generator</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_kit_.kit.html#toolchainfile" class="tsd-kind-icon">toolchain<wbr>File</a></li>
@@ -103,7 +104,7 @@
 					<div class="tsd-signature tsd-kind-icon">cmake<wbr>Settings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L46">kit.ts:46</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L50">kit.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -118,7 +119,7 @@
 					<div class="tsd-signature tsd-kind-icon">compilers<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L59">kit.ts:59</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L63">kit.ts:63</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -135,7 +136,7 @@
 					<div class="tsd-signature tsd-kind-icon">environment<wbr>Variables<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">proc.EnvironmentVariables</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L51">kit.ts:51</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L55">kit.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -145,12 +146,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="keep" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> keep</h3>
+					<div class="tsd-signature tsd-kind-icon">keep<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L86">kit.ts:86</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>If <code>true</code>, keep this kit around even if it seems out-of-date</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L36">kit.ts:36</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L40">kit.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,7 +181,7 @@
 					<div class="tsd-signature tsd-kind-icon">preferred<wbr>Generator<span class="tsd-signature-symbol">:</span> <a href="_kit_.cmakegenerator.html" class="tsd-signature-type">CMakeGenerator</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L41">kit.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L45">kit.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -180,7 +196,7 @@
 					<div class="tsd-signature tsd-kind-icon">toolchain<wbr>File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L77">kit.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L81">kit.ts:81</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -195,7 +211,7 @@
 					<div class="tsd-signature tsd-kind-icon">visual<wbr>Studio<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L66">kit.ts:66</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L70">kit.ts:70</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -212,7 +228,7 @@
 					<div class="tsd-signature tsd-kind-icon">visual<wbr>Studio<wbr>Architecture<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/kit.ts#L72">kit.ts:72</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/kit.ts#L76">kit.ts:76</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -237,9 +253,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_kit_.kitmanager.html" class="tsd-kind-icon">Kit<wbr>Manager</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_kit_.cmakegenerator.html" class="tsd-kind-icon">CMake<wbr>Generator</a>
 					</li>
@@ -261,6 +274,9 @@
 								<a href="_kit_.kit.html#environmentvariables" class="tsd-kind-icon">environment<wbr>Variables</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_kit_.kit.html#keep" class="tsd-kind-icon">keep</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_kit_.kit.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
@@ -280,6 +296,9 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_kit_.kitscanoptions.html" class="tsd-kind-icon">Kit<wbr>Scan<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_kit_.vsinstallation.html" class="tsd-kind-icon">VSInstallation</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
@@ -287,6 +306,9 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#msvc_environment_variables" class="tsd-kind-icon">MSVC_<wbr>ENVIRONMENT_<wbr>VARIABLES</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#user_kits_filepath" class="tsd-kind-icon">USER_<wbr>KITS_<wbr>FILEPATH</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#log" class="tsd-kind-icon">log</a>
@@ -297,8 +319,14 @@
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#convertmingwdirstosearchpaths" class="tsd-kind-icon">convert<wbr>Mingw<wbr>Dirs<wbr>ToSearch<wbr>Paths</a>
 					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_kit_.html#descriptionforkit" class="tsd-kind-icon">description<wbr>For<wbr>Kit</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#effectivekitenvironment" class="tsd-kind-icon">effective<wbr>Kit<wbr>Environment</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#findclcompilerpath" class="tsd-kind-icon">findCLCompiler<wbr>Path</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_kit_.html#getclangversion" class="tsd-kind-icon">get<wbr>Clang<wbr>Version</a>
@@ -311,6 +339,18 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_kit_.html#kitifcompiler" class="tsd-kind-icon">kit<wbr>IfCompiler</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitsavailableinworkspacedirectory" class="tsd-kind-icon">kits<wbr>Available<wbr>InWorkspace<wbr>Directory</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitsforworkspacedirectory" class="tsd-kind-icon">kits<wbr>For<wbr>Workspace<wbr>Directory</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitspathforworkspacedirectorypath" class="tsd-kind-icon">kits<wbr>Path<wbr>For<wbr>Workspace<wbr>Directory<wbr>Path</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_kit_.html#kitspathforworkspacefolder" class="tsd-kind-icon">kits<wbr>Path<wbr>For<wbr>Workspace<wbr>Folder</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_kit_.html#readkitsfile" class="tsd-kind-icon">read<wbr>Kits<wbr>File</a>

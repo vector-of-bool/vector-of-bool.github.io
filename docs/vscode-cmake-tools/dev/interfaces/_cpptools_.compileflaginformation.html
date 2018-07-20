@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>CompilationInfo | cmake-tools</title>
+	<title>CompileFlagInformation | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,32 +54,24 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_api_.html">&quot;api&quot;</a>
+					<a href="../modules/_cpptools_.html">&quot;cpptools&quot;</a>
 				</li>
 				<li>
-					<a href="_api_.compilationinfo.html">CompilationInfo</a>
+					<a href="_cpptools_.compileflaginformation.html">CompileFlagInformation</a>
 				</li>
 			</ul>
-			<h1>Interface CompilationInfo</h1>
+			<h1>Interface CompileFlagInformation</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Nicer, cleaner compilation information on a source file. This would be
-						provided by CMake Server.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">CompilationInfo</span>
+						<span class="target">CompileFlagInformation</span>
 					</li>
 				</ul>
 			</section>
@@ -90,12 +82,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.compilationinfo.html#compile" class="tsd-kind-icon">compile</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.compilationinfo.html#compiledefinitions" class="tsd-kind-icon">compile<wbr>Definitions</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.compilationinfo.html#compileflags" class="tsd-kind-icon">compile<wbr>Flags</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.compilationinfo.html#compiler" class="tsd-kind-icon">compiler</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.compilationinfo.html#file" class="tsd-kind-icon">file</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_api_.compilationinfo.html#includedirectories" class="tsd-kind-icon">include<wbr>Directories</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_cpptools_.compileflaginformation.html#extradefinitions" class="tsd-kind-icon">extra<wbr>Definitions</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_cpptools_.compileflaginformation.html#standard" class="tsd-kind-icon">standard</a></li>
 							</ul>
 						</section>
 					</div>
@@ -104,70 +92,22 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="compile" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> compile</h3>
-					<div class="tsd-signature tsd-kind-icon">compile<span class="tsd-signature-symbol">:</span> <a href="_api_.rawcompilationinfo.html" class="tsd-signature-type">RawCompilationInfo</a></div>
+					<a name="extradefinitions" class="tsd-anchor"></a>
+					<h3>extra<wbr>Definitions</h3>
+					<div class="tsd-signature tsd-kind-icon">extra<wbr>Definitions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/api.ts#L77">api.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/cpptools.ts#L23">cpptools.ts:23</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="compiledefinitions" class="tsd-anchor"></a>
-					<h3>compile<wbr>Definitions</h3>
-					<div class="tsd-signature tsd-kind-icon">compile<wbr>Definitions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<a name="standard" class="tsd-anchor"></a>
+					<h3>standard</h3>
+					<div class="tsd-signature tsd-kind-icon">standard<span class="tsd-signature-symbol">:</span> <a href="../modules/_cpptools_.html#standardversion" class="tsd-signature-type">StandardVersion</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/api.ts#L79">api.ts:79</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-							<li class="tsd-parameter-index-signature">
-								<h5><span class="tsd-signature-symbol">[</span>define: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
-							</li>
-						</ul>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="compileflags" class="tsd-anchor"></a>
-					<h3>compile<wbr>Flags</h3>
-					<div class="tsd-signature tsd-kind-icon">compile<wbr>Flags<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/api.ts#L80">api.ts:80</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="compiler" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> compiler</h3>
-					<div class="tsd-signature tsd-kind-icon">compiler<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/api.ts#L81">api.ts:81</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="file" class="tsd-anchor"></a>
-					<h3>file</h3>
-					<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/api.ts#L76">api.ts:76</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="includedirectories" class="tsd-anchor"></a>
-					<h3>include<wbr>Directories</h3>
-					<div class="tsd-signature tsd-kind-icon">include<wbr>Directories<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/api.ts#L78">api.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/cpptools.ts#L24">cpptools.ts:24</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -180,77 +120,41 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_api_.html">"api"</a>
+						<a href="../modules/_cpptools_.html">"cpptools"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum tsd-parent-kind-external-module">
-						<a href="../enums/_api_.cacheentrytype.html" class="tsd-kind-icon">Cache<wbr>Entry<wbr>Type</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_cpptools_.cppconfigurationprovider.html" class="tsd-kind-icon">Cpp<wbr>Configuration<wbr>Provider</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.cmaketoolsapi.html" class="tsd-kind-icon">CMake<wbr>ToolsAPI</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.cacheentry.html" class="tsd-kind-icon">Cache<wbr>Entry</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.cacheentryproperties.html" class="tsd-kind-icon">Cache<wbr>Entry<wbr>Properties</a>
+						<a href="_cpptools_.codemodelparams.html" class="tsd-kind-icon">Code<wbr>Model<wbr>Params</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.compilationinfo.html" class="tsd-kind-icon">Compilation<wbr>Info</a>
+						<a href="_cpptools_.compileflaginformation.html" class="tsd-kind-icon">Compile<wbr>Flag<wbr>Information</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.compilationinfo.html#compile" class="tsd-kind-icon">compile</a>
+								<a href="_cpptools_.compileflaginformation.html#extradefinitions" class="tsd-kind-icon">extra<wbr>Definitions</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.compilationinfo.html#compiledefinitions" class="tsd-kind-icon">compile<wbr>Definitions</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.compilationinfo.html#compileflags" class="tsd-kind-icon">compile<wbr>Flags</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.compilationinfo.html#compiler" class="tsd-kind-icon">compiler</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.compilationinfo.html#file" class="tsd-kind-icon">file</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_api_.compilationinfo.html#includedirectories" class="tsd-kind-icon">include<wbr>Directories</a>
+								<a href="_cpptools_.compileflaginformation.html#standard" class="tsd-kind-icon">standard</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.executabletarget.html" class="tsd-kind-icon">Executable<wbr>Target</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_cpptools_.html#standardversion" class="tsd-kind-icon">Standard<wbr>Version</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.executionoptions.html" class="tsd-kind-icon">Execution<wbr>Options</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_cpptools_.html#log" class="tsd-kind-icon">log</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.executionresult.html" class="tsd-kind-icon">Execution<wbr>Result</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.namedtarget.html" class="tsd-kind-icon">Named<wbr>Target</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.rawcompilationinfo.html" class="tsd-kind-icon">Raw<wbr>Compilation<wbr>Info</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.richtarget.html" class="tsd-kind-icon">Rich<wbr>Target</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.test.html" class="tsd-kind-icon">Test</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_api_.variantkeywordsettings.html" class="tsd-kind-icon">Variant<wbr>Keyword<wbr>Settings</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_api_.html#target" class="tsd-kind-icon">Target</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_cpptools_.html#parsecompileflags" class="tsd-kind-icon">parse<wbr>Compile<wbr>Flags</a>
 					</li>
 				</ul>
 			</nav>

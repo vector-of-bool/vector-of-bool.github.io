@@ -88,14 +88,13 @@
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_compdb_.compilationdatabase.html#_info_by_filepath" class="tsd-kind-icon">_info_<wbr>by_<wbr>filepath</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_compdb_.compilationdatabase.html#_infobyfilepath" class="tsd-kind-icon">_info<wbr>ByFile<wbr>Path</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_compdb_.compilationdatabase.html#_normalizefilepath" class="tsd-kind-icon">_normalize<wbr>File<wbr>Path</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_compdb_.compilationdatabase.html#getcompilationinfoforuri" class="tsd-kind-icon">get<wbr>Compilation<wbr>Info<wbr>For<wbr>Uri</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_compdb_.compilationdatabase.html#get" class="tsd-kind-icon">get</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_compdb_.compilationdatabase.html#fromfilepath" class="tsd-kind-icon">from<wbr>File<wbr>Path</a></li>
 							</ul>
 						</section>
@@ -108,19 +107,19 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Compilation<wbr>Database<span class="tsd-signature-symbol">(</span>infos<span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.compilationinfo.html" class="tsd-signature-type">CompilationInfo</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_compdb_.compilationdatabase.html" class="tsd-signature-type">CompilationDatabase</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Compilation<wbr>Database<span class="tsd-signature-symbol">(</span>infos<span class="tsd-signature-symbol">: </span><a href="../modules/_compdb_.html#compilecommand" class="tsd-signature-type">CompileCommand</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_compdb_.compilationdatabase.html" class="tsd-signature-type">CompilationDatabase</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/compdb.ts#L86">compdb.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/compdb.ts#L26">compdb.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>infos: <a href="../interfaces/_api_.compilationinfo.html" class="tsd-signature-type">CompilationInfo</a><span class="tsd-signature-symbol">[]</span></h5>
+									<h5>infos: <a href="../modules/_compdb_.html#compilecommand" class="tsd-signature-type">CompileCommand</a><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="_compdb_.compilationdatabase.html" class="tsd-signature-type">CompilationDatabase</a></h4>
@@ -131,29 +130,29 @@
 			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_info_by_filepath" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _info_<wbr>by_<wbr>filepath</h3>
-					<div class="tsd-signature tsd-kind-icon">_info_<wbr>by_<wbr>filepath<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_api_.compilationinfo.html" class="tsd-signature-type">CompilationInfo</a><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="_infobyfilepath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _info<wbr>ByFile<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">_info<wbr>ByFile<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../interfaces/_compdb_.argscompilecommand.html" class="tsd-signature-type">ArgsCompileCommand</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/compdb.ts#L86">compdb.ts:86</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/compdb.ts#L26">compdb.ts:26</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="_normalizefilepath" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _normalize<wbr>File<wbr>Path</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_normalize<wbr>File<wbr>Path<span class="tsd-signature-symbol">(</span>fspath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="get" class="tsd-anchor"></a>
+					<h3>get</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<span class="tsd-signature-symbol">(</span>fspath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_compdb_.argscompilecommand.html" class="tsd-signature-type">ArgsCompileCommand</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/compdb.ts#L94">compdb.ts:94</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/compdb.ts#L39">compdb.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -162,32 +161,9 @@
 									<h5>fspath: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="getcompilationinfoforuri" class="tsd-anchor"></a>
-					<h3>get<wbr>Compilation<wbr>Info<wbr>For<wbr>Uri</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Compilation<wbr>Info<wbr>For<wbr>Uri<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.Uri</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_api_.compilationinfo.html" class="tsd-signature-type">CompilationInfo</a><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/compdb.ts#L116">compdb.ts:116</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>uri: <span class="tsd-signature-type">vscode.Uri</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_api_.compilationinfo.html" class="tsd-signature-type">CompilationInfo</a>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
 								<span class="tsd-signature-symbol"> | </span>
-								<span class="tsd-signature-type">null</span>
+								<a href="../interfaces/_compdb_.argscompilecommand.html" class="tsd-signature-type">ArgsCompileCommand</a>
 							</h4>
 						</li>
 					</ul>
@@ -202,7 +178,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/317749b/src/compdb.ts#L127">compdb.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/compdb.ts#L41">compdb.ts:41</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -239,13 +215,10 @@
 								<a href="_compdb_.compilationdatabase.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_compdb_.compilationdatabase.html#_info_by_filepath" class="tsd-kind-icon">_info_<wbr>by_<wbr>filepath</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_compdb_.compilationdatabase.html#_normalizefilepath" class="tsd-kind-icon">_normalize<wbr>File<wbr>Path</a>
+								<a href="_compdb_.compilationdatabase.html#_infobyfilepath" class="tsd-kind-icon">_info<wbr>ByFile<wbr>Path</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_compdb_.compilationdatabase.html#getcompilationinfoforuri" class="tsd-kind-icon">get<wbr>Compilation<wbr>Info<wbr>For<wbr>Uri</a>
+								<a href="_compdb_.compilationdatabase.html#get" class="tsd-kind-icon">get</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_compdb_.compilationdatabase.html#fromfilepath" class="tsd-kind-icon">from<wbr>File<wbr>Path</a>
@@ -254,14 +227,20 @@
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_compdb_.argscompilecommand.html" class="tsd-kind-icon">Args<wbr>Compile<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_compdb_.basecompilecommand.html" class="tsd-kind-icon">Base<wbr>Compile<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../interfaces/_compdb_.stringcompilecommand.html" class="tsd-kind-icon">String<wbr>Compile<wbr>Command</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
+						<a href="../modules/_compdb_.html#compilecommand" class="tsd-kind-icon">Compile<wbr>Command</a>
+					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_compdb_.html#log" class="tsd-kind-icon">log</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_compdb_.html#parsecompiledefinition" class="tsd-kind-icon">parse<wbr>Compile<wbr>Definition</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_compdb_.html#parserawcompilationinfo" class="tsd-kind-icon">parse<wbr>Raw<wbr>Compilation<wbr>Info</a>
 					</li>
 				</ul>
 			</nav>
