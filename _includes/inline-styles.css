@@ -533,6 +533,39 @@ div.highlighter-rouge > pre.highlight {
   background-color: darkred;
 }
 
+blockquote {
+  font-style: italic;
+  font-size: 16pt;
+}
+
+div.footnotes > p {
+  font-size: 10pt;
+  font-style: italic;
+}
+
+div.image-frame {
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 5px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+  will-change: box-shadow;
+  transition: box-shadow 100ms linear, transform 100ms linear;
+}
+
+div.image-frame:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.5),
+    0 4px 11px rgba(0, 0, 0, 0.2),
+    0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+div.image-frame > p {
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+}
 
 @media (max-width: 960px) {
   body {
