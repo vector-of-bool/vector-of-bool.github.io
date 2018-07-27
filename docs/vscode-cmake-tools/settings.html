@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Configuring CMake Tools &#8212; CMake Tools 1.1.0
+    <title>Configuring CMake Tools &#8212; CMake Tools 1.1.1
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="debugging.html" title="Target Debugging and Launching"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.0
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.1
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -258,7 +258,7 @@ using <code class="docutils literal notranslate"><span class="pre">${variable}</
 <dd><p class="first"><strong>DEPRECATED</strong>. Expands to the constant string “<code class="docutils literal notranslate"><span class="pre">ProjectName</span></code>”</p>
 <div class="last admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">This was deprecated as CMake does not consider there two be <em>one</em>
+<p class="last">This was deprecated as CMake does not consider there to be <em>one</em>
 project name to use. The concept of a single project does not work in
 CMake, and this made this feature problematic and buggy. Alternatives
 include <code class="docutils literal notranslate"><span class="pre">${workspaceRootFolderName}</span></code>.</p>
@@ -266,9 +266,6 @@ include <code class="docutils literal notranslate"><span class="pre">${workspace
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">${userHome}</span></code></dt>
 <dd>The full path to the current user’s home directory</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">${variant_identifier}</span></code></dt>
-<dd><em>Replace ``variant_identifier`` with your variant identifier.</em>
-The currently selected choice of the given variant identifier.</dd>
 </dl>
 <div class="section" id="environment-variables">
 <h3>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
@@ -276,6 +273,13 @@ The currently selected choice of the given variant identifier.</dd>
 and <code class="docutils literal notranslate"><span class="pre">${env.VARNAME}</span></code> syntax, where the string for the <code class="docutils literal notranslate"><span class="pre">VARNAME</span></code> environment
 variable will be replaced. If the named environment variable is undefined, an empty
 string will be expanded instead.</p>
+</div>
+<div class="section" id="variant-substitution">
+<span id="variant-sub"></span><h3>Variant Substitution<a class="headerlink" href="#variant-substitution" title="Permalink to this headline">¶</a></h3>
+<p>Variant options may also be substituted with the <code class="docutils literal notranslate"><span class="pre">${variant:VARIANTNAME}</span></code> syntax,
+where the name of the currently active choice of the provided <code class="docutils literal notranslate"><span class="pre">VARIANTNAME</span></code> variant
+option will be replaced. If the variant option is undefined, an empty string will be
+expanded instead.</p>
 </div>
 <div class="section" id="command-substitution">
 <h3>Command Substitution<a class="headerlink" href="#command-substitution" title="Permalink to this headline">¶</a></h3>
@@ -325,6 +329,7 @@ command for a given expansion.</p>
 </li>
 <li><a class="reference internal" href="#variable-substitution">Variable Substitution</a><ul>
 <li><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li><a class="reference internal" href="#variant-substitution">Variant Substitution</a></li>
 <li><a class="reference internal" href="#command-substitution">Command Substitution</a></li>
 </ul>
 </li>
@@ -373,7 +378,7 @@ command for a given expansion.</p>
         <li class="right" >
           <a href="debugging.html" title="Target Debugging and Launching"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.0
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.1
  documentation</a> &#187;</li> 
       </ul>
     </div>

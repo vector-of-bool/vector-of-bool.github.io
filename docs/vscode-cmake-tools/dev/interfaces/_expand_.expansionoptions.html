@@ -90,6 +90,7 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_expand_.expansionoptions.html#envoverride" class="tsd-kind-icon">env<wbr>Override</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_expand_.expansionoptions.html#variantvars" class="tsd-kind-icon">variant<wbr>Vars</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_expand_.expansionoptions.html#vars" class="tsd-kind-icon">vars</a></li>
 							</ul>
 						</section>
@@ -104,16 +105,31 @@
 					<div class="tsd-signature tsd-kind-icon">env<wbr>Override<span class="tsd-signature-symbol">:</span> <a href="_proc_.environmentvariables.html" class="tsd-signature-type">EnvironmentVariables</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/expand.ts#L50">expand.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/expand.ts#L52">expand.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Override the values used in <code>${env:var}</code>-style expansions.</p>
+							<p>Override the values used in <code>${env:var}</code>-style and <code>${env.var}</code>-style expansions.</p>
 						</div>
 						<p>Note that setting this property will disable expansion of environment
 							variables for the running process. Only environment variables in this key
 						will be expanded.</p>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="variantvars" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> variant<wbr>Vars</h3>
+					<div class="tsd-signature tsd-kind-icon">variant<wbr>Vars<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/expand.ts#L56">expand.ts:56</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Variables for <code>${variant:var}</code>-style expansions.</p>
+						</div>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -122,7 +138,7 @@
 					<div class="tsd-signature tsd-kind-icon">vars<span class="tsd-signature-symbol">:</span> <a href="_expand_.expansionvars.html" class="tsd-signature-type">ExpansionVars</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/4b41f85/src/expand.ts#L42">expand.ts:42</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/expand.ts#L44">expand.ts:44</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -153,6 +169,9 @@
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_expand_.expansionoptions.html#envoverride" class="tsd-kind-icon">env<wbr>Override</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_expand_.expansionoptions.html#variantvars" class="tsd-kind-icon">variant<wbr>Vars</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_expand_.expansionoptions.html#vars" class="tsd-kind-icon">vars</a>

@@ -3,6 +3,18 @@
 Changelog and History
 #####################
 
+.. _changes-1.1.1:
+
+1.1.1
+*****
+
+Fixes and tweaks upon 1.1.0.
+
+**BREAKING CHANGE**: Variant substitutions follow a new `${variant:var-key}`
+syntax to match the special namespacing of substitutions. See :ref:`variant-sub`.
+
+A bugfix release for [these issues](https://github.com/vector-of-bool/vscode-cmake-tools/milestone/12?closed=1).
+
 .. _changes-1.1.0:
 
 1.1.0

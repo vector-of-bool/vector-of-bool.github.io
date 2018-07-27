@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;expand&quot; | cmake-tools</title>
+	<title>&quot;shlex&quot; | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,10 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="_expand_.html">&quot;expand&quot;</a>
+					<a href="_shlex_.html">&quot;shlex&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;expand&quot;</h1>
+			<h1>External module &quot;shlex&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -71,74 +71,70 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_expand_.expansionoptions.html" class="tsd-kind-icon">Expansion<wbr>Options</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_expand_.expansionvars.html" class="tsd-kind-icon">Expansion<wbr>Vars</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_expand_.requiredexpansioncontextvars.html" class="tsd-kind-icon">Required<wbr>Expansion<wbr>Context<wbr>Vars</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_expand_.html#log" class="tsd-kind-icon">log</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_shlex_.shlexoptions.html" class="tsd-kind-icon">Shlex<wbr>Options</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_expand_.html#expandstring" class="tsd-kind-icon">expand<wbr>String</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shlex_.html#quote" class="tsd-kind-icon">quote</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_shlex_.html#split" class="tsd-kind-icon">split</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="log" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> log</h3>
-					<div class="tsd-signature tsd-kind-icon">log<span class="tsd-signature-symbol">:</span> <a href="../classes/_logging_.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> =&nbsp;createLogger(&#x27;expand&#x27;)</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/expand.ts#L12">expand.ts:12</a></li>
-						</ul>
-					</aside>
-				</section>
-			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="expandstring" class="tsd-anchor"></a>
-					<h3>expand<wbr>String</h3>
+					<a name="quote" class="tsd-anchor"></a>
+					<h3>quote</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">expand<wbr>String<span class="tsd-signature-symbol">(</span>tmpl<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opts<span class="tsd-signature-symbol">: </span><a href="../interfaces/_expand_.expansionoptions.html" class="tsd-signature-type">ExpansionOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">quote<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opt<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_shlex_.shlexoptions.html" class="tsd-signature-type">ShlexOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/expand.ts#L66">expand.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/shlex.ts#L78">shlex.ts:78</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Replace ${variable} references in the given string with their corresponding
-									values.</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>tmpl: <span class="tsd-signature-type">string</span></h5>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>opts: <a href="../interfaces/_expand_.expansionoptions.html" class="tsd-signature-type">ExpansionOptions</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Options for the expansion process</p>
-									</div>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opt: <a href="../interfaces/_shlex_.shlexoptions.html" class="tsd-signature-type">ShlexOptions</a></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>A string with the variable references replaced</p>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
+					<a name="split" class="tsd-anchor"></a>
+					<h3>split</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
+						<li class="tsd-signature tsd-kind-icon">split<span class="tsd-signature-symbol">(</span>str<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, opt<span class="tsd-signature-symbol">?: </span><a href="../interfaces/_shlex_.shlexoptions.html" class="tsd-signature-type">ShlexOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/518f40e/src/shlex.ts#L5">shlex.ts:5</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>str: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> opt: <a href="../interfaces/_shlex_.shlexoptions.html" class="tsd-signature-type">ShlexOptions</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Iterable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -151,26 +147,20 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_expand_.html">"expand"</a>
+						<a href="_shlex_.html">"shlex"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_expand_.expansionoptions.html" class="tsd-kind-icon">Expansion<wbr>Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_expand_.expansionvars.html" class="tsd-kind-icon">Expansion<wbr>Vars</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_expand_.requiredexpansioncontextvars.html" class="tsd-kind-icon">Required<wbr>Expansion<wbr>Context<wbr>Vars</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_expand_.html#log" class="tsd-kind-icon">log</a>
+						<a href="../interfaces/_shlex_.shlexoptions.html" class="tsd-kind-icon">Shlex<wbr>Options</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_expand_.html#expandstring" class="tsd-kind-icon">expand<wbr>String</a>
+						<a href="_shlex_.html#quote" class="tsd-kind-icon">quote</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="_shlex_.html#split" class="tsd-kind-icon">split</a>
 					</li>
 				</ul>
 			</nav>
