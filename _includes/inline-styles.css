@@ -519,7 +519,7 @@ div.highlighter-rouge > pre.highlight {
   /*margin-right: 20px;*/
   background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
   box-shadow:
-    0 5px 15px rgba(0,0,0,0.6),
+    0 2px 5px rgba(0,0,0,0.6),
     inset 0 1px 1px 0px rgba(255,255,255,0.2),
     inset -0.5px -1px 1px 0px rgba(0,0,0,0.3)
     ;
