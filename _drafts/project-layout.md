@@ -77,6 +77,8 @@ is truly irrelevant.
 
 Now for each subdirectory:
 
+---
+
 ## Subdirectory: `cmake/`
 
 This directory is only required if you are using CMake and have
@@ -94,6 +96,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/")
 
 This will ensure that the `cmake/` subdirectory is included in the CMake
 module search path.
+
+---
 
 ## Subdirectory: `deps/`
 
@@ -119,6 +123,8 @@ write a `deps/FooPackage.cmake` file that does the import, and
 `include(FooPackage.cmake)` from the `deps/CMakeLists.txt`.
 
 **DO NOT MODIFY EMBEDDED EXTERNAL PROJECTS BEYOND WHAT IS _NECESSARY_**.
+
+---
 
 ## Subdirectory: `contrib/`
 
@@ -193,12 +199,16 @@ endif()
 a `contrib/` sub-project may depend on other `contrib/` sub-projects.
 </div>
 
+---
+
 ## Subdirectory: `util/`
 
 This directory contains scripts and utilities that are "meta" to the project.
 This might include turn-key build scripts, linting scripts, test scripts, or
 whatever else might be useful to a developer working on the project. This is
 not part of the external-facing user interface for the project.
+
+---
 
 ## Subdirectory: `test/`
 
@@ -207,7 +217,7 @@ specific structure for this subdirectory. Just put your tests here.
 
 ### CMake User Notes:
 
-Add a `test/CMakeLists.txt` file and conditionally `add_subdirectory(test)`
+Add a `test/CMakeLists.txt` file and **conditionally** `add_subdirectory(test)`
 toward the end of your root `CMakeLists.txt`.
 
 **DO NOT UNCONDITIONALLY INCLUDE THIS DIRECTORY.**
@@ -238,9 +248,70 @@ project is the _root project_. If your project is included in someone else's
 project via `add_subdirectory()`, this check will fail and your tests will not
 be added to the includer's tests.
 
+---
+
 ## Subdirectory: `include/`
 
-This should contain your _public headers_. That is, the headers which are needed by your library consumers. If you are shipping a library to consumers, or all of your headers are public (you have no private headers), this directory is optional.
+If you separate between private and public headers, the `include/` directory
+should contain your _public headers_. That is, the headers which are needed by
+your library consumers. If you are not shipping a library to consumers, or all
+of your headers are public (you have no private headers), this directory is
+optional.
+
+If you want to ship headers, but do not have a private/public header
+distinction, put all of your headers in the `lib/` directory.
+
+### CMake User Notes:
+
+This directory _does not_ contain a `CMakeLists.txt`.
+
+---
+
+## Subdirectory: `lib/`
+
+This directory should contain all of the main source files for you project,
+except those containing any entry points (`main()` functions).
+
+If you have separate private and public headers, place private headers in this
+directory. If you do not have any private headers, place headers in this
+directory.
+
+Always place header files alongside their respective source file, if applicable.
+
+### CMake User Notes:
+
+This directory will contain a top-level `lib/CMakeLists.txt`, but shouldn't
+contain any subdirectory CMake list files. The `lib/CMakeLists.txt` should
+declare and define the libraries that will be built for the project.
+
+---
+
+## Subdirectory: `src/`
+
+This directory should be flat, and contain one source file for every executable
+in your project. Each source file will be compiled and linked into an
+executable, consuming the content of `lib/` and `include/` as necessary.
+
+### CMake User Notes:
+
+This directory will contain a single `src/CMakeLists.txt`. It should define an
+executable for every source file in that directory, and link them to the
+required libraries.
+
+---
+
+## Subdirectory: `doc/`
+
+This directory should contain documentation for the project. The documentation
+engine and methodology is not defined by this document.
+
+---
+
+## Subdirectory: `res/`
+
+This directory should contain other resources used by the project, such as
+icons and graphics. These are usually not edited as code, but by another
+external program.
 
 ---
 
