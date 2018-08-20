@@ -114,8 +114,9 @@ Different pieces of software talk about paths in different ways. A lot of librar
 
 ### Absolute Path
 
-An _absolute_ or _full_ path is a path which is unambiguous, and doesn't resolve
-differently from a different base path.
+An _absolute_ or _full_ path is a path which is unambiguous. It will include
+a root component (Like a `/` or drive letter) and zero or more components to
+walk the hierarchy from that root.
 
 ### Joining
 
@@ -153,10 +154,10 @@ join(foo, join(bar, baz))   -> foo/bar/baz
 join(join(foo, bar), baz)   -> foo/bar/baz
 ```
 
-A _relative_ path itself _cannot_ resolve a resource. We need to join it with
-an absolute path in order to produce a full path to a resource. For many tools
-this joining is implicit (using the current working directory as the left-hand
-of the join).
+A _relative_ path by itself _cannot_ resolve a resource. We need to join it with
+an absolute path (the _base_ path) in order to produce an absolute path to a
+resource. For many tools this joining is implicit (using the current working
+directory as the left-hand of the join).
 
 ### Root Path
 
@@ -165,11 +166,29 @@ Unix-like systems this is represented as just the path separator `/`. On Windows
 this refers to the drive letter plus a separator `C:\` or just the separator
 in some cases `\`.
 
+### Filename OR Basename OR Leaf
+
+The "leaf" or "basename" or "filename" of a path is the final component of that
+path, ignoring any trailing separators.
+
+```
+leaf(/foo/bar) -> bar
+leaf(/foo/bar.txt) -> bar.txt
+leaf(foo) -> foo
+leaf(foo.txt) -> foo
+leaf(/foo/bar/) -> bar
+```
+
+**NOTE:** The _file extension_ is part of the filename.
+
+A filename is also a path on its own. It is a relative path for which the
+filename is the entire path.
+
 ### Parent Path OR Dirname
 
-The _parent_ of a path is the path which prefixes it. This usually entails
-trimming everything after the final path separator, and ignoring any trailing
-separators:
+The _parent_ of a path is the components of the path preceding the filename.
+This usually entails trimming everything after the final path separator, and
+ignoring any trailing separators:
 
 ```
 parent(/foo/bar)    -> /foo
@@ -189,28 +208,14 @@ tools will return `.` to represent "the current path."
 
 For most tools, the parent of a root path is the root path itself.
 
-### Filename OR Basename OR Leaf
-
-The "leaf" or "basename" or "filename" of another path is the trailing component
-of that path, ignoring any trailing separators.
-
-```
-leaf(/foo/bar) -> bar
-leaf(/foo/bar.txt) -> bar.txt
-leaf(foo) -> foo
-leaf(foo.txt) -> foo
-leaf(/foo/bar/) -> bar
-```
-
-**NOTE:** The _file extension_ is part of the filename.
-
-A path may be said to _itself be_ a "filename" if the leaf/basename of the path
-is the entire path.
+The parent path is also called the "dirname" of a path, because it is often used
+to obtain the path to the directory which _containts_ the file or directory
+named by that path.
 
 ### Qualified Path
 
 A _qualified_ path is a path which is not just a filename. Absolute paths are
-_always_ considered qualified paths. Relative paths may be a qualified path if
+qualified paths by definition. Relative paths may be a qualified path if
 it is more than just the leaf of a path.
 
 The distinction between a qualified path and a filename is important to some
@@ -227,7 +232,7 @@ within the `.` directory.
 
 ### Extension OR Extname
 
-The _extname_ of a file is the extension of the filename component, separated
+The _extname_ of a path is the extension of the filename component, separated
 from the rest of the filename with a dot `.`.
 
 ```
@@ -256,7 +261,7 @@ stem(/foo/bar) -> bar
 4. A filename can be used as if it were a path in any context that accepts a relative (unqualified) path.
 5. A path is _qualified_ if `leaf([path]) != [path]`
 6. A path is _absolute_ if `join([root_path], [path]) == [path]`, that is: The path is already joined with the root, and cannot be further qualified.
-7. The _root path_ is the only path with _no filename_.
+7. A _root path_ is the only type of path with neither a _filename_ nor _distinct parent_ path.
 
 Many old tools and libraries use different and conflicting terms to refer to
 paths. Avoid, if at all possible. When working with these tools, be mindful of
