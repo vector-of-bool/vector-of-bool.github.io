@@ -343,58 +343,130 @@ It was mentioned above that there should only be one `CMakeLists.txt` in the
 `src/` tree, and that it should not call `add_subdirectory()`. This is for the
 same purpose as outlined above: The source file paths should correspond to the
 namespace structure, and the source file paths used in `add_library()` and
-`add_executable` should match the paths passed when using `#include` in source
+`add_executable()` should match the paths passed when using `#include` in source
 files.
 
-Of course, more than one library can be added as part of a single `src/` structure. While this is not recommended, it is perfectly possible. To keep CMake files readable, it may be preferred to separate the different libraries into additional CMake files that are `include()`'d from the `src/CMakeLists.txt`
+## Subcomponents (Hint: Don't)
 
-For example, if I have a `vob-serialization` multiple libraries, it might have  this structure:
+Do not include more than one library in the same `src/` and `include/` tree!
+
+It is not recommended for most projects to use subcomponents and multiple
+linkable libraries. Subcomponent management is fraught with peril. Prefer
+instead to create a single global library and have users linked to that. If you
+generate a static library, the linker will discard object files from your
+static library that are not being used by the end result. This means that there
+is no space efficiency lost for using the single global library, and it makes
+the usage interface for user developers very easy when they only need to link
+in a single library.
+
+Even still, it may be useful for some large frameworks and libraries to be able
+to subdivide themselves into smaller chunks, especially if different
+subcomponents are optional or have dependencies that may or may not be present.
+
+If your project has subcomponents, create a `libs/` directory, and for each
+subcomponent `<foo>` create a `libs/<foo>` subdirectory. Within this
+subdirectory include another project structure roughly resembling the
+structure described in this document.
+
+For example, if I have a `vob-serialization` library that has JSON, XML, and
+YAML subcomponents, my source tree might look like this:
 
 ```
-<root>/
-  src/
+<root>
+  CMakeLists.txt
+  deps/
+  libs/
     CMakeLists.txt
-    json.cmake
-    xml.cmake
-    msgpack.cmake
-    yaml.cmake
-    vob/
-      common.hpp
-      json.hpp
-      json.cpp
-      xml.hpp
-      xml.cpp
-      msgpack.hpp
-      msgpack.cpp
-      yaml.hpp
-      yaml.cpp
+    json/
+      CMakeLists.txt
+      test/
+      src/
+        CMakeLists.txt
+        vob/
+          json.hpp
+          json.cpp
+    xml/
+      CMakeLists.txt
+      test/
+      src/
+        CMakeLists.txt
+        vob/
+          xml.hpp
+          xml.cpp
+    yaml/
+      CMakeLists.txt
+      test/
+      src/
+        CMakeLists.txt
+        vob/
+          yaml.hpp
+          yaml.cpp
 ```
 
-Then my `src/CMakeLists.txt` might look something like this:
+Each subcomponent has a mini-project in its `libs/` directory. Each
+`CMakeLists.txt` defines a single library for that subcomponent, and that
+library adds the local `src/` directory to its include path.
 
-```cmake
-add_library(vob-serialization-common INTERFACE)
-target_include_directories(vob-serialization-common INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
-add_library(vob::serialization_common ALIAS vob-serialization-common)
+### Why?
 
-include(json.cmake)
-include(xml.cmake)
-include(msgpack.cmake)
-include(yaml.cmake)
+The primary motivation for keeping subcomponents separate is to ensure that
+usage and division are clearly defined.
+
+If _all_ headers and sources live together in a single `include/` or `src/`
+directory, then _all_ headers will be visible to the user when they link to any
+of the libraries living in that source tree.
+
+For example, if a user links to `vob::json` for the JSON subcomponent of the
+example library, I do not want them to be able to `#include <vob/xml.hpp>`. If
+they were to include this file and try to call any functions within, they would
+end up with linker errors.
+
+In a similar sense, the headers for each subcomponent should also be
+_installed_ to distinct directories. This means that your headers _should not_
+be installed to a single `/usr/include` or similar.
+
+## Other Rules for Project Structure
+
+> Do not generate source files within the source tree, only the build tree.
+
+Keeping the source tree clean of generated files is essential. It leaves no room
+for ambiguity between generated and hand-made source files. If you must generate
+headers, generate them in the build tree and add the generated directory to
+your include path.
+
+> When installing, _do not_ install to global directories.
+
+Installing to global directories prevents users from installing multiple
+versions of your project side-by-side.
+
+Instead, install your linkable libraries and headers to a directory qualified
+by the name and version of the project.
+
+For example, if I have `vob-database` at version `1.2.1`, the install tree
+would look something like this:
+
+```
+<prefix>/
+  lib/
+    vob-database-1.2.1/
+      include/
+        vob/
+          database.hpp
+      lib/
+        libvob-database.a
+      cmake/
+        vob-databaseConfig.cmake
+        vob-databaseConfigVersion.cmake
 ```
 
-Where each of the included CMake files looks something like this:
+The imported targets from `vob-database` will add the proper include directories
+such that the user need not worry about the paths above.
 
-```cmake
-add_library(vob-<type> vob/<type>.hpp vob/<type>.cpp)
-target_link_libraries(vob-<type> PUBLIC vob::serialization_common)
-add_library(vob::<type> ALIAS vob-<type>)
-```
-
-Where `${type}` is the serialization type.
-
-(The code above omits rules to install the project, but they _would_ be included
-in these files).
+This also lends itself well to doing user-mode installs. If the above tree were
+to be installed via `sudo make install`, then all the installed files would
+appear in `/usr/local/lib/vob-database-1.2.1`, giving the user an easy to
+understand way to remove the install files if they wish, rather than splatting
+and mixing the files around with whatever else may be present in `/usr/local`.
 
 ---
 
