@@ -76,8 +76,6 @@ is truly irrelevant.
 
 Now for each subdirectory:
 
----
-
 ## Subdirectory: `cmake/`
 
 This directory is only required if you are using CMake and have
@@ -95,8 +93,6 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/")
 
 This will ensure that the `cmake/` subdirectory is included in the CMake
 module search path.
-
----
 
 ## Subdirectory: `deps/`
 
@@ -122,8 +118,6 @@ write a `deps/FooPackage.cmake` file that does the import, and
 `include(FooPackage.cmake)` from the `deps/CMakeLists.txt`.
 
 **DO NOT MODIFY EMBEDDED EXTERNAL PROJECTS BEYOND WHAT IS _NECESSARY_**.
-
----
 
 ## Subdirectory: `contrib/`
 
@@ -198,16 +192,12 @@ endif()
 a `contrib/` sub-project may depend on other `contrib/` sub-projects.
 </div>
 
----
-
 ## Subdirectory: `util/`
 
 This directory contains scripts and utilities that are "meta" to the project.
 This might include turn-key build scripts, linting scripts, test scripts, or
 whatever else might be useful to a developer working on the project. This is
 not part of the external-facing user interface for the project.
-
----
 
 ## Subdirectory: `test/`
 
@@ -247,8 +237,6 @@ project is the _root project_. If your project is included in someone else's
 project via `add_subdirectory()`, this check will fail and your tests will not
 be added to the includer's tests.
 
----
-
 ## Subdirectory: `include/`
 
 If you separate between private and public headers, the `include/` directory
@@ -263,8 +251,6 @@ distinction, put all of your headers in the `src/` directory.
 ### CMake User Notes:
 
 This directory _does not_ contain a `CMakeLists.txt`.
-
----
 
 ## Subdirectory: `src/`
 
@@ -293,20 +279,122 @@ This directory will contain a top-level `src/CMakeLists.txt`, but shouldn't
 contain any subdirectory CMake list files. The `src/CMakeLists.txt` should
 declare and define the libraries/executables that will be built for the project.
 
----
-
 ## Subdirectory: `doc/`
 
 This directory should contain documentation for the project. The documentation
 engine and methodology is not defined by this document.
-
----
 
 ## Subdirectory: `res/`
 
 This directory should contain other resources used by the project, such as
 icons and graphics. These are usually not edited as code, but by another
 external program.
+
+## Source and Header File Layout
+
+C++ has the concept of namespaces. C doesn't have namespaces, but it is
+conventional to prefix function and type names with a namespace to avoid name
+collision and ambiguity. These concepts are roughly equivalent for the purposes
+of this document.
+
+Header files should either mirror or _closely resemble_ the namespace structure
+of the project. This is only partially for developers: It is useful for
+consumers to understand where their `#include`s will resolve.
+
+Detail/implementation namespaces aren't necessary to represent in the directory
+structure.
+
+As an example, if we have a library call `vob-json` with a type called
+`vob::json`, the file structure might look like:
+
+```
+<root>/
+  {include,src}/
+    vob/
+      json.hpp
+      [json.cpp]
+```
+
+The `include/` (and/or `src/`) directory will be added to the include path for
+the project and consuming projects. This means `vob-json` users will use:
+
+```c++
+#include <vob/json.hpp>
+```
+
+to consume the project.
+
+This correspondence between namespaces and header structure allows users to
+easily understand and cross-correlate between `#include` path and namespace
+path. This is also useful for new developers as the location of a project
+component is easily locatable in this structure.
+
+**DO NOT place headers at the root of `include/` or `src/`**, except for
+posisbly a single "include everything" header for the case of simple libraries.
+
+This structure is also easy to install as the `include/` (or `src/`) directories
+can be installed directly without rearranging the files, and both the library
+itself and external consumers will see the same directory structure when using
+your project.
+
+## CMake Notes
+
+It was mentioned above that there should only be one `CMakeLists.txt` in the
+`src/` tree, and that it should not call `add_subdirectory()`. This is for the
+same purpose as outlined above: The source file paths should correspond to the
+namespace structure, and the source file paths used in `add_library()` and
+`add_executable` should match the paths passed when using `#include` in source
+files.
+
+Of course, more than one library can be added as part of a single `src/` structure. While this is not recommended, it is perfectly possible. To keep CMake files readable, it may be preferred to separate the different libraries into additional CMake files that are `include()`'d from the `src/CMakeLists.txt`
+
+For example, if I have a `vob-serialization` multiple libraries, it might have  this structure:
+
+```
+<root>/
+  src/
+    CMakeLists.txt
+    json.cmake
+    xml.cmake
+    msgpack.cmake
+    yaml.cmake
+    vob/
+      common.hpp
+      json.hpp
+      json.cpp
+      xml.hpp
+      xml.cpp
+      msgpack.hpp
+      msgpack.cpp
+      yaml.hpp
+      yaml.cpp
+```
+
+Then my `src/CMakeLists.txt` might look something like this:
+
+```cmake
+add_library(vob-serialization-common INTERFACE)
+target_include_directories(vob-serialization-common INTERFACE $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+add_library(vob::serialization_common ALIAS vob-serialization-common)
+
+include(json.cmake)
+include(xml.cmake)
+include(msgpack.cmake)
+include(yaml.cmake)
+```
+
+Where each of the included CMake files looks something like this:
+
+```cmake
+add_library(vob-<type> vob/<type>.hpp vob/<type>.cpp)
+target_link_libraries(vob-<type> PUBLIC vob::serialization_common)
+add_library(vob::<type> ALIAS vob-<type>)
+```
+
+Where `${type}` is the serialization type.
+
+(The code above omits rules to install the project, but they _would_ be included
+in these files).
 
 ---
 
