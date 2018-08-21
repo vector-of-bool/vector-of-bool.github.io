@@ -63,7 +63,6 @@ is truly irrelevant.
 - The following **subdirectories** may or may not be present, as
   necessary:
   - `include/`
-  - `lib/`
   - `src/`
   - `test/`
   - `util/`
@@ -259,7 +258,7 @@ of your headers are public (you have no private headers), this directory is
 optional.
 
 If you want to ship headers, but do not have a private/public header
-distinction, put all of your headers in the `lib/` directory.
+distinction, put all of your headers in the `src/` directory.
 
 ### CMake User Notes:
 
@@ -267,36 +266,32 @@ This directory _does not_ contain a `CMakeLists.txt`.
 
 ---
 
-## Subdirectory: `lib/`
+## Subdirectory: `src/`
 
-This directory should contain all of the main source files for you project,
-except those containing any entry points (`main()` functions).
+This should contain all of the source files for the project, other than those in `include/`, if any.
 
 If you have separate private and public headers, place private headers in this
-directory. If you do not have any private headers, place headers in this
+directory. If you do not have any private headers, you may place headers in this
 directory.
 
 Always place header files alongside their respective source file, if applicable.
 
-### CMake User Notes:
+If you merge sources and public headers together in this directory, install
+rules can install the content of this directory to `include/`, excluding any
+non-header files in the install. This can be achieved by matching the header
+filename using a globbing expression.
 
-This directory will contain a top-level `lib/CMakeLists.txt`, but shouldn't
-contain any subdirectory CMake list files. The `lib/CMakeLists.txt` should
-declare and define the libraries that will be built for the project.
+<div class="aside note" markdown="1">
+### Note
 
----
-
-## Subdirectory: `src/`
-
-This directory should be flat, and contain one source file for every executable
-in your project. Each source file will be compiled and linked into an
-executable, consuming the content of `lib/` and `include/` as necessary.
+Check below on the subject of `src/` and `include/` structure.
+</div>
 
 ### CMake User Notes:
 
-This directory will contain a single `src/CMakeLists.txt`. It should define an
-executable for every source file in that directory, and link them to the
-required libraries.
+This directory will contain a top-level `src/CMakeLists.txt`, but shouldn't
+contain any subdirectory CMake list files. The `src/CMakeLists.txt` should
+declare and define the libraries/executables that will be built for the project.
 
 ---
 
