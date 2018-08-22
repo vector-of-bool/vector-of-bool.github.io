@@ -89,7 +89,7 @@ of your `CMakeLists.txt`, **before your call to `project()`**, place this
 line:
 
 ```cmake
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 ```
 
 This will ensure that the `cmake/` subdirectory is included in the CMake
