@@ -66,10 +66,11 @@ is truly irrelevant.
   - `src/`
   - `test/`
   - `util/`
-  - `contrib/`
-  - `deps/`
+  - `extras/`
+  - `third_party/`
   - `doc/`
   - `res/`
+  - `examples/`
   - `cmake/` (CMake only)
 - You may also have tool configuration files, such as `.clang-format`,
   `.clang-tidy`, `.gitignore`, `.hgignore`, and similar.
@@ -94,53 +95,54 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/")
 This will ensure that the `cmake/` subdirectory is included in the CMake
 module search path.
 
-## Subdirectory: `deps/`
+## Subdirectory: `third_party/`
 
 If you embed and distribution external projects in your source structure,
 place them in here. **Each external dependency should receive its own
 subdirectory.**
 
-For example, to embed *Catch2* for testing, a subdirectory `deps/Catch2`
+For example, to embed *Catch2* for testing, a subdirectory `third_party/Catch2`
 will appear. In there will be the code for the embedded library.
 
 ### CMake User Notes:
 
-Add a `deps/CMakeLists.txt` to the project structure. Call
+Add a `third_party/CMakeLists.txt` to the project structure. Call
 `add_subdirectory(deps)` from your root `CMakeLists.txt`.
 
 If an external library supports using `add_subdirectory()` on it, add a
-call to `add_subdirectory()` in the `deps/CMakeLists.txt` for that
+call to `add_subdirectory()` in the `third_party/CMakeLists.txt` for that
 project.
 
 If a project _does not_ support CMake embedding, or you prefer to import
 the dependency in a different manner, for a dependency `FooPackage`,
-write a `deps/FooPackage.cmake` file that does the import, and
-`include(FooPackage.cmake)` from the `deps/CMakeLists.txt`.
+write a `third_party/FooPackage.cmake` file that does the import, and
+`include(FooPackage.cmake)` from the `third_party/CMakeLists.txt`.
 
 **DO NOT MODIFY EMBEDDED EXTERNAL PROJECTS BEYOND WHAT IS _NECESSARY_**.
 
-## Subdirectory: `contrib/`
+## Subdirectory: `extras/`
 
-This contains "add-ons" to the main source code. A library consumer
-should have the option to enable/disable these components as necessary at
-build time. Each contribution must occupy another subdirectory of
-`contrib/` with an appropriate name.
+This contains "add-ons" to the main source code. These might be components that
+require special dependencies, or components that are not necessary for the
+building of the main project. A library consumer should have the option to
+enable/disable these components as necessary at build time. Each component
+must occupy another subdirectory of `extras/` with an appropriate name.
 
-Each subdirectory of `contrib/` should also have its own project structure
+Each subdirectory of `extras/` should also have its own project structure
 mirroring the layout proposed in this document.
 
 This directory is entirely optional.
 
 ### CMake User Notes:
 
-Add a `contrib/CMakeLists.txt`. Unconditionally
-`add_subdirectory(contrib)` from the root `CMakeLists.txt`.
+Add a `extras/CMakeLists.txt`. Unconditionally `add_subdirectory(extras)` from
+the root `CMakeLists.txt`.
 
-The `contrib/CMakeLists.txt` file should contain the relevant cache
-variable/option declarations for enabling/disabling each subdirectory.
+The `extras/CMakeLists.txt` file should contain the relevant cache
+variable/option declarations for enabling/disabling each subcomponent.
 
 After each enablement option should be a conditional
-`add_subdirectory(<foo>)` for the corresponding `contrib/<foo>`
+`add_subdirectory(<foo>)` for the corresponding `extras/<foo>`
 subdirectory.
 
 For example, if you have a project structure like this:
@@ -148,27 +150,27 @@ For example, if you have a project structure like this:
 ```
 <root>/
   CMakeLists.txt
-  contrib/
+  extras/
     CMakeLists.txt
     foo/
     bar/
     baz/
 ```
 
-then the `contrib/CMakeLists.txt` might look like this:
+then the `extras/CMakeLists.txt` might look like this:
 
 ```cmake
 # Optionally enable the `foo` extension
-option(BUILD_CONTRIB_FOO "Build the 'foo' extension" ON)
+option(BUILD_FOO "Build the 'foo' extension" ON)
 # Include if they requested it:
-if(BUILD_CONTRIB_FOO)
+if(BUILD_FOO)
     add_subdirectory(foo)
 endif()
 
 # They can chose either `bar` or `baz`, or disable it with `none`
 set(EXTRA_THING_MODE "none"
     CACHE STRING
-    "The mode for the extra contribution [none, bar, baz]"
+    "The mode for the extra thing [none, bar, baz]"
     )
 # Declare the options for the cache value:
 set_property(CACHE EXTRA_THING_MODE PROPERTY STRINGS none bar baz)
@@ -188,16 +190,17 @@ endif()
 <div class="admonition" markdown="1">
 # Lookout!
 
-**Nothing** from the main source tree should depend on a `contrib/`, but
-a `contrib/` sub-project may depend on other `contrib/` sub-projects.
+**Nothing** from the main source tree should depend on a `extras/`, but
+an `extras/` sub-project may depend on other `extras/` sub-projects.
 </div>
 
 ## Subdirectory: `util/`
 
 This directory contains scripts and utilities that are "meta" to the project.
-This might include turn-key build scripts, linting scripts, test scripts, or
-whatever else might be useful to a developer working on the project. This is
-not part of the external-facing user interface for the project.
+This might include turn-key build scripts, linting scripts, code-generation
+scripts, test scripts, or whatever else might be useful to a developer working
+on the project. This is not part of the external-facing user interface for the
+project.
 
 ## Subdirectory: `test/`
 
@@ -236,6 +239,28 @@ The check `PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR` is a check that your
 project is the _root project_. If your project is included in someone else's
 project via `add_subdirectory()`, this check will fail and your tests will not
 be added to the includer's tests.
+
+## Subdirectory: `examples/`
+
+If you generate a library (or a program that might benefit from examples), they
+should be placed here. The structure of this directory isn't prescribed by this
+document.
+
+### CMake User Notes
+
+Just like with `test/`, this directory should contain a `CMakeLists.txt` and
+its inclusion be optional:
+
+```cmake
+project(MyProject VERSION 1.0.0)
+
+# ...
+
+option(BUILD_EXAMPLES "Build examples" ON)
+if(BUILD_EXAMPLES AND (PROJECT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR))
+    add_subdirectory(examples)
+endif()
+```
 
 ## Subdirectory: `include/`
 
@@ -374,7 +399,7 @@ YAML subcomponents, my source tree might look like this:
 ```
 <root>
   CMakeLists.txt
-  deps/
+  third_party/
   libs/
     CMakeLists.txt
     json/
