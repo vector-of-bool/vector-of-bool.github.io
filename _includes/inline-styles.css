@@ -379,21 +379,17 @@ div.page-container {
   flex-direction: column;
 }
 
-div.page-container h1,
-div.page-container h2,
-div.page-container h3 {
+div.page-container :matches(h1, h2, h3) {
   color: #fcfcfc;
   margin-bottom: 15px;
 }
 
-div.page-container h1,
-div.page-container h2 {
+div.page-container :matches(h1, h2) {
   border-bottom: 1px solid #eaecef4d;
   padding-bottom: 2px;
 }
 
-div.page-container h2:not(:first-child),
-div.page-container h3:not(:first-child) {
+div.page-container :matches(h2, h3):not(:first-child) {
   margin-top: 15px;
 }
 
@@ -429,9 +425,7 @@ div.page-container .admonition {
   margin: 15px;
 }
 
-div.page-container .admonition h1,
-div.page-container .admonition h2,
-div.page-container .admonition h3 {
+div.page-container .admonition :matches(h1, h2, h3) {
   margin: 0 0 10px 0;
   border-bottom: 1px solid gray;
   color: #222;
@@ -540,14 +534,19 @@ div.highlighter-rouge > pre.highlight {
   background-color: darkred;
 }
 
-div.aside > p:first-of-type,
-div.admonition > p:first-of-type {
+:matches(div.aside, div.admonition) > p:first-of-type {
   margin-top: 0;
 }
 
-blockquote {
-  font-style: italic;
-  font-size: 16pt;
+.post blockquote {
+  font-size: 14pt;
+  border-left: 3px solid #eee;
+  padding-left: 10px;
+  margin: 10px;
+}
+
+.post blockquote > p {
+  line-height: 1.2em;
 }
 
 div.footnotes > p {
@@ -556,6 +555,10 @@ div.footnotes > p {
 }
 
 div.image-frame {
+  text-align: center;
+}
+
+div.image-frame > :first-child {
   border-radius: 5px;
   overflow: hidden;
   box-shadow:
@@ -564,19 +567,17 @@ div.image-frame {
     0 2px 8px rgba(0, 0, 0, 0.15);
   will-change: box-shadow;
   transition: box-shadow 100ms linear, transform 100ms linear;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
 }
 
-div.image-frame:hover {
+div.image-frame > :first-child:hover {
   box-shadow:
     0 4px 8px rgba(0, 0, 0, 0.5),
     0 4px 11px rgba(0, 0, 0, 0.2),
     0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-div.image-frame > p {
-  margin: 0;
-  padding: 0;
-  line-height: 0;
 }
 
 @media (max-width: 960px) {
