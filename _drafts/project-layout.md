@@ -97,7 +97,7 @@ module search path.
 
 ## Subdirectory: `third_party/`
 
-If you embed and distribution external projects in your source structure,
+If you embed and distribute external projects in your source structure,
 place them in here. **Each external dependency should receive its own
 subdirectory.**
 
@@ -107,7 +107,7 @@ will appear. In there will be the code for the embedded library.
 ### CMake User Notes:
 
 Add a `third_party/CMakeLists.txt` to the project structure. Call
-`add_subdirectory(deps)` from your root `CMakeLists.txt`.
+`add_subdirectory(third_party)` from your root `CMakeLists.txt`.
 
 If an external library supports using `add_subdirectory()` on it, add a
 call to `add_subdirectory()` in the `third_party/CMakeLists.txt` for that
