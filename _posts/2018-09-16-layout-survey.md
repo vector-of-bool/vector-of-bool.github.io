@@ -465,7 +465,11 @@ The survey was very informative, and I've been making good progress on the
 Pitchfork document. I feel like it is approaching a point where the trade-offs
 are minimal, and the layout will support virtually all projects of any scale.
 
+Future Pitchfork developments will be happening in
+[the `pitchfork` repository](https://github.com/vector-of-bool/pitchfork).
+
 [The latest rendered version of the Pitchfork document for the `spec` branch
-can be found here](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/spec/data/spec.bs). If you are reading in the future, you may want [a later rendering from the
-`develop` branch here](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs). As of writing this, the
-`spec` branch is more up-to-date.
+can be found here](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/spec/data/spec.bs).
+If you are reading in the future, you may want [a later rendering from the
+`develop` branch here](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs).
+As of writing this, the `spec` branch is more up-to-date.
