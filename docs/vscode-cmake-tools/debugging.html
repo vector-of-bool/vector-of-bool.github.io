@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Target Debugging and Launching &#8212; CMake Tools 1.1.1
+    <title>Target Debugging and Launching &#8212; CMake Tools 1.1.2
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="building.html" title="CMake Building"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.1
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.2
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -125,7 +125,16 @@ target:</p>
             <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[],</span>
             <span class="s2">&quot;stopAtEntry&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
             <span class="s2">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{workspaceFolder}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PATH&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;$PATH:$HOME/some_path&quot;</span>
+                <span class="p">},</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OTHER_VALUE&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Something something&quot;</span>
+                <span class="p">}</span>
+            <span class="p">],</span>
             <span class="s2">&quot;externalConsole&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
             <span class="s2">&quot;MIMode&quot;</span><span class="p">:</span> <span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
             <span class="s2">&quot;setupCommands&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -218,7 +227,7 @@ or the associated keybinding (the default is <kbd class="kbd docutils literal no
         <li class="right" >
           <a href="building.html" title="CMake Building"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.1
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.2
  documentation</a> &#187;</li> 
       </ul>
     </div>

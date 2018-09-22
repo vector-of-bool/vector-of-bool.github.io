@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>InputFile | cmake-tools</title>
+	<title>BadHomeDirectoryError | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,13 +54,13 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_dirty_.html">&quot;dirty&quot;</a>
+					<a href="../modules/_cms_client_.html">&quot;cms-client&quot;</a>
 				</li>
 				<li>
-					<a href="_dirty_.inputfile.html">InputFile</a>
+					<a href="_cms_client_.badhomedirectoryerror.html">BadHomeDirectoryError</a>
 				</li>
 			</ul>
-			<h1>Class InputFile</h1>
+			<h1>Class BadHomeDirectoryError</h1>
 		</div>
 	</div>
 </header>
@@ -71,7 +71,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">InputFile</span>
+						<span class="tsd-signature-type">Error</span>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">BadHomeDirectoryError</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -82,21 +87,19 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_dirty_.inputfile.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_cms_client_.badhomedirectoryerror.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_dirty_.inputfile.html#filepath" class="tsd-kind-icon">file<wbr>Path</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_dirty_.inputfile.html#mtime" class="tsd-kind-icon">mtime</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_dirty_.inputfile.html#checkoutofdate" class="tsd-kind-icon">check<wbr>Out<wbr>OfDate</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_dirty_.inputfile.html#create" class="tsd-kind-icon">create</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_cms_client_.badhomedirectoryerror.html#badcachepath" class="tsd-kind-icon">bad<wbr>Cache<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_cms_client_.badhomedirectoryerror.html#cached" class="tsd-kind-icon">cached</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_cms_client_.badhomedirectoryerror.html#expecting" class="tsd-kind-icon">expecting</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><a href="_cms_client_.badhomedirectoryerror.html#error" class="tsd-kind-icon">Error</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_cms_client_.badhomedirectoryerror.html#message" class="tsd-kind-icon">message</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static"><a href="_cms_client_.badhomedirectoryerror.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static"><a href="_cms_client_.badhomedirectoryerror.html#stack" class="tsd-kind-icon">stack</a></li>
 							</ul>
 						</section>
 					</div>
@@ -108,25 +111,28 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Input<wbr>File<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mtime<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Bad<wbr>Home<wbr>Directory<wbr>Error<span class="tsd-signature-symbol">(</span>cached<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, expecting<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, badCachePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_cms_client_.badhomedirectoryerror.html" class="tsd-signature-type">BadHomeDirectoryError</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/dirty.ts#L11">dirty.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/cms-client.ts#L356">cms-client.ts:356</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
+									<h5>cached: <span class="tsd-signature-type">string</span></h5>
 								</li>
 								<li>
-									<h5>mtime: <span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></h5>
+									<h5>expecting: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>badCachePath: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_cms_client_.badhomedirectoryerror.html" class="tsd-signature-type">BadHomeDirectoryError</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -134,67 +140,78 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="filepath" class="tsd-anchor"></a>
-					<h3>file<wbr>Path</h3>
-					<div class="tsd-signature tsd-kind-icon">file<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="badcachepath" class="tsd-anchor"></a>
+					<h3>bad<wbr>Cache<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">bad<wbr>Cache<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/dirty.ts#L12">dirty.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/cms-client.ts#L357">cms-client.ts:357</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="mtime" class="tsd-anchor"></a>
-					<h3>mtime</h3>
-					<div class="tsd-signature tsd-kind-icon">mtime<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Date</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<a name="cached" class="tsd-anchor"></a>
+					<h3>cached</h3>
+					<div class="tsd-signature tsd-kind-icon">cached<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/dirty.ts#L12">dirty.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/cms-client.ts#L357">cms-client.ts:357</a></li>
 						</ul>
 					</aside>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="checkoutofdate" class="tsd-anchor"></a>
-					<h3>check<wbr>Out<wbr>OfDate</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">check<wbr>Out<wbr>OfDate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/dirty.ts#L14">dirty.ts:14</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="expecting" class="tsd-anchor"></a>
+					<h3>expecting</h3>
+					<div class="tsd-signature tsd-kind-icon">expecting<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/cms-client.ts#L357">cms-client.ts:357</a></li>
+						</ul>
+					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
-					<a name="create" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> create</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">create<span class="tsd-signature-symbol">(</span>filePath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/dirty.ts#L28">dirty.ts:28</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>filePath: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_dirty_.inputfile.html" class="tsd-signature-type">InputFile</a><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-static">
+					<a name="error" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> Error</h3>
+					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in /home/colby/Documents/Programming/hello-vscode/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:896</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="message" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> message</h3>
+					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.message</p>
+						<ul>
+							<li>Defined in /home/colby/Documents/Programming/hello-vscode/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:886</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+					<a name="name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.name</p>
+						<ul>
+							<li>Defined in /home/colby/Documents/Programming/hello-vscode/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:885</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+					<a name="stack" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
+					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from Error.stack</p>
+						<p>Overrides Error.stack</p>
+						<ul>
+							<li>Defined in /home/colby/Documents/Programming/hello-vscode/node_modules/typedoc/node_modules/typescript/lib/lib.es5.d.ts:887</li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -205,7 +222,7 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_dirty_.html">"dirty"</a>
+						<a href="../modules/_cms_client_.html">"cms-<wbr>client"</a>
 					</li>
 				</ul>
 			</nav>
@@ -214,30 +231,36 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_dirty_.inputfile.html" class="tsd-kind-icon">Input<wbr>File</a>
+						<a href="_cms_client_.badhomedirectoryerror.html" class="tsd-kind-icon">Bad<wbr>Home<wbr>Directory<wbr>Error</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_dirty_.inputfile.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_cms_client_.badhomedirectoryerror.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_dirty_.inputfile.html#filepath" class="tsd-kind-icon">file<wbr>Path</a>
+								<a href="_cms_client_.badhomedirectoryerror.html#badcachepath" class="tsd-kind-icon">bad<wbr>Cache<wbr>Path</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_dirty_.inputfile.html#mtime" class="tsd-kind-icon">mtime</a>
+								<a href="_cms_client_.badhomedirectoryerror.html#cached" class="tsd-kind-icon">cached</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_dirty_.inputfile.html#checkoutofdate" class="tsd-kind-icon">check<wbr>Out<wbr>OfDate</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_cms_client_.badhomedirectoryerror.html#expecting" class="tsd-kind-icon">expecting</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
-								<a href="_dirty_.inputfile.html#create" class="tsd-kind-icon">create</a>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-static">
+								<a href="_cms_client_.badhomedirectoryerror.html#error" class="tsd-kind-icon">Error</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_cms_client_.badhomedirectoryerror.html#message" class="tsd-kind-icon">message</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-static">
+								<a href="_cms_client_.badhomedirectoryerror.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-overwrite tsd-is-inherited tsd-is-static">
+								<a href="_cms_client_.badhomedirectoryerror.html#stack" class="tsd-kind-icon">stack</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_dirty_.inputfileset.html" class="tsd-kind-icon">Input<wbr>File<wbr>Set</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
