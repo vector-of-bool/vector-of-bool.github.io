@@ -183,11 +183,11 @@ oh
 
 oh no
 
-Say hello to *The `try/catch` Mountain*. It emerges when we want to catch
-handle exceptions differently while maintaining the same variable scopes. We
-need to open the new `try/catch` pair for the output file *within* the
-`try/catch` pair for the input file, because we need them to both file stream
-objects be in scope *at the same *time*.
+Say hello to *The `try/catch` Mountain*. It emerges when we want to handle
+exceptions differently while maintaining the same variable scopes. We need to
+open the new `try/catch` pair for the output file *within* the `try/catch` pair
+for the input file, because we need both of the file stream objects be in scope
+*at the same *time*.
 
 > *But Vector! We don't need that level of granularity when dealing with
 > errors!*
@@ -442,7 +442,7 @@ But... *we need to go deeper*.
 Another syntax: `continue try {}`. What does it do? Well, if `continue {}`
 "pops" the exception-handler "stack" without replacing block scope, then
 `continue try {}` *replaces* the top of the exception handler stack without
-replacing block scope. Here's the small example with `read_file()`, for:
+replacing block scope. Here's the small example with `read_file()`:
 
 ```c++
 optional<string> read_file(path p) {
@@ -518,7 +518,7 @@ the `}` of the final `continue [try] {}` block, and that brings us to...
 # The Biggest Downside
 
 For as long as C++ has existed, we've been able to know *without a doubt* that
-the lifetime of an objects ends at the closing `}` brace for the block in which
+the lifetime of an object ends at the closing `}` brace for the block in which
 the object is declared. With `try/catch/continue`, we'd be giving up on that
 guarantee when we see a `} catch`. One will have to look for a
 `continue [try] {` to check.
