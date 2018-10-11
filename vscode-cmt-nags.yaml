@@ -1,2 +1,6 @@
 nags: []
-latestCMakeVersion: 3.12.3
+latestCMake:
+  version: 3.12.3
+  linuxURL: https://cmake.org/files/v3.12/cmake-3.12.3-Linux-x86_64.sh
+  windowsURL: https://cmake.org/files/v3.12/cmake-3.12.3-win64-x64.msi
+
