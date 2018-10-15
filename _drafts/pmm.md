@@ -25,7 +25,7 @@ with their existing codebase without them having to make any changes to their
 project and build system. Well I have some bad news: They don't, they won't,
 and (in my opinion) they shouldn't. But... that's a subject for another post.
 
-# The Basic Hurtles
+# The Basic Hurdles
 
 Adopting a package manager for a project presents a few challenges. I'll talk
 about Conan and vcpkg for now (and you'll see why in a moment).
@@ -155,10 +155,10 @@ do you not want to force your users to learn and use `<tool>`?*
 
 It boils down to empathy. We do not want to force our user to do something
 difficult: It will hurt our adoption. Now *why* do we say that adopting these
-tools is difficult? Well, we can go back to *The Basic Hurtles* section above
+tools is difficult? Well, we can go back to *The Basic Hurdles* section above
 and see why.
 
-The root problem is not that *we ourselves* refuse to jump these hurtles, but
+The root problem is not that *we ourselves* refuse to jump these hurdles, but
 that we know that our users will prefer a solution which does not require one.
 If the onboarding and consumption process of my project is *just slightly more
 difficult* than a competing project, users will opt for the easier solution.
