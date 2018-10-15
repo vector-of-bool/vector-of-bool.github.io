@@ -45,7 +45,7 @@ about Conan and vcpkg for now (and you'll see why in a moment).
   - For vcpkg, you `vcpkg install [pkg-name [...]]` to install some packages,
     then pass `-DCMAKE_TOOLCHAIN_FILE=<path-to-vcpkg.cmake>` when you run your
     CMake configure, then `find_package()` the requirements you want to import.
-    The way you link to those packages depends on the individual pakage
+    The way you link to those packages depends on the individual package
 - How do I upgrade the Package Manager?
   - For Conan, you use `pip install conan -U`, or `pip install conan==<version>`
     for a particular version. You need to run this periodically, as Conan won't
@@ -84,7 +84,7 @@ Let's say I run a moderately successful open source library, and I'm tired of
 getting bug reports about trouble using the library with dependency versions
 that I don't support. I *could* go the route of simply documenting *exactly*
 what versions of dependencies are supported, but documentation is to users
-as code comments are to compilers. We know how to fix useless comments: Make
+as code comments are to compilers. And we know how to fix useless comments: Make
 them tool-enforced!
 
 So I drop a `conanfile.txt` into my project and update the `CMakeLists.txt` to
@@ -96,14 +96,14 @@ manager.
 If you're like many C++ developers, you probably just recoiled in horror at the
 thought. Let's explore those feelings, and some common objections:
 
-> "`apt` and `yum` are perfectly fine dependency managers for building open
-> source libraries!"
+> "`apt` and `yum` are perfectly fine package managers for open source
+> libraries."
 
 I could spend a good few posts just talking about everything wrong with this
 sentiment. It's just wrong. I won't even bother explaining it here, but maybe
 I'll write another post if I get enough hate-mail.
 
-> "My dependencies aren't available in Conan/vcpkg!"
+> "My dependencies aren't available in Conan/vcpkg."
 
 This is a valid objection, but I can't help but feel it causes the problem to
 perpetuate. People don't use the package manager, and therefore their libraries
@@ -123,9 +123,9 @@ The problem is the same, and the solution is the same: Contribute!
 > "I don't want to install another tool when I'm already using CMake!"
 
 This objection simply makes no sense. If you have ten dependencies, you're
-downloading and managing ten external items (plus any transitive dependencies).
-You could instead hand over those 10+ tasks to a single tool dedicated to the
-job. It'll probably do the task better than you anyway.
+already downloading and managing ten external items (plus any transitive
+dependencies). You could instead hand over those 10+ tasks to a single tool
+dedicated to the job. It'll probably do the task better than you anyway.
 
 > "I don't need something new. What I have already works."
 
@@ -186,7 +186,7 @@ an addition to CMake that makes using a package and dependency manager
 drop-dead simple for both developers and consumers.
 
 Why CMake? It's the most popular build system for C++ code these days (for
-better or  worse). It is fairly well supported by packaging tools, and it is
+better or worse). It is fairly well supported by packaging tools, and it is
 the build system in which I have the most expertise. Similar tools could be
 created for other build systems, but for now I've implemented one for CMake.
 
@@ -199,23 +199,23 @@ supports Conan and vcpkg, but other packaging systems could also be supported
 in the future.
 
 In particular, PMM is implemented as pure CMake script code that will
-automatically download, bootstrap, extract, and control other package managers.
+automatically download, bootstrap, extract, and control package managers.
 
 For Conan, all you need is a relatively recent Python installation. Any recent
 Linux distribution will be ready to use Conan in PMM. Windows users will need
-to install Python 3, if they haven't already.
+to have Python 3, if they haven't already.
 
-For vcpkg, Python is not required. All you need is a relatively recent C++
-compiler.
+For vcpkg, Python obviously is not required. All you need is a relatively
+recent C++ compiler.
 
 ## What Does PMM Look Like? How Do I Use It?
 
 To use PMM, you will need to make the following three changes to your project:
 
 1. Download `pmm.cmake` and place it in your project repository. Do not download
-   this file automatically. Do not make this file optional for your build. Do
-   not install this file externally. Do not embed this file's contents within
-   another file.
+   this file automatically as a build step. Do not make this file optional for
+   your build. Do not install this file externally. Do not embed this file's
+   contents within another file.
 2. `include()` the `pmm.cmake` file from your root `CMakeLists.txt`.
 3. Call the `pmm()` CMake function.
 
@@ -250,7 +250,7 @@ No longer do you need to direct your users to download dependencies manually
 and fret about how they might do that depending on their platform. PMM will
 ensure the dependency manager will be run and do it for them, and your
 dependencies are encoded in your repository as code, rather than hoping and
-praying that your user or CI server have the correct version of their
+praying that your user or CI server have the correct versions of the
 dependencies.
 
 ## Enabling Users
