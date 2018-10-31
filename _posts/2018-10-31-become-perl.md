@@ -346,7 +346,7 @@ At least it can get away from the `-> decltype(...)` part.
 If we had a "forwarding operator", the code might look something like this:
 
 ```c++
-[&](auto&&... args) -> decltype(~>args...)) {
+[&](auto&&... args) -> decltype(do_work(~>args...)) {
     return do_work(~>args...);
 }
 ```
