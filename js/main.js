@@ -186,4 +186,20 @@ const area = document.getElementById('smart-content-area');
 const man = window._AreaManager = new SmartContentManager(area);
 man.setup();
 
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistration().then(async reg => {
+    if (!reg) {
+      console.log('No service worker was registered. Nothing to do.');
+      return;
+    }
+    console.log('Stale service worker found. Unregistering...');
+    const didUnregister = await reg.unregister();
+    if (didUnregister) {
+      console.log('Service worker was unregistered');
+    } else {
+      console.log('Failed to unregister our service worker. Huh?');
+    }
+  });
+}
+
 console.log('JavaScript was loaded successfully.');
