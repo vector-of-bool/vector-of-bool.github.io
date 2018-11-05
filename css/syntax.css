@@ -60,7 +60,7 @@ code,pre {
 .highlight .s { color: #ed9d13 } /* Literal.String */
 .highlight .na { color: #bbbbbb } /* Name.Attribute */
 .highlight .nb { color: #24909d } /* Name.Builtin */
-.highlight .nc { color: #d0d0d0; text-decoration: underline } /* Name.Class */
+.highlight .nc { color: #d0d0d0 } /* Name.Class */
 .highlight .no { color: #40ffff } /* Name.Constant */
 .highlight .nd { color: #ffa500 } /* Name.Decorator */
 .highlight .ni { color: #d0d0d0 } /* Name.Entity */
