@@ -503,8 +503,11 @@ code.highlighter-rouge {
   padding: 0 3px;
   background-color: rgba(0,0,0,0.05);
 }
+div.highlighter-rouge > .highlight {
+  padding: 0;
+}
 
-div.highlighter-rouge > pre.highlight {
+div.highlighter-rouge > .highlight > .highlight {
   overflow-x: auto;
   padding: 10px;
   margin: 0;
