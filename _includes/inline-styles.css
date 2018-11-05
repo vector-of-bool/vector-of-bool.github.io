@@ -108,7 +108,7 @@ header .subtitle {
   margin: 0;
 }
 
-vb-content {
+[vb-content] {
   min-width: 900px;
   max-width: 900px;
   margin: 0 auto;
@@ -119,9 +119,13 @@ vb-content {
   position: relative;
 }
 
-vb-content [clipper] {
+[vb-content] [clipper] {
   overflow: hidden;
   position: relative;
+}
+
+[vb-content] [clipper] [holder] {
+  position: absolute;
 }
 
 .post .post-content {
@@ -195,7 +199,7 @@ vb-project .body .icon-container {
   flex-shrink: 0;
 }
 
-vb-content > [backdrop] {
+[vb-content] > [backdrop] {
   z-index: -10;
   position: absolute;
   border-top-left-radius: 0;
@@ -218,7 +222,7 @@ vb-content > [backdrop] {
   text-align: justify;
 }
 
-vb-content [content] {
+[vb-content] [content] {
   z-index: -1;
   display: -mx-flexbox;
   display: -webkit-flex;
@@ -231,24 +235,24 @@ vb-content [content] {
   text-align: justify;
 }
 
-vb-content h1:not(.post-title),
-vb-content h2,
-vb-content h3,
-vb-content h4,
-vb-content h5,
-vb-content h6 {
+[vb-content] h1:not(.post-title),
+[vb-content] h2,
+[vb-content] h3,
+[vb-content] h4,
+[vb-content] h5,
+[vb-content] h6 {
   text-align: initial;
 }
 
-vb-content h1 {
+[vb-content] h1 {
   font-size: 2em;
 }
 
-vb-content h2 {
+[vb-content] h2 {
   font-size: 1.5em;
 }
 
-vb-content div[content]:not(.override-img-styles) img {
+[vb-content] div[content]:not(.override-img-styles) img {
   width: 100% !important;
   height: auto !important;
 }
@@ -585,7 +589,7 @@ div.image-frame > :first-child:hover {
     max-width: none;
   }
 
-  vb-content {
+  [vb-content] {
     margin: 0;
     width: 100%;
     max-width: unset;
@@ -597,7 +601,7 @@ div.image-frame > :first-child:hover {
     margin-bottom: 0;
   }
 
-  vb-content > [backdrop] {
+  [vb-content] > [backdrop] {
     border-radius: 0;
   }
 }

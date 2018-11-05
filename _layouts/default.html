@@ -8,7 +8,7 @@
   {% include header.html %}
 
   <div class="page-container">
-    <vb-content aria-label="Content">
+    <div vb-content id=smart-content-area aria-label="Content">
       <div backdrop class=container-rect></div>
       <div clipper>
         <div holder></div>
@@ -61,7 +61,7 @@
           {% endif %}
         </div>
       </div>
-    </vb-content>
+    </div vb-content>
   </div>
   <div class="flex"></div>
   <vb-footer>
@@ -89,7 +89,6 @@
   </vb-footer>
 
   <link rel="stylesheet" href="/css/syntax.css">
-  <paper-toast id=toast></paper-toast>
 </body>
 
 </html>
