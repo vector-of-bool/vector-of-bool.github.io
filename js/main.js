@@ -73,7 +73,7 @@ class SmartContentManager {
 
   _bindLinks() {
     for (const el of document.querySelectorAll('a')) {
-      if (el._eventsStolen || !el.href.startsWith(location.origin) || el.pathname.startsWith('/docs/')) {
+      if (el._eventsStolen || !el.href.startsWith(location.origin) || /^\/(docs\/|feed.xml)/.test(el.pathname)) {
         continue;
       }
       this._bindLink(el);
