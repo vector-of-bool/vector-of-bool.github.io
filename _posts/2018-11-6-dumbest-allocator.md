@@ -52,10 +52,18 @@ And then, *a lightbulb.*
 
 # Overcommit!
 
+<div class="aside warning" markdown="1">
+Update: It has been pointed out that I am conflating the work of overcommit
+and kernel memory page accounting. Overcommit is not *required* for my
+"dumbest allocator," but it will still help when you are running low on 
+memory. Even on modern systems without overcommit enabled, you will still
+see physical memory occupied only as your program makes use of it on-demand.
+</div>
+
 The trigger word was "overcommit." For those unaware, *memory overcommit* (in
 the context of operating systems) is a design of a kernel to grant access to a
 process some amount of the memory address space for which it may not actually
-have sufficient free space in physical RAM. In other words:
+have sufficient free space in physical RAM. Combined with  In other words:
 
 1. I have 10MB of free RAM
 2. My program asks for 50MB
@@ -247,7 +255,7 @@ We can implement a memory resource that builds upon the mapped area.
 > to work with a traditional `Allocator`.
 
 ```c++
-
+template <std::size_t Alignment = sizeof(std::max_align_t)>
 class bumping_memory_resource {
     std::atomic<char*> _ptr;
 
@@ -255,10 +263,12 @@ public:
     template <typename Area, typename = decltype(std::declval<Area&>().data())>
     explicit bumping_memory_resource(Area& a)
         : _ptr(a.data()) {}
+        
+    constexpr static auto alignment = Alignment;
 
     void* allocate(std::size_t size) noexcept {
-        auto under         = size % sizeof(std::max_align_t);
-        auto adjust_size   = sizeof(std::max_align_t) - under;
+        auto under         = size % Alignment;
+        auto adjust_size   = Alignment - under;
         auto adjusted_size = size + adjust_size;
         auto ret           = _ptr.fetch_add(adjusted_size);
         return ret;
@@ -282,14 +292,16 @@ safely.
 The actual `Allocator` that we define isn't even interesting:
 
 ```c++
-template <typename T>
+template <typename T, typename Resource = bumping_memory_resource<>>
 class bumping_allocator {
-    bumping_memory_resource* _res;
+    Resource* _res;
 
 public:
     using value_type = T;
+    
+    static_assert(alignof(T) <= Resource::alignment, "Given type cannot be allocator with the given resource");
 
-    explicit bumping_allocator(bumping_memory_resource& res)
+    explicit bumping_allocator(Resource& res)
         : _res(&res) {}
 
     bumping_allocator(const bumping_allocator&) = default;
@@ -297,7 +309,7 @@ public:
     bumping_allocator(const bumping_allocator<U>& other)
         : bumping_allocator(other.resource()) {}
 
-    bumping_memory_resource& resource() const { return *_res; }
+    Resource& resource() const { return *_res; }
 
     T*   allocate(std::size_t n) { return static_cast<T*>(_res->allocate(sizeof(T) * n)); }
     void deallocate(T* ptr, std::size_t) { _res->deallocate(ptr); }
@@ -312,13 +324,14 @@ public:
 };
 ```
 
-It's hard-coded to use `bumping_memory_resource`, but it doesn't actually use
-anything special about it: Just `allocate()` and `deallocate()`. We could
-templatize this on any type of "simple memory resource."
+Our bumping allocator doesn't use `bumping_memory_resource` directly. It takes
+a template parameter to the real resource to use, and just calls `allocate()` 
+and `deallocate()`. We also `static_assert` that `T` is sufficiently aligned
+by the alignment requirements of the memory resource.
 
-Those who have written pre-C++17 Allocators will be happy to find that the
-C++17 Allocator changes are welcome additions. No longer do you need to pull
-teeth and sacrifice goats to get a useful Allocator.
+Those who have written pre-C++17/14 Allocators will be happy to find that the
+C++14/17 Allocator requirements are much easier to satisfy. No longer do you 
+need to pull teeth and sacrifice goats to get a useful Allocator.
 
 In truth, none of the above classes really represent *The* Dumbest Allocator,
 but all three of them together combine their forces to make this:
@@ -327,7 +340,7 @@ but all three of them together combine their forces to make this:
 // Map some memory
 mapped_area             area{1024ull * 1024ull * 1024ull * 20ull};
 // Create a resource
-bumping_resource        mem{area};
+bumping_resource<>      mem{area};
 // Create the proto-allocator that we will hand out. The Dumbest Allocator.
 bumping_allocator<void> proto_alloc{mem};
 
@@ -392,7 +405,7 @@ void do_work(workload& work) {
     mapped_area area{16_gb};
     for (auto& work_item : work) {
         // Create the memory resource and allocator
-        bumping_resource        mem{area}:
+        bumping_resource<>      mem{area}:
         bumping_allocator<void> proto_alloc{mem};
         // Do the inner loop work.
         process_work_item(work_item, proto_alloc);
