@@ -388,10 +388,6 @@ overcommit. The kernel won't allocate phsyical pages until you start using
 them. We're going to be paying the penalty of the page fault whether we want it
 or not, so why waste it?
 
-> "*This won't be useful on systems without overcommit.*"
-
-This is true, but many systems have overcommit these days.
-
 > "*This won't work with any **real** programs.*"
 
 Won't it? `malloc()` and `::operator new` are one-size-fits-all allocators.
