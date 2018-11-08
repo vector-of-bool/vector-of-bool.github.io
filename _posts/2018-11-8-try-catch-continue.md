@@ -517,8 +517,8 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
 }
 ```
 
-And there it is. We have flattened the mountain of `try/catch` to a sequence of
-`try/catch/continue` blocks.
+And there it is. We have lowered the mountain of `try/catch` to a sequence of
+`try/catch/continue` blocks with a slight hill.
 
 Each `continue try {}` block establishes a new set of exception handlers while
 maintaining the scope of the prior `[continue] try {}`. Object lifetimes end at
@@ -549,7 +549,6 @@ complicated? Maybe... Or perhaps the lifetime issues are just intrinsic to this
 mountain. I can get the same desired effect with a slight refactoring to call
 `close()` explicitly:
 
-
 ```c++
 tee_failure tee_file(path in_path, path out_path) noexcept {
     try {
@@ -572,10 +571,11 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
     } catch (runtime_error) {
         return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
     }
+    // Close the file explicitly
     continue try { out_file.close(); }
     catch (...) { /* Ignore failure to close */ }
+    // Copy the file to stdout
     continue try {
-        // Copy the file to stdout
         in_file.seekg(0);
         copy_stream(in_file, std::cout);
     } catch (system_error e) {
@@ -590,7 +590,7 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
 }
 ```
 
-We even get the flatten our hill a bit further.
+We even get the flatten our hill the rest of the way.
 
 All this trouble, and would it be worth it? I think so. But maybe you don't
 agree? Tell me what you think, and I might make a more formal proposal.
