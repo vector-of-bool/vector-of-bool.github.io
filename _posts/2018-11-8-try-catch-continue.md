@@ -7,7 +7,7 @@ comments: true
 > Level - *verb* (used with object). *levelled, levelling*
 > > To make even or flat
 
-> Brace yourself. This post ends with an informal language-change proposal.
+> Brace yourself. This post ends with an informal language-addition proposal.
 
 Exceptions have a usability problem. I'm not speaking anything of their
 performance characteristics, but purely in the *semantic* and *syntactic*
@@ -115,9 +115,14 @@ Buy my merch.
 
 # Okay, There's Room for Improvement...
 
-The above example is very primitive. Perhaps our caller is fine with having only a single `std::error_code` to work with, but maybe not. I know *I* wouldn't be. Imaging if we were communicating directory with the user, and all we'd be able to say to them was "*No such file or directory*" with no additional information or context.
+The above example is very primitive. Perhaps our caller is fine with having
+only a single `std::error_code` to work with, but maybe not. I know *I*
+wouldn't be. Imaging if we were communicating directlyy with the user, and all
+we'd be able to say to them was "*No such file or directory*" with no
+additional information or context.
 
-We need to be able to return more information from about errors that we might encounter. Let's add some simple helper types:
+We need to be able to return more information about errors that we might
+encounter. Let's add some simple helper types:
 
 ```c++
 /**
@@ -142,7 +147,9 @@ struct tee_failure {
 };
 ```
 
-Nice. Now we need to return that from our `tee_file` function. Unfortunately, to implement this properly with exceptions requires that we first summit the `try/catch` mountain:
+Nice. Now we need to return that from our `tee_file` function. Unfortunately,
+to implement this properly with exceptions requires that we first summit the
+`try/catch` mountain:
 
 ```c++
 tee_failure tee_file(path in_path, path out_path) noexcept {
@@ -154,22 +161,22 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
             try {
                 // Copy the file to the output file
                 copy_stream(in_file, out_file);
-                try {
-                    // Copy the file to stdout
-                    in_file.seekg(0);
-                    copy_stream(in_file, std::cout);
-                } catch (system_error e) {
-                    return tee_failure{fail_phase::copy_to_file, e.code()};
-                } catch (runtime_error) {
-                    return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
-                }
             } catch (system_error e) {
-                return tee_failure{fail_phase::copy_to_stdout, e.code()};
+                return tee_failure{fail_phase::copy_to_file, e.code()};
             } catch (runtime_error) {
-                return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
+                return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
             }
         } catch (system_error e) {
             return tee_failure{fail_phase::open_output, e.code()};
+        }
+        try {
+            // Copy the file to stdout
+            in_file.seekg(0);
+            copy_stream(in_file, std::cout);
+        } catch (system_error e) {
+            return tee_failure{fail_phase::copy_to_stdout, e.code()};
+        } catch (runtime_error) {
+            return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
         }
     } catch (system_error e) {
         return tee_failure{fail_phase::open_input, e.code()};
@@ -197,7 +204,8 @@ To which I respond with a question:
 > Have you ever had a bug report with a screenshot of a dialog box that says
 > "Error: Permission denied." With *no other context?*
 
-Even if not for our users' sake, consider the following issues with the `try/catch` mountain:
+Even if not for our users' sake, consider the following issues with the
+`try/catch` mountain:
 
 - Error handling is in *reverse order* of the main logic. Handling for the
   input stream is pushed to the bottom of the function, as far away from the
@@ -409,20 +417,19 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
                 // Copy the file to the output file
                 copy_stream(in_file, out_file);
             } catch (system_error e) {
-                return tee_failure{fail_phase::copy_to_stdout, e.code()};
+                return tee_failure{fail_phase::copy_to_file, e.code()};
             } catch (runtime_error) {
-                return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
-            } continue {
-                try {
-                    // Copy the file to stdout
-                    in_file.seekg(0);
-                    copy_stream(in_file, std::cout);
-                } catch (system_error e) {
-                    return tee_failure{fail_phase::copy_to_file, e.code()};
-                } catch (runtime_error) {
-                    return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
-                }
+                return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
             }
+        }
+        try {
+            // Copy the file to stdout
+            in_file.seekg(0);
+            copy_stream(in_file, std::cout);
+        } catch (system_error e) {
+            return tee_failure{fail_phase::copy_to_stdout, e.code()};
+        } catch (runtime_error) {
+            return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
         }
     }
     // No error
@@ -478,28 +485,30 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
     } catch (system_error e) {
         return tee_failure{fail_phase::open_input, e.code()};
     }
-    // Open the output file
-    continue try {
-        auto out_file = open_file(out_path, std::ios::out);
-    } catch (system_error e) {
-        return tee_failure{fail_phase::open_output, e.code()};
-    }
-    // Copy the file to the output file
-    continue try {
-        copy_stream(in_file, out_file);
-    } catch (system_error e) {
-        return tee_failure{fail_phase::copy_to_stdout, e.code()};
-    } catch (runtime_error) {
-        return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
-    }
-    // Copy the file to stdout
-    continue try {
-        in_file.seekg(0);
-        copy_stream(in_file, std::cout);
-    } catch (system_error e) {
-        return tee_failure{fail_phase::copy_to_file, e.code()};
-    } catch (runtime_error) {
-        return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
+    continue {
+        try {
+            // Open the output file
+            auto out_file = open_file(out_path, std::ios::out);
+        } catch (system_error e) {
+            return tee_failure{fail_phase::open_output, e.code()};
+        }
+        continue try {
+            // Copy the file to the output file
+            copy_stream(in_file, out_file);
+        } catch (system_error e) {
+            return tee_failure{fail_phase::copy_to_file, e.code()};
+        } catch (runtime_error) {
+            return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
+        }
+        try {  /// [NOTE NOTE NOTE: See below]
+            // Copy the file to stdout
+            in_file.seekg(0);
+            copy_stream(in_file, std::cout);
+        } catch (system_error e) {
+            return tee_failure{fail_phase::copy_to_stdout, e.code()};
+        } catch (runtime_error) {
+            return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
+        }
     }
     // No error
     continue {
@@ -523,9 +532,68 @@ the object is declared. With `try/catch/continue`, we'd be giving up on that
 guarantee when we see a `} catch`. One will have to look for a
 `continue [try] {` to check.
 
-Would it be worth it? I think so, but maybe you don't agree?
+Take a look at the `NOTE NOTE NOTE` comment in the above sample. You will see
+that we do not use a `continue try` but a regular `try`. All previous snippets
+have had the lifetime of `out_file` end before we write to stdout, ensuring
+that we flush and close the file as soon as we are done with it. If we change
+`try` to `continue try`, the lifetime of the `out_file` object will silently
+extend even though we don't make use of it in any later blocks.
 
-Tell me what you think, and I might make a more formal proposal.
+An earlier draft of this post had `out_file` live during the copy std stdout,
+and I was able to get a straight-sequence of `continue try` blocks without
+having to indent two levels. In refactoring to close `out_file` as soon as
+possible, I found that I had trouble exactly defining how to format and
+structure the code. It would seem that `continue try` makes lifetimes more
+complicated? Maybe... Or perhaps the lifetime issues are just intrinsic to this
+`tee` program and I face them whether I use `continue try` or a `try/catch`
+mountain. I can get the same desired effect with a slight refactoring to call
+`close()` explicitly:
+
+
+```c++
+tee_failure tee_file(path in_path, path out_path) noexcept {
+    try {
+        // Open the input file
+        auto in_file = open_file(in_path, std::ios::in);
+    } catch (system_error e) {
+        return tee_failure{fail_phase::open_input, e.code()};
+    }
+    continue try {
+        // Open the output file
+        auto out_file = open_file(out_path, std::ios::out);
+    } catch (system_error e) {
+        return tee_failure{fail_phase::open_output, e.code()};
+    }
+    // Copy the file to the output file
+    continue try {
+        copy_stream(in_file, out_file);
+    } catch (system_error e) {
+        return tee_failure{fail_phase::copy_to_file, e.code()};
+    } catch (runtime_error) {
+        return tee_failure{fail_phase::copy_to_file, make_error_code(io_errc::stream)};
+    }
+    continue try { out_file.close(); }
+    catch (...) { /* Ignore failure to close */ }
+    continue try {
+        // Copy the file to stdout
+        in_file.seekg(0);
+        copy_stream(in_file, std::cout);
+    } catch (system_error e) {
+        return tee_failure{fail_phase::copy_to_stdout, e.code()};
+    } catch (runtime_error) {
+        return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
+    }
+    // No error
+    continue {
+        return error_code{};
+    }
+}
+```
+
+We even get the flatten our hill a bit further.
+
+All this trouble, and would it be worth it? I think so. But maybe you don't
+agree? Tell me what you think, and I might make a more formal proposal.
 
 ---
 
