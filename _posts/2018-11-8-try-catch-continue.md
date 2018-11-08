@@ -509,9 +509,7 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
         } catch (runtime_error) {
             return tee_failure{fail_phase::copy_to_stdout, make_error_code(io_errc::stream)};
         }
-    }
-    // No error
-    continue {
+        // No error
         return error_code{};
     }
 }
