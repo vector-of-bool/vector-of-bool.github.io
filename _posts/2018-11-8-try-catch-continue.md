@@ -590,7 +590,7 @@ tee_failure tee_file(path in_path, path out_path) noexcept {
 }
 ```
 
-We even get the flatten our hill the rest of the way.
+We even get to flatten our hill the rest of the way.
 
 All this trouble, and would it be worth it? I think so. But maybe you don't
 agree? Tell me what you think, and I might make a more formal proposal.
