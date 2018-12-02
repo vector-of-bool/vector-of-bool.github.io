@@ -95,10 +95,18 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
+							<h3>Constructors</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_cpptools_.cppconfigurationprovider.html#constructor" class="tsd-kind-icon">constructor</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_cpptools_.cppconfigurationprovider.html#_bestguessindex" class="tsd-kind-icon">_best<wbr>Guess<wbr>Index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_cpptools_.cppconfigurationprovider.html#_fileindex" class="tsd-kind-icon">_file<wbr>Index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_cpptools_.cppconfigurationprovider.html#_lastupdatesucceeded" class="tsd-kind-icon">_last<wbr>Update<wbr>Succeeded</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_cpptools_.cppconfigurationprovider.html#extensioncontext" class="tsd-kind-icon">extension<wbr>Context</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_cpptools_.cppconfigurationprovider.html#extensionid" class="tsd-kind-icon">extension<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_cpptools_.cppconfigurationprovider.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
@@ -127,14 +135,58 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Cpp<wbr>Configuration<wbr>Provider<span class="tsd-signature-symbol">(</span>extensionContext<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.ExtensionContext</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_cpptools_.cppconfigurationprovider.html" class="tsd-signature-type">CppConfigurationProvider</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L142">cpptools.ts:142</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>extensionContext: <span class="tsd-signature-type">vscode.ExtensionContext</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_cpptools_.cppconfigurationprovider.html" class="tsd-signature-type">CppConfigurationProvider</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="_bestguessindex" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _best<wbr>Guess<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">_best<wbr>Guess<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">SourceFileConfigurationItem</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, cpt.SourceFileConfigurationItem&gt;()</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L246">cpptools.ts:246</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The &quot;best guess&quot; configuration index. Used to look up the result for files
+								that aren&#39;t already in <code>_fileIndex</code>. This uses the &quot;stemmed&quot; filepath as
+								the keys to encourage collision between header files and their
+							corresponding source files.</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_fileindex" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _file<wbr>Index</h3>
 					<div class="tsd-signature tsd-kind-icon">_file<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">SourceFileConfigurationItem</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map&lt;string, cpt.SourceFileConfigurationItem&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L184">cpptools.ts:184</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L238">cpptools.ts:238</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -150,7 +202,7 @@
 					<div class="tsd-signature tsd-kind-icon">_last<wbr>Update<wbr>Succeeded<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L133">cpptools.ts:133</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L159">cpptools.ts:159</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,12 +217,22 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="extensioncontext" class="tsd-anchor"></a>
+					<h3>extension<wbr>Context</h3>
+					<div class="tsd-signature tsd-kind-icon">extension<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">vscode.ExtensionContext</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L143">cpptools.ts:143</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="extensionid" class="tsd-anchor"></a>
 					<h3>extension<wbr>Id</h3>
 					<div class="tsd-signature tsd-kind-icon">extension<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"vector-of-bool.cmake-tools"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;vector-of-bool.cmake-tools&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L122">cpptools.ts:122</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L148">cpptools.ts:148</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -185,7 +247,7 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"CMake Tools"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;CMake Tools&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L120">cpptools.ts:120</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L146">cpptools.ts:146</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -207,7 +269,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L191">cpptools.ts:191</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L253">cpptools.ts:253</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -241,13 +303,13 @@
 					<a name="_getconfiguration" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _get<wbr>Configuration</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">_get<wbr>Configuration<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.Uri</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SourceFileConfigurationItem</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+						<li class="tsd-signature tsd-kind-icon">_get<wbr>Configuration<span class="tsd-signature-symbol">(</span>uri<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.Uri</span>, silent<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SourceFileConfigurationItem</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L141">cpptools.ts:141</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L167">cpptools.ts:167</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -262,6 +324,9 @@
 									<div class="tsd-comment tsd-typography">
 										<p>The configuration to get from the index</p>
 									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> silent: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;true</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SourceFileConfigurationItem</span>
@@ -281,7 +346,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L236">cpptools.ts:236</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L298">cpptools.ts:298</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -328,7 +393,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L164">cpptools.ts:164</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L222">cpptools.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -351,7 +416,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L150">cpptools.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L208">cpptools.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -382,7 +447,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L178">cpptools.ts:178</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L232">cpptools.ts:232</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -404,7 +469,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L173">cpptools.ts:173</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L229">cpptools.ts:229</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -428,7 +493,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L157">cpptools.ts:157</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L215">cpptools.ts:215</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -460,7 +525,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L255">cpptools.ts:255</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L319">cpptools.ts:319</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -490,7 +555,7 @@
 					<div class="tsd-signature tsd-kind-icon">_workspace<wbr>Browse<wbr>Configuration<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L135">cpptools.ts:135</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L161">cpptools.ts:161</a></li>
 						</ul>
 					</aside>
 					<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -499,7 +564,7 @@
 						<div class="tsd-signature tsd-kind-icon">browse<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">never</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[]</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/cpptools.ts#L135">cpptools.ts:135</a></li>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/a9bcfb6/src/cpptools.ts#L161">cpptools.ts:161</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -524,11 +589,20 @@
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
 						<a href="_cpptools_.cppconfigurationprovider.html" class="tsd-kind-icon">Cpp<wbr>Configuration<wbr>Provider</a>
 						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class">
+								<a href="_cpptools_.cppconfigurationprovider.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="_cpptools_.cppconfigurationprovider.html#_bestguessindex" class="tsd-kind-icon">_best<wbr>Guess<wbr>Index</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_cpptools_.cppconfigurationprovider.html#_fileindex" class="tsd-kind-icon">_file<wbr>Index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_cpptools_.cppconfigurationprovider.html#_lastupdatesucceeded" class="tsd-kind-icon">_last<wbr>Update<wbr>Succeeded</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_cpptools_.cppconfigurationprovider.html#extensioncontext" class="tsd-kind-icon">extension<wbr>Context</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="_cpptools_.cppconfigurationprovider.html#extensionid" class="tsd-kind-icon">extension<wbr>Id</a>
@@ -586,7 +660,13 @@
 						<a href="../modules/_cpptools_.html#standardversion" class="tsd-kind-icon">Standard<wbr>Version</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_cpptools_.html#best_guess_preference_key" class="tsd-kind-icon">BEST_<wbr>GUESS_<wbr>PREFERENCE_<wbr>KEY</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_cpptools_.html#log" class="tsd-kind-icon">log</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_cpptools_.html#_stemsourcepath" class="tsd-kind-icon">_stem<wbr>Source<wbr>Path</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="../modules/_cpptools_.html#parsecompileflags" class="tsd-kind-icon">parse<wbr>Compile<wbr>Flags</a>

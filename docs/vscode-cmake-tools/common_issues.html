@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Common Issues and Resolutions &#8212; CMake Tools 1.1.3
+ documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="shortcut icon" href="_static/icon_64.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Troubleshooting CMake Tools" href="troubleshooting.html" />
+    <link rel="prev" title="Configuring CMake Tools" href="settings.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="troubleshooting.html" title="Troubleshooting CMake Tools"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="settings.html" title="Configuring CMake Tools"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+ documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="common-issues-and-resolutions">
+<span id="common-issues"></span><h1>Common Issues and Resolutions<a class="headerlink" href="#common-issues-and-resolutions" title="Permalink to this headline">¶</a></h1>
+<p>There are a few frequently appearing issues in the CMake Tools issue tracker.
+Make sure you’ve checked that your issue isn’t already solved here before
+submitting a question or bug report.</p>
+<div class="section" id="i-see-cmake-tools-is-unable-to-provide-intellisense-configuration">
+<span id="missing-config"></span><h2>I see: ‘CMake Tools’ is unable to provide IntelliSense configuration …<a class="headerlink" href="#i-see-cmake-tools-is-unable-to-provide-intellisense-configuration" title="Permalink to this headline">¶</a></h2>
+<p>If you are seeing this informational pop-up appear, or are seeing that
+<code class="docutils literal notranslate"><span class="pre">#include</span></code> directives are not resolving in the editor (you see a green
+underline on the <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive), this means that the relevant source
+file is not attached to a CMake Target.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The target of a failing <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive <strong>need not</strong> be a source
+file of your target. This is only concerning the file <em>containing</em> the
+failing <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive!</p>
+</div>
+<p>If the file which receives this message is outside of your project, it is safe
+to ignore it.</p>
+<p>If you are receiving this message for files <em>within</em> your project, it means you
+probably need to add the source file to a target.</p>
+<p>This is most common with header files in a project. <strong>Header files should be
+included in the source list of a target</strong>. Even though CMake will not try to
+compile or process these headers in any special way, CMake Tools uses this
+information in a variety of places to provide a better user experience.</p>
+</div>
+<div class="section" id="i-see-green-underlines-squiggles-beneath-my-include-directives-in-my-source-files">
+<span id="failing-include"></span><h2>I see green underlines/squiggles beneath my <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives in my source files<a class="headerlink" href="#i-see-green-underlines-squiggles-beneath-my-include-directives-in-my-source-files" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please refer to <a class="reference internal" href="#missing-config"><span class="std std-ref">I see: ‘CMake Tools’ is unable to provide IntelliSense configuration …</span></a></p>
+</div>
+</div>
+<div class="section" id="the-debug-button-and-debug-target-features-are-ignoring-my-launch-json">
+<span id="debug-button-no-launch"></span><h2>The “Debug” button and “Debug target” features are ignoring my <code class="docutils literal notranslate"><span class="pre">launch.json</span></code><a class="headerlink" href="#the-debug-button-and-debug-target-features-are-ignoring-my-launch-json" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to specify additional debugging options, and/or use a different
+debugging engine, refer to <a class="reference internal" href="debugging.html#debugging-launch-json"><span class="std std-ref">Debugging with CMake Tools and launch.json</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The target debugging feature is restricted to launching target executables
+with a default configuration in cpptools’ debugging engine.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="index.html">
+              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+            </a></p>
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Common Issues and Resolutions</a><ul>
+<li><a class="reference internal" href="#i-see-cmake-tools-is-unable-to-provide-intellisense-configuration">I see: ‘CMake Tools’ is unable to provide IntelliSense configuration …</a></li>
+<li><a class="reference internal" href="#i-see-green-underlines-squiggles-beneath-my-include-directives-in-my-source-files">I see green underlines/squiggles beneath my <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives in my source files</a></li>
+<li><a class="reference internal" href="#the-debug-button-and-debug-target-features-are-ignoring-my-launch-json">The “Debug” button and “Debug target” features are ignoring my <code class="docutils literal notranslate"><span class="pre">launch.json</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="settings.html"
+                        title="previous chapter">Configuring CMake Tools</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="troubleshooting.html"
+                        title="next chapter">Troubleshooting CMake Tools</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/common_issues.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="troubleshooting.html" title="Troubleshooting CMake Tools"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="settings.html" title="Configuring CMake Tools"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+ documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright .
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+    </div>
+  </body>
+</html>
