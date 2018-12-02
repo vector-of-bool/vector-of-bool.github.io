@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Changelog and History &#8212; CMake Tools 1.1.2
+    <title>Changelog and History &#8212; CMake Tools 1.1.3
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,6 +14,7 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="shortcut icon" href="_static/icon_64.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,7 +29,7 @@
         <li class="right" >
           <a href="development.html" title="How to Contribute"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.2
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -40,8 +41,47 @@
             
   <div class="section" id="changelog-and-history">
 <span id="changelog"></span><h1>Changelog and History<a class="headerlink" href="#changelog-and-history" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="changes-1-1-3">
+<span id="id1"></span><h2>1.1.3<a class="headerlink" href="#changes-1-1-3" title="Permalink to this headline">¶</a></h2>
+<p>Removal:</p>
+<ul class="simple">
+<li>The visual CMake cache editor GUI is gone. The API with which it was drawn is
+being removed from a future version of VS Code, and the feature had many
+issues. A future CMake GUI will be introduced with more features and greater
+stability.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/579">#579</a>)</li>
+</ul>
+<p>Features and Tweaks:</p>
+<ul class="simple">
+<li>On Linux, will detect old CMake versions and offer to do an automatic
+upgrade. Windows support is pending. If you have a macOS devices and would
+like to contribute, please open a pull request!</li>
+<li>Smarter parsing of GCC and Clang compile errors to fold <code class="docutils literal notranslate"><span class="pre">note:</span></code> and
+<code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">from:</span></code> blocks into their main diagnostic. This permits the
+folding and browsing of template and macro instantiation errors in a nicer
+fashion. MSVC error parsing pending. (<strong>NOTE</strong>: There is an upstream issue
+with the sort order of diagnostic information, so <code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">from:</span></code>
+tracebacks may appear out-of-order).</li>
+</ul>
+<p>Fixes:</p>
+<ul class="simple">
+<li>On Windows, “Launch target in terminal” will use <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> unconditionally.
+This works around issues with command quoting in PowerShell.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/562">#562</a>)</li>
+<li>“Debug target” will prefer <code class="docutils literal notranslate"><span class="pre">lldb-mi</span></code> to <code class="docutils literal notranslate"><span class="pre">lldb</span></code>. Fixes issues where
+<code class="docutils literal notranslate"><span class="pre">cpptools</span></code> is unable to launch the debugger.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/584">#584</a>)</li>
+<li>Document the <code class="docutils literal notranslate"><span class="pre">environmentVariables</span></code> field on kits.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/568">#586</a>)</li>
+<li>Fix legacy CMake mode not setting the CMake generator.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/567">#567</a>)</li>
+<li>Permit limited variable expansion for <code class="docutils literal notranslate"><span class="pre">cmake.cmakePath</span></code> in <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>
+(refer to documentation for more details).
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/569">#569</a>)</li>
+</ul>
+</div>
 <div class="section" id="changes-1-1-2">
-<span id="id1"></span><h2>1.1.2<a class="headerlink" href="#changes-1-1-2" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>1.1.2<a class="headerlink" href="#changes-1-1-2" title="Permalink to this headline">¶</a></h2>
 <p>Fixes and tweaks upon 1.1.2:</p>
 <ul class="simple">
 <li>Fix silent failure when a build directory appears at a different path than is
@@ -56,7 +96,7 @@ the C and/or C++ compiler because it is not stored in the CMake cache.</li>
 <p><a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/milestone/13?closed=1">See the 1.1.2 milestone on GitHub</a>.</p>
 </div>
 <div class="section" id="changes-1-1-1">
-<span id="id2"></span><h2>1.1.1<a class="headerlink" href="#changes-1-1-1" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>1.1.1<a class="headerlink" href="#changes-1-1-1" title="Permalink to this headline">¶</a></h2>
 <p>Fixes and tweaks upon 1.1.0:</p>
 <ul class="simple">
 <li>Fix “Unable to automatically determine compiler” when using VS generators.</li>
@@ -70,7 +110,7 @@ syntax to match the special namespacing of substitutions. See <a class="referenc
 <p><a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/milestone/12?closed=1">See the 1.1.1 milestone on GitHub</a>.</p>
 </div>
 <div class="section" id="changes-1-1-0">
-<span id="id3"></span><h2>1.1.0<a class="headerlink" href="#changes-1-1-0" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>1.1.0<a class="headerlink" href="#changes-1-1-0" title="Permalink to this headline">¶</a></h2>
 <p>1.1.0 is the most exciting release yet! It includes several long-awaited
 features, including but not limited to:</p>
 <ul class="simple">
@@ -105,7 +145,7 @@ to receive the benefits of cpptools’ IntelliSense engine.</p>
 </div>
 </div>
 <div class="section" id="changes-1-0-1">
-<span id="id4"></span><h2>1.0.1<a class="headerlink" href="#changes-1-0-1" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>1.0.1<a class="headerlink" href="#changes-1-0-1" title="Permalink to this headline">¶</a></h2>
 <p>Resolves a few issues/enhancements that didn’t make it into 1.0.0.</p>
 <ul class="simple">
 <li>Automatically detect when a kit specifies a path to a non-existent compiler
@@ -118,10 +158,10 @@ and ask what to do with that kit (remove or keep).</li>
 </ul>
 </div>
 <div class="section" id="changes-1-0-0">
-<span id="id5"></span><h2>1.0.0<a class="headerlink" href="#changes-1-0-0" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>1.0.0<a class="headerlink" href="#changes-1-0-0" title="Permalink to this headline">¶</a></h2>
 <p>CMake Tools 1.0.0 is a minor change over 0.11.x, but marks the first “stable”
 release. It is now a developer-ready tool that is suitable for everyday work!
-<a class="footnote-reference" href="#counter" id="id6">[1]</a></p>
+<a class="footnote-reference" href="#counter" id="id13">[1]</a></p>
 <p>1.0.0 contains the following improvements and fixes over 0.11.x:</p>
 <ul class="simple">
 <li>Option to build on <code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> (Launch-before-debug).
@@ -148,12 +188,12 @@ expected a feature in 1.0.0 that isn’t listed above, it will be available in
 <table class="docutils footnote" frame="void" id="counter" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[1]</a></td><td>If you don’t agree, please open a bug report!</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id13">[1]</a></td><td>If you don’t agree, please open a bug report!</td></tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="changes-0-11-0">
-<span id="id7"></span><h2>0.11.1<a class="headerlink" href="#changes-0-11-0" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>0.11.1<a class="headerlink" href="#changes-0-11-0" title="Permalink to this headline">¶</a></h2>
 <p>Several bugfixes and tweaks:</p>
 <ul class="simple">
 <li>Attempted fix for “No build system was generated yet” by implementing more
@@ -175,8 +215,8 @@ new build.
 (<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/388">#388</a>)</li>
 </ul>
 </div>
-<div class="section" id="id14">
-<h2>0.11.0<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id21">
+<h2>0.11.0<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h2>
 <p>0.11.0 is the biggest change so far to CMake Tools. It brings not just new
 functionality, but new infrastructure and maintainers behind the extension.</p>
 <p>It began with an <a class="reference external" href="https://vector-of-bool.github.io/2017/12/15/cmt-1.0-and-beta.html">overly-ceremonious blog post</a>,
@@ -205,9 +245,10 @@ project.</span></a></li>
             <p class="logo"><a href="index.html">
               <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
             </a></p>
-  <h3><a href="index.html">Table Of Contents</a></h3>
+  <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Changelog and History</a><ul>
+<li><a class="reference internal" href="#changes-1-1-3">1.1.3</a></li>
 <li><a class="reference internal" href="#changes-1-1-2">1.1.2</a></li>
 <li><a class="reference internal" href="#changes-1-1-1">1.1.1</a></li>
 <li><a class="reference internal" href="#changes-1-1-0">1.1.0</a><ul>
@@ -217,7 +258,7 @@ project.</span></a></li>
 <li><a class="reference internal" href="#changes-1-0-1">1.0.1</a></li>
 <li><a class="reference internal" href="#changes-1-0-0">1.0.0</a></li>
 <li><a class="reference internal" href="#changes-0-11-0">0.11.1</a></li>
-<li><a class="reference internal" href="#id14">0.11.0</a></li>
+<li><a class="reference internal" href="#id21">0.11.0</a></li>
 <li><a class="reference internal" href="#x-and-older">0.10.x and Older</a></li>
 </ul>
 </li>
@@ -258,13 +299,13 @@ project.</span></a></li>
         <li class="right" >
           <a href="development.html" title="How to Contribute"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.2
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
     </div>
   </body>
 </html>

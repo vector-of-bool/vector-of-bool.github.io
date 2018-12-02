@@ -90,9 +90,11 @@
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="_paths_.paths.html#datadir" class="tsd-kind-icon">data<wbr>Dir</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="_paths_.paths.html#roamingdatadir" class="tsd-kind-icon">roaming<wbr>Data<wbr>Dir</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="_paths_.paths.html#tmpdir" class="tsd-kind-icon">tmp<wbr>Dir</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="_paths_.paths.html#userhome" class="tsd-kind-icon">user<wbr>Home</a></li>
 								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="_paths_.paths.html#userlocaldir" class="tsd-kind-icon">user<wbr>Local<wbr>Dir</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported"><a href="_paths_.paths.html#userroamingdir" class="tsd-kind-icon">user<wbr>Roaming<wbr>Dir</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
@@ -118,12 +120,35 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L41">paths.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L55">paths.ts:55</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>The directory where CMake Tools should store user-specific persistent
+									data.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+					<a name="roamingdatadir" class="tsd-anchor"></a>
+					<h3>roaming<wbr>Data<wbr>Dir</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> roamingDataDir<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L61">paths.ts:61</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>The &quot;roaming&quot; directory where CMake Tools stores roaming configuration
 									data.</p>
 								</div>
 							</div>
@@ -141,7 +166,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L46">paths.ts:46</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L66">paths.ts:66</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -163,7 +188,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L18">paths.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L19">paths.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -185,7 +210,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L24">paths.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L25">paths.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -194,6 +219,23 @@
 									application data should be stored.</p>
 								</div>
 							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+					<a name="userroamingdir" class="tsd-anchor"></a>
+					<h3>user<wbr>Roaming<wbr>Dir</h3>
+					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> userRoamingDir<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L38">paths.ts:38</a></li>
+								</ul>
+							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
@@ -211,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L93">paths.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L113">paths.ts:113</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -234,7 +276,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L67">paths.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L87">paths.ts:87</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -257,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/paths.ts#L54">paths.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/paths.ts#L74">paths.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -294,6 +336,9 @@
 								<a href="_paths_.paths.html#datadir" class="tsd-kind-icon">data<wbr>Dir</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_paths_.paths.html#roamingdatadir" class="tsd-kind-icon">roaming<wbr>Data<wbr>Dir</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_paths_.paths.html#tmpdir" class="tsd-kind-icon">tmp<wbr>Dir</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
@@ -301,6 +346,9 @@
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_paths_.paths.html#userlocaldir" class="tsd-kind-icon">user<wbr>Local<wbr>Dir</a>
+							</li>
+							<li class=" tsd-kind-get-signature tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_paths_.paths.html#userroamingdir" class="tsd-kind-icon">user<wbr>Roaming<wbr>Dir</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
 								<a href="_paths_.paths.html#getcmakepath" class="tsd-kind-icon">getCMake<wbr>Path</a>

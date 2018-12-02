@@ -54,10 +54,10 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_diagnostics_.html">&quot;diagnostics&quot;</a>
+					<a href="../modules/_diagnostics_cmake_.html">&quot;diagnostics/cmake&quot;</a>
 				</li>
 				<li>
-					<a href="_diagnostics_.cmakeoutputconsumer.html">CMakeOutputConsumer</a>
+					<a href="_diagnostics_cmake_.cmakeoutputconsumer.html">CMakeOutputConsumer</a>
 				</li>
 			</ul>
 			<h1>Class CMakeOutputConsumer</h1>
@@ -98,35 +98,36 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_diagnostics_.cmakeoutputconsumer.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_.cmakeoutputconsumer.html#_diagnostics" class="tsd-kind-icon">_diagnostics</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_diagnostics_.cmakeoutputconsumer.html#sourcedir" class="tsd-kind-icon">source<wbr>Dir</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_diagnostics" class="tsd-kind-icon">_diagnostics</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#logger" class="tsd-kind-icon">logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#sourcedir" class="tsd-kind-icon">source<wbr>Dir</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_diagnostics_.cmakeoutputconsumer.html#diagnostics" class="tsd-kind-icon">diagnostics</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#diagnostics" class="tsd-kind-icon">diagnostics</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_.cmakeoutputconsumer.html#_commitdiag" class="tsd-kind-icon">_commit<wbr>Diag</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_.cmakeoutputconsumer.html#_parsediags" class="tsd-kind-icon">_parse<wbr>Diags</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_diagnostics_.cmakeoutputconsumer.html#error" class="tsd-kind-icon">error</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_diagnostics_.cmakeoutputconsumer.html#output" class="tsd-kind-icon">output</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_commitdiag" class="tsd-kind-icon">_commit<wbr>Diag</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_parsediags" class="tsd-kind-icon">_parse<wbr>Diags</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#error" class="tsd-kind-icon">error</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#output" class="tsd-kind-icon">output</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Object literals</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_.cmakeoutputconsumer.html#_errorstate" class="tsd-kind-icon">_error<wbr>State</a></li>
+								<li class="tsd-kind-object-literal tsd-parent-kind-class tsd-is-private"><a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_errorstate" class="tsd-kind-icon">_error<wbr>State</a></li>
 							</ul>
 						</section>
 					</div>
@@ -138,13 +139,13 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new CMake<wbr>Output<wbr>Consumer<span class="tsd-signature-symbol">(</span>sourceDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_diagnostics_.cmakeoutputconsumer.html" class="tsd-signature-type">CMakeOutputConsumer</a></li>
+						<li class="tsd-signature tsd-kind-icon">new CMake<wbr>Output<wbr>Consumer<span class="tsd-signature-symbol">(</span>sourceDir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, logger<span class="tsd-signature-symbol">?: </span><a href="_logging_.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_diagnostics_cmake_.cmakeoutputconsumer.html" class="tsd-signature-type">CMakeOutputConsumer</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L80">diagnostics.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L19">diagnostics/cmake.ts:19</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -152,8 +153,11 @@
 								<li>
 									<h5>sourceDir: <span class="tsd-signature-type">string</span></h5>
 								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> logger: <a href="_logging_.logger.html" class="tsd-signature-type">Logger</a></h5>
+								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_diagnostics_.cmakeoutputconsumer.html" class="tsd-signature-type">CMakeOutputConsumer</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_diagnostics_cmake_.cmakeoutputconsumer.html" class="tsd-signature-type">CMakeOutputConsumer</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -163,10 +167,20 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
 					<a name="_diagnostics" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _diagnostics</h3>
-					<div class="tsd-signature tsd-kind-icon">_diagnostics<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[] as FileDiagnostic[]</span></div>
+					<div class="tsd-signature tsd-kind-icon">_diagnostics<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_diagnostics_util_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> =&nbsp;[] as FileDiagnostic[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L87">diagnostics.ts:87</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L26">diagnostics/cmake.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
+					<a name="logger" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> logger</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="_logging_.logger.html" class="tsd-signature-type">Logger</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L20">diagnostics/cmake.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -176,7 +190,7 @@
 					<div class="tsd-signature tsd-kind-icon">source<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L81">diagnostics.ts:81</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L20">diagnostics/cmake.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -187,13 +201,13 @@
 					<a name="diagnostics" class="tsd-anchor"></a>
 					<h3>diagnostics</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> diagnostics<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> diagnostics<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_diagnostics_util_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L86">diagnostics.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L25">diagnostics/cmake.ts:25</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -202,7 +216,7 @@
 									during calls to <code>output()</code> and <code>error()</code></p>
 								</div>
 							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_diagnostics_util_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -219,7 +233,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L218">diagnostics.ts:218</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L173">diagnostics/cmake.ts:173</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -241,7 +255,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L135">diagnostics.ts:135</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L78">diagnostics/cmake.ts:78</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -265,7 +279,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_proc_.outputconsumer.html">OutputConsumer</a>.<a href="../interfaces/_proc_.outputconsumer.html#error">error</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L129">diagnostics.ts:129</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L70">diagnostics/cmake.ts:70</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,7 +311,7 @@
 							<aside class="tsd-sources">
 								<p>Implementation of <a href="../interfaces/_proc_.outputconsumer.html">OutputConsumer</a>.<a href="../interfaces/_proc_.outputconsumer.html#output">output</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L93">diagnostics.ts:93</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L32">diagnostics/cmake.ts:32</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -327,7 +341,7 @@
 					<div class="tsd-signature tsd-kind-icon">_error<wbr>State<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L101">diagnostics.ts:101</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L42">diagnostics/cmake.ts:42</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -341,7 +355,7 @@
 						<div class="tsd-signature tsd-kind-icon">blank<wbr>Lines<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L123">diagnostics.ts:123</a></li>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L64">diagnostics/cmake.ts:64</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -351,7 +365,7 @@
 						<div class="tsd-signature tsd-kind-icon">diag<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> =&nbsp;null</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L122">diagnostics.ts:122</a></li>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L63">diagnostics/cmake.ts:63</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -361,7 +375,7 @@
 						<div class="tsd-signature tsd-kind-icon">state<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"init"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;init&quot;</span></div>
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L121">diagnostics.ts:121</a></li>
+								<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/cmake.ts#L62">diagnostics/cmake.ts:62</a></li>
 							</ul>
 						</aside>
 					</section>
@@ -375,72 +389,51 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="../modules/_diagnostics_.html">"diagnostics"</a>
+						<a href="../modules/_diagnostics_cmake_.html">"diagnostics/cmake"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_diagnostics_.cmakebuildconsumer.html" class="tsd-kind-icon">CMake<wbr>Build<wbr>Consumer</a>
-					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_diagnostics_.cmakeoutputconsumer.html" class="tsd-kind-icon">CMake<wbr>Output<wbr>Consumer</a>
+						<a href="_diagnostics_cmake_.cmakeoutputconsumer.html" class="tsd-kind-icon">CMake<wbr>Output<wbr>Consumer</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#_diagnostics" class="tsd-kind-icon">_diagnostics</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_diagnostics" class="tsd-kind-icon">_diagnostics</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#sourcedir" class="tsd-kind-icon">source<wbr>Dir</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#logger" class="tsd-kind-icon">logger</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class">
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#sourcedir" class="tsd-kind-icon">source<wbr>Dir</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#diagnostics" class="tsd-kind-icon">diagnostics</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#diagnostics" class="tsd-kind-icon">diagnostics</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#_commitdiag" class="tsd-kind-icon">_commit<wbr>Diag</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_commitdiag" class="tsd-kind-icon">_commit<wbr>Diag</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#_parsediags" class="tsd-kind-icon">_parse<wbr>Diags</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_parsediags" class="tsd-kind-icon">_parse<wbr>Diags</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#error" class="tsd-kind-icon">error</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#error" class="tsd-kind-icon">error</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#output" class="tsd-kind-icon">output</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#output" class="tsd-kind-icon">output</a>
 							</li>
 							<li class=" tsd-kind-object-literal tsd-parent-kind-class tsd-is-private">
-								<a href="_diagnostics_.cmakeoutputconsumer.html#_errorstate" class="tsd-kind-icon">_error<wbr>State</a>
+								<a href="_diagnostics_cmake_.cmakeoutputconsumer.html#_errorstate" class="tsd-kind-icon">_error<wbr>State</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_diagnostics_.compileoutputconsumer.html" class="tsd-kind-icon">Compile<wbr>Output<wbr>Consumer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-kind-icon">File<wbr>Diagnostic</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_diagnostics_.rawdiagnostic.html" class="tsd-kind-icon">Raw<wbr>Diagnostic</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_diagnostics_.html#build_logger" class="tsd-kind-icon">build_<wbr>logger</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_diagnostics_.html#cmake_logger" class="tsd-kind-icon">cmake_<wbr>logger</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_diagnostics_.html#oneless" class="tsd-kind-icon">one<wbr>Less</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="../modules/_diagnostics_.html#populatecollection" class="tsd-kind-icon">populate<wbr>Collection</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

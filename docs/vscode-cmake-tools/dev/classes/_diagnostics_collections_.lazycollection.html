@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;diagnostics&quot; | cmake-tools</title>
+	<title>LazyCollection | cmake-tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,10 +54,13 @@
 					<a href="../index.html">Globals</a>
 				</li>
 				<li>
-					<a href="_diagnostics_.html">&quot;diagnostics&quot;</a>
+					<a href="../modules/_diagnostics_collections_.html">&quot;diagnostics/collections&quot;</a>
+				</li>
+				<li>
+					<a href="_diagnostics_collections_.lazycollection.html">LazyCollection</a>
 				</li>
 			</ul>
-			<h1>External module &quot;diagnostics&quot;</h1>
+			<h1>Class LazyCollection</h1>
 		</div>
 	</div>
 </header>
@@ -67,133 +70,143 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Module for diagnostic handling</p>
+						<p>A lazily constructed diagnostic collection object</p>
 					</div>
 				</div>
+			</section>
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">LazyCollection</span>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">Disposable</span></li>
+				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Classes</h3>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_diagnostics_.cmakebuildconsumer.html" class="tsd-kind-icon">CMake<wbr>Build<wbr>Consumer</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_diagnostics_.cmakeoutputconsumer.html" class="tsd-kind-icon">CMake<wbr>Output<wbr>Consumer</a></li>
-								<li class="tsd-kind-class tsd-parent-kind-external-module"><a href="../classes/_diagnostics_.compileoutputconsumer.html" class="tsd-kind-icon">Compile<wbr>Output<wbr>Consumer</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-kind-icon">File<wbr>Diagnostic</a></li>
-								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_diagnostics_.rawdiagnostic.html" class="tsd-kind-icon">Raw<wbr>Diagnostic</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported"><a href="_diagnostics_collections_.lazycollection.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-not-exported">
-							<h3>Variables</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_diagnostics_.html#build_logger" class="tsd-kind-icon">build_<wbr>logger</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported"><a href="_diagnostics_.html#cmake_logger" class="tsd-kind-icon">cmake_<wbr>logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported"><a href="_diagnostics_collections_.lazycollection.html#_collection" class="tsd-kind-icon">_collection</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-not-exported"><a href="_diagnostics_collections_.lazycollection.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section ">
-							<h3>Functions</h3>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_diagnostics_.html#oneless" class="tsd-kind-icon">one<wbr>Less</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_diagnostics_.html#populatecollection" class="tsd-kind-icon">populate<wbr>Collection</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_diagnostics_collections_.lazycollection.html#dispose" class="tsd-kind-icon">dispose</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_diagnostics_collections_.lazycollection.html#getorcreate" class="tsd-kind-icon">get<wbr>OrCreate</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="build_logger" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> build_<wbr>logger</h3>
-					<div class="tsd-signature tsd-kind-icon">build_<wbr>logger<span class="tsd-signature-symbol">:</span> <a href="../classes/_logging_.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> =&nbsp;logging.createLogger(&#x27;build&#x27;)</span></div>
+				<h2>Constructors</h2>
+				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+					<a name="constructor" class="tsd-anchor"></a>
+					<h3>constructor</h3>
+					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Lazy<wbr>Collection<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_diagnostics_collections_.lazycollection.html" class="tsd-signature-type">LazyCollection</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/collections.ts#L11">diagnostics/collections.ts:11</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>name: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_diagnostics_collections_.lazycollection.html" class="tsd-signature-type">LazyCollection</a></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+					<a name="_collection" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> <span class="tsd-flag ts-flagOptional">Optional</span> _collection</h3>
+					<div class="tsd-signature tsd-kind-icon">_collection<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">vscode.DiagnosticCollection</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L15">diagnostics.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/collections.ts#L11">diagnostics/collections.ts:11</a></li>
 						</ul>
 					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="cmake_logger" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> cmake_<wbr>logger</h3>
-					<div class="tsd-signature tsd-kind-icon">cmake_<wbr>logger<span class="tsd-signature-symbol">:</span> <a href="../classes/_logging_.logger.html" class="tsd-signature-type">Logger</a><span class="tsd-signature-symbol"> =&nbsp;logging.createLogger(&#x27;cmake&#x27;)</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L14">diagnostics.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/collections.ts#L12">diagnostics/collections.ts:12</a></li>
 						</ul>
 					</aside>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="oneless" class="tsd-anchor"></a>
-					<h3>one<wbr>Less</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">one<wbr>Less<span class="tsd-signature-symbol">(</span>num<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="dispose" class="tsd-anchor"></a>
+					<h3>dispose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L17">diagnostics.ts:17</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>num: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="populatecollection" class="tsd-anchor"></a>
-					<h3>populate<wbr>Collection</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">populate<wbr>Collection<span class="tsd-signature-symbol">(</span>coll<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.DiagnosticCollection</span>, fdiags<span class="tsd-signature-symbol">: </span><a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/diagnostics.ts#L58">diagnostics.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/collections.ts#L27">diagnostics/collections.ts:27</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Inserts a list of <code>FileDiagnostic</code> instances into a diagnostic collection.</p>
+									<p>Dispose of the collection</p>
 								</div>
-								<dl class="tsd-comment-tags">
-									<dt>note</dt>
-									<dd><p>The <code>coll</code> collection will be cleared of all previous contents</p>
-									</dd>
-								</dl>
 							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>coll: <span class="tsd-signature-type">vscode.DiagnosticCollection</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The <code>vscode.DiagnosticCollecion</code> to populate.</p>
-									</div>
-								</li>
-								<li>
-									<h5>fdiags: <a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-signature-type">FileDiagnostic</a><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>The <code>FileDiagnostic</code> objects to insert into the collection</p>
-									</div>
-								</li>
-							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+					<a name="getorcreate" class="tsd-anchor"></a>
+					<h3>get<wbr>OrCreate</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>OrCreate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">vscode.DiagnosticCollection</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/diagnostics/collections.ts#L17">diagnostics/collections.ts:17</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get the collection</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">vscode.DiagnosticCollection</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -206,38 +219,41 @@
 						<a href="../index.html"><em>Globals</em></a>
 					</li>
 					<li class="current tsd-kind-external-module">
-						<a href="_diagnostics_.html">"diagnostics"</a>
+						<a href="../modules/_diagnostics_collections_.html">"diagnostics/collections"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_diagnostics_.cmakebuildconsumer.html" class="tsd-kind-icon">CMake<wbr>Build<wbr>Consumer</a>
+					<li class=" tsd-kind-class tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_diagnostics_collections_.collections.html" class="tsd-kind-icon">Collections</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_diagnostics_.cmakeoutputconsumer.html" class="tsd-kind-icon">CMake<wbr>Output<wbr>Consumer</a>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-class tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_diagnostics_collections_.lazycollection.html" class="tsd-kind-icon">Lazy<wbr>Collection</a>
+						<ul>
+							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_diagnostics_collections_.lazycollection.html#constructor" class="tsd-kind-icon">constructor</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-not-exported">
+								<a href="_diagnostics_collections_.lazycollection.html#_collection" class="tsd-kind-icon">_collection</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_diagnostics_collections_.lazycollection.html#name" class="tsd-kind-icon">name</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_diagnostics_collections_.lazycollection.html#dispose" class="tsd-kind-icon">dispose</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-not-exported">
+								<a href="_diagnostics_collections_.lazycollection.html#getorcreate" class="tsd-kind-icon">get<wbr>OrCreate</a>
+							</li>
+						</ul>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_diagnostics_.compileoutputconsumer.html" class="tsd-kind-icon">Compile<wbr>Output<wbr>Consumer</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_diagnostics_.filediagnostic.html" class="tsd-kind-icon">File<wbr>Diagnostic</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_diagnostics_.rawdiagnostic.html" class="tsd-kind-icon">Raw<wbr>Diagnostic</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_diagnostics_.html#build_logger" class="tsd-kind-icon">build_<wbr>logger</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_diagnostics_.html#cmake_logger" class="tsd-kind-icon">cmake_<wbr>logger</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_diagnostics_.html#oneless" class="tsd-kind-icon">one<wbr>Less</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_diagnostics_.html#populatecollection" class="tsd-kind-icon">populate<wbr>Collection</a>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="../modules/_diagnostics_collections_.html#collections-1" class="tsd-kind-icon">collections</a>
 					</li>
 				</ul>
 			</nav>

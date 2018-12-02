@@ -75,6 +75,12 @@
 					</li>
 				</ul>
 			</section>
+			<section class="tsd-panel">
+				<h3>Implements</h3>
+				<ul class="tsd-hierarchy">
+					<li><span class="tsd-signature-type">Disposable</span></li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
@@ -88,7 +94,7 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_nag_.nagmanager.html#_nagemitter" class="tsd-kind-icon">_nag<wbr>Emitter</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_nag_.nagmanager.html#_cmakelatestversionemitter" class="tsd-kind-icon">_cmake<wbr>Latest<wbr>Version<wbr>Emitter</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_nag_.nagmanager.html#_nagstate" class="tsd-kind-icon">_nag<wbr>State</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="_nag_.nagmanager.html#extensioncontext" class="tsd-kind-icon">extension<wbr>Context</a></li>
 							</ul>
@@ -96,7 +102,7 @@
 						<section class="tsd-index-section ">
 							<h3>Accessors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_nag_.nagmanager.html#onnag" class="tsd-kind-icon">on<wbr>Nag</a></li>
+								<li class="tsd-kind-get-signature tsd-parent-kind-class"><a href="_nag_.nagmanager.html#oncmakelatestversion" class="tsd-kind-icon">onCMake<wbr>Latest<wbr>Version</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -104,6 +110,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_nag_.nagmanager.html#_pollremotefornags" class="tsd-kind-icon">_poll<wbr>Remote<wbr>For<wbr>Nags</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="_nag_.nagmanager.html#_writenagstate" class="tsd-kind-icon">_write<wbr>Nag<wbr>State</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nag_.nagmanager.html#dispose" class="tsd-kind-icon">dispose</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nag_.nagmanager.html#pumpyamlstring" class="tsd-kind-icon">pumpYAMLString</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_nag_.nagmanager.html#start" class="tsd-kind-icon">start</a></li>
 							</ul>
@@ -123,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L127">nag.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L156">nag.ts:156</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -140,12 +147,12 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_nagemitter" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _nag<wbr>Emitter</h3>
-					<div class="tsd-signature tsd-kind-icon">_nag<wbr>Emitter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_nag_.nag.html" class="tsd-signature-type">Nag</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;Nag&gt;()</span></div>
+					<a name="_cmakelatestversionemitter" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _cmake<wbr>Latest<wbr>Version<wbr>Emitter</h3>
+					<div class="tsd-signature tsd-kind-icon">_cmake<wbr>Latest<wbr>Version<wbr>Emitter<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">EventEmitter</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_nag_.latestcmakeinfo.html" class="tsd-signature-type">LatestCMakeInfo</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new vscode.EventEmitter&lt;LatestCMakeInfo&gt;()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L125">nag.ts:125</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L248">nag.ts:248</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -155,7 +162,7 @@
 					<div class="tsd-signature tsd-kind-icon">_nag<wbr>State<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_nag_.nagstate.html" class="tsd-signature-type">NagState</a><span class="tsd-signature-symbol"> =&nbsp;getOrInitNagState(this.extensionContext)</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L126">nag.ts:126</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L155">nag.ts:155</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -165,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">extension<wbr>Context<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">vscode.ExtensionContext</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L129">nag.ts:129</a></li>
+							<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L158">nag.ts:158</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -173,19 +180,19 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Accessors</h2>
 				<section class="tsd-panel tsd-member tsd-kind-get-signature tsd-parent-kind-class">
-					<a name="onnag" class="tsd-anchor"></a>
-					<h3>on<wbr>Nag</h3>
+					<a name="oncmakelatestversion" class="tsd-anchor"></a>
+					<h3>onCMake<wbr>Latest<wbr>Version</h3>
 					<ul class="tsd-signatures tsd-kind-get-signature tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onNag<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_nag_.nag.html" class="tsd-signature-type">Nag</a><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">get</span> onCMakeLatestVersion<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_nag_.latestcmakeinfo.html" class="tsd-signature-type">LatestCMakeInfo</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L124">nag.ts:124</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L249">nag.ts:249</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_nag_.nag.html" class="tsd-signature-type">Nag</a><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Event</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/_nag_.latestcmakeinfo.html" class="tsd-signature-type">LatestCMakeInfo</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -202,7 +209,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L131">nag.ts:131</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L160">nag.ts:160</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -219,7 +226,24 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L127">nag.ts:127</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L156">nag.ts:156</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="dispose" class="tsd-anchor"></a>
+					<h3>dispose</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L251">nag.ts:251</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -236,7 +260,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L165">nag.ts:165</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L194">nag.ts:194</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -259,7 +283,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/56a2751/src/nag.ts#L212">nag.ts:212</a></li>
+									<li>Defined in <a href="https://github.com/vector-of-bool/vscode-cmake-tools/blob/8dc926d/src/nag.ts#L242">nag.ts:242</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -290,7 +314,7 @@
 								<a href="_nag_.nagmanager.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_nag_.nagmanager.html#_nagemitter" class="tsd-kind-icon">_nag<wbr>Emitter</a>
+								<a href="_nag_.nagmanager.html#_cmakelatestversionemitter" class="tsd-kind-icon">_cmake<wbr>Latest<wbr>Version<wbr>Emitter</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
 								<a href="_nag_.nagmanager.html#_nagstate" class="tsd-kind-icon">_nag<wbr>State</a>
@@ -299,13 +323,16 @@
 								<a href="_nag_.nagmanager.html#extensioncontext" class="tsd-kind-icon">extension<wbr>Context</a>
 							</li>
 							<li class=" tsd-kind-get-signature tsd-parent-kind-class">
-								<a href="_nag_.nagmanager.html#onnag" class="tsd-kind-icon">on<wbr>Nag</a>
+								<a href="_nag_.nagmanager.html#oncmakelatestversion" class="tsd-kind-icon">onCMake<wbr>Latest<wbr>Version</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_nag_.nagmanager.html#_pollremotefornags" class="tsd-kind-icon">_poll<wbr>Remote<wbr>For<wbr>Nags</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
 								<a href="_nag_.nagmanager.html#_writenagstate" class="tsd-kind-icon">_write<wbr>Nag<wbr>State</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="_nag_.nagmanager.html#dispose" class="tsd-kind-icon">dispose</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
 								<a href="_nag_.nagmanager.html#pumpyamlstring" class="tsd-kind-icon">pumpYAMLString</a>
@@ -318,7 +345,13 @@
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_nag_.latestcmakeinfo.html" class="tsd-kind-icon">LatestCMake<wbr>Info</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_nag_.nag.html" class="tsd-kind-icon">Nag</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="../interfaces/_nag_.nagdata.html" class="tsd-kind-icon">Nag<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_nag_.nagitem.html" class="tsd-kind-icon">Nag<wbr>Item</a>
