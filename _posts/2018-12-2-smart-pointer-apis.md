@@ -111,7 +111,7 @@ int main() {
 Looks good, but...
 
 ```
-main.cpp:9:8: error: no member named 'info' in 'std::shared_ptr<logging::logger>'; did you mean to use '->' instead of '.'?
+main.cpp:9:8: error: no member named 'info' in 'shared_ptr<logging::logger>'; did you mean to use '->' instead of '.'?
     log.info("Hello, world!");
        ^
        ->
@@ -218,7 +218,7 @@ public:
     void send(const_buffer);
     void receive(mutable_buffer);
 
-    static unique_ptr<socket> connect(std::string host, std::string service);
+    static unique_ptr<socket> connect(string host, string service);
 };
 ```
 
@@ -292,7 +292,7 @@ void send_headers(request& req, unique_ptr<socket> sock) {
 ```
 
 Uh... No. Now we won't be able to `send_body` because `send_headers` stole
-the socket when we have to `std::move(sock)` to call `send_headers`.
+the socket when we have to `move(sock)` to call `send_headers`.
 
 ```c++
 void send_headers(request& req, unique_ptr<socket>& sock) {
@@ -390,16 +390,16 @@ public:
     socket(native_handle handle);
     ~socket(); // Closes the handle
 
-    socket(socket&& s) : _h(std::exchange(s._h, make_null_handle())) {}
+    socket(socket&& s) : _h(exchange(s._h, make_null_handle())) {}
     socket& operator=(socket&& s) {
-        std::swap(s._h, _h);
+        swap(s._h, _h);
         return *this;
     }
 
     void send(const_buffer);
     void receive(mutable_buffer);
 
-    static socket connect(std::string host, std::string service);
+    static socket connect(string host, string service);
 };
 ```
 
