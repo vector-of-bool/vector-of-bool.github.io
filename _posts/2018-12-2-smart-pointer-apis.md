@@ -216,7 +216,7 @@ public:
     ~socket(); // Closes the handle
 
     void send(const_buffer);
-    void recieve(mutable_buffer);
+    void receive(mutable_buffer);
 
     static unique_ptr<socket> connect(std::string host, std::string service);
 };
@@ -397,7 +397,7 @@ public:
     }
 
     void send(const_buffer);
-    void recieve(mutable_buffer);
+    void receive(mutable_buffer);
 
     static socket connect(std::string host, std::string service);
 };
@@ -428,3 +428,135 @@ tools at your disposal.
 
 That *doesn't* mean we can just sprinkle smart pointers everywhere like fairy
 dust and expect it to solve all of our lifetime semantics problems.
+
+
+# Addendum: Nullability and Moved-From Semantics
+
+After posting this article, several expressed the concern that "moved-from" is
+essentially the same as "being null." As such, a "moved-from" `shared_logger`
+is *effectively* "null".
+
+On the subject of "moved-from" objects, I'll defer to Howard Hinnant, as he
+addressed the subject more eloquently and completely than I can do in both [this StackOverflow answer](https://stackoverflow.com/questions/7027523/what-can-i-do-with-a-moved-from-object#7028318),
+and [this presentation he gave at Bloomberg](https://www.youtube.com/watch?v=vLinb2fgkHk&t=47m10s).
+
+The standard only speaks toward types defined in the standard library, but it
+works as a good guideline for almost any type. That is this:
+
+> Unless otherwise specified, ... moved-from objects shall be placed in a valid
+> but unspecified state.
+
+The key words are "valid but unspecified." This has the effect that the object
+is still valid, but that one cannot be guaranteed of any particular state. This
+means we can use the object in any context which does not have *preconditions*.
+Common operations without preconditions are *destruction* `~T()` and
+*assignment* `T::operator=(T)`.
+
+We can go further in specific instances to afford our users additional
+guarantees, or inform them of additional restrictions.
+
+A potential flaw in my `shared_logger` design is that I *have not* specified any
+preconditions on the logging methods. There are three ways to go about solving
+this:
+
+
+## Option 1: Assume that "moved-from" `shared_logger` objects are unusable
+
+This is the current design, and is how many user-defined types behave. Suppose
+this:
+
+```c++
+void foo(Something& thing) {
+    thing.meow();
+}
+
+void bar(Something* thing) {
+    foo(*thing);
+}
+```
+
+Let's say that the `thing` parameter to `bar` *might be `nullptr`*. Where is
+the bug, then? Is it in `bar`, or is it in `foo`?
+
+*Of course* the bug is in `bar`. The reason `foo` is bug-free is that
+*references are never "null"*.
+
+"But wait!" I hear you cry, "You are dereferencing a null pointer and binding a
+reference to it!" Sure, this is true, and this is something you can type into a
+source file: It is *true*, but it is not *useful*.
+
+We must program with the assumption that a `T&` was bound to a valid object.
+Without this assumption, our programs are inherently meaningless and all code
+is fundamentally broken. We cannot reason about a program where `T&` has been
+bound using to an invalid `T*`.
+
+We might say the same of some moved-from types:
+
+```c++
+void foo(shared_logger& log) {
+    log.info("Hello!");
+}
+```
+
+What if someone passed us a moved-from `shared_logger`? We do not document any
+preconditions on `info`, nor do we specify the state of a moved-from
+`shared_logger`. As such, the best we can do is write code the assumption that
+our caller has not given us a moved-from object.
+
+
+## Option 2: Document that "moved-from" `shared_logger` objects are effectively dead
+
+This is mostly a documentation change, as there is no way to enforce that a
+user to never touch a moved-from object. We may do well to insert assertions in
+the methods of `shared_logger` to check that the object has not been moved-from.
+Here is what such a documentation might look like:
+
+> For a moved-from `shared_logger` object, the behavior of all operations on
+> are undefined, except for those of destruction and assignment.
+
+This is not much of a change from the prior section, as all rules still apply.
+
+
+## Option 3: Remove the "moved-from" state
+
+The only reason the `shared_logger` has a "moved-from" state to begin with is
+that it has a move constructor and assignment operator. Although they weren't
+written in the definition of `shared_logger`, they are generated as defaulted
+by the compiler to do a member-wise move. This has the effect that the internal
+`_impl` `shared_ptr` will be moved when the containing object is moved. A
+moved-from `shared_ptr` in an unspecified state, and the `operator->`, having a
+non-null precondition, becomes undefined behavior.
+
+All of this can be alleviated with a single `public` declaration in the body of `shared_logger`:
+
+```c++
+    shared_logger(const shared_logger&) = default;
+```
+
+Done. This will inhibit the generation of a move-constructor and
+move-assignment-operator, and our type will effectively become "copy-only." The
+defaulted copy operations do a member-wise copy, and a copy of the `_impl`
+`shared_ptr` will increment the reference count but remain otherwise unchanged.
+This affords the new guarantee that `shared_logger` objects are _always valid_,
+even in the case that they are "moved-from" (because "move" is now defined as a
+regular copy).
+
+
+## On the Subject of "Unique" Types
+
+I've covered the "moved-from" "nullability" of `shared_logger`, but not of
+`socket`. The cleanest solution for `shared_logger` is Option #3, but that is
+not an option for `socket`, which is specifically *move-only*.
+
+We *could* change the `socket` to be *copy-only*, but this changes the
+semantics of the library. A logger is amenable to being "shared" in a program,
+as there is only one console, or one log file, and a whole program that needs
+to write to it with no strict ordering, as writing to a log does not alter the
+state of the object. A socket, on the other hand, is not so keen: Since it
+"talks back," it means that there is another end of the socket expecting us to
+send data according to some protocol. Having an implicitly-shared socket makes
+enforcing a protocol difficult. "Sharing" of a `socket` around a program can
+still be done via `socket&`, though.
+
+Enforcing limited usage of "moved-from" objects is still a tricky subject, but
+may be the domain of contracts and control-flow analysis.
