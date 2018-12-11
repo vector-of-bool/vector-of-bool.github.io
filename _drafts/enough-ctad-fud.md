@@ -98,7 +98,8 @@ good post detailing this exact surprise](https://akrzemi1.wordpress.com/2018/12/
 
 It's actually hard to objectively quantify what is surprising about the above
 example, but I think a good candidate for doing so is to show a snippet of
-code be believe to be *always correct*, that can be broken by corner cases:
+code one would believe to be *always correct* that can be broken by corner
+cases:
 
 ```c++
 template <typename Something>
@@ -111,8 +112,8 @@ void do_a_thing(Something s) {
 With the naive understanding of the semantics of `optional`, we'd expect the
 above example to be *always correct*. We've been given a `Something`, we wrap
 it in an *engaged* `optional`, and then we bind a reference to the wrapped
-value. The surprize comes from the fact that the above example break if you
-pass an `optional<T>` in for `s`!
+value. The surprize comes from the fact that the above example will break if
+you pass an `optional<T>` in for `s`!
 
 ```
 <source>:9:16: error: non-const lvalue reference to type 'std::optional<int>' cannot bind to a value of unrelated type 'int'
@@ -166,7 +167,7 @@ expect that a `T&` can bind to the value of `front()`. For many types, *this
 works accidentally*. The fatal assumption is that `front()`, `back()`, `at()`,
 and `operator[]` return a `T&`. This is not true. This has never been true.
 Code which assumes this is wrong and broken. The truth is that
-`std::vector<T>::front()` *does not return `T&*`*. It returns
+`std::vector<T>::front()` *does not return `T&`*. It returns
 `std::vector<T>::reference`. For an arbitrary `T`, `::reference` is not
 guaranteed to be `T&`. The most notable example is that of `bool`
 
@@ -213,7 +214,7 @@ If we special-cased `make_pair` to change character arrays into
 In fact, if `make_pair` did anything tricky to make the above code incorrect,
 that would be pretty surprising...
 
-It's a good thing it doesn't, right!
+It's a good thing it doesn't! Right?
 
 ... Right?
 
@@ -330,6 +331,9 @@ Here's another one: An "operator" class template that supports partial
 application for binary operator `>`:
 
 ```c++
+template <typename Bound = void>
+struct greater_than;
+
 // Default with no bound arguments
 template <>
 struct greater_than<void> {
@@ -345,7 +349,7 @@ template <typename Bound>
 struct greater_than  {
     Bound _bound;
     template <typename T>
-        required ConvertibleTo<T, Bound>
+        requires ConvertibleTo<T, Bound>
     greater_than(T&& t)
         : _bound(std::forward<T>(t)) {}
 
