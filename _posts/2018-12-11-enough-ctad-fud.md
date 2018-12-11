@@ -155,7 +155,7 @@ CTAD?
 
 Let's look at my namesake: `vector<bool>`. What makes it "surprising"?
 
-```
+```c++
 template <typename T>
 void foo(std::vector<T> vec) {
     T& ref = vec.front();
@@ -378,3 +378,5 @@ auto iter = find_if(begin(arr), end(arr), greater_than(4));
 // Sort by "greater than" comparisons
 sort(begin(arr), end(arr), greater_than());
 ```
+
+What other pleasant surprises does CTAD hold?
