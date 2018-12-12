@@ -64,7 +64,7 @@ std::optional maybe_string{"Hello!"s};
 std::optional other_thing{maybe_string};
 ```
 
-What is the type of `my_string`? If you said `optional<string>`, you're
+What is the type of `maybe_string`? If you said `optional<string>`, you're
 correct! Not a surprising result, actually.
 
 But... What is the type of `other_thing`? If you said
