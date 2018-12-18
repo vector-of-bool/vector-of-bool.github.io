@@ -1,6 +1,6 @@
 nags: []
 latestCMake:
-  version: 3.12.3
-  linuxURL: https://cmake.org/files/v3.12/cmake-3.12.3-Linux-x86_64.sh
-  windowsURL: https://cmake.org/files/v3.12/cmake-3.12.3-win64-x64.msi
+  version: 3.13.2
+  linuxURL: https://github.com/Kitware/CMake/releases/download/v3.13.2/cmake-3.13.2-Linux-x86_64.sh
+  windowsURL: https://github.com/Kitware/CMake/releases/download/v3.13.2/cmake-3.13.2-win64-x64.msi
 
