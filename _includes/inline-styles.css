@@ -253,7 +253,6 @@ vb-project .body .icon-container {
 }
 
 [vb-content] div[content]:not(.override-img-styles) img {
-  width: 100% !important;
   height: auto !important;
 }
 
@@ -562,7 +561,7 @@ div.image-frame {
   text-align: center;
 }
 
-div.image-frame > :first-child {
+div.image-frame:not(.no-shadow) > :first-child {
   border-radius: 5px;
   overflow: hidden;
   box-shadow:
@@ -577,7 +576,7 @@ div.image-frame > :first-child {
   line-height: 0;
 }
 
-div.image-frame > :first-child:hover {
+div.image-frame:not(.no-shadow) > :first-child:hover {
   box-shadow:
     0 4px 8px rgba(0, 0, 0, 0.5),
     0 4px 11px rgba(0, 0, 0, 0.2),
