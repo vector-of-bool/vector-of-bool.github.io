@@ -35,7 +35,7 @@ is run. Simple enough. Why do we need build systems?
 That may seem like a silly question, but I've seen plenty of people advising
 that "`build.bat` is all you need!"
 
-This *far* from the truth. Consider a program with hundreds of source files
+This is *far* from the truth. Consider a program with hundreds of source files
 that builds a dozen libraries and a dozen executables and includes thousands
 of header files. That shell script would be insane!
 
@@ -177,7 +177,7 @@ produce outputs. In the above, we have two "link" edges that actually
 represent a single command to execute. How can we solve this?
 
 The answer is to introduce a pair of "virtual" edges that remap the inputs
-two a single "virtual" node:
+to a single "virtual" node:
 
 <div class="image-frame no-shadow" markdown="1">
 ![Multiple Input Graph](/res/ninja-graph-6.png)
@@ -554,7 +554,7 @@ build sorted-names.txt: sort-lines names.txt | sort-lines.py
 build sorted-ingredients.txt: sort-lines ingredients.txt | sort-lines.py
 ```
 
-The only different between *implicit* and *explicit* inputs is that
+The only differences between *implicit* and *explicit* inputs is that
 *explicit* inputs will appear in the expansion of the `$in` variable.
 
 > Ninja also has a concept of *implicit* and *explicit* outputs, which work
