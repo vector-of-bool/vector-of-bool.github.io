@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Building Like (a) Ninja
+title: Building Like (a) Ninja [Pt1]
 comments: true
 ---
 
@@ -116,7 +116,7 @@ are also "inputs" to generate Out. For example: If E is a compiler command
 that compiles source file In to object file Out, the compiler flags present
 in E are relevant to understanding whether Out is "out-of-date." Adding
 compiler flags can completely change the result of the build. Rather than
-splitting these salient attributes of and edge into another input node, we
+splitting these salient attributes of an edge into another input node, we
 should keep them attached to the edge in order to maintain a consistent
 model down the road.
 
@@ -185,9 +185,8 @@ two a single "virtual" node:
 
 The reason we cannot simply group the input files into a single node like we
 did with multiple output nodes is that multiple edges may feed into our
-input set, and a proper subset of our own inputs may be used as inputs to
-another edge. Such a grouping is not possible in these cases since the edge
-outputs.
+input set, and a proper subset of our own outputs may be used as inputs to
+another edge.
 
 We impose a restriction that each "real" node in the graph have *at most
 one* inbound edge. The virtual edges and nodes do not correspond to the
@@ -217,8 +216,7 @@ build foo: simple-cmd
 
 (If you are going to copy-paste, note that Ninja requires a newline at the
 end of the file. When you run Ninja, it will look for a `build.ninja` in the
-current directory. You can specify a Ninja file to include with
-`-f <filepath>`.)
+current directory. You can specify a Ninja file to use with `-f <filepath>`.)
 
 The `rule` statement can be thought of as a "template" for a command to run
 as part of an edge.
@@ -266,9 +264,9 @@ up-to-date).
 find that Ninja will run the `echo` command once again, then stop on
 subsequent attempts. Ninja uses the `.ninja_log` file to determine what
 commands were used to create an output. If no `.ninja_log` exists, it cannot
-be sure that the edge command for an output is the same as the command that
-was used to generate it. For this reason, Ninja will unconditionally run the
-command if `.ninja_log` is missing. Executing the edge will update the
+be sure that the edge command for an existing output is the same as the command
+that was used to generate it. For this reason, Ninja will unconditionally run
+the command if `.ninja_log` is missing. Executing the edge will update the
 `.ninja_log`, and the output will again be considered up-to-date. Looking
 into the log will show the name of the output, the modification time of the
 output, as well as a hash of the command that was used to generate the
@@ -411,11 +409,11 @@ ninja: no work to do.
 
 Ninja detects that the input to our program has not changed relative to the
 output, and does not execute our edge again. If we change `names.txt`, Ninja
-will detect this an re-run the sort-lines script to re-generate the
+will detect this and re-run the sort-lines script to re-generate the
 `sorted-names.txt` file. This is the essence of *incremental* builds.
 
-One build edge is simple enough, but suppose we want now to *also* sort a
-list of baking ingredients:
+One build edge is simple enough, but suppose we want now to sort also a list of
+baking ingredients:
 
 ```
 rule sort-names
@@ -435,9 +433,36 @@ happily sort our ingredients to `sorted-ingredients.txt`. If we change both
 `names.txt` and `ingredients.txt`, Ninja will even run the two commands *in
 parallel*. This is the essence of parallel builds.
 
+Our dependency graph may look like this:
+
+<div class="image-frame no-shadow" markdown="1">
+![Multi-Edge Graph](/res/ninja-graph-8.png)
+</div>
+
+(I've replaced the circles with rounded capsules to fit larger text in them.)
+
+This is actually *two* disconnected graphs, but when we build we can imagine a
+"virtual" node to build that depends on all the targets requested to build. When
+no targets are listed on the command line (and no `default` targets are named),
+Ninja behaves as if *all* leaf output nodes are requested to build. Such a
+conceptual graph will look like this:
+
+<div class="image-frame no-shadow" markdown="1">
+![Multi-Edge Graph with Goal](/res/ninja-graph-9.png)
+</div>
+
+This special `Goal` node is where we start when investigating the targets to
+build. It is not specified in our graph definition: We add it and create virtual
+edges running to it from the nodes of the outputs that we want to generate. From
+a user interface or API, the invoker may request some subset of all nodes that
+they wish to build. The `Goal` may even specify nodes which have outbound edges
+(Non-leaf nodes).
+
 ## Less Redundancy
 
-Our Ninja file sure seems pretty wordy, doesn't it? We have two rules for two build edges that look almost identical. That's annoying. Fortunately, Ninja allows us to consolidate them using *variables*:
+Our Ninja file sure seems pretty wordy, doesn't it? We have two rules for two
+build edges that look almost identical. That's annoying. Fortunately, Ninja
+allows us to consolidate them using *variables*:
 
 ```
 rule sort-lines
@@ -536,6 +561,19 @@ The only different between *implicit* and *explicit* inputs is that
 > in a similar fashion: *implicit* outputs do not appear in expansion of the
 > `$out` variable.
 
+Now that we've added another input, our build graph has changed. We have two
+edges which use `sort-lines.py` as inputs, and we don't want to generate two
+different nodes. We'll add another node and create a virtual grouping node for
+the `sort-lines` edges:
+
+<div class="image-frame no-shadow" markdown="1">
+![Graph with Shared Input](/res/ninja-graph-10.png)
+</div>
+
+> The distinction between *implicit* and *explicit* inputs is not important for
+> building and traversing the build graph. There is a third type of input known
+> as *order-only*, which *does* change the way we view and traverse the build
+> graph.
 
 ## *Even Less* Redundancy
 
@@ -599,7 +637,7 @@ build sorted-ingredients.txt: sort-lines ingredients.txt | $sort_lines_py
     sort = desc
 ```
 
-The indented area below a `build` statement lets us provide additional
+The indented area below a `build` statement lets us provide those additional
 variables that will be included when evaluating the rule. We tweak our
 `sort-lines` rule to use the `$sort` variable as the sort-order argument,
 and we'll expect `build` statements using the rule to provide it in their
@@ -609,3 +647,19 @@ specify the "default" value for a variable in a rule. Remember: Ninja is
 *extremely* bare-bones. It is intended that a tool will be generating these
 Ninja files.
 
+**Note**: The `$sort` variable isn't a variable that Ninja recognizes in any
+special fashion: It's a regular user-provided variable, just like
+`$sort_lines_py`. The usage of `$sort` in the rule will expand to the value of
+`$sort` that it obtains from an edge that uses the rule.
+
+The variables have no effect on the build graph.
+
+
+# To Be Continued...
+
+There's still quite a bit more to cover, including how we execute the build
+graph and the essential concept of "implicit dependencies" (distinct from
+implicit *inputs*!). I intended to keep this all in a single post, but it's
+already growing fairly long.
+
+Stay tuned for Part 2...
