@@ -8,9 +8,6 @@ body {
   font-family: Ubuntu, Arial, Helvetica, sans-serif;
   text-shadow: 0 1px 2px rgba(0,0,0,0.4);
   margin: 0;
-  /*max-width: 1500px;*/
-  /*margin: 30px auto;*/
-  /*margin-top: 30px;*/
   transition: 300ms margin linear;
   display: flex;
   flex-direction: column;
@@ -326,7 +323,6 @@ vb-footer::before {
 
 .post-list > a.post-link {
   display: block;
-  /* height: 160px; */
   padding: 5px;
   margin-top: 10px;
   background-color: #555;
@@ -512,7 +508,6 @@ div.highlighter-rouge > .highlight > .highlight {
 .aside {
   border-radius: 6px;
   padding: 10px;
-  /*margin-right: 20px;*/
   background-image: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
   box-shadow:
     0 2px 5px rgba(0,0,0,0.6),
@@ -632,6 +627,10 @@ div.image-frame:not(.no-shadow) > :first-child:hover {
     border-top: 1px solid white;
     padding: 0;
     padding-top: 20px;
+  }
+
+  .post .post-content {
+    padding: 15px;
   }
 }
 
