@@ -2,6 +2,9 @@
 layout: post
 title: The Curious Case of std::in_place [Outdated]
 comments: true
+desc: >
+    In which I talk about an obscure proposed C++ feature that never came to
+    fruition
 ---
 
 <div class="aside warning" markdown="1">

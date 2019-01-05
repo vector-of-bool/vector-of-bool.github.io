@@ -2,6 +2,10 @@
 layout: post
 title: Partial Specialization and Tags
 comments: true
+desc: >
+    In which I talk about how to emulate partial specialization of function
+    templates and talk about why we actually want to partially specialize
+    function templates
 ---
 
 Recently, in the C++ blog-o-sphere, [a post by Jonathan Baccara](http://www.fluentcpp.com/2017/08/11/how-to-do-partial-template-specialization-in-c/)

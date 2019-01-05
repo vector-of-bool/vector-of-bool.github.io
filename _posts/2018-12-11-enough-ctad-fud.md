@@ -2,6 +2,7 @@
 layout: post
 title: Stop with the CTAD FUD!
 comments: true
+desc: In which I over-react to other people and talk about why I like CTAD
 ---
 
 Among the catalog of features introduced by C++17, you'll find a feature

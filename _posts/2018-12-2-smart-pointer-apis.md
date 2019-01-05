@@ -2,6 +2,7 @@
 layout: post
 title: Smart Pointers Make Bad APIs
 comments: true
+desc: In which I bemoan using smart pointers at public API boundaries
 ---
 
 Smart pointers are pretty cool, don't you think? You can easily represent the

@@ -2,6 +2,9 @@
 layout: post
 title: "Paths: Taxonomy, Terminology, and Myths"
 comments: true
+desc: >
+    In which I attempt to formalize some of the language used when talking
+    about paths
 ---
 
 What is a _path_? I mean, of course, in the context of computation.

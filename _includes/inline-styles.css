@@ -319,53 +319,57 @@ vb-footer::before {
 }
 
 .post-list {
-  display: -mx-flexbox;
-  display: -webkit-flex;
   display: flex;
-  -webkit-flex-direction: row;
-  -moz-flex-direction: row;
-  -ms-flex-direction: row;
-  -o-flex-direction: row;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  margin-top: 15px;
 }
 
-a.post-link {
-  width: 160px;
-  height: 160px;
+.post-list > a.post-link {
+  display: block;
+  /* height: 160px; */
   padding: 5px;
-  margin: 10px;
-  display: inline-flex;
-  flex-direction: column;
+  margin-top: 10px;
   background-color: #555;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5000px;
+  border-radius: 10px;
   word-wrap: break-word;
   white-space: normal;
-  border: 15px solid #bbb;
+  border: 2px solid;
+  border-bottom: 15px solid;
   text-decoration: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-  background-clip: border;
   border-color: rgba(255, 255, 255, 0.4);
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
   -webkit-tap-highlight-color: transparent;
+  transition: 100ms box-shadow, 100ms transform;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.8);
+  -webkit-touch-callout: none;
 }
 
-.post-list {
-  margin-top: 15px;
+a.post-link:hover {
+  transform: scale(1.03) translate(-1px, -1px) rotate(0.5deg);
+  box-shadow: 3px 4px 10px rgba(0,0,0,0.8);
 }
 
 .post-link__title {
   font-size: 18pt;
   color: #eee;
   font-weight: bold;
+  margin: 10px;
+  text-align: left;
+}
+
+.post-link__meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 10px;
+}
+
+.post-link__desc {
+  font-size: 12pt;
+  color: #eee;
+  font-style: italic;
+  text-align: right;
+  max-width: 600px;
 }
 
 .post-link__date {
@@ -477,18 +481,6 @@ body.online div.offline-warning {
 
 body:not(.online) div.offline-warning {
   max-height: 100px;
-}
-
-
-a.post-link {
-  transition: 100ms box-shadow, 100ms transform;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.8);
-  -webkit-touch-callout: none;
-}
-
-a.post-link:hover {
-  transform: scale(1.1) translate(-1px, -1px) rotate(5deg);
-  box-shadow: 3px 4px 10px rgba(0,0,0,0.8);
 }
 
 /* Code blocks */

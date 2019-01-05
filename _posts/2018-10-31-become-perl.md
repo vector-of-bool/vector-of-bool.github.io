@@ -2,6 +2,8 @@
 layout: post
 title: Now I Am Become Perl —
 comments: true
+desc: In which I discuss my "wildest dream" feature for C++, and why terseness
+    isn't something to fear
 ---
 
 Destroyer of verbosity.

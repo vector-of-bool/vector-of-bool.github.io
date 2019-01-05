@@ -2,6 +2,7 @@
 layout: post
 title: "Announcing: How to CMake Good"
 comments: true
+desc: In which I announce my YouTube channel and a CMake educational series
 ---
 
 One of the most common complaints about CMake is the lack of good learning

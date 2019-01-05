@@ -2,6 +2,8 @@
 layout: post
 title: The Dumbest Allocator of All Time
 comments: true
+desc: In which a silly joke made in a chatroom becomes a serious contender for
+    a good idea
 ---
 
 Recently, I was casually watching a conversation on the C++ Slack about ways
@@ -55,7 +57,7 @@ And then, *a lightbulb.*
 <div class="aside warning" markdown="1">
 Update: It has been pointed out that I am conflating the work of overcommit
 and kernel memory page accounting. Overcommit is not *required* for my
-"dumbest allocator," but it will still help when you are running low on 
+"dumbest allocator," but it will still help when you are running low on
 memory. Even on modern systems without overcommit enabled, you will still
 see physical memory occupied only as your program makes use of it on-demand.
 </div>
@@ -263,7 +265,7 @@ public:
     template <typename Area, typename = decltype(std::declval<Area&>().data())>
     explicit bumping_memory_resource(Area& a)
         : _ptr(a.data()) {}
-        
+
     constexpr static auto alignment = Alignment;
 
     void* allocate(std::size_t size) noexcept {
@@ -298,7 +300,7 @@ class bumping_allocator {
 
 public:
     using value_type = T;
-    
+
     static_assert(alignof(T) <= Resource::alignment, "Given type cannot be allocator with the given resource");
 
     explicit bumping_allocator(Resource& res)
@@ -325,12 +327,12 @@ public:
 ```
 
 Our bumping allocator doesn't use `bumping_memory_resource` directly. It takes
-a template parameter to the real resource to use, and just calls `allocate()` 
+a template parameter to the real resource to use, and just calls `allocate()`
 and `deallocate()`. We also `static_assert` that `T` is sufficiently aligned
 by the alignment requirements of the memory resource.
 
 Those who have written pre-C++17/14 Allocators will be happy to find that the
-C++14/17 Allocator requirements are much easier to satisfy. No longer do you 
+C++14/17 Allocator requirements are much easier to satisfy. No longer do you
 need to pull teeth and sacrifice goats to get a useful Allocator.
 
 In truth, none of the above classes really represent *The* Dumbest Allocator,
