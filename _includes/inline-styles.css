@@ -190,10 +190,8 @@ vb-project .body {
   text-align: justify;
 }
 
-vb-project .body .icon-container {
-  float: left;
-  width: 128px;
-  flex-shrink: 0;
+vb-project .body .icon {
+  margin: 10px;
 }
 
 [vb-content] > [backdrop] {
@@ -546,6 +544,9 @@ div.footnotes > p {
 
 div.image-frame {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 div.image-frame:not(.no-shadow) > :first-child {
@@ -561,6 +562,8 @@ div.image-frame:not(.no-shadow) > :first-child {
   margin: 0;
   padding: 0;
   line-height: 0;
+  display: flex;
+  max-width: 100%;
 }
 
 div.image-frame:not(.no-shadow) > :first-child:hover {
