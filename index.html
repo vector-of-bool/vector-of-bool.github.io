@@ -8,10 +8,13 @@ digits: [1,2,3,4,5,6,7,8,9]
 <h2>Recent Posts</h2>
 <div class="post-list">
   {% for post in site.posts %}
-  <a class="post-link" href="{{ post.url | prepent: site.baseurl }}"
+  <a class="post-link" href="{{ post.url | prepend: site.baseurl }}"
     style="background-color: #{{site.digits | sample:6}}">
     <div class="post-link__title">{{post.title | escape}}</div>
-    <div class="post-link__date">{{post.date | date_to_string}}</div>
+    <div class=post-link__meta>
+      <div class="post-link__date">{{post.date | date_to_string}}</div>
+      <div class="post-link__desc">{{post.desc}}</div>
+    </div>
   </a>
   {% endfor %}
 </div>
