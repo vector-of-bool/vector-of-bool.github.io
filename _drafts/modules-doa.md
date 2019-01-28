@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C++ Modules Will Be Dead-on-Arrival
+title: C++ Modules Might Be Dead-on-Arrival
 comments: true
 desc: In which I discuss a modules problem that is being ignored
 ---
@@ -18,10 +18,11 @@ The design of modules has several essential goals in mind:
    insignificant.
 4. **Physical encapsulation** - Only entities which are explicitly declared as
    exported by a module will be visible to consumers. Non-exported entities
-   within a module will not affect name lookup in other modules.
+   within a module will not affect name lookup in other modules (barring some
+   possible strangeness with ADL. Long story...)
 5. **Modular interfaces** - The current module design enforces that for any
    given module, the entire public interface of that module is declared in a
-   single TU called the "module-interface unit." The implementation of
+   single TU called the "module-interface unit" (MIU). The implementation of
    subsets of the module interface may be defined in different TUs called
    "partitions."
 
@@ -95,7 +96,7 @@ using header files:
 4. There is no ordering requirement between the compilation of the "modules"
    `foo` and `bar`. They can be processed in parallel.
 
-Parallelization is probably the single most important aspect of increasing of
+Parallelization is probably the single most important aspect of increasing
 build performance. At this point, it isn't even something you think about when
 you are optimizing your build because *it is already there*.
 
@@ -203,11 +204,11 @@ the file.
 So what can we do? We could cache the names of all the modules after
 preprocessing all the files, right? Well, where do we store that mapping? And
 what happens when we want to compile with a different compiler that results in
-a different mapping? What if we add new files that need to be scan? Do we need
-to search every directory that contains these thousands of source files every
-time we build, just to check if and modules were added, removed, or renamed? On
-systems where process startup and/or filesystem access is not cheap, these
-costs will add up.
+a different mapping? What if we add new files that need to be scanned? Do we
+need to search every directory that contains these thousands of source files
+every time we build, just to check if any modules were added, removed, or
+renamed? On systems where process startup and/or filesystem access is not cheap,
+these costs will add up.
 
 
 # Possible Solutions
@@ -221,7 +222,7 @@ There are two alternative ideas to enforce this:
 1. Force MIU filenames to derive from the module's name. This mimics the design
    of header filenames being directly related to how they are found from an
    `#include` directive.
-2. Provide a "manifest" or "mapping" file that describes that filepath to an
+2. Provide a "manifest" or "mapping" file that describes the filepath to an
    MIU based on the module name. This file will need to be user-provided, or we
    are back in the scanning problem.
 
@@ -273,9 +274,6 @@ discussion](http://www.open-std.org/pipermail/tooling/2019-January/000269.html)
 on the issues with module toolability, claiming that SG15 does not have the
 necessary implementation experience to make useful statements regarding modules.
 
-The SG15 chair has been entirely absent from the discussion from the very
-beginning.
-
 SG15 has only had face-to-face meetings. The last meeting, in San Diego, was
 useless as the chair was absent and people were too busy getting caught up
 since the prior meetings to have any useful discussions. With no SG15 meetings
@@ -284,7 +282,7 @@ difficulty staying up-to-date and collaborating on work. In addition, many
 times that SG15 has attempted to raise issues they have been shot down as their
 work is considered "out-of-scope" for the C++ language.
 
-A Tweet about the pre-Kona mailings spurned discussion of C++ modules and p1427.
+A Tweet about the pre-Kona mailings spawned discussion of C++ modules and p1427.
 [Questions were raised about who to
 trust](https://twitter.com/horenmar_ctu/status/1089542882783084549) regarding
 module toolability.
@@ -320,7 +318,8 @@ are significant issues that need to be addressed.
 But, judging by the behavior of others, it may seem that it doesn't matter what
 SG15 thinks: They are being shot down at every turn by people with very little
 experience in C++ tooling, and the SG15 chair is completely absent through this
-entire discussion.
+entire discussion. Anything SG15 does is declared "unsubstantiated" and
+"out-of-scope."
 
 I was afraid to call out this behavior: I'm not keen on interpersonal conflict.
 Nevertheless, I'm more afraid that C++ will end up with a permanently useless
