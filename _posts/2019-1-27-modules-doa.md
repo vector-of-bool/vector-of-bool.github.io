@@ -265,8 +265,8 @@ Yes I am, but I feel that these are some of the most qualified people to
 provide feedback on module toolability.
 
 This paper was born from the concerns of many tool authors and collaborators
-(more than what is named on the paper itself) who have felt that their concerns
-about modules have been ignored for months and years.
+(more than what is named on the paper itself, including myself) who have felt
+that their concerns about modules have been ignored for months and years.
 
 People outside of SG15 have been keen to [shoot down
 discussion](http://www.open-std.org/pipermail/tooling/2019-January/000269.html)
