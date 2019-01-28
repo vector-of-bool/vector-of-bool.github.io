@@ -113,7 +113,7 @@ performance-wise. Expectedly, as hardware parallelism increases, headers' lead
 over modules becomes more and more pronounced. There is also a relationship
 between the DAG-depth (i.e. The length of the chain of modules that `import`
 each other). As this depth increases, modules grow slower and slower, while
-headers remain fairly constant for event "extreme" depths approaching 300).
+headers remain fairly constant for even "extreme" depths approaching 300).
 
 
 # A Sisyphean Scanning Task
@@ -290,7 +290,7 @@ trust](https://twitter.com/horenmar_ctu/status/1089542882783084549) regarding
 module toolability.
 
 This discussion culminated in an eventual call for SG15 to
-[STFU](https://twitter.com/rodgertq/status/1089580076729982976?s=19) unless
+["STFU"](https://twitter.com/rodgertq/status/1089580076729982976?s=19) unless
 they can provide code samples that prove the problems they outline. This is a
 request for code that cannot be implemented in any current compiler and cannot
 be implemented in any current build system. Even if these were to exist, the
@@ -300,7 +300,13 @@ such, this request for code is a goal that cannot be met.
 The issues were not discussed. The issues were not disproven. No one even
 mentioned the problems outlined in p1427. We are told to simply
 [trust some big names](https://twitter.com/jfbastien/status/1089536692288024576)
-to know better than we do (Appeal to authority?).
+to know better than we do (an appeal to authority).
+
+People backing the current modules design have not proven that modules work at
+scale, yet also demand proof from SG15 that they *do not* work at scale.
+Existing "modules" deployments do not use the current design, and do not use
+the automated module scanning that would be required for use with real build
+systems in the wild.
 
 If modules are merged and it turns out that they cannot be implemented in a
 well-performing and flexible fashion, people will not use modules. If a broken
