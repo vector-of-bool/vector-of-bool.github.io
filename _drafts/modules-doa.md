@@ -165,7 +165,6 @@ export namespace greeting {
 std::string english();
 
 }
-#endif
 ```
 
 It defines that `greeting::english` function that we want. But how do we know
