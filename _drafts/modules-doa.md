@@ -8,11 +8,11 @@ desc: In which I discuss a modules problem that is being ignored
 C++ modules are slated to be the biggest change in C++ since its inception.
 The design of modules has several essential goals in mind:
 
-1. **Top-down isolation** - The "importer" of a module cannot effect the content
+1. **Top-down isolation** - The "importer" of a module cannot affect the content
    of the module being imported. The state of the compiler (preprocessor) in the
    importing source has no bearing on the processing of the imported code.
-2. **Bottom-up isolation** - The content of module does not effect the state of
-   the preprocessor in the importing code.
+2. **Bottom-up isolation** - The content of a module does not affect the state
+   of the preprocessor in the importing code.
 3. **Lateral isolation** - If two modules are imported by the same file, there
    is no "cross-talk" between them. The ordering of the import statements is
    insignificant.
@@ -37,7 +37,7 @@ benefit from the design of modules. In order of most-to-least-obvious:
    cached when the module is later imported into another TU.
 2. **Parse-tree caching** - Same as above. Tokenization and parsing are some of
    the most expensive operations in compiling C++. In my own tests, parsing can
-   consume up to 30% of compilation time for files with large preprocessed
+   consume up to 30% of compilation time for files with a large preprocessed
    output.
 3. **Lazy re-generation** - If `foo` imports `bar`, and we later make changes to
    the *implementation* of `bar`, we may be able to omit recompilation of `foo`.
@@ -107,7 +107,7 @@ The consequences of this design were explored very recently by Rene Rivera in
 [*Are modules fast?*](https://bfgroup.github.io/cpp_tooling_stats/modules/modules_perf_D1441R1.html).
 
 Spoiler alert: No. Or, more accurately: It's subtle, but mostly *no*. The
-current module implementation used in that paper is extremely primitive, but is
+current module implementation used in that paper is extremely primitive but is
 still a valuable benchmark to understand what modules may look like
 performance-wise. Expectedly, as hardware parallelism increases, headers' lead
 over modules becomes more and more pronounced. There is also a relationship
@@ -132,7 +132,7 @@ int main() {
 This is pretty simple. Since we import some modules, we will need to compile
 `greetings` and `std.iostream` *before* we can compile this file.
 
-So, lets do that...
+So, let's do that...
 
 ...
 
@@ -170,7 +170,7 @@ std::string english();
 It defines that `greeting::english` function that we want. But how do we know
 that this is the right file? It doesn't contain a `module greetings;` line!
 
-But it does. Sometimes. It turns out, when we compile with `-DFROMBULATE`, then
+But it does. Sometimes. It turns out when we compile with `-DFROMBULATE`, then
 the file `hello.h` is pasted into the source file. What's in there?
 
 ```c++
@@ -197,8 +197,8 @@ be imported, and any one of them could be `module greetings;`
 Also, we can't use our own implementation of the preprocessor: We need to run
 *exactly* the preprocessor that will be compiling this code. See that
 `__SOME_BUILTIN_MACRO__`? We have no clue what that is. If we don't get it
-*exactly* right, compilation will fail, or, even worse, we may *miscompile* the
-file.
+*exactly* right, the compilation will fail, or, even worse, we may *miscompile*
+the file.
 
 So what can we do? We could cache the names of all the modules after
 preprocessing all the files, right? Well, where do we store that mapping? And
@@ -216,7 +216,7 @@ These two problems are distinct but related in that I (and many others) believe
 that one change to the modules design will fix them both: **Module interface
 unit locations must be deterministic**.
 
-There are two alternative ideals to enforce this:
+There are two alternative ideas to enforce this:
 
 1. Force MIU filenames to derive from the module's name. This mimics the design
    of header filenames being directly related to how they are found from an
@@ -250,7 +250,7 @@ Instead, a compiler should lazily generate the BMI when it first encounters an
 `import` statement for the module in question. The build system should not
 concern itself with BMIs at all.
 
-All of this can only work if the location of a MIU is deterministic for the
+All of this can only work if the location of an MIU is deterministic for the
 compiler.
 
 
