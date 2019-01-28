@@ -252,3 +252,70 @@ concern itself with BMIs at all.
 
 All of this can only work if the location of a MIU is deterministic for the
 compiler.
+
+
+# I Have Little Hope
+
+There was a recent upset on the Twitter-verse. The Pre-Kona mailing was posted
+on January 25th. Amongst the many papers posted you will find
+[p1427, *Concerns about module toolability*](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1427r0.pdf).
+Amongst its authors and contributors are names of build system and tooling
+engineers from around the industry. Am I appealing to authority here?
+Yes I am, but I feel that these are some of the most qualified people to
+provide feedback on module toolability.
+
+This paper was born from the concerns of many tool authors and collaborators
+(more than what is named on the paper itself) who have felt that their concerns
+about modules have been ignored for months and years.
+
+People outside of SG15 have been keen to [shoot down
+discussion](http://www.open-std.org/pipermail/tooling/2019-January/000269.html)
+on the issues with module toolability, claiming that SG15 does not have the
+necessary implementation experience to make useful statements regarding modules.
+
+The SG15 chair has been entirely absent from the discussion from the very
+beginning.
+
+SG15 has only had face-to-face meetings. The last meeting, in San Diego, was
+useless as the chair was absent and people were too busy getting caught up
+since the prior meetings to have any useful discussions. With no SG15 meetings
+outside of those at the official WG21 convenings, the members thereof have
+difficulty staying up-to-date and collaborating on work. In addition, many
+times that SG15 has attempted to raise issues they have been shot down as their
+work is considered "out-of-scope" for the C++ language.
+
+A Tweet about the pre-Kona mailings spurned discussion of C++ modules and p1427.
+[Questions were raised about who to
+trust](https://twitter.com/horenmar_ctu/status/1089542882783084549) regarding
+module toolability.
+
+This discussion culminated in an eventual call for SG15 to
+[STFU](https://twitter.com/rodgertq/status/1089580076729982976?s=19) unless
+they can provide code samples that prove the problems they outline. This is a
+request for code that cannot be implemented in any current compiler and cannot
+be implemented in any current build system. Even if these were to exist, the
+request is for proving a negative: A task which cannot be done empirically. As
+such, this request for code is a goal that cannot be met.
+
+The issues were not discussed. The issues were not disproven. No one even
+mentioned the problems outlined in p1427. We are told to simply
+[trust some big names](https://twitter.com/jfbastien/status/1089536692288024576)
+to know better than we do (Appeal to authority?).
+
+If modules are merged and it turns out that they cannot be implemented in a
+well-performing and flexible fashion, people will not use modules. If a broken
+modules proposal is merged into C++, it may be irrecoverable and C++ will never
+see the promises of modules realized.
+
+Is it possible for the current modules proposal to be implemented successfully?
+I can't answer with a definitive "no", but me and many others feel that there
+are significant issues that need to be addressed.
+
+But, judging by the behavior of others, it may seem that it doesn't matter what
+SG15 thinks: They are being shot down at every turn by people with very little
+experience in C++ tooling, and the SG15 chair is completely absent through this
+entire discussion.
+
+I was afraid to call out this behavior: I'm not keen on interpersonal conflict.
+Nevertheless, I'm more afraid that C++ will end up with a permanently useless
+modules design.
