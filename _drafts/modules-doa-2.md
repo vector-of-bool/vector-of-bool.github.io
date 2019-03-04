@@ -15,40 +15,44 @@ But it's a bit more subtle than that.
 
 # Some Background
 
-My last post had quite a sensational headline, and that was on purpose: I
-wanted to draw as much attention as I could.
+My last post had quite a sensational title, but it was neither an accident
+nor a lie: I wanted to draw as much attention as I could, and I really do
+fear for C++ Modules.
 
-First a foremost, let me get this out of the way: I do not want C++ modules
-to fail. I do not know of anyone who wishes for them to crash and burn. I
-*do* know people with serious concerns about modules. The purpose of these
-posts is not to shoot down the modules work, but to make our skeptical
-voices heard.
+First and foremost, let me get this out of the way: I do not want C++
+modules to fail. I do not know of anyone who wishes for them to crash and
+burn. I *do* know people with serious concerns about modules. The purpose
+of these posts is not to shoot down the modules work, but to make our
+skeptical voices heard.
 
-I can't take sole credit for my prior DOA post. It's composition was a
-somewhat collaborative effort and written in the span of only a few hours
-after several SG15 participants felt a renewed panic about modules.
+I cannot take sole credit for my prior DOA post. It's composition was a
+collaborative effort and written in the span of only a few hours after
+several SG15 participants felt a renewed panic about modules.
 
 In particular, I'd like to shout out Isabella Muerte, Corentin Jabot, and
 Rene Rivera for giving me continual feedback, proof-readings, and
 corrections. Not only were they instrumental in formulating the post, they
 are the people who made me privy to the Modules concerns circulating SG15.
-In fact, several of the points I touched on were blogged about by Isabella
-back in [October of 2017](https://izzys.casa/2017/10/millennials-are-killing-the-modules-ts/)! Other issues (especially ABI
+They, Ben Craig, Mathias Stearn, Peter Bindels, and many others that I
+haven't mentioned should be credited for leading the charge in SG15. All I
+did was get lucky and formulate their concerns in a way that resonated with
+people. In fact, several of the points I touched on were blogged about by
+Isabella back in [October of 2017](https://izzys.casa/2017/10/millennials-are-killing-the-modules-ts/)! Other issues (especially ABI
 concerns that I didn't even mention in the prior post) were discussed by
 Corentin in [October of 2018](https://cor3ntin.github.io/posts/modules/).
 
-The only newly mentioned work in my prior post was Rene's work on profiling
-the performance of modules. I wasn't even involved in this work: I am just
-an observer.
+The only newly mentioned work in my prior post was Rene's investigation on
+the performance of modules. I wasn't even involved in this: I am just an
+observer.
 
-So what are my contributions to the Modules discussion? On a technical
+So what are *my* contributions to the Modules discussion? On a technical
 level: virtually *nil*. All I could do was hope to spread awareness about
 technical issues that I perceived as potentially fatal to the Modules
 design. Why did my post get so much attention where Corentin and Isabella
 saw lukewarm reception? I don't know. Maybe it was timing. Maybe it was the
-sensationalist title. Maybe it was blind luck.
+provoking title. Maybe it was blind luck.
 
-Bottom line is: I wrote the post **not** because I hate Modules, but
+Bottom line is: I wrote the post **not** because I *hate* Modules, but
 because I want to see Modules succeed! The post was to spread awareness
 and hopefully urge others to action.
 
@@ -71,13 +75,15 @@ spent getting everyone up-to-speed.
 
 Just a few days ago, the ISO WG21 Kona meeting concluded. I, unfortunately,
 was not in attendance. I stayed back home with the rest of the ~~peasants~~
-community, biting my nails `co_await`ing see what would become of C++
-Modules
+community, biting my nails `co_await`ing what would become of C++ Modules.
 
 As someone not in attendance, I may not be the best authority to discuss
 the results. I don't know all that happened in the meetings: I only know
-what the end results were. I'm very excited with much of the upcoming
-language and library changes and additions.
+what the end results were and have discussed them at length with people
+that *were* actually present. Nevertheless, I felt it my obligation to
+follow up on my prior post to make clear where we stand with regards to C++
+Modules. I've collected a reasonable amount of information such that I feel
+that can now make a well-informed post on the subject.
 
 The headliners of Kona were clear: *Coroutines* and *Modules*. Both have
 been approved for the IS (International Standard), and we will almost
@@ -86,14 +92,15 @@ certainly see them in C++20.
 So what tweaks were made to Modules before merging them? As far as I have
 been able to ascertain: *Almost nothing*.
 
-Am I happy about this? No. Am I upset? No. Am I worried? *Absolutely.*
+Am I happy about this? No. Am I upset? No. Am I worried? *A little.* Am I
+hopeful? *Yes.*
 
 [Corentin wrote about Modules in his Kona trip
 report.](https://cor3ntin.github.io/posts/kona2019/#modules). I encourage
 all to read it.
 
-So why am I be worried but not upset? Well, there was another big change
-done at Kona for which I am very excited and pleased:
+So why am I be worried but not upset? Why am I hopeful? Well, there was
+another big change done at Kona for which I am very excited and pleased:
 
 > SG15 will be creating the *C++ Ecosystem Technical Report*.
 
@@ -114,7 +121,7 @@ or intended to be merged into the IS. This gives additional flexibility to
 all parties involved. Revisions to the TR can be performed and published on
 a much shorter timescale than the main IS.
 
-**However:** The Ecosystem TR will be a normative document rather than a
+**Importantly,** the Ecosystem TR will be a normative document rather than a
 jumble of "good ideas" that someone throws up on GitHub Pages. Build
 systems, tools, and C++ implementations may opt-in to meet the requirements
 outlined in the Ecosystem TR to claim additional compliance to a formal
@@ -144,23 +151,24 @@ will not fly in the international standard, but is fair game for the TR
 
 So what aspects will be addressed by the TR? Well, potentially *anything*
 that SG15 would like to include (and the governing body is willing to
-approve). Most likely it will encompass all aspects related to tooling
+approve). Most likely it will encompass various concepts related to tooling
 around the language.
 
-The tooling aspects have been ignored by the IS for decades (for better or
-worse) and has resulted in the proliferation of dozens of incompatible
-tools and informal community conventions. With the TR, we will be able to
-acknowledge things that have been deemed "out-of-scope" in the standard,
-such as the filesystem, shared libraries, build systems, package managers,
-and binary distribution. Large projects like my [libman](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/libman/develop/data/spec.bs), smaller aspects like Isabella
+The C++ tooling ecosystem has been ignored by the IS for decades (for
+better or worse), which has resulted in the proliferation of dozens of
+incompatible tools and informal community conventions. With the TR, we will
+be able to address things that have been deemed "out-of-scope" for the
+IS such as the filesystem, shared libraries, build systems, package
+managers, and binary distribution. Large projects like my [libman](https://api.csswg.org/bikeshed/?force=1&url=https://raw.githubusercontent.com/vector-of-bool/libman/develop/data/spec.bs), smaller aspects like Isabella
 Muerte's [Module Partition Lookup](https://wg21.link/p1302r1), or
 Corentin's desire for [filesystem-oriented module mapping](https://cor3ntin.github.io/posts/modules_mapping/) can all be included. All three
-of these projects might be deemed beyond the scope of the IS, since they
+of these projects might be deemed beyond the scope of the IS since they
 specifically discuss filesystem layouts and directory structures.
 
-SG15 will not be going too far down the rabbit hole before C++20 is
-finalized. In the TR presentation given at Kona, the following aspects were
-called out as candidates for inclusion in the TR before/with C++20:
+SG15 will not be going too far down the rabbit hole of TR possibilities
+before C++20 is finalized. In the TR presentation given at Kona, the
+following points were called out as candidates for inclusion in the TR
+before/with C++20:
 
 - Module name <-> Module header unit name mapping
 - Module name <-> BMI mapping
@@ -210,8 +218,7 @@ export module dog;
 
 We have module `dog` defined in `meow.cpp`! That's crazy, but completely
 allowed by the IS! The TR can't declare the code itself broken, but can
-declare that the relationship between the filename and the module to be
-ill-formed.
+request that implementations and tools not support such use cases.
 
 
 # Why Worry?
@@ -247,6 +254,4 @@ seeing regular SG15 meetings via teleconference! I also fear for Bryce
 Lelbach, who is now acting as SG15 chair. All that work can't be good for
 one's mental health!
 
-So are C++ Modules dead?
-
-[Not yet](https://www.youtube.com/watch?v=Sh8mNjeuyV4)
+[So: are C++ Modules dead?](https://www.youtube.com/watch?v=Sh8mNjeuyV4)
