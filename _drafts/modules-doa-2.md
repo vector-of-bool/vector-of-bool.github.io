@@ -19,10 +19,14 @@ My last post had quite a sensational headline, and that was on purpose: I
 wanted to draw as much attention as I could.
 
 First a foremost, let me get this out of the way: I do not want C++ modules
-to fail. I do not know of anyone who wishes for them to crash and burn. I *do* know people with serious concerns about modules. The purpose of these posts is not to shoot down the modules work, but to make our skeptical voices heard.
+to fail. I do not know of anyone who wishes for them to crash and burn. I
+*do* know people with serious concerns about modules. The purpose of these
+posts is not to shoot down the modules work, but to make our skeptical
+voices heard.
 
 I can't take sole credit for my prior DOA post. It's composition was a
-somewhat collaborative effort and written in the span of only a few hours after several SG15 participants felt a renewed panic about modules.
+somewhat collaborative effort and written in the span of only a few hours
+after several SG15 participants felt a renewed panic about modules.
 
 In particular, I'd like to shout out Isabella Muerte, Corentin Jabot, and
 Rene Rivera for giving me continual feedback, proof-readings, and
@@ -37,7 +41,12 @@ The only newly mentioned work in my prior post was Rene's work on profiling
 the performance of modules. I wasn't even involved in this work: I am just
 an observer.
 
-So what are my contributions to the Modules discussion? On a technical level: virtually *nil*. All I could do was hope to spread awareness about technical issues that I perceived as potentially fatal to the Modules design. Why did my post get so much attention where Corentin and Isabella saw lukewarm reception? I don't know. Maybe it was timing. Maybe it was the sensationalist title. Maybe it was blind luck.
+So what are my contributions to the Modules discussion? On a technical
+level: virtually *nil*. All I could do was hope to spread awareness about
+technical issues that I perceived as potentially fatal to the Modules
+design. Why did my post get so much attention where Corentin and Isabella
+saw lukewarm reception? I don't know. Maybe it was timing. Maybe it was the
+sensationalist title. Maybe it was blind luck.
 
 Bottom line is: I wrote the post **not** because I hate Modules, but
 because I want to see Modules succeed! The post was to spread awareness
