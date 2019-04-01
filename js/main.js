@@ -10,6 +10,41 @@ function waitFinished(what) {
   });
 }
 
+function connectRevealButtons() {
+  const buttons = document.querySelectorAll('[reveal-button]');
+  buttons.forEach(b => {
+    const targetId = b.getAttribute('reveal-target-id');
+    if (!targetId) {
+      console.error('Reveal button has no reveal target');
+      return;
+    }
+    const target = document.getElementById(targetId);
+    if (!target) {
+      console.error(`No reveal target element "${targetId}"`);
+      return;
+    }
+    const hasHidden = target.getAttribute('reveal-target');
+    if (hasHidden === undefined) {
+      console.error('Reveal target', target, 'does not have the `reveal-target` attribute');
+    }
+    b.addEventListener('click', e => {
+      target.setAttribute('reveal-show', '');
+      target.animate([{
+          opacity: 0,
+          transform: 'translateY(10px)'
+        }, {
+          opacity: 1,
+          transform: 'translateY(0)'
+        }], {
+          duration: 200,
+          easing: 'ease-out',
+        });
+      b.remove();
+    });
+    b.setAttribute('reveal-linked', '');
+  });
+}
+
 class SmartContentManager {
   /**
    * Create a manager for the given element's content
@@ -39,6 +74,7 @@ class SmartContentManager {
   setup() {
     window.addEventListener('popstate', () => this._locationChanged());
     this._bindLinks();
+    connectRevealButtons();
   }
 
   /**
@@ -159,6 +195,7 @@ class SmartContentManager {
       document.title = newDoc.title;
       // Bind the new links on the new page
       this._bindLinks();
+      connectRevealButtons();
     });
   }
 
