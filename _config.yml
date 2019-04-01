@@ -22,6 +22,11 @@ url: "https://vector-of-bool.github.io" # the base hostname & protocol for your 
 twitter_username: jekyllrb
 github_username:  vector-of-bool
 
+modules_posts_md: |
+  Posts in this series:
+  - [Part 1: Hello Modules, and Module Units](/2019/03/10/modules-1.html)
+  - [Part 2: Export, import, visible, and reachable](/2019/03/31/modules-2.html)
+
 # Build settings
 markdown: kramdown
 highlighter: rouge
