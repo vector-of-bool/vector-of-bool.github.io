@@ -3,7 +3,7 @@
 
 {% include head.html %}
 
-<body class=online>
+<body>
 
   {% include header.html %}
 
@@ -13,10 +13,6 @@
       <div clipper>
         <div holder></div>
         <div content>
-          <div class="admonition offline-warning">
-            <h3>Note</h3>
-            Unable to connect to network. Content may be out of date.
-          </div>
           {{content}}
           <noscript class='vb-noscript admonition'>
             <h3>javascript nooooo</h3>
@@ -56,7 +52,7 @@
           {% endif %}
           {% if page.comments %}
           <div class="comments-container container-rect" id=comments-container>
-            <div aria-label="Reveal comments" tabindex="0" class="comments-reveal-button" onclick=revealComments()>Click for Comments</div>
+            <div aria-label="Reveal comments" tabindex="0" class="dark-button comments-reveal-button" onclick=revealComments()>Click for Comments</div>
           </div>
           {% endif %}
         </div>

@@ -9,7 +9,7 @@ export function revealComments() {
   const button = el.querySelector('.comments-reveal-button');
   // Remove the button, since we are now showing the comments
   if (button) {
-    el.removeChild(button);
+    button.remove();
   }
   // Instantiate the template that contains the Disqus comments and place it
   // in the comment container

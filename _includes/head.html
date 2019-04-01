@@ -14,14 +14,21 @@
   <style>
     {% include inline-styles.css %}
   </style>
-  <script>
-    function lazyLoadRest() {
-      var link = document.createElement('link');
-      link.rel = 'import';
-      link.href = 'elements.html';
-      link.async = true;
-      document.head.appendChild(link);
+  <!-- This stylesheet will apply when JS is enabeld -->
+  <style id=JSEnabledStyles media="not all">
+    :root {
+      --js-none: none;
     }
+  </style>
+  <!-- This sheet will apply when JS is disabled -->
+  <style id=noJSSafetyStyles>
+    :root {
+      --no-js-none: none;
+    }
+  </style>
+  <script>
+    document.getElementById('noJSSafetyStyles').remove();
+    document.getElementById('JSEnabledStyles').removeAttribute('media');
   </script>
   <script src="js/main.js" type="module" defer></script>
   <link rel="preload" href="/">

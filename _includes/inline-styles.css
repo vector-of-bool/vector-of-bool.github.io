@@ -26,6 +26,14 @@ body {
   color: chocolate;
 }
 
+[reveal-target]:not([reveal-show]) {
+  display: var(--js-none);
+}
+
+[reveal-button]:not([reveal-linked]) {
+  display: none;
+}
+
 header.banner {
   background-color: #444;
   background-image: linear-gradient(to bottom,#555,#333);
@@ -127,6 +135,7 @@ header .subtitle {
 
 .post .post-content {
   padding: 30px;
+  padding-bottom: 0;
 }
 
 .post p,
@@ -407,16 +416,20 @@ div.post-content h1 {
   color: #ccc;
 }
 
+.display-contents {
+  display: contents;
+}
+
 div.page-container p:last-child {
   margin-bottom: 0;
 }
 
 div.page-container .admonition {
-  background-color: orange;
-  border: 2px solid orangered;
-  padding: 5px;
+  background-color: #4c0f00;
+  border: 2px solid #8e2600;
+  padding: 15px;
   border-radius: 3px;
-  color: #222;
+  color: #dcdcdc;
   text-shadow: none;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
   text-align: justify;
@@ -427,14 +440,13 @@ div.page-container .admonition p:last-child {
   margin-bottom: 0;
 }
 
-div.offline-warning {
-  box-sizing: border-box;
-  overflow: hidden;
-  transition: 300ms padding, 300ms border-width, 300ms margin, 300ms max-height;
+.admonition > :first-child {
+  margin-top: 0;
 }
 
 .comments-container {
-  max-width: 900px;
+  /* Hide the comments container if JS is disabled */
+  display: var(--no-js-none);
   align-self: stretch;
   transition: 300ms margin;
   padding: 10px;
@@ -444,7 +456,8 @@ div.offline-warning {
   border-top: 1px solid #777;
 }
 
-.comments-reveal-button {
+.dark-button {
+  user-select: none;
   text-align: center;
   padding: 5px;
   border-radius: 3px;
@@ -455,20 +468,9 @@ div.offline-warning {
   transition: 50ms background-color, 50ms transform;
 }
 
-.comments-reveal-button:active {
+.dark-button:active {
   background-color: #444;
   transform: translateY(2px);
-}
-
-body.online div.offline-warning {
-  max-height: 0;
-  padding: 0;
-  border-width: 0;
-  margin: 0;
-}
-
-body:not(.online) div.offline-warning {
-  max-height: 100px;
 }
 
 /* Code blocks */
@@ -577,11 +579,6 @@ div.image-frame:not(.no-shadow) > :first-child:hover {
     width: 100%;
     max-width: unset;
     min-width: unset;
-  }
-
-  .comments-container {
-    margin: 10px;
-    margin-bottom: 0;
   }
 
   [vb-content] > [backdrop] {
