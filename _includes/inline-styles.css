@@ -420,10 +420,6 @@ div.post-content h1 {
   display: contents;
 }
 
-div.page-container p:last-child {
-  margin-bottom: 0;
-}
-
 div.page-container .admonition {
   background-color: #4c0f00;
   border: 2px solid #8e2600;
