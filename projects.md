@@ -5,7 +5,7 @@ permalink: /projects/
 ---
 
 <div class="column">
-  <vb-project>
+  <div vb-project>
     <div class="header">
       CMake Tools
     </div>
@@ -29,8 +29,8 @@ permalink: /projects/
         </ul>
       </div>
     </div>
-  </vb-project>
-  <vb-project>
+  </div>
+  <div vb-project>
     <div class="header">Pitchfork</div>
     <div class="body">
       <a href="https://github.com/vector-of-bool/pitchfork" class="icon-container">
@@ -59,8 +59,8 @@ permalink: /projects/
         </ul>
       </div>
     </div>
-  </vb-project>
-  <vb-project>
+  </div>
+  <div vb-project>
     <div class="header">PMM</div>
     <div class="body">
       <a href="https://github.com/vector-of-bool/pmm">
@@ -88,5 +88,5 @@ permalink: /projects/
         </ul>
       </div>
     </div>
-  </vb-project>
+  </div>
 </div>
