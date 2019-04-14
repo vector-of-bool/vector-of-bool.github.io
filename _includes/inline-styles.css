@@ -242,7 +242,6 @@ div.aside > * {
   -o-flex-direction: column;
   flex-direction: column;
   text-align: justify;
-  padding-bottom: 30px;
 }
 
 [vb-content] h1:not(.post-title),
@@ -341,6 +340,7 @@ div.aside ul > :not(:first-child) {
   display: flex;
   flex-direction: column;
   margin-top: 15px;
+  margin-bottom: 30px;
 }
 
 .post-list > a.post-link {
