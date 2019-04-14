@@ -149,7 +149,9 @@ class SmartContentManager {
       // Load the new content
       const newDoc = await this._loadDocument(location.href);
       // Import and append the node to our tree
-      const newContent = newDoc.importNode(newDoc.querySelector('[vb-content]'), true);
+      const newContent = newDoc.importNode(newDoc.querySelector('[vb-content] [content]'), true);
+      // Ensure the temporary holder has the same width as the main clipping area
+      this.holder.style.maxWidth = `${this.clipper.offsetWidth}px`;
       this.holder.appendChild(newContent);
       // Update our new height. Use the `override-img-styles` class to prevent content from jumping around
       newContent.classList.toggle('override-img-styles', true);
