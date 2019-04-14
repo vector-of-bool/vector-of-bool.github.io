@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Paths: Taxonomy, Terminology, and Myths"
-comments: true
 desc: >
     In which I attempt to formalize some of the language used when talking
     about paths

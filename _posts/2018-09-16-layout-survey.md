@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Project Layout - Survey Results and Updates
-comments: true
 desc: >
     In which I discuss the results of the project layout survey and how they
     will be taken into consideration in the future

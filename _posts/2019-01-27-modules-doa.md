@@ -1,7 +1,6 @@
 ---
 layout: post
 title: C++ Modules Might Be Dead-on-Arrival
-comments: true
 desc: In which I discuss a modules problem that is being ignored
 ---
 

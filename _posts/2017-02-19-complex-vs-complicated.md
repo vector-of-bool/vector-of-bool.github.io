@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Complex != Complicated
-comments: true
 desc: >
     In which I make a small rant trying to distinguish two (seemingly)
     equivalent terms

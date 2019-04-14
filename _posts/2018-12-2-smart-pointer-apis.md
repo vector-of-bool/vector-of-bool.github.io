@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Smart Pointers Make Bad APIs
-comments: true
 desc: In which I bemoan using smart pointers at public API boundaries
 ---
 

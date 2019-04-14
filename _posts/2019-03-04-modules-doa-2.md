@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Are C++ Modules Dead-on-Arrival?
-comments: true
 desc: In which I check the vitals of C++ Modules
 ---
 

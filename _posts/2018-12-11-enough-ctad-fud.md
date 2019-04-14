@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Stop with the CTAD FUD!
-comments: true
 desc: In which I over-react to other people and talk about why I like CTAD
 ---
 

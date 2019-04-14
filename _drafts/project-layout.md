@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Ignore Me.
-comments: true
 ---
 
 # IMPORTANT

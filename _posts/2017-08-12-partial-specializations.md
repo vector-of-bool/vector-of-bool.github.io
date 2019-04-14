@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Partial Specialization and Tags
-comments: true
 desc: >
     In which I talk about how to emulate partial specialization of function
     templates and talk about why we actually want to partially specialize

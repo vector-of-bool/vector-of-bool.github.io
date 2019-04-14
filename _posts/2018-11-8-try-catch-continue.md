@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Levelling the try/catch Mountain
-comments: true
 desc: In which I informally propose a radical C++ language addition
 ---
 

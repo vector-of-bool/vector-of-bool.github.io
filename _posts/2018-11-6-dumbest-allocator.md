@@ -1,7 +1,6 @@
 ---
 layout: post
 title: The Dumbest Allocator of All Time
-comments: true
 desc: In which a silly joke made in a chatroom becomes a serious contender for
     a good idea
 ---

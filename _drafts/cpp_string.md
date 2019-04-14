@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Ruminations on C++ Strings
-comments: true
 ---
 
 # Ruminations On C++ Strings

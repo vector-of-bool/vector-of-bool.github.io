@@ -32,32 +32,9 @@
               without scripting enabled. Please enjoy.
             </p>
           </noscript>
-          {% if page.comments %}
-          <template id=disqus-tmpl>
-            <div id="disqus_thread"></div>
-            <script>
-              var disqus_config = function () {
-                  this.page.url = 'https://vector-of-bool.github.io/' + location.pathname;
-                  this.page.identifier = '{{ page.title | slugify }}';
-              };
-              (function() {
-                var d = document, s = d.createElement('script');
-                s.src = '//vector-of-bool.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-              })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-          </template>
-          {% endif %}
-          {% if page.comments %}
-          <div class="comments-container container-rect" id=comments-container>
-            <div aria-label="Reveal comments" tabindex="0" class="dark-button comments-reveal-button" onclick=revealComments()>Click for Comments</div>
-          </div>
-          {% endif %}
         </div>
       </div>
-    </div vb-content>
+    </div>
   </div>
   <div class="flex"></div>
   <vb-footer>

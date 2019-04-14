@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Building Like (a) Ninja [Pt1]
-comments: true
 desc: In which I discuss how one of my favorite build tools conceptualizes the
     build graph
 ---
