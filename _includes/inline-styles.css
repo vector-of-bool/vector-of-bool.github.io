@@ -170,18 +170,18 @@ div.aside > * {
 }
 
 .container-rect,
-vb-project {
+[vb-project] {
   background-color: #444;
   border-radius: 5px;
   box-shadow: 0px 1px 3px rgba(0,0,0,0.8);
   box-sizing: border-box;
 }
 
-vb-project {
+[vb-project] {
   margin: 10px;
 }
 
-vb-project .header {
+[vb-project] .header {
   padding: 10px;
   width: 100%;
   border-bottom: 1px solid #222;
@@ -189,7 +189,7 @@ vb-project .header {
   box-sizing: border-box;
 }
 
-vb-project .body {
+[vb-project] .body {
   padding: 10px;
   width: 100%;
   box-sizing: border-box;
@@ -204,7 +204,7 @@ vb-project .body {
   text-align: justify;
 }
 
-vb-project .body .icon {
+[vb-project] .body .icon {
   margin: 10px;
 }
 
@@ -242,6 +242,7 @@ vb-project .body .icon {
   -o-flex-direction: column;
   flex-direction: column;
   text-align: justify;
+  padding-bottom: 30px;
 }
 
 [vb-content] h1:not(.post-title),
@@ -261,7 +262,7 @@ vb-project .body .icon {
   font-size: 1.5em;
 }
 
-[vb-content] div[content]:not(.override-img-styles) img {
+[vb-content] div:not(.override-img-styles) img {
   height: auto !important;
 }
 
@@ -279,7 +280,7 @@ div.aside ul > :not(:first-child) {
   margin-top: 3px;
 }
 
-vb-footer {
+[vb-footer] {
   position: relative;
   margin-top: 30px;
   min-height: 150px;
@@ -292,18 +293,18 @@ vb-footer {
   align-items: center;
 }
 
-vb-footer > :not(:first-child) {
+[vb-footer] > :not(:first-child) {
   margin-left: 20px;
   max-width: 200px;
 }
 
-vb-footer > div {
+[vb-footer] > div {
   border-left: 1px solid white;
   padding-left: 20px;
   height: 100px;
 }
 
-vb-footer img.me {
+[vb-footer] img.me {
   border-radius: 100px;
   width: 100px;
   height: 100px;
@@ -311,16 +312,16 @@ vb-footer img.me {
   box-shadow: 1px 1px 5px rgba(0,0,0,0.8);
 }
 
-vb-footer .who {
+[vb-footer] .who {
   max-width: 200px;
 }
 
-vb-footer h2,
-vb-footer p {
+[vb-footer] h2,
+[vb-footer] p {
   margin: 0;
 }
 
-vb-footer::before {
+[vb-footer]::before {
   content: '';
   position: absolute;
   left: -10px;
@@ -597,7 +598,7 @@ div.image-frame:not(.no-shadow) > :first-child:hover {
 }
 
 @media (max-width: 500px) {
-  vb-footer {
+  [vb-footer] {
     margin-top: 0;
     padding: 20px 0;
     flex-direction: column;
@@ -605,12 +606,12 @@ div.image-frame:not(.no-shadow) > :first-child:hover {
     text-align: center;
   }
 
-  vb-footer > :not(:first-child) {
+  [vb-footer] > :not(:first-child) {
     margin-left: 0;
     margin-top: 20px;
   }
 
-  vb-footer > div {
+  [vb-footer] > div {
     width: 200px;
     height: unset;
     border-left: none;
