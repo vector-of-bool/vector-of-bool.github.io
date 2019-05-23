@@ -135,7 +135,6 @@ header .subtitle {
 
 .post .post-content {
   padding: 30px;
-  padding-bottom: 0;
 }
 
 .post p,
@@ -148,9 +147,21 @@ div.aside > *:first-child {
   margin-top: 0;
 }
 
+div.aside + div.aside {
+  margin-top: 16px;
+}
+
+.post-content > *:last-child {
+  margin-bottom: 0;
+}
+
 div.aside > * {
   margin-bottom: 5px;
   margin-top: 0;
+}
+
+div.aside > :last-child {
+  margin-bottom: 0;
 }
 
 .post .post-header {
@@ -263,6 +274,8 @@ div.aside > * {
 
 [vb-content] div:not(.override-img-styles) img {
   height: auto !important;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 ol, ul {
@@ -551,11 +564,11 @@ div.image-frame:not(.no-shadow) > :first-child {
     0 2px 8px rgba(0, 0, 0, 0.15);
   will-change: box-shadow;
   transition: box-shadow 100ms linear, transform 100ms linear;
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
   margin: 0;
   padding: 0;
   line-height: 0;
-  display: flex;
   max-width: 100%;
 }
 
@@ -564,6 +577,14 @@ div.image-frame:not(.no-shadow) > :first-child:hover {
     0 4px 8px rgba(0, 0, 0, 0.5),
     0 4px 11px rgba(0, 0, 0, 0.2),
     0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+div.image-frame:not(.no-shadow) > p > :not(:first-child) {
+  line-height: initial;
+  padding: 5px;
+  align-self: start;
+  font-size: 8pt;
+  font-style: italic;
 }
 
 @media (max-width: 960px) {
