@@ -26,6 +26,7 @@ modules_posts_md: |
   Posts in this series:
   - [Part 1: Hello Modules, and Module Units](/2019/03/10/modules-1.html)
   - [Part 2: Export, import, visible, and reachable](/2019/03/31/modules-2.html)
+  - [Part 3: Linkage and Fragments](/2019/10/07/modules-3.html)
 
 # Build settings
 markdown: kramdown
