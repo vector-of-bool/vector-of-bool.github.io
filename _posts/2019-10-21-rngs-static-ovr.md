@@ -428,7 +428,7 @@ imperative style, by contrast, is trivial to debug:
 template <range<date> Calendar>
 auto format_calendar(const Calendar& cal, size_t months_per_line) {
     // Group the dates by month
-    auto months = by_month(cal);
+    auto months = by_month();
     // Format the months into a range of strings
     auto month_strings = layout_months(months);
     // Group the months that belong side-by-side
