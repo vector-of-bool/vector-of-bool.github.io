@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Eliminating the Static Overhead of Ranges
-desc: In which I discuss two my pet proposals for the C++ language, and how
+desc: In which I discuss two of my pet proposals for the C++ language, and how
     they might benefit ranges.
 ---
 
