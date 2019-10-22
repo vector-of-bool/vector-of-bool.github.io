@@ -845,7 +845,7 @@ vector<string> all_middle_names() {
 }
 ```
 
-If we remove range adaptors and the overloaded `operator|`. This won't work
+If we remove range adaptors and the overloaded `operator|`, this won't work
 anymore! Let's take them one at a time.
 
 ## `deref_each`
