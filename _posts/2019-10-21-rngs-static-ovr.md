@@ -651,7 +651,7 @@ Let's go back to our earlier sample:
 auto groups = get_user() | get_user_groups();
 ```
 
-This does work because 1) a `user` is not a range, and 2) `get_user_groups()`
+This does not work because 1) a `user` is not a range, and 2) `get_user_groups()`
 is not callable with zero arguments, and does not return any kind of "adaptor"
 type.
 
