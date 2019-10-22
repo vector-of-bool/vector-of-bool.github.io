@@ -850,7 +850,7 @@ anymore! Let's take them one at a time.
 
 ## `deref_each`
 
-We have `deref_each`, a handle little range transformer:
+We have `deref_each`, a handy little range transformer:
 
 ```c++
 auto deref_each = transform(deref_item);
