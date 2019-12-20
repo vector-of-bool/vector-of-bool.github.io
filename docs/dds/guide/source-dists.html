@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Source Distributions &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Local Package Repository" href="repo.html" />
+    <link rel="prev" title="Toolchains" href="toolchains.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="repo.html" title="The Local Package Repository"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="toolchains.html" title="Toolchains"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="source-distributions">
+<h1>Source Distributions<a class="headerlink" href="#source-distributions" title="Permalink to this headline">¶</a></h1>
+<p>A <em>source distribution</em> is <code class="docutils literal notranslate"><span class="pre">dds</span></code>’s primary format for consuming and
+distributing packages. A source distribution, in essence, is a
+<a class="reference internal" href="packages.html#pkgs-pkg-root"><span class="std std-ref">package root</span></a> directory that contains only the files
+necessary for <code class="docutils literal notranslate"><span class="pre">dds</span></code> to reproduce the full build of all libraries in the
+package. The source distribution retains the directory structure of every
+<a class="reference internal" href="packages.html#pkgs-source-root"><span class="std std-ref">source root</span></a> of the original package, and thus retains
+the header structure thereof. In this way, the <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives to use
+a library in a source distribution are identical to if the libraries therein
+were directly part of the consuming project.</p>
+<div class="section" id="generating-a-source-distribution">
+<h2>Generating a Source Distribution<a class="headerlink" href="#generating-a-source-distribution" title="Permalink to this headline">¶</a></h2>
+<p>Generating a source distribution from a project directory is done with the
+<code class="docutils literal notranslate"><span class="pre">sdist</span></code> subcommand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dds</span> <span class="n">sdist</span> <span class="n">create</span>
+</pre></div>
+</div>
+<p>The above command can be executed within any package root, and the result will
+be a new directory that reproduces the package’s filesystem structure, but
+only maintaining the files that are necessary for <code class="docutils literal notranslate"><span class="pre">dds</span></code> to reproduce the
+build of that package.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--project=&lt;dir&gt;</span></code> flag can be provided to override the directory that
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> will use as the package root. The default is the working directory of
+the project.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">--out=&lt;path&gt;</span></code> flag can be provided to override the destination path of
+the resulting source distribution. The path should not name an existing file or
+directory. By default, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will generate a source distribution in the
+working directory with the name <code class="docutils literal notranslate"><span class="pre">project.dsd/</span></code> (The output is itself a
+directory, not an archive). If the <code class="docutils literal notranslate"><span class="pre">--replace</span></code> flag is provided, then <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+will overwrite the destination if it names an existing file or directory.</p>
+</div>
+<div class="section" id="exporting-a-package-to-the-local-repository">
+<h2>Exporting a Package to the Local Repository<a class="headerlink" href="#exporting-a-package-to-the-local-repository" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="repo.html#repo-export-local"><span class="std std-ref">Exporting a Project into the Repository</span></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Source Distributions</a><ul>
+<li><a class="reference internal" href="#generating-a-source-distribution">Generating a Source Distribution</a></li>
+<li><a class="reference internal" href="#exporting-a-package-to-the-local-repository">Exporting a Package to the Local Repository</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="toolchains.html"
+                        title="previous chapter">Toolchains</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="repo.html"
+                        title="next chapter">The Local Package Repository</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/guide/source-dists.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="repo.html" title="The Local Package Repository"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="toolchains.html" title="Toolchains"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

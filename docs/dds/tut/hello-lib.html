@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>A Hello, World Library &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="A Hello, World Test" href="hello-test.html" />
+    <link rel="prev" title="A Hello, world! Application" href="hello-world.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="hello-test.html" title="A Hello, World Test"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hello-world.html" title="A Hello, world! Application"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Tutorials and Beginner’s Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="a-hello-world-library">
+<h1>A <em>Hello, World</em> Library<a class="headerlink" href="#a-hello-world-library" title="Permalink to this headline">¶</a></h1>
+<p>Creating a single application is fun, but what if we want to create code that
+we can distribute and reuse across other packages and projects? That’s what
+<em>libraries</em> are for.</p>
+<p>You may notice something strange: This page is much shorter than the previous.
+What gives?</p>
+<p>It turns out that we’ve already covered all the material to make a library in
+the page on creating a <a class="reference internal" href="hello-world.html"><span class="doc">Hello, world! executable</span></a>. As soon
+as we created the <code class="docutils literal notranslate"><span class="pre">strings.hpp</span></code> file, our project had become a library. When
+we added a <code class="docutils literal notranslate"><span class="pre">strings.cpp</span></code> file to accompany it, our library became a <em>compiled</em>
+library.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">hello-world.main.cpp</span></code> file is expressly <em>not</em> considered to be part of a
+library, as it is specifically designated to be an application entry point,
+and source files of such kind are not part of a library.</p>
+<p>Before continuing on, note the following about creating a library that wasn’t
+specifically addressed in the prior example:</p>
+<ol class="arabic simple">
+<li><p>The <em>source roots</em> of a library are added to the compiler’s <code class="docutils literal notranslate"><span class="pre">#include</span></code>
+search-path. In our example, this is only the <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory of the
+project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dds</span></code> also supports a top-level directory named <code class="docutils literal notranslate"><span class="pre">include/</span></code>. Both
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> and <code class="docutils literal notranslate"><span class="pre">src/</span></code> may be present in a single library, but there are
+some important differences. Refer to <a class="reference internal" href="../guide/packages.html#pkgs-lib-roots"><span class="std std-ref">Library Roots</span></a> in the layout
+guide.</p></li>
+<li><p>A single <em>library root</em> may contain any number of applications defined in
+<code class="docutils literal notranslate"><span class="pre">.main</span></code> files, but a <em>library root</em> will correspond to exactly <em>one</em>
+library. Defining additional libraries requires additional packages or
+adding multiple library roots to a single package.</p></li>
+</ol>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Like flossing, we all know we <em>should</em> be writing tests, but it can be such
+a hassle. Fortunately, <code class="docutils literal notranslate"><span class="pre">dds</span></code> makes it simple. Read on to:
+<a class="reference internal" href="hello-test.html"><span class="doc">A Hello, World Test</span></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hello-world.html"
+                        title="previous chapter">A <em>Hello, world!</em> Application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hello-test.html"
+                        title="next chapter">A <em>Hello, World</em> Test</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tut/hello-lib.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="hello-test.html" title="A Hello, World Test"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hello-world.html" title="A Hello, world! Application"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Tutorials and Beginner’s Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

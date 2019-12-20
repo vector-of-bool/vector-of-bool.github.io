@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>dds Design and Rationale &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Runtime Error References" href="err/index.html" />
+    <link rel="prev" title="Library and Package Dependencies" href="guide/interdeps.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="err/index.html" title="Runtime Error References"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="guide/interdeps.html" title="Library and Package Dependencies"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">dds 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dds-design-and-rationale">
+<h1><code class="docutils literal notranslate"><span class="pre">dds</span></code> Design and Rationale<a class="headerlink" href="#dds-design-and-rationale" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> has been designed from the very beginning as an extremely opinionated
+hybrid <em>build system</em> and <em>package manager</em>. Unlike most build systems however,
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> has a hyper-specific focus on a particular aspect of software
+development: C and C++ libraries.</p>
+<p>This may sound pointless, right? Libraries are useless unless we can use them
+to build applications!</p>
+<p>Indeed, applications <em>are</em> essential, but that is “not our job” with <code class="docutils literal notranslate"><span class="pre">dds</span></code>.</p>
+<p>Another design decision is that <code class="docutils literal notranslate"><span class="pre">dds</span></code> is built to be driven by automated
+tools as well as humans. <code class="docutils literal notranslate"><span class="pre">dds</span></code> is not designed to entirely replace existing
+build systems and package management solutions. Rather, it is designed to be
+easy to integrate <em>with</em> existing systems and tools.</p>
+<div class="section" id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>I’m going to say something somewhat controversial: C and C++ don’t need
+“package management.” At least, not <em>generalized</em> “package management.” C++
+needs <em>library</em> “package management.”</p>
+<p>The C and C++ compilation model is inherently <em>more complex</em> than almost any
+other language in use today. This isn’t to say “bad,” but rather than it is
+built to meet extremely high and strange demands. It also comes with a large
+burden of <em>legacy</em>. Meeting both of these requirements simultaneously presents
+incredible implementation challenges.</p>
+<p>Despite the vast amount of work put into build systems and tooling, virtually
+all developers are using them <em>incorrectly</em> and/or <em>dangerously</em> without
+realizing it. Despite this work, we seem to be a great distance from a unified
+library package distribution and consumption mechanism.</p>
+</div>
+<div class="section" id="tabula-rasa">
+<h2>Tabula Rasa<a class="headerlink" href="#tabula-rasa" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> attempts to break from the pattern of legacy demands and strange usage
+demands in a few ways. The major differences between <code class="docutils literal notranslate"><span class="pre">dds</span></code> and other build
+systems like CMake, Meson, build2, SCons, MSBuild, etc. is that of <em>tradeoffs</em>.
+If you opt-in to have your library built by <code class="docutils literal notranslate"><span class="pre">dds</span></code>, you forgoe
+<em>customizability</em> in favor of <em>simplicity</em> and <em>ease</em>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> takes a look at what is needed to build and develop <em>libraries</em> and
+hyper-optimizes for that use case. It is also built with a very strong, very
+opinionated idea of <em>how</em> libraries should be constructed and used. These
+prescriptions are not at all arbitrary, though. They are built upon the
+observations of the strengths and weaknesses of build systems in use throughout
+industry and community.</p>
+<p>There is some ambiguity on the term “build system.” It can mean one of two
+things:</p>
+<ol class="arabic simple">
+<li><p>A <em>proper noun</em> “Build System,” such as CMake, Meson, Autotools, or even
+Gulp, WebPack, and Mix. These are specific tools that have been developed
+for the implementation of the second definition:</p></li>
+<li><p>A general noun “build system” refers to the particular start-to-finish
+process through which a specific piece of software is mapped from its raw
+<em>inputs</em> (source code, resource libraries, toolchains) to the outputs
+(applications, appliances, libraries, or web sites).</p></li>
+</ol>
+<p>For example, LLVM and Blender both use the CMake “Build System,” but their
+“build system” is not the same. The “build system” for each is wildly
+different, despite both using the same underlying “Build System.”</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> takes a massive divergence at this point. One project using <code class="docutils literal notranslate"><span class="pre">dds</span></code> as
+their build system has a nearly identical build process to every other project
+using <code class="docutils literal notranslate"><span class="pre">dds</span></code>. Simply running <code class="code docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build</span> <span class="pre">-t</span> <span class="pre">&lt;toolchain&gt;</span></code> should be enough
+to build <em>any</em> <code class="docutils literal notranslate"><span class="pre">dds</span></code> project.</p>
+<p>In order to reach this uniformity and simplicity, <code class="docutils literal notranslate"><span class="pre">dds</span></code> drops almost all
+aspects of project-by-project customizability. Instead, <code class="docutils literal notranslate"><span class="pre">dds</span></code> affords the
+developer a contract:</p>
+<blockquote>
+<div><p>If you play by my rules, you get to play in my space.</p>
+</div></blockquote>
+</div>
+<div class="section" id="the-rules">
+<span id="design-rules"></span><h2>The Rules<a class="headerlink" href="#the-rules" title="Permalink to this headline">¶</a></h2>
+<p>We’ve talked an awful lot about the “rules” and “restrictions” that <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+imposes, but what are they?</p>
+<div class="section" id="dds-is-not-made-for-complex-applications">
+<span id="design-rules-not-apps"></span><h3><code class="docutils literal notranslate"><span class="pre">dds</span></code> Is not Made for Complex Applications<a class="headerlink" href="#dds-is-not-made-for-complex-applications" title="Permalink to this headline">¶</a></h3>
+<p>Alright, this one isn’t a “rule” as much as a recommendation: If you are
+building an application that <em>needs</em> some build process functionality that
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> does not provide, <code class="docutils literal notranslate"><span class="pre">dds</span></code> is only open to changes that do not
+violate any of the other existing rules.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>However:</strong> If you are a <em>library</em> author and you find that <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+cannot correctly build your library without violating other rules, we may
+have to take a look. This is certainly not to say it will allow arbitrary
+customization features to permit the rules to be bent arbitrarily: Read
+on.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> contains a minimal amount of functionality for building simple
+applications, but it is certainly not its primary purpose.</p>
+</div>
+<div class="section" id="your-code-should-be-changed-before-dds-should-be-changed">
+<span id="design-rules-change"></span><h3><em>Your</em> Code Should Be Changed Before <code class="docutils literal notranslate"><span class="pre">dds</span></code> Should Be Changed<a class="headerlink" href="#your-code-should-be-changed-before-dds-should-be-changed" title="Permalink to this headline">¶</a></h3>
+<p>The wording of this rule means that the onus is on the library developer to
+meet the expectations that <code class="docutils literal notranslate"><span class="pre">dds</span></code> prescribes in order to make the build
+work.</p>
+<p>If your library meets all the requirements outlined in this document but you
+still find trouble in making your build work, this is grounds for change in
+<code class="docutils literal notranslate"><span class="pre">dds</span></code>, either in clarifying the rules or tweaking <code class="docutils literal notranslate"><span class="pre">dds</span></code> functionality.</p>
+</div>
+<div class="section" id="library-projects-must-meet-the-layout-requirements">
+<span id="design-rules-layout"></span><h3>Library Projects Must Meet the Layout Requirements<a class="headerlink" href="#library-projects-must-meet-the-layout-requirements" title="Permalink to this headline">¶</a></h3>
+<p>This is a very concrete requirement. <code class="docutils literal notranslate"><span class="pre">dds</span></code> prescribes a particular project
+structure layout with minimal differing options. <code class="docutils literal notranslate"><span class="pre">dds</span></code> prescribes the
+<a class="reference external" href="https://api.csswg.org/bikeshed/?force=1&amp;url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs">Pitchfork</a> layout requirements.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These prescriptions are not as draconian as they may sound upon first
+reading. Refer to the <a class="reference internal" href="guide/packages.html"><span class="doc">Package Layout</span></a> page for more information.</p>
+</div>
+</div>
+<div class="section" id="a-library-build-must-successfully-compile-all-source-files">
+<span id="design-rules-no-cond-compile"></span><h3>A Library Build Must Successfully Compile All Source Files<a class="headerlink" href="#a-library-build-must-successfully-compile-all-source-files" title="Permalink to this headline">¶</a></h3>
+<p>Almost all Build Systems have a concept of <em>conditionally</em> adding a source file
+to a build. <code class="docutils literal notranslate"><span class="pre">dds</span></code> elides this feature in place of relying on in-source
+conditional compilation.</p>
+</div>
+<div class="section" id="all-code-must-be-in-place-before-building">
+<span id="design-rules-no-lazy-code-gen"></span><h3>All Code Must Be in Place Before Building<a class="headerlink" href="#all-code-must-be-in-place-before-building" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> does not provide code-generation functionality. Instead, any
+generated code should be generated and committed to the repository to be only
+ever modified through such generation scripts.</p>
+</div>
+<div class="section" id="all-compilable-files-in-a-src-directory-must-link-together">
+<span id="design-rules-one-binary-per-src"></span><h3>All Compilable Files in a <code class="docutils literal notranslate"><span class="pre">src/</span></code> Directory Must Link Together<a class="headerlink" href="#all-compilable-files-in-a-src-directory-must-link-together" title="Permalink to this headline">¶</a></h3>
+<p>As part of the prescribed project layout, the <code class="docutils literal notranslate"><span class="pre">src/</span></code> project directory
+contains source files. <code class="docutils literal notranslate"><span class="pre">dds</span></code> requires that <em>all</em> source files in a given
+<code class="docutils literal notranslate"><span class="pre">src/</span></code> directory should link together cleanly. Practically, this means that
+every <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory must correspond to <em>exactly</em> one library.</p>
+</div>
+<div class="section" id="no-arbitrary-include-directories">
+<span id="design-rules-include"></span><h3>No Arbitrary <code class="docutils literal notranslate"><span class="pre">#include</span></code> Directories<a class="headerlink" href="#no-arbitrary-include-directories" title="Permalink to this headline">¶</a></h3>
+<p>Only <code class="docutils literal notranslate"><span class="pre">src/</span></code> and <code class="docutils literal notranslate"><span class="pre">include/</span></code> will ever be used as the basis for header
+resolution while building a library, so all <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives should be
+relative to those directories. Refer to <a class="reference internal" href="guide/packages.html#pkg-source-root"><span class="std std-ref">Source Roots</span></a>.</p>
+</div>
+<div class="section" id="all-files-compile-with-the-same-options">
+<span id="design-rules-uniform-compile"></span><h3>All Files Compile with the Same Options<a class="headerlink" href="#all-files-compile-with-the-same-options" title="Permalink to this headline">¶</a></h3>
+<p>When DDS compiles a library, every source file will be compiled with an
+identical set of options. Additionally, when DDS compiles a dependency tree,
+every library in that dependency tree will be compiled with an identical set of
+options. Refer to the <a class="reference internal" href="guide/toolchains.html"><span class="doc">Toolchains</span></a> page for more information.</p>
+<p>Currently, the only exception to this rules is for flags that control compiler
+warnings: Dependencies will be compiled without adding any warnings flags,
+while the main project will be compiled with warnings enabled by default.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">dds</span></code> Design and Rationale</a><ul>
+<li><a class="reference internal" href="#background">Background</a></li>
+<li><a class="reference internal" href="#tabula-rasa">Tabula Rasa</a></li>
+<li><a class="reference internal" href="#the-rules">The Rules</a><ul>
+<li><a class="reference internal" href="#dds-is-not-made-for-complex-applications"><code class="docutils literal notranslate"><span class="pre">dds</span></code> Is not Made for Complex Applications</a></li>
+<li><a class="reference internal" href="#your-code-should-be-changed-before-dds-should-be-changed"><em>Your</em> Code Should Be Changed Before <code class="docutils literal notranslate"><span class="pre">dds</span></code> Should Be Changed</a></li>
+<li><a class="reference internal" href="#library-projects-must-meet-the-layout-requirements">Library Projects Must Meet the Layout Requirements</a></li>
+<li><a class="reference internal" href="#a-library-build-must-successfully-compile-all-source-files">A Library Build Must Successfully Compile All Source Files</a></li>
+<li><a class="reference internal" href="#all-code-must-be-in-place-before-building">All Code Must Be in Place Before Building</a></li>
+<li><a class="reference internal" href="#all-compilable-files-in-a-src-directory-must-link-together">All Compilable Files in a <code class="docutils literal notranslate"><span class="pre">src/</span></code> Directory Must Link Together</a></li>
+<li><a class="reference internal" href="#no-arbitrary-include-directories">No Arbitrary <code class="docutils literal notranslate"><span class="pre">#include</span></code> Directories</a></li>
+<li><a class="reference internal" href="#all-files-compile-with-the-same-options">All Files Compile with the Same Options</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="guide/interdeps.html"
+                        title="previous chapter">Library and Package Dependencies</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="err/index.html"
+                        title="next chapter">Runtime Error References</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/design.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="err/index.html" title="Runtime Error References"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="guide/interdeps.html" title="Library and Package Dependencies"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">dds 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

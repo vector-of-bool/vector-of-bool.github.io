@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Error: No such package in the catalog &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error: The generated source distribution’s identity is not correct" href="sdist-ident-mismatch.html" />
+    <link rel="prev" title="Error: Package is missing remote acquisition information" href="no-catalog-remote-info.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sdist-ident-mismatch.html" title="Error: The generated source distribution’s identity is not correct"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="error-no-such-package-in-the-catalog">
+<h1>Error: No such package in the catalog<a class="headerlink" href="#error-no-such-package-in-the-catalog" title="Permalink to this headline">¶</a></h1>
+<p>This error will occur when one attempts to obtain a package from the package
+catalog by its specific <code class="docutils literal notranslate"><span class="pre">name&#64;version</span></code> pair, but no such entry exists
+in the catalog.</p>
+<p>It is possible that the intended package <em>does exist</em> but that the spelling of
+the package name or version number is incorrect. Firstly, check your spelling
+and that the version number you have requested is correct.</p>
+<p>In another case, it is possible that the package <em>exists somewhere</em>, but has
+not been loaded into the local catalog. As of this writing, <code class="docutils literal notranslate"><span class="pre">dds</span></code> does not
+automatically maintain the catalog against a central package repository, so
+package entries must be loaded and imported manually. If you believe this to be
+the case, refer to the section on the <a class="reference internal" href="../guide/catalog.html"><span class="doc">The Package Catalog</span></a>, especially the
+section <a class="reference internal" href="../guide/catalog.html#catalog-adding"><span class="std std-ref">Adding Packages to the Catalog</span></a>.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="no-catalog-remote-info.html"
+                        title="previous chapter">Error: Package is missing remote acquisition information</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sdist-ident-mismatch.html"
+                        title="next chapter">Error: The generated source distribution’s identity is not correct</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/err/no-such-catalog-package.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sdist-ident-mismatch.html" title="Error: The generated source distribution’s identity is not correct"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

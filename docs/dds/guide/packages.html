@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Package Layout &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Toolchains" href="toolchains.html" />
+    <link rel="prev" title="User Guide" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="toolchains.html" title="Toolchains"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="User Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="package-layout">
+<h1>Package Layout<a class="headerlink" href="#package-layout" title="Permalink to this headline">¶</a></h1>
+<p>The units of distribution in <code class="docutils literal notranslate"><span class="pre">dds</span></code> are <em>packages</em>. A single package consists
+of one or more <em>libraries</em>. In the simplest case, a package will contain a
+single library.</p>
+<p>It may be easiest to work from the bottom-up when trying to understand how
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> understands code.</p>
+<p>The layout expected by <code class="docutils literal notranslate"><span class="pre">dds</span></code> is based on the <a class="reference external" href="https://api.csswg.org/bikeshed/?force=1&amp;url=https://raw.githubusercontent.com/vector-of-bool/pitchfork/develop/data/spec.bs">Pitchfork layout</a> (PFL).
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> does not make use of every provision of the layout document, but the
+features it does have are based on PFL.</p>
+<p>In particular, the following directories are used:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">src/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">libs/</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_build/</span></code> (the default build output directory used by <code class="docutils literal notranslate"><span class="pre">dds</span></code>).</p></li>
+</ul>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">libs/*/</span></code> directories can contain their own <code class="docutils literal notranslate"><span class="pre">src/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> directories, the purposes and behaviors of which match those of
+their top-level counterparts.</p>
+<div class="section" id="source-files">
+<h2>Source Files<a class="headerlink" href="#source-files" title="Permalink to this headline">¶</a></h2>
+<p>The smallest subdivision of code that <code class="docutils literal notranslate"><span class="pre">dds</span></code> recognizes is the <em>source file</em>,
+which is exactly as it sounds: A single file containing some amount of code.</p>
+<p>Source files can be grouped on a few axes, the most fundamental of which is
+“Is this compiled?”</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> uses source file extensions to determine whether a source file should
+be fed to the compiler. All of the common C and C++ file extensions are
+supported:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Compiled as C</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.c</span></code> and <code class="docutils literal notranslate"><span class="pre">.C</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Compiled as C++</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">.c++</span></code>, <code class="docutils literal notranslate"><span class="pre">.cc</span></code>, and <code class="docutils literal notranslate"><span class="pre">.cxx</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Not compiled</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">.H</span></code>, <code class="docutils literal notranslate"><span class="pre">.H++</span></code>, <code class="docutils literal notranslate"><span class="pre">.h</span></code>, <code class="docutils literal notranslate"><span class="pre">.h++</span></code>, <code class="docutils literal notranslate"><span class="pre">.hh</span></code>, <code class="docutils literal notranslate"><span class="pre">.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">.hxx</span></code>, and <code class="docutils literal notranslate"><span class="pre">.inl</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>If a file’s extension is not listed in the table above, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will ignore it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although headers are not compiled, this does not mean they are ignored.
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> still understands and respects headers, and they are collected
+together as part of <em>source distribution</em>.</p>
+</div>
+</div>
+<div class="section" id="applications-and-tests">
+<span id="pkgs-apps-tests"></span><h2>Applications and Tests<a class="headerlink" href="#applications-and-tests" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> will recognize certain compilable source files as belonging to
+applications and tests. If a compilable source file stem ends with <code class="docutils literal notranslate"><span class="pre">.main</span></code> or
+<code class="docutils literal notranslate"><span class="pre">.test</span></code>, that source file is assumed to correspond to an executable to
+generate. The filename stem before the <code class="docutils literal notranslate"><span class="pre">.main</span></code> or <code class="docutils literal notranslate"><span class="pre">.test</span></code> will be used as
+the name of the generated executable. For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">foo.main.cpp</span></code> will generate an executable named <code class="docutils literal notranslate"><span class="pre">foo</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">bar.test.cpp</span></code> will generate an executable named <code class="docutils literal notranslate"><span class="pre">bar</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat-meow.main.cpp</span></code> will generate an executable named <code class="docutils literal notranslate"><span class="pre">cat-meow</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cats.musical.test.cpp</span></code> will generate an executable named <code class="docutils literal notranslate"><span class="pre">cats.musical</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> will automatically append the appropriate filename extension to the
+generated executables based on the host and toolchain.</p>
+</div>
+<p>An <em>application</em> source file is a source file whose file stem ends with
+<code class="docutils literal notranslate"><span class="pre">.main</span></code>. <code class="docutils literal notranslate"><span class="pre">dds</span></code> will assume this source file to contain a program entry
+point function and not include it as part of the main library build. Instead,
+when <code class="docutils literal notranslate"><span class="pre">dds</span></code> is generating applications, the source file will be compiled, and
+the resulting object will be linked together with the enclosing library into an
+executable.</p>
+<p>A <em>test</em> source file is a source file whose file stem ends with <code class="docutils literal notranslate"><span class="pre">.test</span></code>. Like
+application sources, a <em>test</em> source file is omitted from the main library, and
+it will be used to generate tests. The exact behavior of tests is determined by
+the <code class="docutils literal notranslate"><span class="pre">Test-Driver</span></code> setting for the package, but the default is that each test
+source file will generate a single test executable that is executed by <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+when running unit tests.</p>
+<p>The building of tests and applications can be controlled when running
+<code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build</span></code>. If tests are built, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will automatically execute those
+tests in parallel once the executables have been generated.</p>
+<p>In any case, the executables are associated with a <em>library</em>, and, when those
+executables are linked, the associated library (and its dependencies) will be
+linked into the final executable. There is no need to manually specify this
+linking behavior.</p>
+</div>
+<div class="section" id="source-roots">
+<span id="pkg-source-root"></span><h2>Source Roots<a class="headerlink" href="#source-roots" title="Permalink to this headline">¶</a></h2>
+<p>Source files are collected as children of some <em>source root</em>. A <em>source
+root</em> is a single directory that contains some <em>portable</em> bundle of source
+files. The word “portable” is important: It is what distinguishes the
+source root from its child directories.</p>
+<div class="section" id="portability">
+<h3>Portability<a class="headerlink" href="#portability" title="Permalink to this headline">¶</a></h3>
+<p>By saying that a source root is “portable”,  It indicates that the directory
+itself can be moved, renamed, or copied without breaking the <code class="docutils literal notranslate"><span class="pre">#include</span></code>
+directives of its children or of the directory’s referrers.</p>
+<p>As a practical example, let’s examine such a directory, which we’ll call
+<code class="docutils literal notranslate"><span class="pre">src/</span></code> for the purposes of this example. Suppose we have a directory named
+<code class="docutils literal notranslate"><span class="pre">src</span></code> with the following structure:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;path&gt;/src/
+  animals/
+    mammal/
+      mammal.hpp
+    cat/
+      cat.hpp
+      sound.hpp
+      sound.cpp
+    dog/
+      dog.hpp
+      sound.hpp
+      sound.cpp
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">src/</span></code> is a <em>source root</em>, but <code class="docutils literal notranslate"><span class="pre">src/animals/</span></code>,
+<code class="docutils literal notranslate"><span class="pre">src/animals/cat/</span></code>, and <code class="docutils literal notranslate"><span class="pre">src/animals/dog/</span></code> are <strong>not</strong> source roots.
+While they may be directories that contain source files, they are not “roots.”</p>
+<p>Suppose now that <code class="docutils literal notranslate"><span class="pre">dog.hpp</span></code> contains an <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;animals/mammal/mammal.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>or even a third-party user that wants to use our library:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;animals/dog/dog.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;animals/dog/sound.hpp&gt;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>In order for any code to compile and resolve these <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives, the
+<code class="docutils literal notranslate"><span class="pre">src/</span></code> directory must be added to their <em>include search path</em>.</p>
+<p>Because the <code class="docutils literal notranslate"><span class="pre">#include</span></code> directives are based on the <em>portable</em> source root,
+the exactly location of <code class="docutils literal notranslate"><span class="pre">src/</span></code> is not important to the content of the
+consuming source code, and can thus be relocated and renamed as necessary.
+Consumers only need to update the path of the <em>include search path</em> in a single
+location rather than modifying their source code.</p>
+</div>
+<div class="section" id="source-roots-in-dds">
+<span id="pkgs-source-root"></span><h3>Source Roots in <code class="docutils literal notranslate"><span class="pre">dds</span></code><a class="headerlink" href="#source-roots-in-dds" title="Permalink to this headline">¶</a></h3>
+<p>To avoid ambiguity and aide in portability, the following rules should be
+strictly adhered to:</p>
+<ol class="arabic simple">
+<li><p>Source roots may not contain other source roots.</p></li>
+<li><p>Only source roots will be added to the <em>include-search-path</em>.</p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">#include</span></code>-directives are relative to a source root.</p></li>
+</ol>
+<p>By construction, <code class="docutils literal notranslate"><span class="pre">dds</span></code> cannot build a project that has nested source roots,
+and it will only ever add source roots to the <em>include-search-path</em>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> supports either one or two source roots in a library.</p>
+</div>
+</div>
+<div class="section" id="library-roots">
+<span id="pkgs-lib-roots"></span><h2>Library Roots<a class="headerlink" href="#library-roots" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">dds</span></code>, a <em>library root</em> is a directory that contains a <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory,
+an <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory, or both. <code class="docutils literal notranslate"><span class="pre">dds</span></code> will treat both directories as
+source roots, but behaves differently between the two. The <code class="docutils literal notranslate"><span class="pre">src/</span></code> and
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> directories are themselves <em>source roots</em>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> distinguishes between a <em>public</em> include-directory, and a <em>private</em>
+include-directory. When <code class="docutils literal notranslate"><span class="pre">dds</span></code> is compiling a library, both its <em>private</em> and
+its <em>public</em> include-paths will be added to the compiler’s
+<em>include-search-path</em>. When a downstream user of a library is compiling against
+a library managed by <code class="docutils literal notranslate"><span class="pre">dds</span></code>, only the <em>public</em> include-directory will be
+added to the compiler’s <em>include-search-path</em>. This has the effect that only
+the files that are children of the source root that is the <em>public</em>
+include-directory will be available when compiling consumers.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Because only the <em>public</em> include-directory is available when compiling
+consumers, it is essential that no headers within the <em>public</em>
+include-directory attempt to use headers from the <em>private</em>
+include-directory, as they <strong>will not</strong> be visible.</p>
+</div>
+<p>If both <code class="docutils literal notranslate"><span class="pre">src/</span></code> and <code class="docutils literal notranslate"><span class="pre">include/</span></code> are present in a library root, then <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+will use <code class="docutils literal notranslate"><span class="pre">include/</span></code> as the <em>public</em> include-directory and <code class="docutils literal notranslate"><span class="pre">src/</span></code> as the
+<em>private</em> include-directory. If only one of the two is present, then that
+directory will be treated as the <em>public</em> include-directory, and there will be
+no <em>private</em> include-directory.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">dds</span></code> exports a library, the header files from the <em>public</em>
+include-directory source root will be collected together and distributed as
+that library’s header tree. The path to the individual header files relative to
+their source root will be retained as part of the library distribution.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> will compile every compilable source file that appears in the <code class="docutils literal notranslate"><span class="pre">src/</span></code>
+directory. <code class="docutils literal notranslate"><span class="pre">dds</span></code> will not compile compilable source files that appear in the
+<code class="docutils literal notranslate"><span class="pre">include/</span></code> directory and will issue a warning on each file found.</p>
+</div>
+<div class="section" id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<p>The <em>library</em> is a fundamental unit of consumable code, and <code class="docutils literal notranslate"><span class="pre">dds</span></code> is
+specifically built to work with them. When you are in <code class="docutils literal notranslate"><span class="pre">dds</span></code>, the library is
+the center of everything.</p>
+<p>A single <em>library root</em> will always correspond to exactly one library. If the
+library has any compilable sources then <code class="docutils literal notranslate"><span class="pre">dds</span></code> will use those sources to
+generate a static library file that is linked into runtime binaries. If a
+library contains only headers then <code class="docutils literal notranslate"><span class="pre">dds</span></code> will not generate an archive to be
+included in downstream binaries, but it will still generate link rules for the
+dependencies of a header-only library.</p>
+<p>In order for <code class="docutils literal notranslate"><span class="pre">dds</span></code> to be able to distribute and interlink libraries, a
+<code class="docutils literal notranslate"><span class="pre">library.dds</span></code> file must be present at the corresponding library root. The
+only required key in a <code class="docutils literal notranslate"><span class="pre">library.dds</span></code> file is <code class="docutils literal notranslate"><span class="pre">Name</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-library</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>More information is discussed on the <a class="reference internal" href="interdeps.html#deps-lib-deps"><span class="std std-ref">Library Dependencies</span></a> page</p>
+</div>
+</div>
+<div class="section" id="package-roots">
+<span id="pkgs-pkg-root"></span><h2>Package Roots<a class="headerlink" href="#package-roots" title="Permalink to this headline">¶</a></h2>
+<p>A <em>package root</em> is a directory that contains some number of library roots. If
+the package root contains a <code class="docutils literal notranslate"><span class="pre">src/</span></code> and/or <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory then the
+package root is itself a library root, and a library is defined at the root of
+the package. This is intended to be the most common and simplest method of
+creating libraries with <code class="docutils literal notranslate"><span class="pre">dds</span></code>.</p>
+<p>If the package root contains a <code class="docutils literal notranslate"><span class="pre">libs/</span></code> directory, then each subdirectory of
+the <code class="docutils literal notranslate"><span class="pre">libs/</span></code> directory is checked to be a library root. Each direct child of
+the <code class="docutils literal notranslate"><span class="pre">libs/</span></code> directory that is also a library root is added as a child of the
+owning package.</p>
+</div>
+<div class="section" id="packages">
+<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<p>A package is defined by some <em>package root</em>, and contains some number of
+<em>libraries</em>.</p>
+<p>The primary distribution format of packages that is used by <code class="docutils literal notranslate"><span class="pre">dds</span></code> is the
+<em>source distribution</em>. Refer to the page <a class="reference internal" href="source-dists.html"><span class="doc">Source Distributions</span></a>.</p>
+<p>Packages are identified by a name/version pair, joined together by an <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>
+symbol. The version of a package must be a semantic version string. Together,
+the <code class="docutils literal notranslate"><span class="pre">name&#64;version</span></code> string forms the <em>package ID</em>, and it must be unique
+within a repository or package catalog.</p>
+<p>In order for a package to be exported by <code class="docutils literal notranslate"><span class="pre">dds</span></code> it must have a
+<code class="docutils literal notranslate"><span class="pre">package.dds</span></code> file at its package root. Three keys are required to be
+present in the <code class="docutils literal notranslate"><span class="pre">package.dds</span></code> file: <code class="docutils literal notranslate"><span class="pre">Name</span></code>, <code class="docutils literal notranslate"><span class="pre">Version</span></code>, and <code class="docutils literal notranslate"><span class="pre">Namespace</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-widgets</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">6.7.3</span>
+<span class="nt">Namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Version</span></code> must be a valid semantic version string.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> key is arbitrary, and not necessarily associated with
+and C++ <code class="docutils literal notranslate"><span class="pre">namespace</span></code>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>The purpose of <code class="docutils literal notranslate"><span class="pre">Namespace</span></code>, as well as additional options in this file,
+are described in the <a class="reference internal" href="interdeps.html#deps-pkg-deps"><span class="std std-ref">Package Dependencies</span></a> page</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Package Layout</a><ul>
+<li><a class="reference internal" href="#source-files">Source Files</a></li>
+<li><a class="reference internal" href="#applications-and-tests">Applications and Tests</a></li>
+<li><a class="reference internal" href="#source-roots">Source Roots</a><ul>
+<li><a class="reference internal" href="#portability">Portability</a></li>
+<li><a class="reference internal" href="#source-roots-in-dds">Source Roots in <code class="docutils literal notranslate"><span class="pre">dds</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#library-roots">Library Roots</a></li>
+<li><a class="reference internal" href="#libraries">Libraries</a></li>
+<li><a class="reference internal" href="#package-roots">Package Roots</a></li>
+<li><a class="reference internal" href="#packages">Packages</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">User Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="toolchains.html"
+                        title="next chapter">Toolchains</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/guide/packages.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="toolchains.html" title="Toolchains"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="User Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

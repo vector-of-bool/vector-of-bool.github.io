@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>A Hello, world! Application &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="A Hello, World Library" href="hello-lib.html" />
+    <link rel="prev" title="Tutorials and Beginner’s Guide" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="hello-lib.html" title="A Hello, World Library"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Tutorials and Beginner’s Guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Tutorials and Beginner’s Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="a-hello-world-application">
+<h1>A <em>Hello, world!</em> Application<a class="headerlink" href="#a-hello-world-application" title="Permalink to this headline">¶</a></h1>
+<p>Creating a <em>hello world</em> application is very simple.</p>
+<div class="section" id="creating-a-package-root">
+<h2>Creating a <em>Package Root</em><a class="headerlink" href="#creating-a-package-root" title="Permalink to this headline">¶</a></h2>
+<p>To start, create a new directory for your project. This will be known as the
+<em>package root</em>, and the entirety of our project will be placed in this
+directory. The name and location of this directory is not important, but the
+contents therein will be significant.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term <em>package root</em> is further described in the <a class="reference internal" href="../guide/packages.html"><span class="doc">Package Layout</span></a> page.</p>
+</div>
+<p>From here on, this created directory will simply be noted as <code class="docutils literal notranslate"><span class="pre">&lt;root&gt;</span></code>. In
+the examples, this will refer to the directory package root directory we have
+created.</p>
+</div>
+<div class="section" id="creating-the-first-source-root">
+<h2>Creating the First <em>Source Root</em><a class="headerlink" href="#creating-the-first-source-root" title="Permalink to this headline">¶</a></h2>
+<p>Within the package root, we create our first <em>source root</em>. Since we are
+intending to compile files, we need to use the name that <code class="docutils literal notranslate"><span class="pre">dds</span></code> has designated
+to be the source root that may contain compilable source files: <code class="docutils literal notranslate"><span class="pre">src/</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir src
+</pre></div>
+</div>
+<p>You should now have a single item in the package root, at <code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/</span></code>. This
+is the directory from which <code class="docutils literal notranslate"><span class="pre">dds</span></code> will search for source files.</p>
+</div>
+<div class="section" id="creating-an-application-entrypoint">
+<h2>Creating an Application Entrypoint<a class="headerlink" href="#creating-an-application-entrypoint" title="Permalink to this headline">¶</a></h2>
+<p>To add a source file to our project, we simply create a file within a source
+root with the appropriate file extension. Our source root is <code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/</span></code>,
+so we’ll place a source file in there. In addition, because we want to create
+an <em>application</em> we need to designate that the source file provides an
+application <em>entry point</em>, i.e. a <code class="docutils literal notranslate"><span class="pre">main()</span></code> function. To do this, we simply
+prepend <code class="docutils literal notranslate"><span class="pre">.main</span></code> to the file extension. Create a file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">root</span><span class="o">&gt;/</span><span class="n">src</span><span class="o">/</span><span class="n">hello</span><span class="o">-</span><span class="n">world</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">cpp</span>
+</pre></div>
+</div>
+<p>and open it in your editor of choice. We’ll add the classic C++ <em>hello, world</em>
+program:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/hello-world.main.cpp</span></code></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Hello, world!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="building-hello-world">
+<h2>Building <em>Hello, World</em><a class="headerlink" href="#building-hello-world" title="Permalink to this headline">¶</a></h2>
+<p>Now comes the fun part. It is time to actually compile the application!</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you intend to compile with Visual C++, the build must be executed
+from within a Visual Studio or Visual C++ development command prompt. These
+program shortcuts should be made available with any standard installation
+of the Visual C++ toolchain.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> <strong>will not</strong> automatically load the Visual C++ environment.</p>
+</div>
+<p>To build the program, we must provide <code class="docutils literal notranslate"><span class="pre">dds</span></code> with information about our
+program toolchain. <code class="docutils literal notranslate"><span class="pre">dds</span></code> comes with a few “built in” toolchain options that
+can be used out-of-the-box, and they’ll be suitable for our purposes.</p>
+<ul class="simple">
+<li><p>If you are compiling with GCC, the toolchain name is <code class="docutils literal notranslate"><span class="pre">:gcc</span></code></p></li>
+<li><p>If you are compiling with Clang, the toolchain name is <code class="docutils literal notranslate"><span class="pre">:clang</span></code></p></li>
+<li><p>If you are compiling with Visual C++, the toolchain name is <code class="docutils literal notranslate"><span class="pre">:msvc</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The leading colon <code class="docutils literal notranslate"><span class="pre">:</span></code> is important: This tells <code class="docutils literal notranslate"><span class="pre">dds</span></code> to use its
+built-in toolchain information rather than looking for a toolchain file of
+that name.</p>
+</div>
+<p>To execute the build, run the <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build</span></code> command as in the following
+example, providing the appropriate toolchain name in place of <code class="docutils literal notranslate"><span class="pre">&lt;toolchain&gt;</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dds</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="o">&lt;</span><span class="n">toolchain</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For example, if you are using <code class="docutils literal notranslate"><span class="pre">gcc</span></code>, you would run the command as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dds</span> <span class="n">build</span> <span class="o">-</span><span class="n">t</span> <span class="p">:</span><span class="n">gcc</span>
+</pre></div>
+</div>
+<p>If all successful, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will emit information about the compile and link
+process, and then exit without error.</p>
+<p>By default, build results will be placed in a subdirectory of the package root
+named <code class="docutils literal notranslate"><span class="pre">_build</span></code>. Within this directory, you will find the generated executable
+named <code class="docutils literal notranslate"><span class="pre">hello-world</span></code> (with a <code class="docutils literal notranslate"><span class="pre">.exe</span></code> suffix if on Windows).</p>
+<p>We should now be able to run this executable and see our <code class="docutils literal notranslate"><span class="pre">Hello,</span> <span class="pre">world!</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; ./_build/hello-world
+Hello, world!
+</pre></div>
+</div>
+</div>
+<div class="section" id="more-sources">
+<h2>More Sources<a class="headerlink" href="#more-sources" title="Permalink to this headline">¶</a></h2>
+<p>Modularizing our program is good, right? Let’s do that.</p>
+</div>
+<div class="section" id="add-a-header">
+<h2>Add a Header<a class="headerlink" href="#add-a-header" title="Permalink to this headline">¶</a></h2>
+<p>Create a new subdirectory of <code class="docutils literal notranslate"><span class="pre">src</span></code>, and we’ll call it <code class="docutils literal notranslate"><span class="pre">hello</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">mkdir</span> <span class="n">src</span><span class="o">/</span><span class="n">hello</span>
+</pre></div>
+</div>
+<p>Within this directory, create a <code class="docutils literal notranslate"><span class="pre">strings.hpp</span></code>. Edit the content in your
+editor of choice:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/hello/strings.hpp</span></code></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#ifndef HELLO_STRINGS_HPP_INCLUDED</span>
+<span class="cp">#define HELLO_STRINGS_HPP_INCLUDED</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+
+<span class="k">namespace</span> <span class="n">hello</span> <span class="p">{</span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">get_greeting</span><span class="p">();</span>
+
+<span class="p">}</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="change-our-main">
+<h2>Change our <code class="docutils literal notranslate"><span class="pre">main()</span></code><a class="headerlink" href="#change-our-main" title="Permalink to this headline">¶</a></h2>
+<p>Modify the content of <code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/hello-world.main.cpp</span></code> to include our new
+header and to use our <code class="docutils literal notranslate"><span class="pre">get_greeting()</span></code> function:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/hello-world.main.cpp</span></code></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="cp">#include</span> <span class="cpf">&lt;hello/strings.hpp&gt;</span><span class="cp"></span>
+</span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+<span class="hll">  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">hello</span><span class="o">::</span><span class="n">get_greeting</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="compiling-again-and-linking">
+<h2>Compiling Again, and Linking…?<a class="headerlink" href="#compiling-again-and-linking" title="Permalink to this headline">¶</a></h2>
+<p>If you run the <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build</span></code> command again, you will now see an error:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>[12:55:25] [info ] [dds-hello] Link: hello-world
+[12:55:25] [info ] [dds-hello] Link: hello-world                    -     57ms
+[12:55:25] [error] Failed to link executable &#39;&lt;root&gt;/_build/hello-world&#39;.
+...
+&lt;additional lines follow&gt;
+</pre></div>
+</div>
+<p>The problem, of course, is that we’ve declared <code class="docutils literal notranslate"><span class="pre">get_greeting</span></code> to <em>exist</em>, but
+be haven’t <em>defined it</em>.</p>
+</div>
+<div class="section" id="adding-another-compiled-source">
+<h2>Adding Another Compiled Source<a class="headerlink" href="#adding-another-compiled-source" title="Permalink to this headline">¶</a></h2>
+<p>We’ll add another compilable source file to our project. In the same
+directory as <code class="docutils literal notranslate"><span class="pre">strings.hpp</span></code>, add <code class="docutils literal notranslate"><span class="pre">strings.cpp</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/src/hello/strings.cpp</span></code></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;hello/strings.hpp&gt;</span><span class="cp"></span>
+
+<span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">hello</span><span class="o">::</span><span class="n">get_greeting</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s">&quot;Hello, world!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="compiling-and-linking">
+<h2>Compiling and Linking!<a class="headerlink" href="#compiling-and-linking" title="Permalink to this headline">¶</a></h2>
+<p>Run the <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build</span></code> command again, and you’ll find that the application
+successfully compiles and links!</p>
+<p>If you’ve used other build systems, you may have noticed a missing step: We
+never told <code class="docutils literal notranslate"><span class="pre">dds</span></code> about our new source file. Actually, we never told <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+about <em>any</em> of our source files. We never even told it the name of the
+executable to generate. What gives?</p>
+<p>It turns out, we <em>did</em> tell <code class="docutils literal notranslate"><span class="pre">dds</span></code> all of this information by simply placing
+the files on the filesystem with the appropriate file paths. The name of the
+executable, <code class="docutils literal notranslate"><span class="pre">hello-world</span></code>, was inferred by stripping the trailing <code class="docutils literal notranslate"><span class="pre">.main</span></code>
+from the stem of the filename which defined the entry point.</p>
+</div>
+<div class="section" id="cleaning-up">
+<h2>Cleaning Up<a class="headerlink" href="#cleaning-up" title="Permalink to this headline">¶</a></h2>
+<p>There’s one final formality that should be taken care of before proceeding:
+Creating a package manifest file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> will work happily with packages that do not declare themselves, as long
+as the filesystem structure is sufficient. However: To use features covered in
+later tutorials, we’ll need a simple <code class="docutils literal notranslate"><span class="pre">package.dds</span></code> file to declare
+information about are package. This file should be placed directly in the
+package root:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/package.dds</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello-dds</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
+<span class="nt">Namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorial</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> option will be discussed later.</p>
+</div>
+<p>Rebuilding the project will show no difference at the moment.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Creating a single application executable is fine and all, but what if we
+want to create libraries? See the next page: <a class="reference internal" href="hello-lib.html"><span class="doc">A Hello, World Library</span></a></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">A <em>Hello, world!</em> Application</a><ul>
+<li><a class="reference internal" href="#creating-a-package-root">Creating a <em>Package Root</em></a></li>
+<li><a class="reference internal" href="#creating-the-first-source-root">Creating the First <em>Source Root</em></a></li>
+<li><a class="reference internal" href="#creating-an-application-entrypoint">Creating an Application Entrypoint</a></li>
+<li><a class="reference internal" href="#building-hello-world">Building <em>Hello, World</em></a></li>
+<li><a class="reference internal" href="#more-sources">More Sources</a></li>
+<li><a class="reference internal" href="#add-a-header">Add a Header</a></li>
+<li><a class="reference internal" href="#change-our-main">Change our <code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li><a class="reference internal" href="#compiling-again-and-linking">Compiling Again, and Linking…?</a></li>
+<li><a class="reference internal" href="#adding-another-compiled-source">Adding Another Compiled Source</a></li>
+<li><a class="reference internal" href="#compiling-and-linking">Compiling and Linking!</a></li>
+<li><a class="reference internal" href="#cleaning-up">Cleaning Up</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Tutorials and Beginner’s Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="hello-lib.html"
+                        title="next chapter">A <em>Hello, World</em> Library</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/tut/hello-world.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="hello-lib.html" title="A Hello, World Library"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Tutorials and Beginner’s Guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Tutorials and Beginner’s Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

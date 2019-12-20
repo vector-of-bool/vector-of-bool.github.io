@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Library and Package Dependencies &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="dds Design and Rationale" href="../design.html" />
+    <link rel="prev" title="The Package Catalog" href="catalog.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../design.html" title="dds Design and Rationale"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="catalog.html" title="The Package Catalog"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="library-and-package-dependencies">
+<h1>Library and Package Dependencies<a class="headerlink" href="#library-and-package-dependencies" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> considers that all libraries belong to a single <em>package</em>, but a single
+package may contain one or more <em>libraries</em>. For this reason, and to better
+interoperate with other build and packaging tools, we consider the issues of
+package dependencies and library dependencies separately.</p>
+<div class="section" id="package-dependencies">
+<span id="deps-pkg-deps"></span><h2>Package Dependencies<a class="headerlink" href="#package-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>Consider that we are creating a package <code class="docutils literal notranslate"><span class="pre">acme-gadgets&#64;4.3.6</span></code>. We declare the
+name and version in the <code class="docutils literal notranslate"><span class="pre">package.dds</span></code> in the package root:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-gadgets</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4.3.6</span>
+<span class="nt">Namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> field is required, but will be addressed in the
+<a class="reference internal" href="#deps-lib-deps"><span class="std std-ref">Library Dependencies</span></a> section.</p>
+</div>
+<p>Suppose that our package’s libraries build upon the libraries in the
+<code class="docutils literal notranslate"><span class="pre">acme-widgets</span></code> package, and that we require version <code class="docutils literal notranslate"><span class="pre">1.4.3</span></code> or newer, but
+not as new as <code class="docutils literal notranslate"><span class="pre">2.0.0</span></code>. Such a dependency can be declared with the <code class="docutils literal notranslate"><span class="pre">Depends</span></code>
+key:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-gadgets</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4.3.6</span>
+<span class="nt">Namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme</span>
+
+<span class="hll"><span class="nt">Depends</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-widgets ^1.4.3</span>
+</span></pre></div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#deps-ranges"><span class="std std-ref">Compatible Range Specifiers</span></a>.</p>
+</div>
+<p>If we wish to declare additional dependencies, we simply declare them with
+additional <code class="docutils literal notranslate"><span class="pre">Depends</span></code> keys</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-gadgets</span>
+<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">4.3.6</span>
+<span class="nt">Namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme</span>
+
+<span class="hll"><span class="nt">Depends</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-widgets ^1.4.3</span>
+</span><span class="hll"><span class="nt">Depends</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-gizmos ~5.6.5</span>
+</span><span class="hll"><span class="nt">Depends</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme-utils ^3.3.0</span>
+</span></pre></div>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">dds</span></code> attempts to build a project, it will first build the dependency
+solution by iteratively scanning the dependencies of the containing project and
+all transitive dependencies.</p>
+<div class="section" id="compatible-range-specifiers">
+<span id="deps-ranges"></span><h3>Compatible Range Specifiers<a class="headerlink" href="#compatible-range-specifiers" title="Permalink to this headline">¶</a></h3>
+<p>When specifying a dependency on a package, one will want to specify which
+versions of the dependency are supported.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike other packaging tools, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will find a solution with the
+<em>lowest</em> possible version that satisfies the given requirements for each
+package. This decision is not incidental: It’s entirely intentional.
+Refer to: <a class="reference internal" href="#deps-ranges-why-lowest"><span class="std std-ref">Why Pull the Lowest Matching Version?</span></a>.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> compatible-version ranges are similar to the shorthand range specifiers
+supported by <code class="docutils literal notranslate"><span class="pre">npm</span></code> and <code class="docutils literal notranslate"><span class="pre">npm</span></code>-like tools. There are five (and a half)
+version range formats available, listed in order of most-to-least restrictive:</p>
+<dl>
+<dt>Exact: <code class="docutils literal notranslate"><span class="pre">1.2.3</span></code> and <code class="docutils literal notranslate"><span class="pre">=1.2.3</span></code></dt><dd><p>Specifies an <em>exact</em> requirement. The dependency must match the named
+version <em>exactly</em> or it is considered incompatible.</p>
+</dd>
+<dt>Minor: <code class="docutils literal notranslate"><span class="pre">~1.2.3</span></code></dt><dd><p>Specifies a <em>minor</em> requirement. The version of the dependency should be
+<em>at least</em> the given version, but not as new or newer than the next minor
+revision. In this example, it represents the half-open version range
+<code class="docutils literal notranslate"><span class="pre">[1.2.3,</span> <span class="pre">1.3.0)</span></code>.</p>
+</dd>
+<dt>Major: <code class="docutils literal notranslate"><span class="pre">^1.2.3</span></code></dt><dd><p>Specifies a <em>major</em> requirement. The version must be <em>at least</em> the same
+given version, but not any newer than the the next major version. In the
+example, this is the half-open range <code class="docutils literal notranslate"><span class="pre">[1.2.3,</span> <span class="pre">2.0.0)</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is the recommended default option to reach for, as it matches the
+intended behavior of <a class="reference external" href="https://semver.org">Semantic Versioning</a>.</p>
+</div>
+</dd>
+<dt>At-least: <code class="docutils literal notranslate"><span class="pre">+1.2.3</span></code></dt><dd><p>Specifies an <em>at least</em> requirement. The version must be <em>at least</em> the
+given version, but any newer version is acceptable.</p>
+</dd>
+<dt>Anything: <code class="docutils literal notranslate"><span class="pre">*</span></code></dt><dd><p>An asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code> represents than <em>any</em> version is acceptable. This is not
+recommended for most dependencies.</p>
+</dd>
+</dl>
+<div class="section" id="why-pull-the-lowest-matching-version">
+<span id="deps-ranges-why-lowest"></span><h4>Why Pull the <em>Lowest</em> Matching Version?<a class="headerlink" href="#why-pull-the-lowest-matching-version" title="Permalink to this headline">¶</a></h4>
+<p>When resolving dependencies, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will pull the version of the dependency
+that is the lowest version that satisfies the given range. In most cases,
+this will be the same version that is the base of the version range.</p>
+<p>Imagine a scenario where we <em>did</em> select the “latest-matching-version”:</p>
+<p>Suppose we are developing a library <code class="docutils literal notranslate"><span class="pre">Gadgets</span></code>, and we wish to make use of
+<code class="docutils literal notranslate"><span class="pre">Widgets</span></code>. The latest version is <code class="docutils literal notranslate"><span class="pre">1.5.2</span></code>, and they promise Semantic
+Versioning compatibility, so we select a version range of <code class="docutils literal notranslate"><span class="pre">^1.5.2</span></code>.</p>
+<p>Suppose a month passes, and <code class="docutils literal notranslate"><span class="pre">Widgets&#64;1.6.0</span></code> is published. A few things
+happen:</p>
+<ol class="arabic simple">
+<li><p>Our CI builds now switch from <code class="docutils literal notranslate"><span class="pre">1.5.2</span></code> to <code class="docutils literal notranslate"><span class="pre">1.6.0</span></code> <em>without any code
+changes</em>. Should be okay, right? I mean… it’s still compatible, yeah?</p></li>
+<li><p>Bugs in <code class="docutils literal notranslate"><span class="pre">Widgets&#64;1.6.0</span></code> will now appear in all CI builds, and won’t be
+reproducible locally unless we re-pull our dependencies and obtain the
+new version of <code class="docutils literal notranslate"><span class="pre">Widgets</span></code>. This requires that we be conscientious enough to
+realize what is actually going on.</p></li>
+<li><p>Even if <code class="docutils literal notranslate"><span class="pre">Widgets&#64;1.6.0</span></code> introduces no new bugs, a developer re-pulling
+their dependencies will suddenly be developing against <code class="docutils literal notranslate"><span class="pre">1.6.0</span></code>, and may
+not even realize it. In fact, this may continue for weeks or months until
+<em>everyone</em> is developing against <code class="docutils literal notranslate"><span class="pre">1.6.0</span></code> without realizing that they
+actually only require <code class="docutils literal notranslate"><span class="pre">1.5.2</span></code> in their dependency declarations.</p></li>
+<li><p>Code in our project is written that presupposes features or bugfixes added
+in <code class="docutils literal notranslate"><span class="pre">1.6.0</span></code>, and thus makes the dependency declaration on <code class="docutils literal notranslate"><span class="pre">Widgets</span> <span class="pre">^1.5.2</span></code>
+a <em>lie</em>.</p></li>
+</ol>
+<p>Pulling the lowest-matching-version has two <em>huge</em> benefits:</p>
+<ol class="arabic simple">
+<li><p>No automatic CI upgrades. The code built today will produce the same result
+when built a year from now.</p></li>
+<li><p>Using a feature/fix beyond our minimum requirement becomes a compile error,
+and we catch these up-front rather than waiting for a downstream user
+discovering them for us.</p></li>
+</ol>
+<div class="section" id="isn-t-this-what-lockfiles-are-for">
+<h5><em>Isn’t this what lockfiles are for?</em><a class="headerlink" href="#isn-t-this-what-lockfiles-are-for" title="Permalink to this headline">¶</a></h5>
+<p>Somewhat. Lockfiles will prevent automatic upgrades, but they will do nothing
+to stop accidental reliance on new versions. There are other useful features
+of lockfiles, but preventing automatic upgrades can be a non-issue by simply
+using lowest-matching-version.</p>
+</div>
+<div class="section" id="so-if-this-is-the-case-why-use-ranges-at-all">
+<h5><em>So, if this is the case, why use ranges at all?</em><a class="headerlink" href="#so-if-this-is-the-case-why-use-ranges-at-all" title="Permalink to this headline">¶</a></h5>
+<p>In short: <em>Your</em> compatibility ranges are not for <em>you</em>. They are for <em>your
+users</em>.</p>
+<p>Suppose package <code class="docutils literal notranslate"><span class="pre">A</span></code> requires <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">^1.0.0</span></code>, and <code class="docutils literal notranslate"><span class="pre">B</span></code> requires <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">^1.2.0</span></code>.
+Now let us suppose that <code class="docutils literal notranslate"><span class="pre">A</span></code> wishes to use a newer feature of <code class="docutils literal notranslate"><span class="pre">C</span></code>, and thus
+declares a dependency on <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">^1.3.0</span></code>. <code class="docutils literal notranslate"><span class="pre">B</span></code> and <code class="docutils literal notranslate"><span class="pre">A</span></code> have different
+compatibility ranges on <code class="docutils literal notranslate"><span class="pre">C</span></code>, but this will work perfectly fine <strong>as long as
+the compatible version ranges of A and B have some overlap</strong>.</p>
+<p>That final qualification is the reason we use compatibility ranges: To support
+our downstream users to form dependency graphs that would otherwise form
+conflicts if we required <em>exact</em> versions for everything. In the above example,
+<code class="docutils literal notranslate"><span class="pre">C&#64;1.3.0</span></code> will be selected for the build of <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p>
+<p>Now, if another downstream user wants to use <code class="docutils literal notranslate"><span class="pre">A</span></code>, they will get <code class="docutils literal notranslate"><span class="pre">C&#64;1.3.0</span></code>.
+But they discover that they actually need a bugfix in <code class="docutils literal notranslate"><span class="pre">C</span></code>, so they place
+their own requirement on <code class="docutils literal notranslate"><span class="pre">C</span> <span class="pre">^1.3.1</span></code>. Thus, they get <code class="docutils literal notranslate"><span class="pre">C&#64;1.3.1</span></code>, which still
+satisfies the compatibility ranges of <code class="docutils literal notranslate"><span class="pre">A</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span></code>. Everyone gets along
+just fine!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="library-dependencies">
+<span id="deps-lib-deps"></span><h2>Library Dependencies<a class="headerlink" href="#library-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>In <code class="docutils literal notranslate"><span class="pre">dds</span></code>, library interdependencies are tracked separately from the packages
+that contain them. A library must declare its intent to use another library
+in the <code class="docutils literal notranslate"><span class="pre">library.dds</span></code> at its library root. The minimal content of a
+<code class="docutils literal notranslate"><span class="pre">library.dds</span></code> is the <code class="docutils literal notranslate"><span class="pre">Name</span></code> key:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gadgets</span>
+</pre></div>
+</div>
+<p>To announce that a library wishes to <em>use</em> another library, use the aptly-named
+<code class="docutils literal notranslate"><span class="pre">Uses</span></code> key:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">gadgets</span>
+
+<span class="hll"><span class="nt">Uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme/widgets</span>
+</span><span class="hll"><span class="nt">Uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme/gizmos</span>
+</span><span class="hll"><span class="nt">Uses</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">acme/utils</span>
+</span></pre></div>
+</div>
+<p>Here is where the package’s <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> key comes into play: A library’s
+qualified name is specified by joining the <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> of the containing
+package with the <code class="docutils literal notranslate"><span class="pre">Name</span></code> of the library within that package with a <code class="docutils literal notranslate"><span class="pre">/</span></code>
+between them.</p>
+<p>It is the responsibility of package authors to document the <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> and
+<code class="docutils literal notranslate"><span class="pre">Name</span></code> of the packages and libraries that they distribute.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> of a package is completely arbitrary, and need not relate
+to a C++ <code class="docutils literal notranslate"><span class="pre">namespace</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> need not be unique to a single package. For example, a
+single organization (Like Acme Inc.) can share a single <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> for
+many of their packages and libraries.</p>
+<p>However, it is essential that the <code class="docutils literal notranslate"><span class="pre">&lt;Namespace&gt;/&lt;Name&gt;</span></code> pair be
+universally unique, so choose wisely!</p>
+</div>
+<p>Once the <code class="docutils literal notranslate"><span class="pre">Uses</span></code> key appears in the <code class="docutils literal notranslate"><span class="pre">library.dds</span></code> file of a library, <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+will make available the headers for the library being used, and will
+transitively propagate that usage requirement to users of the library.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Library and Package Dependencies</a><ul>
+<li><a class="reference internal" href="#package-dependencies">Package Dependencies</a><ul>
+<li><a class="reference internal" href="#compatible-range-specifiers">Compatible Range Specifiers</a><ul>
+<li><a class="reference internal" href="#why-pull-the-lowest-matching-version">Why Pull the <em>Lowest</em> Matching Version?</a><ul>
+<li><a class="reference internal" href="#isn-t-this-what-lockfiles-are-for"><em>Isn’t this what lockfiles are for?</em></a></li>
+<li><a class="reference internal" href="#so-if-this-is-the-case-why-use-ranges-at-all"><em>So, if this is the case, why use ranges at all?</em></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#library-dependencies">Library Dependencies</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="catalog.html"
+                        title="previous chapter">The Package Catalog</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../design.html"
+                        title="next chapter"><code class="docutils literal notranslate"><span class="pre">dds</span></code> Design and Rationale</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/guide/interdeps.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../design.html" title="dds Design and Rationale"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="catalog.html" title="The Package Catalog"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

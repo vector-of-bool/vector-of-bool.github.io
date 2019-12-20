@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>The Local Package Repository &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Package Catalog" href="catalog.html" />
+    <link rel="prev" title="Source Distributions" href="source-dists.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="catalog.html" title="The Package Catalog"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="source-dists.html" title="Source Distributions"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="the-local-package-repository">
+<h1>The Local Package Repository<a class="headerlink" href="#the-local-package-repository" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> maintains a local repository of packages that it has obtained at the
+request of a user. The packages themselves are stored as
+<a class="reference internal" href="source-dists.html"><span class="doc">source distributions</span></a> (<code class="docutils literal notranslate"><span class="pre">dds</span></code> does not store the binaries
+that it builds within the repository).</p>
+<div class="section" id="reading-repository-contents">
+<h2>Reading Repository Contents<a class="headerlink" href="#reading-repository-contents" title="Permalink to this headline">¶</a></h2>
+<p>Most times, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will manage the repository content silently, but it may be
+useful to see what <code class="docutils literal notranslate"><span class="pre">dds</span></code> is currently storing away.</p>
+<p>The content of the repostiory can be seen with the <code class="docutils literal notranslate"><span class="pre">repo</span></code> subcommand:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dds</span> <span class="n">repo</span> <span class="n">ls</span>
+</pre></div>
+</div>
+<p>This will print the names of packages that <code class="docutils literal notranslate"><span class="pre">dds</span></code> has downloaded, as well as
+the versions of each.</p>
+</div>
+<div class="section" id="obtaining-packages">
+<h2>Obtaining Packages<a class="headerlink" href="#obtaining-packages" title="Permalink to this headline">¶</a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>See also: <a class="reference internal" href="catalog.html"><span class="doc">The Package Catalog</span></a></p>
+</div>
+<p>When <code class="docutils literal notranslate"><span class="pre">dds</span></code> builds a package, it will also build the dependency libraries of
+that package. In order for the dependency build to succeed, it must have a
+local copy of the source distribution of that dependency.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">dds</span></code> performs dependency resolution, it will consider both existing
+packages in the local repository, as well as packages that are available from
+the <a class="reference internal" href="catalog.html"><span class="doc">package catalog</span></a>. If the dependency solution requires any
+packages that are not in the local repository, it will use the information in
+the catalog to obtain a source distribution for each missing package. These
+source distributions will automatically be added to the local repository, and
+later dependency resolutions will not need to download that package again.</p>
+<div class="section" id="manually-downloading-a-dependency">
+<h3>Manually Downloading a Dependency<a class="headerlink" href="#manually-downloading-a-dependency" title="Permalink to this headline">¶</a></h3>
+<p>It may be useful to obtain a copy of the source distribution of a package
+contained in the catalog. The <code class="docutils literal notranslate"><span class="pre">catalog</span> <span class="pre">get</span></code> command can be used to do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dds</span> <span class="n">catalog</span> <span class="n">get</span> <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;@&lt;</span><span class="n">version</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>This will obtain the source distribution of the package matching the named
+identifier and place that distribution in current working directory, using the
+package ID as the name of the source distribution directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dds catalog get spdlog@1.4.2
+[ ... ]
+
+$ ls .
+.
+..
+spdlog@1.4.2
+
+$ ls ./spdlog@1.4.2/
+include/
+src/
+library.dds
+package.dds
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exporting-a-project-into-the-repository">
+<span id="repo-export-local"></span><h2>Exporting a Project into the Repository<a class="headerlink" href="#exporting-a-project-into-the-repository" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> can only use packages that are available in the local repository. For
+packages that have a listing in the catalog, this is not a problem. But if one
+is developing a local package and wants to allow it to be used in another local
+package, that can be done by exporting a source distribution from the package
+root:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">dds</span> <span class="n">sdist</span> <span class="n">export</span>
+</pre></div>
+</div>
+<p>This command will create a source distribution and place it in the local
+repository. The package is now available to other projects on the local system.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This doesn’t export in “editable” mode: A snapshot of the package root
+will be taken and exported to the local repository.</p>
+</div>
+<p>If one tries to export a package root into a repository that already contains
+a package with a matching identifier, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will issue an error. If the
+<code class="docutils literal notranslate"><span class="pre">--replace</span></code> flag is specified with <code class="docutils literal notranslate"><span class="pre">sdist</span> <span class="pre">export</span></code>, then <code class="docutils literal notranslate"><span class="pre">dds</span></code> will
+forcibly replace the package in the local repository with a new copy.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">The Local Package Repository</a><ul>
+<li><a class="reference internal" href="#reading-repository-contents">Reading Repository Contents</a></li>
+<li><a class="reference internal" href="#obtaining-packages">Obtaining Packages</a><ul>
+<li><a class="reference internal" href="#manually-downloading-a-dependency">Manually Downloading a Dependency</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exporting-a-project-into-the-repository">Exporting a Project into the Repository</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="source-dists.html"
+                        title="previous chapter">Source Distributions</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="catalog.html"
+                        title="next chapter">The Package Catalog</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/guide/repo.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="catalog.html" title="The Package Catalog"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="source-dists.html" title="Source Distributions"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

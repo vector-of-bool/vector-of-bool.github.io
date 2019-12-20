@@ -1,0 +1,608 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Error: Linking a runtime binary failed &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error: Package is missing remote acquisition information" href="no-catalog-remote-info.html" />
+    <link rel="prev" title="Error: Invalid version string" href="invalid-version-string.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="invalid-version-string.html" title="Error: Invalid version string"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="error-linking-a-runtime-binary-failed">
+<h1><a class="toc-backref" href="#id10">Error: Linking a runtime binary failed</a><a class="headerlink" href="#error-linking-a-runtime-binary-failed" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#error-linking-a-runtime-binary-failed" id="id10">Error: Linking a runtime binary failed</a></p>
+<ul>
+<li><p><a class="reference internal" href="#what-is-linking" id="id11">What is “Linking”?</a></p></li>
+<li><p><a class="reference internal" href="#symbol-reference-resolution" id="id12">Symbol Reference Resolution</a></p></li>
+<li><p><a class="reference internal" href="#failure-modes" id="id13">Failure Modes</a></p>
+<ul>
+<li><p><a class="reference internal" href="#multiple-definitions-found" id="id14">Multiple Definitions Found</a></p>
+<ul>
+<li><p><a class="reference internal" href="#issue-a-non-inline-function-is-defined-in-a-header-file" id="id15">Issue: A non-<code class="docutils literal notranslate"><span class="pre">inline</span></code> function is defined in a header file</a></p></li>
+<li><p><a class="reference internal" href="#issue-there-are-two-colliding-and-distinct-definitions" id="id16">Issue: There are two colliding and distinct definitions</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#unresolved-external-symbol-undefined-reference" id="id17">Unresolved External Symbol / Undefined Reference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#issue-an-external-library-is-not-being-included-in-the-link" id="id18">Issue: An external library is not being included in the link</a></p></li>
+<li><p><a class="reference internal" href="#issue-the-definition-is-simply-missing" id="id19">Issue: The definition is simply missing</a></p></li>
+<li><p><a class="reference internal" href="#issue-missing-virtual-method-implementations" id="id20">Issue: Missing <code class="docutils literal notranslate"><span class="pre">virtual</span></code> method implementations</a></p></li>
+<li><p><a class="reference internal" href="#issue-mismatched-declarations-and-definitions" id="id21">Issue: Mismatched declarations and definitions</a></p></li>
+<li><p><a class="reference internal" href="#issue-the-source-file-containing-definition-is-not-being-included-in-the-link" id="id22">Issue: The source file containing definition is not being included in the link</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This error indicates that the final phases of the build pipeline, the link
+phases, failed.</p>
+<p>The end result of the software development process is to produce applications
+and programs that can be executed by users. In the traditional compilation and
+linking model, which we still use to this day, multiple <em>translation units</em>
+(which can be thought of as “source files”) are combined together in a process
+known as <em>linking</em>. The result of linking is an actual executable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Linking is also used to generate executables that are used as tests.
+Refer: <a class="reference internal" href="../guide/packages.html#pkgs-apps-tests"><span class="std std-ref">Applications and Tests</span></a>.</p>
+</div>
+<div class="section" id="what-is-linking">
+<h2><a class="toc-backref" href="#id11">What is “Linking”?</a><a class="headerlink" href="#what-is-linking" title="Permalink to this headline">¶</a></h2>
+<p>The <em>phases of translation</em> define the steps taken by a compiler (and linker)
+to map from the input human-readable source code to the code that can be
+executed by a machine. The first few phases are collected bundled together in
+a phase known as “compilation,” while the later phases are known as “linking.”</p>
+<p>The output of the compilation phases is often generated by a <em>compiler</em> and
+then written to the filesystem. The resulting files, known as <em>object files</em>
+are then fed into another tool known as a <em>linker</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>“Object files” are just one possible intermediate product. Compilers and
+linkers may deal with different intermediate products depending on compiler
+and linker options.</p>
+</div>
+</div>
+<div class="section" id="symbol-reference-resolution">
+<h2><a class="toc-backref" href="#id12">Symbol Reference Resolution</a><a class="headerlink" href="#symbol-reference-resolution" title="Permalink to this headline">¶</a></h2>
+<p>When code within a translation unit uses a function, variable, or member of a
+class that is declared <strong>but not defined</strong> in that translation unit, that
+usage is stored as an “unresolved” reference to an external symbol within the
+resulting object file.</p>
+<p>Each translation unit may also contain the <em>definitions</em> of any number of
+symbols. It is possible that other translation units may contain unresolved
+references to the symbol that the translation unit defines.</p>
+<p>It is the job of the linker to fill in these unresolved references when it
+combines translation units together.</p>
+</div>
+<div class="section" id="failure-modes">
+<h2><a class="toc-backref" href="#id13">Failure Modes</a><a class="headerlink" href="#failure-modes" title="Permalink to this headline">¶</a></h2>
+<p>There are two very common types of linker errors that may be seen:</p>
+<div class="section" id="multiple-definitions-found">
+<h3><a class="toc-backref" href="#id14">Multiple Definitions Found</a><a class="headerlink" href="#multiple-definitions-found" title="Permalink to this headline">¶</a></h3>
+<p>When translation units are combined together, the symbols within them are
+combined together into a final binary. If two or more translation units contain
+the <em>definition</em> of a single symbol, then the linker must make a decision:</p>
+<ol class="arabic simple">
+<li><p>If the symbol is marked properly, then the linker can discard all except one
+of the definitions and choose one to keep in the final binary. For example:
+This is allowed if the associated symbol has been declared with the
+<code class="docutils literal notranslate"><span class="pre">inline</span></code> keyword, or is a symbol in any context that is “implicitly
+<code class="docutils literal notranslate"><span class="pre">inline</span></code>,” which includes member functions and static variables which are
+defined within their class’s body, and any function template.</p></li>
+<li><p><strong>Fail</strong></p></li>
+</ol>
+<p>If the linker is not allowed to discard all-but-one of the multiple
+definitions, this is a hard-error. This can happen if multiple translation
+units defined the same variable or function at the same namespace.</p>
+<div class="section" id="issue-a-non-inline-function-is-defined-in-a-header-file">
+<h4><a class="toc-backref" href="#id15">Issue: A non-<code class="docutils literal notranslate"><span class="pre">inline</span></code> function is defined in a header file</a><a class="headerlink" href="#issue-a-non-inline-function-is-defined-in-a-header-file" title="Permalink to this headline">¶</a></h4>
+<p>A likely case is that of defining a function in a header file without
+marking it as <code class="docutils literal notranslate"><span class="pre">inline</span></code>:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">hello.hpp</span></code></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MY_HEADER_INC</span>
+<span class="cp">#define MY_HEADER_INC</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+<p>and then that header is <code class="docutils literal notranslate"><span class="pre">#include</span></code>-ed in multiple source files:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a.cpp</span></code></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hello.hpp&quot;</span><span class="cp"></span>
+
+<span class="c1">// ... stuff ...</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">b.cpp</span></code></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hello.hpp&quot;</span><span class="cp"></span>
+
+<span class="c1">// .. different stuff ...</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">template</span></code> functions and member functions <em>defined within the class body</em>
+are implicitly <code class="docutils literal notranslate"><span class="pre">inline</span></code>, and using the <code class="docutils literal notranslate"><span class="pre">inline</span></code> keyword is then
+redundant.</p>
+</div>
+<p>In the above configuration, the linker will generate an error about multiple
+definitions of the <code class="docutils literal notranslate"><span class="pre">say_hello</span></code> function. Possibly confusingly, it will point
+to <code class="docutils literal notranslate"><span class="pre">a.cpp</span></code> and <code class="docutils literal notranslate"><span class="pre">b.cpp</span></code> as the “definers” of <code class="docutils literal notranslate"><span class="pre">say_hello</span></code>, even though it
+is actually defined in the header. The issue is that no tools are currently
+able to understand this structure in a way that they can clearly issue
+appropriate instruction on how to fix this. There are two ways to fix this:</p>
+<ol class="arabic">
+<li><p>Add the <code class="docutils literal notranslate"><span class="pre">inline</span></code> keyword to the definition of <code class="docutils literal notranslate"><span class="pre">say_hello</span></code>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MY_HEADER_INC</span>
+<span class="cp">#define MY_HEADER_INC</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+
+<span class="kr">inline</span> <span class="kt">void</span> <span class="nf">say_hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+<p>This activates the rule that permits the linker to disregard the multiple
+definitions and choose one to keep arbitrarily.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only use <code class="docutils literal notranslate"><span class="pre">inline</span></code> in headers!</p>
+</div>
+</li>
+<li><p>Change the definition of <code class="docutils literal notranslate"><span class="pre">say_hello</span></code> to be a <em>declaration</em>, and move the
+<em>definition</em> to a separate source file:</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">hello.hpp</span></code></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#ifndef MY_HEADER_INC</span>
+<span class="cp">#define MY_HEADER_INC</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#endif</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">hello.cpp</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;hello.hpp&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">say_hello</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>This will place the sole location of the <code class="docutils literal notranslate"><span class="pre">say_hello</span></code> definition within
+<code class="docutils literal notranslate"><span class="pre">hello.cpp</span></code>.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="issue-there-are-two-colliding-and-distinct-definitions">
+<h4><a class="toc-backref" href="#id16">Issue: There are two colliding and distinct definitions</a><a class="headerlink" href="#issue-there-are-two-colliding-and-distinct-definitions" title="Permalink to this headline">¶</a></h4>
+<p>Suppose you have two different source files:</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a.cpp</span></code></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;a.hpp&quot;</span><span class="cp"></span>
+
+<span class="kt">void</span> <span class="nf">error</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;An error occured: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">a_func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">had_error</span> <span class="o">=</span> <span class="n">first_a</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">error</span><span class="p">(</span><span class="o">*</span><span class="n">err</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="n">second_a</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">error</span><span class="p">(</span><span class="o">*</span><span class="n">err</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">b.cpp</span></code></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">error</span><span class="p">(</span><span class="n">string</span> <span class="n">message</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">throw</span> <span class="n">runtime_error</span><span class="p">(</span><span class="n">msg</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">b_func</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">had_error</span> <span class="o">=</span> <span class="n">first_b</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">had_error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">error</span><span class="p">(</span><span class="s">&quot;The first step failed!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">had_error</span> <span class="o">=</span> <span class="n">second_b</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">had_error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">error</span><span class="p">(</span><span class="s">&quot;The second step failed!&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The two functions, <code class="docutils literal notranslate"><span class="pre">a_func</span></code> and <code class="docutils literal notranslate"><span class="pre">b_func</span></code>, despite having a similar
+structure, are <em>completely different</em> because of the behavior of <code class="docutils literal notranslate"><span class="pre">error</span></code>:</p>
+<ul>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">a.cpp</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error()</span></code> will simply log a message but let execution continue.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">first_a()</span></code> fails, execution will continue into <code class="docutils literal notranslate"><span class="pre">second_a()</span></code>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">b.cpp</span></code>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">error()</span></code> will throw an exception.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">first_b()</span></code> fails, execution will never reach <code class="docutils literal notranslate"><span class="pre">second_b()</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Nevertheless, the linker will produce an error that there are multiple visible
+definitions of <code class="docutils literal notranslate"><span class="pre">error()</span></code>, even though the translation units individually have
+no ambiguity.</p>
+<p>The issue is that both of the definitions have <em>external linkage</em> and must be
+visible to all other translation units.</p>
+<p>It may be tempting to fix this issue in the same way that we did in the prior
+example: to declare them <code class="docutils literal notranslate"><span class="pre">inline</span></code>, and it will <em>seem</em> to have worked, but
+<strong>this will not work correctly!!</strong></p>
+<p>Remember what the linker does in the presence of <code class="docutils literal notranslate"><span class="pre">inline</span></code> on multiple
+definitions between different translation units: It will <em>pick one</em> and
+<em>discard the others</em>. This means that either <code class="docutils literal notranslate"><span class="pre">error</span></code> function may replace the
+other across translation units, and the resulting code will have wildly
+different behavior.</p>
+<p>The <em>correct</em> solution is to give the <code class="docutils literal notranslate"><span class="pre">error</span></code> function <em>internal linkage</em>,
+which means that its definition is not visible across translation units. This
+will allow both definitions of <code class="docutils literal notranslate"><span class="pre">error</span></code> to live together in the linked binary
+without ambiguity. The classic way of doing this is through the usage of the
+global-scope <code class="docutils literal notranslate"><span class="pre">static</span></code> keyword which is present in C:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="nf">error</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>C++ presents another way it can be done: via an <em>unnamed namespace</em>:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="p">{</span>
+
+<span class="kt">void</span> <span class="n">error</span><span class="p">(</span><span class="n">string</span> <span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="p">}</span>  <span class="c1">// close namespace</span>
+</pre></div>
+</div>
+<p>The benefit of the unnamed namespace is it can be used to mark an entire
+section of declarations to be <em>internal</em>, and it can also be used to mark a
+class definition to have <em>internal linkage</em> (There is no way to declare a
+“<code class="docutils literal notranslate"><span class="pre">static</span> <span class="pre">class</span></code>”).</p>
+</div>
+</div>
+<div class="section" id="unresolved-external-symbol-undefined-reference">
+<h3><a class="toc-backref" href="#id17">Unresolved External Symbol / Undefined Reference</a><a class="headerlink" href="#unresolved-external-symbol-undefined-reference" title="Permalink to this headline">¶</a></h3>
+<p>Another common error seen while linking is that of the <em>unresolved external
+symbol</em> (Visual C++) or <em>undefined reference</em> (GCC and Clang). Both have the
+same underlying cause, and both have the same solutions.</p>
+<p>When a translation unit makes use of a symbol which has been declared <em>but not
+defined within that translation unit</em>, it is up to the linker to resolve that
+reference to another translation unit that contains the definition.</p>
+<p>If the linker is unable to find the definition of the referenced entity, it
+will emit this error.</p>
+<div class="section" id="issue-an-external-library-is-not-being-included-in-the-link">
+<h4><a class="toc-backref" href="#id18">Issue: An external library is not being included in the link</a><a class="headerlink" href="#issue-an-external-library-is-not-being-included-in-the-link" title="Permalink to this headline">¶</a></h4>
+<p>If the unresolved reference is to an entity belonging to an external library,
+you may be missing the linker inputs to actually use that library.</p>
+<p>If your project makes use of a declared entity from a third party (even if that
+usage is transitive through a dependency), it is required that the definitions
+from that third party library are included in the link step. This usually comes
+in the form of a static library, shared library/DLL, or even plain object
+files.</p>
+<p>If the external library containing the definition in question is managed by
+<code class="docutils literal notranslate"><span class="pre">dds</span></code>, this issue should never occur. If the library exists outside of
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> (e.g. a system library), then that library will need to be manually
+added as a linker input using a toolchain file using the <code class="docutils literal notranslate"><span class="pre">Link-Flags</span></code> option.
+See: <a class="reference internal" href="../guide/toolchains.html#toolchains-opt-ref"><span class="std std-ref">Toolchain Option Reference</span></a>.</p>
+<p>If the name of the unresolved symbol appears unfamiliar or you do not believe
+that you are making use of it, it is possible that one of your dependencies is
+making use of a system library symbol that needs to be part of the link. The
+link error will refer to the object/source file that is actually making the
+unresolvable reference. Seeing this filepath will be a reliable way to discover
+who would be making the reference, and therefore a good way to track down the
+dependency that needs an additional linker input. Refer to the documentation
+of the dependency in question to see if it requires additional linker inputs
+in order to be used.</p>
+<p>If the library that should contain the unresolved reference is a dependency
+managed by <code class="docutils literal notranslate"><span class="pre">dds</span></code>, it is possible that the library author has mistakenly
+declared a symbol without providing a definition. If the definition <em>is</em>
+present in the <code class="docutils literal notranslate"><span class="pre">dds</span></code>-provided dependency library, then the failure to resolve
+the reference would be a <code class="docutils literal notranslate"><span class="pre">dds</span></code> bug.</p>
+</div>
+<div class="section" id="issue-the-definition-is-simply-missing">
+<h4><a class="toc-backref" href="#id19">Issue: The definition is simply missing</a><a class="headerlink" href="#issue-the-definition-is-simply-missing" title="Permalink to this headline">¶</a></h4>
+<p>C and C++ allow for an entity to be <em>declared</em> and <em>defined</em> separately. If you
+<em>declare</em> and entity but do not <em>define</em> that entity, your code will work as
+long as no one attempts to refer to that entity.</p>
+<p>Ensure that the entity that is “missing” exists.</p>
+</div>
+<div class="section" id="issue-missing-virtual-method-implementations">
+<h4><a class="toc-backref" href="#id20">Issue: Missing <code class="docutils literal notranslate"><span class="pre">virtual</span></code> method implementations</a><a class="headerlink" href="#issue-missing-virtual-method-implementations" title="Permalink to this headline">¶</a></h4>
+<p>If the error refers to a missing <code class="docutils literal notranslate"><span class="pre">vtable</span> <span class="pre">for</span> <span class="pre">class</span></code>, or if the error refers
+to a missing definition of a <code class="docutils literal notranslate"><span class="pre">virtual</span></code> function, it means that one or more
+<code class="docutils literal notranslate"><span class="pre">virtual</span></code> functions are not defined.</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">virtual</span></code> functions are slightly different in this regard: It is
+not required that someone actually make a call to the <code class="docutils literal notranslate"><span class="pre">virtual</span></code> function for
+the definition to be required. The metadata that the compiler generates for
+the class containing the <code class="docutils literal notranslate"><span class="pre">virtual</span></code> functions will implicitly form a reference
+to every <code class="docutils literal notranslate"><span class="pre">virtual</span></code> function, so they must all be defined if someone attempts
+to instantiate the class, as instantiating the class will form a reference to
+that metadata.</p>
+</div>
+<div class="section" id="issue-mismatched-declarations-and-definitions">
+<h4><a class="toc-backref" href="#id21">Issue: Mismatched declarations and definitions</a><a class="headerlink" href="#issue-mismatched-declarations-and-definitions" title="Permalink to this headline">¶</a></h4>
+<p>Suppose you have a header file and a corresponding source file:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a.hpp</span></code></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">foo</span> <span class="p">{</span>
+
+<span class="kt">size_t</span> <span class="n">string_length</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">str</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">a.cpp</span></code></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;a.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">foo</span><span class="p">;</span>
+
+<span class="kt">size_t</span> <span class="nf">string_length</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ... implementation goes here ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>The above code will link correctly, as the definition of <code class="docutils literal notranslate"><span class="pre">foo::string_length</span></code>,
+is available from <code class="docutils literal notranslate"><span class="pre">a.cpp</span></code>, while the declaration exists in <code class="docutils literal notranslate"><span class="pre">a.hpp</span></code>.</p>
+<p>However, if we modify <em>only the declaration</em> to use <code class="docutils literal notranslate"><span class="pre">string_view</span></code> instead of
+<code class="docutils literal notranslate"><span class="pre">const</span> <span class="pre">string&amp;</span></code>, something different occurs:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="k">namespace</span> <span class="n">foo</span> <span class="p">{</span>
+
+<span class="kt">size_t</span> <span class="n">string_length</span><span class="p">(</span><span class="n">string_view</span> <span class="n">str</span><span class="p">);</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>It may be tempting to say that “our declaration and definition do not match,”
+but that is semantically incorrect: We have declared a function
+<code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">foo::string_length(string_view)</span></code>, but we have defined <em>and declared</em>
+a <strong>completely different function</strong> <code class="docutils literal notranslate"><span class="pre">size_t</span> <span class="pre">string_length(const</span> <span class="pre">string&amp;)</span></code>!
+The compiler will not warn about this: There is nothing semantically incorrect
+about this code.</p>
+<p>The linker, however, will not find any definition of <code class="docutils literal notranslate"><span class="pre">foo::string_length</span></code>.
+The function <code class="docutils literal notranslate"><span class="pre">::string_length(const</span> <span class="pre">string&amp;)</span></code> isn’t even in the <code class="docutils literal notranslate"><span class="pre">foo</span></code>
+<code class="docutils literal notranslate"><span class="pre">namespace</span></code>: It was declared and defined at the global scope within
+<code class="docutils literal notranslate"><span class="pre">a.cpp</span></code>.</p>
+<p>If you are seeing an error about an unresolved reference to a function that is
+declared and defined separately, and you are <em>sure</em> is being compiled, check
+that the signature (and name) of the definition and declaration match
+<em>exactly</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In essence, the error originates from relying on the
+<code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span> <span class="pre">foo</span></code> directive to cause the definition of
+<code class="docutils literal notranslate"><span class="pre">string_length</span></code> to incidentally hit the name lookup of the prior
+declaration.</p>
+<p>In C++, using a <em>qualified name</em> at the definition site can prevent this
+error from slipping through:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;a.hpp&quot;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">foo</span><span class="p">;</span>
+
+<span class="kt">size_t</span> <span class="n">foo</span><span class="o">::</span><span class="n">string_length</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ... implementation goes here ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By using the qualified name <code class="docutils literal notranslate"><span class="pre">foo::string_length</span></code> at the definition site,
+the compiler will validate that the function being defined has a prior
+declaration that matches <em>exactly</em> to the signature of the definition.</p>
+<p>Note that this <em>is not</em> the same as defining the function within a
+<code class="docutils literal notranslate"><span class="pre">namespace</span></code> block:</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;a.hpp&quot;</span><span class="cp"></span>
+
+<span class="c1">// NOT HELPFUL!</span>
+
+<span class="k">namespace</span> <span class="n">foo</span> <span class="p">{</span>
+
+<span class="kt">size_t</span> <span class="n">string_length</span><span class="p">(</span><span class="k">const</span> <span class="n">string</span><span class="o">&amp;</span> <span class="n">str</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// ... implementation goes here ...</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will suffer the same potential mistake as defining it with an
+unqualified name.</p>
+<p>Note that within the scope of a function that has been declared within the
+namespace, that namespace is currently within scope even if the definition
+itself is not wrapped in a <code class="docutils literal notranslate"><span class="pre">namespace</span></code> block. It may be a good option to
+simply remove the <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">namespace</span></code> directive altogether.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This trick cannot be applied to names that are declared at the global
+scope, since you cannot use the global-namespace qualifier at a
+function definition (it is not valid syntax):</p>
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="c1">// Declaration at global scope</span>
+<span class="kt">void</span> <span class="nf">some_function</span><span class="p">();</span>
+
+<span class="c1">// Definition? No: Invalid syntax!</span>
+<span class="kt">void</span> <span class="o">::</span><span class="n">some_function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ... stuff ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="issue-the-source-file-containing-definition-is-not-being-included-in-the-link">
+<h4><a class="toc-backref" href="#id22">Issue: The source file containing definition is not being included in the link</a><a class="headerlink" href="#issue-the-source-file-containing-definition-is-not-being-included-in-the-link" title="Permalink to this headline">¶</a></h4>
+<p>If the translation unit that contains the definition of an entity is not being
+passed to the linker, the linker will not be able to find it!</p>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">dds</span></code> correctly, and the compiled source file containing the
+definition is placed as a (direct or indirect) descendent of the <code class="docutils literal notranslate"><span class="pre">src/</span></code>
+directory, then <code class="docutils literal notranslate"><span class="pre">dds</span></code> will always include that source file as part of the
+link for the enclosing library.</p>
+<p>Build systems that require you to enumerate your source files explicitly will
+not automatically see a source file unless it has been added to the source
+list. Even build systems that allow directory-globbing (like CMake) will need
+to have the globbing pattern match the path to the source file.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Error: Linking a runtime binary failed</a><ul>
+<li><a class="reference internal" href="#what-is-linking">What is “Linking”?</a></li>
+<li><a class="reference internal" href="#symbol-reference-resolution">Symbol Reference Resolution</a></li>
+<li><a class="reference internal" href="#failure-modes">Failure Modes</a><ul>
+<li><a class="reference internal" href="#multiple-definitions-found">Multiple Definitions Found</a><ul>
+<li><a class="reference internal" href="#issue-a-non-inline-function-is-defined-in-a-header-file">Issue: A non-<code class="docutils literal notranslate"><span class="pre">inline</span></code> function is defined in a header file</a></li>
+<li><a class="reference internal" href="#issue-there-are-two-colliding-and-distinct-definitions">Issue: There are two colliding and distinct definitions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#unresolved-external-symbol-undefined-reference">Unresolved External Symbol / Undefined Reference</a><ul>
+<li><a class="reference internal" href="#issue-an-external-library-is-not-being-included-in-the-link">Issue: An external library is not being included in the link</a></li>
+<li><a class="reference internal" href="#issue-the-definition-is-simply-missing">Issue: The definition is simply missing</a></li>
+<li><a class="reference internal" href="#issue-missing-virtual-method-implementations">Issue: Missing <code class="docutils literal notranslate"><span class="pre">virtual</span></code> method implementations</a></li>
+<li><a class="reference internal" href="#issue-mismatched-declarations-and-definitions">Issue: Mismatched declarations and definitions</a></li>
+<li><a class="reference internal" href="#issue-the-source-file-containing-definition-is-not-being-included-in-the-link">Issue: The source file containing definition is not being included in the link</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="invalid-version-string.html"
+                        title="previous chapter">Error: Invalid version string</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="no-catalog-remote-info.html"
+                        title="next chapter">Error: Package is missing remote acquisition information</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/err/link-failure.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="invalid-version-string.html" title="Error: Invalid version string"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

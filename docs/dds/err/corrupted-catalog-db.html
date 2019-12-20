@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Error: The catalog database appears corrupted/invalid &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error: A Git clone operation failed" href="git-clone-failure.html" />
+    <link rel="prev" title="Error: The build database is corrupted" href="corrupted-build-db.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="git-clone-failure.html" title="Error: A Git clone operation failed"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="corrupted-build-db.html" title="Error: The build database is corrupted"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="error-the-catalog-database-appears-corrupted-invalid">
+<h1>Error: The catalog database appears corrupted/invalid<a class="headerlink" href="#error-the-catalog-database-appears-corrupted-invalid" title="Permalink to this headline">¶</a></h1>
+<p>This issue will occur if the schema contained in the catalog database does not
+match the schema that <code class="docutils literal notranslate"><span class="pre">dds</span></code> expects. This should never occur during normal
+use of <code class="docutils literal notranslate"><span class="pre">dds</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you suspect that <code class="docutils literal notranslate"><span class="pre">dds</span></code> has accidentally corrupted its own catalog
+database, please file a bug report.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> cannot reliably repair a corrupted database, and the only solution will
+be to either manually fix it or to delete the database file and start fresh.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deleting the catalog database will lose any customizations that were
+contained in that catalog, and they will need to be reconstructed.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="corrupted-build-db.html"
+                        title="previous chapter">Error: The build database is corrupted</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="git-clone-failure.html"
+                        title="next chapter">Error: A Git <code class="docutils literal notranslate"><span class="pre">clone</span></code> operation failed</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/err/corrupted-catalog-db.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="git-clone-failure.html" title="Error: A Git clone operation failed"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="corrupted-build-db.html" title="Error: The build database is corrupted"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>
