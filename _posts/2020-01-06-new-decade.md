@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A New Decade
+title: A New Decade, A New Tool
 desc: In which I present a new tool that I hope will be useful
 ---
 
