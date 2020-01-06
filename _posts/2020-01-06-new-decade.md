@@ -22,9 +22,9 @@ messages from GCC informing me that certain features weren't ready, such as
 when I tried to use non-static in-class data-member initializers). I hadn't any
 idea about the standardization process, or language versions. I didn't know the
 long history behind C++0x and TR1, but I knew that this was a huge change to
-this old beast. I read over Bjarne's [*C++11 F
-AQ*](http://www.stroustrup.com/C++11FAQ.html) (back then known as the *C++0x
-FAQ*, of course) multiple times and kept it bookmarked as a reference.
+this old beast. I read over Bjarne's [*C++11 FAQ*](http://www.stroustrup.com/C++11FAQ.html)
+(back then known as the *C++0x FAQ*, of course) multiple times and kept it
+bookmarked as a reference.
 
 Despite the rough introduction, I was enamored with this wacky language despite
 its many warts. C++11 is the first version of this language that I *really*
