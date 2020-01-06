@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Package Layout &#8212; dds 0.1.0 documentation</title>
+    <title>Packages and Layout &#8212; dds 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
@@ -47,8 +47,8 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="package-layout">
-<h1>Package Layout<a class="headerlink" href="#package-layout" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="packages-and-layout">
+<h1>Packages and Layout<a class="headerlink" href="#packages-and-layout" title="Permalink to this headline">¶</a></h1>
 <p>The units of distribution in <code class="docutils literal notranslate"><span class="pre">dds</span></code> are <em>packages</em>. A single package consists
 of one or more <em>libraries</em>. In the simplest case, a package will contain a
 single library.</p>
@@ -236,7 +236,7 @@ directory. <code class="docutils literal notranslate"><span class="pre">dds</spa
 <code class="docutils literal notranslate"><span class="pre">include/</span></code> directory and will issue a warning on each file found.</p>
 </div>
 <div class="section" id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
+<span id="pkgs-libs"></span><h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this headline">¶</a></h2>
 <p>The <em>library</em> is a fundamental unit of consumable code, and <code class="docutils literal notranslate"><span class="pre">dds</span></code> is
 specifically built to work with them. When you are in <code class="docutils literal notranslate"><span class="pre">dds</span></code>, the library is
 the center of everything.</p>
@@ -270,7 +270,7 @@ the <code class="docutils literal notranslate"><span class="pre">libs/</span></c
 owning package.</p>
 </div>
 <div class="section" id="packages">
-<h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
+<span id="pkgs-pkgs"></span><h2>Packages<a class="headerlink" href="#packages" title="Permalink to this headline">¶</a></h2>
 <p>A package is defined by some <em>package root</em>, and contains some number of
 <em>libraries</em>.</p>
 <p>The primary distribution format of packages that is used by <code class="docutils literal notranslate"><span class="pre">dds</span></code> is the
@@ -298,6 +298,27 @@ and C++ <code class="docutils literal notranslate"><span class="pre">namespace</
 <p>The purpose of <code class="docutils literal notranslate"><span class="pre">Namespace</span></code>, as well as additional options in this file,
 are described in the <a class="reference internal" href="interdeps.html#deps-pkg-deps"><span class="std std-ref">Package Dependencies</span></a> page</p>
 </div>
+<div class="section" id="naming-requirements">
+<span id="pkgs-naming-reqs"></span><h3>Naming Requirements<a class="headerlink" href="#naming-requirements" title="Permalink to this headline">¶</a></h3>
+<p>Package names aren’t a complete free-for-all. Package names must follow a set
+of specific rules:</p>
+<ul>
+<li><p>Package names may consist of ASCII, lowercase characters, digits,
+underscores (<code class="docutils literal notranslate"><span class="pre">_</span></code>), hyphens (<code class="docutils literal notranslate"><span class="pre">-</span></code>), and periods (<code class="docutils literal notranslate"><span class="pre">.</span></code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Different filesystems differ in their handling of filenames. Some platforms
+perform unicode and case normalization, which can significantly confuse tools
+that don’t use the same normalization rules. Different platforms have
+different filename limitations and allowable characters. This set of
+characters is valid on most currently popular filesystems.</p>
+</div>
+</li>
+<li><p>Package names must begin with an alphabetic character</p></li>
+<li><p>Package names must end with an alphanumeric character (letter or digit).</p></li>
+<li><p>Package names may not contain adjacent punctuation characters.</p></li>
+</ul>
+</div>
 </div>
 </div>
 
@@ -309,7 +330,7 @@ are described in the <a class="reference internal" href="interdeps.html#deps-pkg
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Package Layout</a><ul>
+<li><a class="reference internal" href="#">Packages and Layout</a><ul>
 <li><a class="reference internal" href="#source-files">Source Files</a></li>
 <li><a class="reference internal" href="#applications-and-tests">Applications and Tests</a></li>
 <li><a class="reference internal" href="#source-roots">Source Roots</a><ul>
@@ -320,7 +341,10 @@ are described in the <a class="reference internal" href="interdeps.html#deps-pkg
 <li><a class="reference internal" href="#library-roots">Library Roots</a></li>
 <li><a class="reference internal" href="#libraries">Libraries</a></li>
 <li><a class="reference internal" href="#package-roots">Package Roots</a></li>
-<li><a class="reference internal" href="#packages">Packages</a></li>
+<li><a class="reference internal" href="#packages">Packages</a><ul>
+<li><a class="reference internal" href="#naming-requirements">Naming Requirements</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

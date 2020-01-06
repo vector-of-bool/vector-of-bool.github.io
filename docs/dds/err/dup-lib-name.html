@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Error: No such package in the catalog &#8212; dds 0.1.0 documentation</title>
+    <title>Error: Duplicate Library Identifier &#8212; dds 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
@@ -15,8 +15,8 @@
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Error: Source Distribution Already Exists" href="sdist-exists.html" />
-    <link rel="prev" title="Error: Package is missing remote acquisition information" href="no-catalog-remote-info.html" />
+    <link rel="next" title="Error: A Git clone operation failed" href="git-clone-failure.html" />
+    <link rel="prev" title="Error: Dependency Resolution Failure" href="dep-res-failure.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -32,10 +32,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="sdist-exists.html" title="Error: Source Distribution Already Exists"
+          <a href="git-clone-failure.html" title="Error: A Git clone operation failed"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+          <a href="dep-res-failure.html" title="Error: Dependency Resolution Failure"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
@@ -47,20 +47,32 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="error-no-such-package-in-the-catalog">
-<h1>Error: No such package in the catalog<a class="headerlink" href="#error-no-such-package-in-the-catalog" title="Permalink to this headline">¶</a></h1>
-<p>This error will occur when one attempts to obtain a package from the package
-catalog by its specific <code class="docutils literal notranslate"><span class="pre">name&#64;version</span></code> pair, but no such entry exists
-in the catalog.</p>
-<p>It is possible that the intended package <em>does exist</em> but that the spelling of
-the package name or version number is incorrect. Firstly, check your spelling
-and that the version number you have requested is correct.</p>
-<p>In another case, it is possible that the package <em>exists somewhere</em>, but has
-not been loaded into the local catalog. As of this writing, <code class="docutils literal notranslate"><span class="pre">dds</span></code> does not
-automatically maintain the catalog against a central package repository, so
-package entries must be loaded and imported manually. If you believe this to be
-the case, refer to the section on the <a class="reference internal" href="../guide/catalog.html"><span class="doc">The Package Catalog</span></a>, especially the
-section <a class="reference internal" href="../guide/catalog.html#catalog-adding"><span class="std std-ref">Adding Packages to the Catalog</span></a>.</p>
+  <div class="section" id="error-duplicate-library-identifier">
+<h1>Error: Duplicate Library Identifier<a class="headerlink" href="#error-duplicate-library-identifier" title="Permalink to this headline">¶</a></h1>
+<p>Libraries in <code class="docutils literal notranslate"><span class="pre">dds</span></code> are represented by a <em>namespace</em> and a <em>name</em>, joined
+together with a forward-slash “<code class="docutils literal notranslate"><span class="pre">/</span></code>”. Suppose that we have a library named
+<code class="docutils literal notranslate"><span class="pre">Gadgets</span></code> that lives in the <code class="docutils literal notranslate"><span class="pre">ACME</span></code> library-namespace. The combined library
+identifier would be <code class="docutils literal notranslate"><span class="pre">ACME/Gadgets</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The “namespace” of a library in this case is arbitrary and not necessarily
+associated with any C++ <code class="docutils literal notranslate"><span class="pre">namespace</span></code>.</p>
+</div>
+<p>If more than one library declares itself to have the same <code class="docutils literal notranslate"><span class="pre">Name</span></code> and lives in
+the same <code class="docutils literal notranslate"><span class="pre">Namespace</span></code>, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will issue an error.</p>
+<p>To avoid this error in your own project and to avoid causing this error in your
+downstream consumers, the <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> of your package should be considered
+carefully and be unique. Do not use a <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> that is likely to be used
+by another developer or organization, especially generic names.</p>
+<p>If you are seeing this issue and it names a library that you do not own, it
+means that two or more of your dependencies are attempting to declare a library
+of the same <code class="docutils literal notranslate"><span class="pre">Name</span></code> in the same <code class="docutils literal notranslate"><span class="pre">Namespace</span></code>. This issue should be raised
+with the maintainers of the packages in question.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>For more information, refer to the <a class="reference internal" href="../guide/packages.html#pkgs-pkgs"><span class="std std-ref">Packages</span></a> section and the
+<a class="reference internal" href="../guide/packages.html#pkgs-libs"><span class="std std-ref">Libraries</span></a> section.</p>
+</div>
 </div>
 
 
@@ -70,15 +82,15 @@ section <a class="reference internal" href="../guide/catalog.html#catalog-adding
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="no-catalog-remote-info.html"
-                        title="previous chapter">Error: Package is missing remote acquisition information</a></p>
+  <p class="topless"><a href="dep-res-failure.html"
+                        title="previous chapter">Error: Dependency Resolution Failure</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="sdist-exists.html"
-                        title="next chapter">Error: Source Distribution Already Exists</a></p>
+  <p class="topless"><a href="git-clone-failure.html"
+                        title="next chapter">Error: A Git <code class="docutils literal notranslate"><span class="pre">clone</span></code> operation failed</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/err/no-such-catalog-package.rst.txt"
+      <li><a href="../_sources/err/dup-lib-name.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -103,10 +115,10 @@ section <a class="reference internal" href="../guide/catalog.html#catalog-adding
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="sdist-exists.html" title="Error: Source Distribution Already Exists"
+          <a href="git-clone-failure.html" title="Error: A Git clone operation failed"
              >next</a> |</li>
         <li class="right" >
-          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+          <a href="dep-res-failure.html" title="Error: Dependency Resolution Failure"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 

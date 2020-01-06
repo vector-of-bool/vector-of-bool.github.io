@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Error: No such package in the catalog &#8212; dds 0.1.0 documentation</title>
+    <title>Error: Invalid configuration key &#8212; dds 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
@@ -15,8 +15,8 @@
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Error: Source Distribution Already Exists" href="sdist-exists.html" />
-    <link rel="prev" title="Error: Package is missing remote acquisition information" href="no-catalog-remote-info.html" />
+    <link rel="next" title="Error: Invalid package filesystem" href="invalid-pkg-filesystem.html" />
+    <link rel="prev" title="Error: Invalid catalog JSON" href="invalid-catalog-json.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -32,10 +32,10 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="sdist-exists.html" title="Error: Source Distribution Already Exists"
+          <a href="invalid-pkg-filesystem.html" title="Error: Invalid package filesystem"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+          <a href="invalid-catalog-json.html" title="Error: Invalid catalog JSON"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
@@ -47,20 +47,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="error-no-such-package-in-the-catalog">
-<h1>Error: No such package in the catalog<a class="headerlink" href="#error-no-such-package-in-the-catalog" title="Permalink to this headline">¶</a></h1>
-<p>This error will occur when one attempts to obtain a package from the package
-catalog by its specific <code class="docutils literal notranslate"><span class="pre">name&#64;version</span></code> pair, but no such entry exists
-in the catalog.</p>
-<p>It is possible that the intended package <em>does exist</em> but that the spelling of
-the package name or version number is incorrect. Firstly, check your spelling
-and that the version number you have requested is correct.</p>
-<p>In another case, it is possible that the package <em>exists somewhere</em>, but has
-not been loaded into the local catalog. As of this writing, <code class="docutils literal notranslate"><span class="pre">dds</span></code> does not
-automatically maintain the catalog against a central package repository, so
-package entries must be loaded and imported manually. If you believe this to be
-the case, refer to the section on the <a class="reference internal" href="../guide/catalog.html"><span class="doc">The Package Catalog</span></a>, especially the
-section <a class="reference internal" href="../guide/catalog.html#catalog-adding"><span class="std std-ref">Adding Packages to the Catalog</span></a>.</p>
+  <div class="section" id="error-invalid-configuration-key">
+<h1>Error: Invalid configuration key<a class="headerlink" href="#error-invalid-configuration-key" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> uses a very simple key-value-pair plaintext configuration file format.
+Receiving this error indicates that one of the keys in a configuration file is
+invalid.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>For defining a toolchain file, see <a class="reference internal" href="../guide/toolchains.html"><span class="doc">Toolchains</span></a> and
+<a class="reference internal" href="../guide/toolchains.html#toolchains-opt-ref"><span class="std std-ref">Toolchain Option Reference</span></a></p></li>
+<li><p>For package and library configuration, see the <a class="reference internal" href="../guide/packages.html"><span class="doc">Packages and Layout</span></a>
+page.</p></li>
+</ul>
+</div>
 </div>
 
 
@@ -70,15 +70,15 @@ section <a class="reference internal" href="../guide/catalog.html#catalog-adding
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="no-catalog-remote-info.html"
-                        title="previous chapter">Error: Package is missing remote acquisition information</a></p>
+  <p class="topless"><a href="invalid-catalog-json.html"
+                        title="previous chapter">Error: Invalid catalog JSON</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="sdist-exists.html"
-                        title="next chapter">Error: Source Distribution Already Exists</a></p>
+  <p class="topless"><a href="invalid-pkg-filesystem.html"
+                        title="next chapter">Error: Invalid package filesystem</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/err/no-such-catalog-package.rst.txt"
+      <li><a href="../_sources/err/invalid-config-key.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -103,10 +103,10 @@ section <a class="reference internal" href="../guide/catalog.html#catalog-adding
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="sdist-exists.html" title="Error: Source Distribution Already Exists"
+          <a href="invalid-pkg-filesystem.html" title="Error: Invalid package filesystem"
              >next</a> |</li>
         <li class="right" >
-          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+          <a href="invalid-catalog-json.html" title="Error: Invalid catalog JSON"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 

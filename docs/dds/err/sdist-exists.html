@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Error: Source Distribution Already Exists &#8212; dds 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Error: The generated source distribution’s identity is not correct" href="sdist-ident-mismatch.html" />
+    <link rel="prev" title="Error: No such package in the catalog" href="no-such-catalog-package.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="sdist-ident-mismatch.html" title="Error: The generated source distribution’s identity is not correct"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="no-such-catalog-package.html" title="Error: No such package in the catalog"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="error-source-distribution-already-exists">
+<h1>Error: Source Distribution Already Exists<a class="headerlink" href="#error-source-distribution-already-exists" title="Permalink to this headline">¶</a></h1>
+<p>This error is presented when an attempt is made to export/create a source
+distribution of a package in a way that would overwrite an existing source
+distribution.</p>
+<p><strong>If exporting to a repository</strong>, this means that a source distribution with
+the same name and version is already present in the repository. The
+<code class="docutils literal notranslate"><span class="pre">--replace</span></code> option can be used to make <code class="docutils literal notranslate"><span class="pre">dds</span></code> forcibly overwrite the source
+distribution in the repository. This will be a common workflow when developing
+a package and one desires to see those changes reflected in another project
+that is try to use it.</p>
+<p><strong>If creating a source distribution manually</strong>, this means that the destination
+path of the source distribution directory is already an existing directory
+(which may not be a source distribution itself). If <code class="docutils literal notranslate"><span class="pre">dds</span></code> were to try and
+write a source distribution to the named path, it would be required to delete
+whatever exists there before creating the source distribution.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When using <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">sdist</span> <span class="pre">create</span></code> with the <code class="docutils literal notranslate"><span class="pre">--out</span> <span class="pre">&lt;path&gt;</span></code> parameter, the
+<code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code> given <strong>is not the directory in which to place the source
+distribution, but the filepath to the source distribution itself</strong>!</p>
+<p>If I have a directory named <code class="docutils literal notranslate"><span class="pre">foo/</span></code>, and I want to create a source
+distribution in that directory, <strong>the following command is incorrect</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do not do this:</span>
+<span class="n">dds</span> <span class="n">sdist</span> <span class="n">create</span> <span class="o">--</span><span class="n">out</span> <span class="n">foo</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>If you pass <code class="docutils literal notranslate"><span class="pre">--replace</span></code> to the above command, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will <strong>destroy the
+existing directory</strong> and replace it with the source distribution!</p>
+<p>You <strong>must</strong> provide the full path to the source distribution:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Do this:</span>
+<span class="n">dds</span> <span class="n">sdist</span> <span class="n">create</span> <span class="o">--</span><span class="n">out</span> <span class="n">foo</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">project</span><span class="o">.</span><span class="n">dsd</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="no-such-catalog-package.html"
+                        title="previous chapter">Error: No such package in the catalog</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sdist-ident-mismatch.html"
+                        title="next chapter">Error: The generated source distribution’s identity is not correct</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/err/sdist-exists.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="sdist-ident-mismatch.html" title="Error: The generated source distribution’s identity is not correct"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="no-such-catalog-package.html" title="Error: No such package in the catalog"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+    </div>
+  </body>
+</html>

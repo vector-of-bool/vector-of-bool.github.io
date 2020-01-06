@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>Error: No such package in the catalog &#8212; dds 0.1.0 documentation</title>
+    <title>Error: Unknown Usage/Linking Requirements &#8212; dds 0.1.0 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
@@ -15,8 +15,7 @@
     <script type="text/javascript" src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Error: Source Distribution Already Exists" href="sdist-exists.html" />
-    <link rel="prev" title="Error: Package is missing remote acquisition information" href="no-catalog-remote-info.html" />
+    <link rel="prev" title="Error: Unknown Test-Driver" href="unknown-test-driver.html" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
 <!--[if lte IE 6]>
@@ -32,10 +31,7 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="sdist-exists.html" title="Error: Source Distribution Already Exists"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+          <a href="unknown-test-driver.html" title="Error: Unknown Test-Driver"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Runtime Error References</a> &#187;</li> 
@@ -47,20 +43,18 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="error-no-such-package-in-the-catalog">
-<h1>Error: No such package in the catalog<a class="headerlink" href="#error-no-such-package-in-the-catalog" title="Permalink to this headline">¶</a></h1>
-<p>This error will occur when one attempts to obtain a package from the package
-catalog by its specific <code class="docutils literal notranslate"><span class="pre">name&#64;version</span></code> pair, but no such entry exists
-in the catalog.</p>
-<p>It is possible that the intended package <em>does exist</em> but that the spelling of
-the package name or version number is incorrect. Firstly, check your spelling
-and that the version number you have requested is correct.</p>
-<p>In another case, it is possible that the package <em>exists somewhere</em>, but has
-not been loaded into the local catalog. As of this writing, <code class="docutils literal notranslate"><span class="pre">dds</span></code> does not
-automatically maintain the catalog against a central package repository, so
-package entries must be loaded and imported manually. If you believe this to be
-the case, refer to the section on the <a class="reference internal" href="../guide/catalog.html"><span class="doc">The Package Catalog</span></a>, especially the
-section <a class="reference internal" href="../guide/catalog.html#catalog-adding"><span class="std std-ref">Adding Packages to the Catalog</span></a>.</p>
+  <div class="section" id="error-unknown-usage-linking-requirements">
+<h1>Error: Unknown Usage/Linking Requirements<a class="headerlink" href="#error-unknown-usage-linking-requirements" title="Permalink to this headline">¶</a></h1>
+<p>A library can declare that it <em>uses</em> or <em>links</em> to another library by using the
+<code class="docutils literal notranslate"><span class="pre">Uses</span></code> and <code class="docutils literal notranslate"><span class="pre">Links</span></code> keys in <code class="docutils literal notranslate"><span class="pre">library.dds</span></code>, respectively.</p>
+<p>These requirements are specified by using the <code class="docutils literal notranslate"><span class="pre">Namespace/Name</span></code> pair that
+identifies a library. These are defined by both the project’s dependencies and
+the project itself. If a <code class="docutils literal notranslate"><span class="pre">Uses</span></code> or <code class="docutils literal notranslate"><span class="pre">Links</span></code> key does not correspond to a
+known library, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will not be able to resolve the usage requirements, and
+will generate an error.</p>
+<p>To fix this issue, ensure that you have correctly spelled the library
+identifier and that the package that contains the respective library has been
+declared as a dependency of the library that is trying to use it.</p>
 </div>
 
 
@@ -70,15 +64,12 @@ section <a class="reference internal" href="../guide/catalog.html#catalog-adding
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="no-catalog-remote-info.html"
-                        title="previous chapter">Error: Package is missing remote acquisition information</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="sdist-exists.html"
-                        title="next chapter">Error: Source Distribution Already Exists</a></p>
+  <p class="topless"><a href="unknown-test-driver.html"
+                        title="previous chapter">Error: Unknown <code class="docutils literal notranslate"><span class="pre">Test-Driver</span></code></a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/err/no-such-catalog-package.rst.txt"
+      <li><a href="../_sources/err/unknown-usage.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -103,10 +94,7 @@ section <a class="reference internal" href="../guide/catalog.html#catalog-adding
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="sdist-exists.html" title="Error: Source Distribution Already Exists"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="no-catalog-remote-info.html" title="Error: Package is missing remote acquisition information"
+          <a href="unknown-test-driver.html" title="Error: Unknown Test-Driver"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Runtime Error References</a> &#187;</li> 
