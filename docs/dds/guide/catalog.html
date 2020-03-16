@@ -4,15 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>The Package Catalog &#8212; dds 0.1.0 documentation</title>
+    <title>The Package Catalog &#8212; dds 0.1.0-alpha.2 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Library and Package Dependencies" href="interdeps.html" />
@@ -37,7 +36,7 @@
         <li class="right" >
           <a href="repo.html" title="The Local Package Repository"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">User Guide</a> &#187;</li> 
       </ul>
     </div>  
@@ -68,7 +67,7 @@ command:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>dds catalog add &lt;package-id&gt;
     [--depends &lt;requirement&gt; [--depends &lt;requirement&gt; [...]]]
     [--git-url &lt;url&gt; --git-ref &lt;ref&gt;]
-    [--auto-lib &lt;Namespace&gt;/&lt;Name&gt;]
+    [--auto-lib &lt;namespace&gt;/&lt;name&gt;]
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;package-id&gt;</span></code> positional arguments is the <code class="docutils literal notranslate"><span class="pre">name&#64;version</span></code> package ID
@@ -76,13 +75,13 @@ that will be added to the catalog. The following options are supported:</p>
 <dl>
 <dt><code class="docutils literal notranslate"><span class="pre">--depends</span> <span class="pre">&lt;requirement&gt;</span></code></dt><dd><p>This argument, which can be specified multiple times to represent multiple
 dependencies, sets the dependencies of the package within the catalog. If
-the obtained package root contains a <code class="docutils literal notranslate"><span class="pre">package.dds</span></code>, then the dependencies
-listed here must be identical to those listed in <code class="docutils literal notranslate"><span class="pre">package.dds</span></code>, or
-dependency resolution may yield unexpected results.</p>
+the obtained package root contains a <code class="docutils literal notranslate"><span class="pre">package.json5</span></code>, then the
+dependencies listed here must be identical to those listed in
+<code class="docutils literal notranslate"><span class="pre">package.json5</span></code>, or dependency resolution may yield unexpected results.</p>
 </dd>
 <dt><code class="docutils literal notranslate"><span class="pre">--git-url</span> <span class="pre">&lt;url&gt;</span></code></dt><dd><p>Specify a Git URL to clone from to obtain the package. The root of the
 cloned repository must be a package root, but does not necessarily need to
-have the <code class="docutils literal notranslate"><span class="pre">package.dds</span></code> and <code class="docutils literal notranslate"><span class="pre">library.dds</span></code> files if relying on the
+have the <code class="docutils literal notranslate"><span class="pre">package.json5</span></code> and <code class="docutils literal notranslate"><span class="pre">library.json5</span></code> files if relying on the
 <code class="docutils literal notranslate"><span class="pre">--auto-lib</span></code> parameter.</p>
 <p><code class="docutils literal notranslate"><span class="pre">--git-ref</span></code> <strong>must</strong> be passed with <code class="docutils literal notranslate"><span class="pre">--git-url</span></code>.</p>
 </dd>
@@ -95,8 +94,8 @@ Git reference.</p>
 <code class="docutils literal notranslate"><span class="pre">dds</span></code> files that are necessary to export the library information. This
 can only be specified for packages that contain a single library root at
 the package root.</p>
-<p>The form of the argument is that of <code class="docutils literal notranslate"><span class="pre">&lt;Namespapce&gt;/&lt;Name&gt;</span></code>, where
-<code class="docutils literal notranslate"><span class="pre">Namespace</span></code> and <code class="docutils literal notranslate"><span class="pre">Name</span></code> are the usage requirement keys that should be
+<p>The form of the argument is that of <code class="docutils literal notranslate"><span class="pre">&lt;namespace&gt;/&lt;name&gt;</span></code>, where
+<code class="docutils literal notranslate"><span class="pre">namespace</span></code> and <code class="docutils literal notranslate"><span class="pre">name</span></code> are the usage requirement keys that should be
 generated for the library.</p>
 </dd>
 </dl>
@@ -191,7 +190,7 @@ files at once.</p>
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -208,13 +207,13 @@ files at once.</p>
         <li class="right" >
           <a href="repo.html" title="The Local Package Repository"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >User Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, vector-of-bool.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>

@@ -4,15 +4,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
-    <title>A Hello, world! Application &#8212; dds 0.1.0 documentation</title>
+    <title>A Hello, world! Application &#8212; dds 0.1.0-alpha.2 documentation</title>
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tweaks.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="A Hello, World Library" href="hello-lib.html" />
@@ -37,7 +36,7 @@
         <li class="right" >
           <a href="index.html" title="Tutorials and Beginner’s Guide"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Tutorials and Beginner’s Guide</a> &#187;</li> 
       </ul>
     </div>  
@@ -263,20 +262,22 @@ from the stem of the filename which defined the entry point.</p>
 Creating a package manifest file.</p>
 <p><code class="docutils literal notranslate"><span class="pre">dds</span></code> will work happily with packages that do not declare themselves, as long
 as the filesystem structure is sufficient. However: To use features covered in
-later tutorials, we’ll need a simple <code class="docutils literal notranslate"><span class="pre">package.dds</span></code> file to declare
+later tutorials, we’ll need a simple <code class="docutils literal notranslate"><span class="pre">package.json5</span></code> file to declare
 information about are package. This file should be placed directly in the
 package root:</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/package.dds</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">Name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello-dds</span>
-<span class="nt">Version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0.1.0</span>
-<span class="nt">Namespace</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tutorial</span>
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">&lt;root&gt;/package.json5</span></code></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;hello-dds&#39;</span><span class="p">,</span>
+    <span class="nx">version</span><span class="o">:</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span>
+    <span class="nx">namespace</span><span class="o">:</span> <span class="s1">&#39;tutorial&#39;</span><span class="p">,</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">Namespace</span></code> option will be discussed later.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">namespace</span></code> option will be discussed later.</p>
 </div>
 <p>Rebuilding the project will show no difference at the moment.</p>
 <div class="admonition seealso">
@@ -333,7 +334,7 @@ want to create libraries? See the next page: <a class="reference internal" href=
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -350,13 +351,13 @@ want to create libraries? See the next page: <a class="reference internal" href=
         <li class="right" >
           <a href="index.html" title="Tutorials and Beginner’s Guide"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Tutorials and Beginner’s Guide</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, vector-of-bool.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
     </div>
   </body>
 </html>

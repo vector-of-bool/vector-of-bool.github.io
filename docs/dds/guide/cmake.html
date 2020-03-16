@@ -1,0 +1,357 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Using dds Packages in a CMake Project &#8212; dds 0.1.0-alpha.2 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="dds Design and Rationale" href="../design.html" />
+    <link rel="prev" title="Library and Package Dependencies" href="interdeps.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../design.html" title="dds Design and Rationale"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="interdeps.html" title="Library and Package Dependencies"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">User Guide</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="using-dds-packages-in-a-cmake-project">
+<h1>Using <code class="docutils literal notranslate"><span class="pre">dds</span></code> Packages in a CMake Project<a class="headerlink" href="#using-dds-packages-in-a-cmake-project" title="Permalink to this headline">¶</a></h1>
+<p>One of <code class="docutils literal notranslate"><span class="pre">dds</span></code>’s primary goals is to inter-operate with other build systems
+cleanly. One of <code class="docutils literal notranslate"><span class="pre">dds</span></code>’s primary outputs is <em>libman</em> package indices. These
+package indices can be imported into other build systems that support the
+<em>libman</em> format.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> doesn’t (yet) have a ready-made central repository of packages that
+can be downloaded. You’ll need to populate the local package catalog
+appropriately.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Refer to <a class="reference internal" href="catalog.html"><span class="doc">The Package Catalog</span></a> for information about remote packages.</p>
+</div>
+</div>
+<div class="section" id="generating-a-libman-index">
+<h2>Generating a libman Index<a class="headerlink" href="#generating-a-libman-index" title="Permalink to this headline">¶</a></h2>
+<p>Importing libman packages into a build system requires that we have a libman
+index generated on the filesystem. <strong>This index is not generated globally</strong>: It
+is generated on a per-build basis as part of the build setup. The index will
+describe in build-system-agnostic terms how to include a set of packages and
+libraries as part of a build.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> has first-class support for generating this index. The <code class="docutils literal notranslate"><span class="pre">build-deps</span></code>
+subcommand of <code class="docutils literal notranslate"><span class="pre">dds</span></code> will download and build a set of dependencies, and places
+an <code class="docutils literal notranslate"><span class="pre">INDEX.lmi</span></code> file that can be used to import the built results.</p>
+<div class="section" id="declaring-dependencies">
+<h3>Declaring Dependencies<a class="headerlink" href="#declaring-dependencies" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build-deps</span></code> accepts a list of dependencies as commnad line arguments,
+but it may be useful to specify those requirements in a file.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build-deps</span></code> accepts a JSON5 file describing the dependencies of a
+project as well. This file is similar to a very stripped-down version of a
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> <a class="reference internal" href="packages.html#pkgs-pkgs"><span class="std std-ref">package manifest</span></a>, and only includes the <code class="docutils literal notranslate"><span class="pre">depends</span></code>
+key. (The presence of any other key is an error.)</p>
+<p>Here is a simple dependencies file that declares a single requirement:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">dependencies.json5</span></code></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nx">depends</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;neo-sqlite3&#39;</span><span class="o">:</span> <span class="s1">&#39;^0.2.0&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="building-dependencies-and-the-index">
+<h3>Building Dependencies and the Index<a class="headerlink" href="#building-dependencies-and-the-index" title="Permalink to this headline">¶</a></h3>
+<p>We can invoke <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build-deps</span></code> and give it the path to this file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dds build-deps --deps dependencies.json5
+</pre></div>
+</div>
+<p>When finished, <code class="docutils literal notranslate"><span class="pre">dds</span></code> will write the build results into a subdirectory called
+<code class="docutils literal notranslate"><span class="pre">_deps</span></code> and generate a file named <code class="docutils literal notranslate"><span class="pre">INDEX.lmi</span></code>. This file is ready to be
+imported into any build system that can understand libman files (in our case,
+CMake).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The output directory and index filepath can be controlled with the
+<code class="docutils literal notranslate"><span class="pre">--out</span></code> and <code class="docutils literal notranslate"><span class="pre">--lmi-path</span></code> flags, respectively.</p>
+</div>
+</div>
+</div>
+<div class="section" id="importing-into-cmake">
+<h2>Importing into CMake<a class="headerlink" href="#importing-into-cmake" title="Permalink to this headline">¶</a></h2>
+<p>We’ve generated a libman index and set of packages, and we want to import
+them into CMake. CMake doesn’t know how to do this natively, but there exists a
+single-file module for CMake that allows CMake to import libraries from libman
+indices without any additional work.</p>
+<p>The module is not shipped with CMake, but is available online as a single
+stand-alone file. The <a class="reference external" href="https://raw.githubusercontent.com/vector-of-bool/libman/develop/cmake/libman.cmake">libman.cmake</a> file can be downloaded and
+added to a project directly, or it can be obtained automatically through a
+CMake tool like <a class="reference external" href="https://github.com/vector-of-bool/PMM">PMM</a> (recommended).</p>
+<div class="section" id="enabling-libman-support-in-cmake-via-pmm">
+<h3>Enabling <em>libman</em> Support in CMake via PMM<a class="headerlink" href="#enabling-libman-support-in-cmake-via-pmm" title="Permalink to this headline">¶</a></h3>
+<p>Refer to the <code class="docutils literal notranslate"><span class="pre">README.md</span></code> file in <a class="reference external" href="https://github.com/vector-of-bool/PMM">the PMM repo</a> for information on how
+to get PMM into your CMake project. In short, download and place the
+<code class="docutils literal notranslate"><span class="pre">pmm.cmake</span></code> file in your repository, and <code class="docutils literal notranslate"><span class="pre">include()</span></code> the file near the top
+of your <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">pmm.cmake</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Once it has been included, you can call the <code class="docutils literal notranslate"><span class="pre">pmm()</span></code> function. To obtain
+<em>libman</em>, we need to start by enabling <a class="reference external" href="https://github.com/vector-of-bool/CMakeCM">CMakeCM</a>:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pmm</span><span class="p">(</span><span class="s">CMakeCM</span> <span class="s">ROLLING</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is not recommended to use the <code class="docutils literal notranslate"><span class="pre">ROLLING</span></code> mode, but it is the easiest to
+use when getting started. For reproducible and reliable builds, you should
+pin your CMakeCM version using the <code class="docutils literal notranslate"><span class="pre">FROM</span> <span class="pre">&lt;url&gt;</span></code> argument.</p>
+</div>
+<p>Enabling CMakeCM will make available all of the CMake modules available in <a class="reference external" href="https://github.com/vector-of-bool/CMakeCM">the
+CMakeCM repository</a>, which includes <a class="reference external" href="https://raw.githubusercontent.com/vector-of-bool/libman/develop/cmake/libman.cmake">libman.cmake</a>.</p>
+<p>After the call to <code class="docutils literal notranslate"><span class="pre">pmm()</span></code>, simply <code class="docutils literal notranslate"><span class="pre">include()</span></code> the <code class="docutils literal notranslate"><span class="pre">libman</span></code> module:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">include</span><span class="p">(</span><span class="s">libman</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>That’s it! The only function from the module that we will care about for now
+is the <code class="docutils literal notranslate"><span class="pre">import_packages()</span></code> function.</p>
+</div>
+<div class="section" id="importing-our-dependencies-packages">
+<h3>Importing Our Dependencies’ Packages<a class="headerlink" href="#importing-our-dependencies-packages" title="Permalink to this headline">¶</a></h3>
+<p>To import a package from a libman tree, we need only know the <em>name</em> of the
+package we wish to import. In our example case above, we depend on
+<code class="docutils literal notranslate"><span class="pre">neo-sqlite3</span></code>, so we simply call the libman-CMake function
+<code class="docutils literal notranslate"><span class="pre">import_packages()</span></code> with that package name:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">import_packages</span><span class="p">(</span><span class="s2">&quot;neo-sqlite3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You’ll note that we don’t request any particular version of the package: All
+versioning resolution is handled by <code class="docutils literal notranslate"><span class="pre">dds</span></code>. You’ll also note that we don’t
+need to specify our transitive dependencies: This is handled by the libman
+index that was generated by <code class="docutils literal notranslate"><span class="pre">dds</span></code>: It will automatically <code class="docutils literal notranslate"><span class="pre">import_packages()</span></code>
+any of the transitive dependencies required.</p>
+</div>
+<div class="section" id="using-out-dependencies-libraries">
+<h3>Using Out Dependencies’ Libraries<a class="headerlink" href="#using-out-dependencies-libraries" title="Permalink to this headline">¶</a></h3>
+<p>Like with <code class="docutils literal notranslate"><span class="pre">dds</span></code>, CMake wants us to explicitly declare how our build targets
+<em>use</em> other libraries. When we import a package from a libman index, the
+import will generate CMake <code class="docutils literal notranslate"><span class="pre">IMPORTED</span></code> targets that can be linked against.</p>
+<p>In <code class="docutils literal notranslate"><span class="pre">dds</span></code> and in libman, a library is identified by a combination of
+<em>namespace</em> and <em>name</em>, joined together with a slash <code class="docutils literal notranslate"><span class="pre">/</span></code> character. This
+<em>qualified name</em> of a library is decided by the original package author, and
+should be documented. In the case of <code class="docutils literal notranslate"><span class="pre">neo-sqlite3</span></code>, the only target is
+<code class="docutils literal notranslate"><span class="pre">neo/sqlite3</span></code>.</p>
+<p>When the libman CMake module imports a library, it creates a qualified name
+using a double-colon “<code class="docutils literal notranslate"><span class="pre">::</span></code>” instead of a slash. As such, our <code class="docutils literal notranslate"><span class="pre">neo/sqlite3</span></code>
+is imported in CMake as <code class="docutils literal notranslate"><span class="pre">neo::sqlite3</span></code>. We can link against it as we would
+with any other target:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">add_executable</span><span class="p">(</span><span class="s">my-application</span> <span class="s">app.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my-application</span> <span class="s">PRIVATE</span> <span class="s">neo::sqlite3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Altogether, here is the final CMake file:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-cmake notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.15</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">MyApplication</span> <span class="s">VERSION</span> <span class="s">1.0.0</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">pmm.cmake</span><span class="p">)</span>
+<span class="nb">pmm</span><span class="p">(</span><span class="s">CMakeCM</span> <span class="s">ROLLING</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">libman</span><span class="p">)</span>
+<span class="nb">import_packages</span><span class="p">(</span><span class="s2">&quot;neo-sqlite3&quot;</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">my-application</span> <span class="s">app.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my-application</span> <span class="s">PRIVATE</span> <span class="s">neo::sqlite3</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="section" id="additional-pmm-support">
+<h2>Additional PMM Support<a class="headerlink" href="#additional-pmm-support" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">pmm()</span></code> function also supports <code class="docutils literal notranslate"><span class="pre">dds</span></code> directly, similar to <code class="docutils literal notranslate"><span class="pre">CMakeCM</span></code>
+mode. This will automatically download a prebuilt <code class="docutils literal notranslate"><span class="pre">dds</span></code> for the host platform
+and invoke <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build-deps</span></code> in a single pass as part of CMake’s configure
+process. This is especially useful for a CI environment where you want to have
+a stable <code class="docutils literal notranslate"><span class="pre">dds</span></code> version and always have your dependencies obtained
+just-in-time.</p>
+<p>To start, pass the <code class="docutils literal notranslate"><span class="pre">DDS</span></code> argument to <code class="docutils literal notranslate"><span class="pre">pmm()</span></code> to use it:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pmm</span><span class="p">(</span><span class="s">DDS</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>..note::</dt><dd><p>The <code class="docutils literal notranslate"><span class="pre">_deps</span></code> directory and <code class="docutils literal notranslate"><span class="pre">INDEX.lmi</span></code> file will be placed in the CMake
+build directory, out of the way of the rest of the project.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The version of <code class="docutils literal notranslate"><span class="pre">dds</span></code> that PMM downloads depends on the version of PMM
+that is in use.</p>
+</div>
+<p>This alone won’t do anything useful, because you’ll need to tell it what
+dependencies we want to install:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pmm</span><span class="p">(</span><span class="s">DDS</span> <span class="s">DEP_FILES</span> <span class="s">dependencies.json5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also list your dependencies as an inline string in your CMakeLists.txt
+instead of a separate file:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">pmm</span><span class="p">(</span><span class="s">DDS</span> <span class="s">DEPENDS</span> <span class="s2">&quot;neo-sqlite3 ^0.2.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since you’ll probably want to be using <code class="docutils literal notranslate"><span class="pre">libman.cmake</span></code> at the same time, the
+calls for <code class="docutils literal notranslate"><span class="pre">CMakeCM</span></code> and <code class="docutils literal notranslate"><span class="pre">DDS</span></code> can simply be combined. This is how our new
+CMake project might look:</p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code></span><a class="headerlink" href="#id3" title="Permalink to this code">¶</a></div>
+<div class="highlight-cmake notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span> <span class="s">3.15</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">MyApplication</span> <span class="s">VERSION</span> <span class="s">1.0.0</span><span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">pmm.cmake</span><span class="p">)</span>
+<span class="nb">pmm</span><span class="p">(</span><span class="s">CMakeCM</span> <span class="s">ROLLING</span>
+    <span class="s">DDS</span> <span class="s">DEPENDS</span> <span class="s2">&quot;neo-sqlite3 ^0.2.2&quot;</span>
+    <span class="p">)</span>
+
+<span class="nb">include</span><span class="p">(</span><span class="s">libman</span><span class="p">)</span>
+<span class="nb">import_packages</span><span class="p">(</span><span class="s2">&quot;neo-sqlite3&quot;</span><span class="p">)</span>
+
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">my-application</span> <span class="s">app.cpp</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">my-application</span> <span class="s">PRIVATE</span> <span class="s">neo::sqlite3</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>This removes the requirement that we write a separate dependencies file, and we
+no longer need to invoke <code class="docutils literal notranslate"><span class="pre">dds</span> <span class="pre">build-deps</span></code> externally, as it is all handled
+by <code class="docutils literal notranslate"><span class="pre">pmm</span></code>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using <code class="docutils literal notranslate"><span class="pre">dds</span></code> Packages in a CMake Project</a><ul>
+<li><a class="reference internal" href="#generating-a-libman-index">Generating a libman Index</a><ul>
+<li><a class="reference internal" href="#declaring-dependencies">Declaring Dependencies</a></li>
+<li><a class="reference internal" href="#building-dependencies-and-the-index">Building Dependencies and the Index</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#importing-into-cmake">Importing into CMake</a><ul>
+<li><a class="reference internal" href="#enabling-libman-support-in-cmake-via-pmm">Enabling <em>libman</em> Support in CMake via PMM</a></li>
+<li><a class="reference internal" href="#importing-our-dependencies-packages">Importing Our Dependencies’ Packages</a></li>
+<li><a class="reference internal" href="#using-out-dependencies-libraries">Using Out Dependencies’ Libraries</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#additional-pmm-support">Additional PMM Support</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="interdeps.html"
+                        title="previous chapter">Library and Package Dependencies</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../design.html"
+                        title="next chapter"><code class="docutils literal notranslate"><span class="pre">dds</span></code> Design and Rationale</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/guide/cmake.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../design.html" title="dds Design and Rationale"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="interdeps.html" title="Library and Package Dependencies"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >User Guide</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

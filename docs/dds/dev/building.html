@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Building dds from Source &#8212; dds 0.1.0-alpha.2 documentation</title>
+    <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Runtime Error References" href="../err/index.html" />
+    <link rel="prev" title="dds Development" href="index.html" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Neuton&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nobile:regular,italic,bold,bolditalic&amp;subset=latin" type="text/css" media="screen" charset="utf-8" />
+<!--[if lte IE 6]>
+<link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
+<![endif]-->
+
+  </head><body>
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../err/index.html" title="Runtime Error References"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="dds Development"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U"><code class="docutils literal notranslate"><span class="pre">dds</span></code> Development</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="building-dds-from-source">
+<h1>Building <code class="docutils literal notranslate"><span class="pre">dds</span></code> from Source<a class="headerlink" href="#building-dds-from-source" title="Permalink to this headline">¶</a></h1>
+<p>While prebuilt <code class="docutils literal notranslate"><span class="pre">dds</span></code> executables are <a class="reference external" href="https://github.com/vector-of-bool/dds/releases">available on the GitHub page</a>, one may wish to build <code class="docutils literal notranslate"><span class="pre">dds</span></code> from source.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dds</span></code> build process is designed to be as turn-key simple as possible.</p>
+<div class="section" id="platform-support">
+<h2>Platform Support<a class="headerlink" href="#platform-support" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> aims to be as cross-platform as possible. It currently build and
+executes on Windows, macOS, Linux, and FreeBSD. Support for additional
+platforms is possible but will require modifications to <code class="docutils literal notranslate"><span class="pre">bootstrap.py</span></code> that
+will allow it to be built on such platforms.</p>
+</div>
+<div class="section" id="build-requirements">
+<h2>Build Requirements<a class="headerlink" href="#build-requirements" title="Permalink to this headline">¶</a></h2>
+<p>Building <code class="docutils literal notranslate"><span class="pre">dds</span></code> has a simple set of requirements:</p>
+<ul class="simple">
+<li><p><strong>Python 3.6</strong> or newer to run the bootstrap/CI scripts.</p></li>
+<li><p>A C++ compiler that has rudimentary support for C++20 concepts. Newer
+releases of Visual C++ that ship with <strong>VS 2019</strong> will be sufficient on
+Windows, as will <strong>GCC 9</strong> with <code class="docutils literal notranslate"><span class="pre">-fconcepts</span></code> on other platforms.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Windows, you will need to execute the build from within a Visual C++
+enabled environment. This will involve launching the build from a Visual
+Studio Command Prompt.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>At the time of writing, C++20 Concepts has not yet been released in Clang,
+but should be available in LLVM/Clang 11 and newer.</p>
+</div>
+</div>
+<div class="section" id="build-scripts-and-the-ci-process">
+<h2>Build Scripts and the CI Process<a class="headerlink" href="#build-scripts-and-the-ci-process" title="Permalink to this headline">¶</a></h2>
+<p>The main CI process is driven by Python. The root CI script is <code class="docutils literal notranslate"><span class="pre">tools/ci.py</span></code>,
+and it accepts several command-line parameters. Only a few of are immediate
+interest:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--bootstrap-with=&lt;method&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">-B</span> <span class="pre">&lt;method&gt;</span></code></dt><dd><p>Tell <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> how to obtain the previous <code class="docutils literal notranslate"><span class="pre">dds</span></code> executable that can build
+the <em>current</em> <code class="docutils literal notranslate"><span class="pre">dds</span></code> source tree. This accepts one of three values:
+<code class="docutils literal notranslate"><span class="pre">skip</span></code>, <code class="docutils literal notranslate"><span class="pre">download</span></code>, or <code class="docutils literal notranslate"><span class="pre">build</span></code>. Refer to <a class="reference internal" href="#bootstrapping"><span class="std std-ref">Bootstrapping dds</span></a>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--build-only</span></code></dt><dd><p>A flag that tells <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> to exit after it has successfully built the
+current source tree, and to not execute the phase-2 build nor the automated
+tests.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--toolchain=&lt;path&gt;</span></code> or <code class="docutils literal notranslate"><span class="pre">-T</span> <span class="pre">&lt;path&gt;</span></code></dt><dd><p>Tell <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> what toolchain to give to the prior <code class="docutils literal notranslate"><span class="pre">dds</span></code> to build the
+current <code class="docutils literal notranslate"><span class="pre">dds</span></code>.</p>
+</dd>
+</dl>
+<p>The <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> script performs the following actions, in order:</p>
+<ol class="arabic simple">
+<li><p>Prepare the build output directory</p></li>
+<li><p>Bootstrap the prior version of <code class="docutils literal notranslate"><span class="pre">dds</span></code> that will build the current version.</p></li>
+<li><p>Import the embedded <code class="docutils literal notranslate"><span class="pre">catalog.json</span></code> into a catalog database stored within
+<code class="docutils literal notranslate"><span class="pre">_build/</span></code>. This will be used to resolve the third-party packages that
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> itself uses.</p></li>
+<li><p>Invoke the build of <code class="docutils literal notranslate"><span class="pre">dds</span></code> using the prebuilt <code class="docutils literal notranslate"><span class="pre">dds</span></code> from the prior
+bootstrap phase. If <code class="docutils literal notranslate"><span class="pre">--build-only</span></code> was specified, the CI script stops
+here.</p></li>
+<li><p>Use the new <code class="docutils literal notranslate"><span class="pre">dds</span></code> executable to rebuild itself <em>again</em> (phase-2 self-build
+test). A bit of a “sanity test.”</p></li>
+<li><p>Execute the test suite using <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p></li>
+</ol>
+</div>
+<div class="section" id="bootstrapping-dds">
+<span id="bootstrapping"></span><h2>Bootstrapping <code class="docutils literal notranslate"><span class="pre">dds</span></code><a class="headerlink" href="#bootstrapping-dds" title="Permalink to this headline">¶</a></h2>
+<p>In the beginning, <code class="docutils literal notranslate"><span class="pre">dds</span></code> was built by a Python script that globbed the sources
+and invoked the compiler+linker on those sources. Once <code class="docutils literal notranslate"><span class="pre">dds</span></code> was able to
+build and link itself, this Python script was replaced instead with <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+building itself. <code class="docutils literal notranslate"><span class="pre">dds</span></code> has never used another build system.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> script accepts one of three methods for the <code class="docutils literal notranslate"><span class="pre">--bootstrap-with</span></code>
+flag: <code class="docutils literal notranslate"><span class="pre">skip</span></code>, <code class="docutils literal notranslate"><span class="pre">download</span></code>, or <code class="docutils literal notranslate"><span class="pre">build</span></code>.</p>
+<p>Once bootstrapping is complete, a <code class="docutils literal notranslate"><span class="pre">dds</span></code> executable will be written to
+<code class="docutils literal notranslate"><span class="pre">_prebuilt/dds</span></code>. This executable refers to a <strong>previous</strong> version of <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+that is able to build the newer <code class="docutils literal notranslate"><span class="pre">dds</span></code> source tree.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For all development work on <code class="docutils literal notranslate"><span class="pre">dds</span></code>, the <code class="docutils literal notranslate"><span class="pre">_prebuilt/dds</span></code> executable should
+always be used. This means that newer <code class="docutils literal notranslate"><span class="pre">dds</span></code> features are not available
+for use within the <code class="docutils literal notranslate"><span class="pre">dds</span></code> repository.</p>
+</div>
+<div class="section" id="bootstrap-skip">
+<h3>Bootstrap: <code class="docutils literal notranslate"><span class="pre">skip</span></code><a class="headerlink" href="#bootstrap-skip" title="Permalink to this headline">¶</a></h3>
+<p>If given <code class="docutils literal notranslate"><span class="pre">skip</span></code>, <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> will not perform any bootstrapping steps. It will
+assume that there is an existing <code class="docutils literal notranslate"><span class="pre">_prebuilt/dds</span></code> executable. This option
+should be used once bootstrapping has been performed at least once with another
+method, as this is much faster than rebuilding/redownloading every time.</p>
+</div>
+<div class="section" id="bootstrap-download">
+<h3>Bootstrap: <code class="docutils literal notranslate"><span class="pre">download</span></code><a class="headerlink" href="#bootstrap-download" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> script has a reference to a download URL of the prior version of
+<code class="docutils literal notranslate"><span class="pre">dds</span></code> that has been designated for the bootstrap. These executables originate
+from <a class="reference external" href="https://github.com/vector-of-bool/dds/releases">the GitHub releases</a> page.</p>
+<p>If given <code class="docutils literal notranslate"><span class="pre">download</span></code>, then <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> will download a predetermined <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+executable and use it to perform the remainder of the build.</p>
+</div>
+<div class="section" id="bootstrap-build">
+<h3>Bootstrap: <code class="docutils literal notranslate"><span class="pre">build</span></code><a class="headerlink" href="#bootstrap-build" title="Permalink to this headline">¶</a></h3>
+<p>Another script, <code class="docutils literal notranslate"><span class="pre">tools/bootstrap.py</span></code> is able to build <code class="docutils literal notranslate"><span class="pre">dds</span></code> from the ground
+up. It works by progressively cloning previous versions of the <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+repository and using them to build the next commit in the chain.</p>
+<p>While this is a neat trick, it isn’t necessary for most development, as the
+resulting executable will be derived from the same commit as the executable
+that would be obtained using the <code class="docutils literal notranslate"><span class="pre">download</span></code> method. This is also more fragile
+as the past commits may make certain assumptions about the system that might
+not be true outside of the CI environment. The build process may be tweaked in
+the future to correct these assumptions.</p>
+</div>
+</div>
+<div class="section" id="selecting-a-build-toolchain">
+<h2>Selecting a Build Toolchain<a class="headerlink" href="#selecting-a-build-toolchain" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">dds</span></code> includes three toolchains that it uses to build itself in its CI
+environment: <code class="docutils literal notranslate"><span class="pre">tools/gcc-9.jsonc</span></code> for Linux and macOS,
+<code class="docutils literal notranslate"><span class="pre">tools/freebsd-gcc-9.jsonc</span></code> for FreeBSD, and <code class="docutils literal notranslate"><span class="pre">tools/msvc.jsonc</span></code> for
+Windows.</p>
+<p>While these toolchains will work perfectly well in CI, you may need to tweak
+these for your build setup. For example: <code class="docutils literal notranslate"><span class="pre">gcc-9.jsonc</span></code> assumes that the GCC 9
+executables are named <code class="docutils literal notranslate"><span class="pre">gcc-9</span></code> and <code class="docutils literal notranslate"><span class="pre">g++-9</span></code>, which is incorrect on some
+Linux distributions.</p>
+<p>It is recommended to tweak these files as necessary to get the build working on
+your system. However, do not include those tweaks in a commit unless they are
+necessary to get the build running in CI.</p>
+<div class="section" id="giving-a-toolchain-to-ci-py">
+<h3>Giving a Toolchain to <code class="docutils literal notranslate"><span class="pre">ci.py</span></code><a class="headerlink" href="#giving-a-toolchain-to-ci-py" title="Permalink to this headline">¶</a></h3>
+<p>Just like passing a toolchain to <code class="docutils literal notranslate"><span class="pre">dds</span></code>, <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> also requires a toolchain.
+Simply pass the path to your desired toolchain using the <code class="docutils literal notranslate"><span class="pre">--toolchain</span></code>/
+<code class="docutils literal notranslate"><span class="pre">-T</span></code> argument:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ python3 tools/ci.py <span class="o">[</span>...<span class="o">]</span> -T tools/gcc-9.jsonc
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="building-for-development">
+<h2>Building for Development<a class="headerlink" href="#building-for-development" title="Permalink to this headline">¶</a></h2>
+<p>While <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> is rigorous in maintaining a clean and reproducible environment,
+we often don’t need such rigor for a rapid development iteration cycle. Instead
+we can invoke the build command directly in the same way that <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> does
+it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ _prebuilt/dds build -t <span class="o">[</span>toolchain<span class="o">]</span> <span class="se">\</span>
+    --catalog _build/catalog.db <span class="se">\</span>
+    --repo-dir _build/ci-repo
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">--catalog</span></code> and <code class="docutils literal notranslate"><span class="pre">--repo-dir</span></code> arguments are not strictly necessary, but
+help to isolate the <code class="docutils literal notranslate"><span class="pre">dds</span></code> dev environment from the user-local <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+environment. This is important if modifications are made to the catalog
+database schema that would conflict with the one of an external <code class="docutils literal notranslate"><span class="pre">dds</span></code>
+version.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You’ll likely want to run <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> <em>at least once</em> for it to prepare the
+necessary <code class="docutils literal notranslate"><span class="pre">catalog.db</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As mentioned previously, if using MSVC, the above command must execute with
+the appropriate VS development environment enabled.</p>
+</div>
+</div>
+<div class="section" id="running-the-test-suite">
+<h2>Running the Test Suite<a class="headerlink" href="#running-the-test-suite" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">--build-only</span></code> flag for <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> will disable test execution. When this
+flag is omitted, <code class="docutils literal notranslate"><span class="pre">ci.py</span></code> will execute a self-build sanity test and then
+execute the main test suite, which is itself written as a set of <code class="docutils literal notranslate"><span class="pre">pytest</span></code>
+tests in the <code class="docutils literal notranslate"><span class="pre">tests/</span></code> subdirectory.</p>
+<div class="section" id="unit-tests">
+<h3>Unit Tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>Various pieces of <code class="docutils literal notranslate"><span class="pre">dds</span></code> contain unit tests. These are stored within the
+<code class="docutils literal notranslate"><span class="pre">src/</span></code> directory itself in <code class="docutils literal notranslate"><span class="pre">*.test.cpp</span></code> files. They are built and executed
+by the bootstrapped <code class="docutils literal notranslate"><span class="pre">dds</span></code> executable unconditionally. These tests execute
+in milliseconds and do not burden the development iteration cycle.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Building <code class="docutils literal notranslate"><span class="pre">dds</span></code> from Source</a><ul>
+<li><a class="reference internal" href="#platform-support">Platform Support</a></li>
+<li><a class="reference internal" href="#build-requirements">Build Requirements</a></li>
+<li><a class="reference internal" href="#build-scripts-and-the-ci-process">Build Scripts and the CI Process</a></li>
+<li><a class="reference internal" href="#bootstrapping-dds">Bootstrapping <code class="docutils literal notranslate"><span class="pre">dds</span></code></a><ul>
+<li><a class="reference internal" href="#bootstrap-skip">Bootstrap: <code class="docutils literal notranslate"><span class="pre">skip</span></code></a></li>
+<li><a class="reference internal" href="#bootstrap-download">Bootstrap: <code class="docutils literal notranslate"><span class="pre">download</span></code></a></li>
+<li><a class="reference internal" href="#bootstrap-build">Bootstrap: <code class="docutils literal notranslate"><span class="pre">build</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#selecting-a-build-toolchain">Selecting a Build Toolchain</a><ul>
+<li><a class="reference internal" href="#giving-a-toolchain-to-ci-py">Giving a Toolchain to <code class="docutils literal notranslate"><span class="pre">ci.py</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#building-for-development">Building for Development</a></li>
+<li><a class="reference internal" href="#running-the-test-suite">Running the Test Suite</a><ul>
+<li><a class="reference internal" href="#unit-tests">Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter"><code class="docutils literal notranslate"><span class="pre">dds</span></code> Development</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../err/index.html"
+                        title="next chapter">Runtime Error References</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/dev/building.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../err/index.html" title="Runtime Error References"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="dds Development"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">dds 0.1.0-alpha.2 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" ><code class="docutils literal notranslate"><span class="pre">dds</span></code> Development</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, vector-of-bool.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>
