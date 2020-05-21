@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Changelog and History &#8212; CMake Tools 1.1.3
+    <meta charset="utf-8" />
+    <title>Changelog and History &#8212; CMake Tools 1.4.0
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,8 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="_static/icon_64.png"/>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/logo_64.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="How to Contribute" href="development.html" /> 
@@ -29,7 +27,7 @@
         <li class="right" >
           <a href="development.html" title="How to Contribute"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -45,53 +43,53 @@
 <span id="id1"></span><h2>1.1.3<a class="headerlink" href="#changes-1-1-3" title="Permalink to this headline">¶</a></h2>
 <p>Removal:</p>
 <ul class="simple">
-<li>The visual CMake cache editor GUI is gone. The API with which it was drawn is
+<li><p>The visual CMake cache editor GUI is gone. The API with which it was drawn is
 being removed from a future version of VS Code, and the feature had many
 issues. A future CMake GUI will be introduced with more features and greater
 stability.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/579">#579</a>)</li>
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/579">#579</a>)</p></li>
 </ul>
 <p>Features and Tweaks:</p>
 <ul class="simple">
-<li>On Linux, will detect old CMake versions and offer to do an automatic
+<li><p>On Linux, will detect old CMake versions and offer to do an automatic
 upgrade. Windows support is pending. If you have a macOS devices and would
-like to contribute, please open a pull request!</li>
-<li>Smarter parsing of GCC and Clang compile errors to fold <code class="docutils literal notranslate"><span class="pre">note:</span></code> and
+like to contribute, please open a pull request!</p></li>
+<li><p>Smarter parsing of GCC and Clang compile errors to fold <code class="docutils literal notranslate"><span class="pre">note:</span></code> and
 <code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">from:</span></code> blocks into their main diagnostic. This permits the
 folding and browsing of template and macro instantiation errors in a nicer
 fashion. MSVC error parsing pending. (<strong>NOTE</strong>: There is an upstream issue
 with the sort order of diagnostic information, so <code class="docutils literal notranslate"><span class="pre">required</span> <span class="pre">from:</span></code>
-tracebacks may appear out-of-order).</li>
+tracebacks may appear out-of-order).</p></li>
 </ul>
 <p>Fixes:</p>
 <ul class="simple">
-<li>On Windows, “Launch target in terminal” will use <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> unconditionally.
+<li><p>On Windows, “Launch target in terminal” will use <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> unconditionally.
 This works around issues with command quoting in PowerShell.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/562">#562</a>)</li>
-<li>“Debug target” will prefer <code class="docutils literal notranslate"><span class="pre">lldb-mi</span></code> to <code class="docutils literal notranslate"><span class="pre">lldb</span></code>. Fixes issues where
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/562">#562</a>)</p></li>
+<li><p>“Debug target” will prefer <code class="docutils literal notranslate"><span class="pre">lldb-mi</span></code> to <code class="docutils literal notranslate"><span class="pre">lldb</span></code>. Fixes issues where
 <code class="docutils literal notranslate"><span class="pre">cpptools</span></code> is unable to launch the debugger.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/584">#584</a>)</li>
-<li>Document the <code class="docutils literal notranslate"><span class="pre">environmentVariables</span></code> field on kits.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/568">#586</a>)</li>
-<li>Fix legacy CMake mode not setting the CMake generator.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/567">#567</a>)</li>
-<li>Permit limited variable expansion for <code class="docutils literal notranslate"><span class="pre">cmake.cmakePath</span></code> in <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/584">#584</a>)</p></li>
+<li><p>Document the <code class="docutils literal notranslate"><span class="pre">environmentVariables</span></code> field on kits.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/568">#586</a>)</p></li>
+<li><p>Fix legacy CMake mode not setting the CMake generator.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/567">#567</a>)</p></li>
+<li><p>Permit limited variable expansion for <code class="docutils literal notranslate"><span class="pre">cmake.cmakePath</span></code> in <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>
 (refer to documentation for more details).
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/569">#569</a>)</li>
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/569">#569</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="changes-1-1-2">
 <span id="id8"></span><h2>1.1.2<a class="headerlink" href="#changes-1-1-2" title="Permalink to this headline">¶</a></h2>
 <p>Fixes and tweaks upon 1.1.2:</p>
 <ul class="simple">
-<li>Fix silent failure when a build directory appears at a different path than is
-encoded in its <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code>.</li>
-<li>Improved logic in path normalization, but could be better.</li>
-<li>Improve documentation on using <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>.</li>
-<li>Fix shell splitting preventing certain command lines from being parsed
-correctly.</li>
-<li>Display a more helpful message when using a toolchain file and we fail to find
-the C and/or C++ compiler because it is not stored in the CMake cache.</li>
+<li><p>Fix silent failure when a build directory appears at a different path than is
+encoded in its <code class="docutils literal notranslate"><span class="pre">CMakeCache.txt</span></code>.</p></li>
+<li><p>Improved logic in path normalization, but could be better.</p></li>
+<li><p>Improve documentation on using <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>.</p></li>
+<li><p>Fix shell splitting preventing certain command lines from being parsed
+correctly.</p></li>
+<li><p>Display a more helpful message when using a toolchain file and we fail to find
+the C and/or C++ compiler because it is not stored in the CMake cache.</p></li>
 </ul>
 <p><a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/milestone/13?closed=1">See the 1.1.2 milestone on GitHub</a>.</p>
 </div>
@@ -99,11 +97,11 @@ the C and/or C++ compiler because it is not stored in the CMake cache.</li>
 <span id="id9"></span><h2>1.1.1<a class="headerlink" href="#changes-1-1-1" title="Permalink to this headline">¶</a></h2>
 <p>Fixes and tweaks upon 1.1.0:</p>
 <ul class="simple">
-<li>Fix “Unable to automatically determine compiler” when using VS generators.</li>
-<li>Fix failure to provide IntelliSense information for header files even after
-adding them to a target.</li>
-<li>“Unexpected stderr/stdout…” no longer appears. This output is now logged as
-regular CMake status messages.</li>
+<li><p>Fix “Unable to automatically determine compiler” when using VS generators.</p></li>
+<li><p>Fix failure to provide IntelliSense information for header files even after
+adding them to a target.</p></li>
+<li><p>“Unexpected stderr/stdout…” no longer appears. This output is now logged as
+regular CMake status messages.</p></li>
 </ul>
 <p><strong>BREAKING CHANGE</strong>: Variant substitutions follow a new <cite>${variant:var-key}</cite>
 syntax to match the special namespacing of substitutions. See <a class="reference internal" href="settings.html#variant-sub"><span class="std std-ref">Variant Substitution</span></a>.</p>
@@ -114,22 +112,23 @@ syntax to match the special namespacing of substitutions. See <a class="referenc
 <p>1.1.0 is the most exciting release yet! It includes several long-awaited
 features, including but not limited to:</p>
 <ul class="simple">
-<li><em>A project outline view</em>. CMake Tools will now render a tree representation of
-your CMake project, including all targets and source files.<ul>
-<li>Individual targets can be built/run using the context menu in the outline.</li>
-<li>Individual source files can be compiled using the outline context menu.</li>
-<li>The debugger can be started by right-clicking on the desired executable.</li>
+<li><p><em>A project outline view</em>. CMake Tools will now render a tree representation of
+your CMake project, including all targets and source files.</p>
+<ul>
+<li><p>Individual targets can be built/run using the context menu in the outline.</p></li>
+<li><p>Individual source files can be compiled using the outline context menu.</p></li>
+<li><p>The debugger can be started by right-clicking on the desired executable.</p></li>
 </ul>
 </li>
-<li>Update progress and cancellation notifications. Now uses the official VSCode
+<li><p>Update progress and cancellation notifications. Now uses the official VSCode
 progress APIs. A proper <em>Cancel</em> button is visible on the progress
-notification for cancelling the build.</li>
-<li>Progress for the <em>Configure/Generate</em> phase. It is up to CMake to generate
-reliable progress values, though.</li>
-<li>Automatically configure a project when it is opened. CMake Tools will ask you
-the first time, and this preference can be persisted.</li>
-<li>Will automatically ask you for a debug target if you try to debug but haven’t
-yet set one.</li>
+notification for cancelling the build.</p></li>
+<li><p>Progress for the <em>Configure/Generate</em> phase. It is up to CMake to generate
+reliable progress values, though.</p></li>
+<li><p>Automatically configure a project when it is opened. CMake Tools will ask you
+the first time, and this preference can be persisted.</p></li>
+<li><p>Will automatically ask you for a debug target if you try to debug but haven’t
+yet set one.</p></li>
 </ul>
 <div class="section" id="cpptools-integration">
 <h3><code class="docutils literal notranslate"><span class="pre">cpptools</span></code> Integration!<a class="headerlink" href="#cpptools-integration" title="Permalink to this headline">¶</a></h3>
@@ -148,71 +147,70 @@ to receive the benefits of cpptools’ IntelliSense engine.</p>
 <span id="id11"></span><h2>1.0.1<a class="headerlink" href="#changes-1-0-1" title="Permalink to this headline">¶</a></h2>
 <p>Resolves a few issues/enhancements that didn’t make it into 1.0.0.</p>
 <ul class="simple">
-<li>Automatically detect when a kit specifies a path to a non-existent compiler
-and ask what to do with that kit (remove or keep).</li>
-<li>New option <a class="reference internal" href="settings.html#conf-cmake-copycompilecommands"><span class="std std-ref">cmake.copyCompileCommands</span></a>: Set a path to which
-<code class="docutils literal notranslate"><span class="pre">compile_commands.json</span></code> will be copied after a configure run.</li>
-<li>Fix failing when CMake executable has a different name than <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</li>
-<li>Fixed edits to the kits file not applying immediately.</li>
-<li>Fixed issue where CTest is not on the <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> and it fails to detect tests.</li>
+<li><p>Automatically detect when a kit specifies a path to a non-existent compiler
+and ask what to do with that kit (remove or keep).</p></li>
+<li><p>New option <a class="reference internal" href="settings.html#conf-cmake-copycompilecommands"><span class="std std-ref">cmake.copyCompileCommands</span></a>: Set a path to which
+<code class="docutils literal notranslate"><span class="pre">compile_commands.json</span></code> will be copied after a configure run.</p></li>
+<li><p>Fix failing when CMake executable has a different name than <code class="docutils literal notranslate"><span class="pre">cmake</span></code>.</p></li>
+<li><p>Fixed edits to the kits file not applying immediately.</p></li>
+<li><p>Fixed issue where CTest is not on the <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> and it fails to detect tests.</p></li>
 </ul>
 </div>
 <div class="section" id="changes-1-0-0">
 <span id="id12"></span><h2>1.0.0<a class="headerlink" href="#changes-1-0-0" title="Permalink to this headline">¶</a></h2>
 <p>CMake Tools 1.0.0 is a minor change over 0.11.x, but marks the first “stable”
 release. It is now a developer-ready tool that is suitable for everyday work!
-<a class="footnote-reference" href="#counter" id="id13">[1]</a></p>
+<a class="footnote-reference brackets" href="#counter" id="id13">1</a></p>
 <p>1.0.0 contains the following improvements and fixes over 0.11.x:</p>
 <ul class="simple">
-<li>Option to build on <code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> (Launch-before-debug).
-See <a class="reference internal" href="settings.html#conf-cmake-buildbeforerun"><span class="std std-ref">cmake.buildBeforeRun</span></a>.</li>
-<li><a class="reference external" href="https://llvm.org/builds/">LLVM for Windows</a> is now supported as an
-auto-detected Kit type.</li>
-<li>To support LLVM for Windows, kit options can now be freely mixed-and-matched,
-eg. setting a toolchain file along with a Visual Studio environment.</li>
-<li>Cache initialization files are now supported in <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>. See
-<a class="reference internal" href="settings.html#conf-cmake-cacheinit"><span class="std std-ref">cmake.cacheInit</span></a>.</li>
-<li>Kits are now <strong>optional</strong>. If no kit is active, CMake Tools will ask you if
+<li><p>Option to build on <code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> (Launch-before-debug).
+See <a class="reference internal" href="settings.html#conf-cmake-buildbeforerun"><span class="std std-ref">cmake.buildBeforeRun</span></a>.</p></li>
+<li><p><a class="reference external" href="https://llvm.org/builds/">LLVM for Windows</a> is now supported as an
+auto-detected Kit type.</p></li>
+<li><p>To support LLVM for Windows, kit options can now be freely mixed-and-matched,
+eg. setting a toolchain file along with a Visual Studio environment.</p></li>
+<li><p>Cache initialization files are now supported in <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>. See
+<a class="reference internal" href="settings.html#conf-cmake-cacheinit"><span class="std std-ref">cmake.cacheInit</span></a>.</p></li>
+<li><p>Kits are now <strong>optional</strong>. If no kit is active, CMake Tools will ask you if
 you want to scan, select a kit, or opt-out of kits. If no kit is chosen, CMake
-Tools will let CMake decide what to do.</li>
-<li>GCC cross-compilers are now detected as regular compilers for compiler kits.</li>
-<li>Setting <a class="reference internal" href="settings.html#conf-cmake-defaultvariants"><span class="std std-ref">cmake.defaultVariants</span></a> is respected again.</li>
-<li>Setting <a class="reference internal" href="settings.html#conf-cmake-mingwsearchdirs"><span class="std std-ref">cmake.mingwSearchDirs</span></a> is respected again.</li>
-<li>CMake Tools will attempt to set the path to the debugger (<code class="docutils literal notranslate"><span class="pre">gdb</span></code> or <code class="docutils literal notranslate"><span class="pre">lldb</span></code>)
-during Quick Debugging.</li>
-<li>Fix for intermittent “Not yet configured” errors.</li>
+Tools will let CMake decide what to do.</p></li>
+<li><p>GCC cross-compilers are now detected as regular compilers for compiler kits.</p></li>
+<li><p>Setting <a class="reference internal" href="settings.html#conf-cmake-defaultvariants"><span class="std std-ref">cmake.defaultVariants</span></a> is respected again.</p></li>
+<li><p>Setting <a class="reference internal" href="settings.html#conf-cmake-mingwsearchdirs"><span class="std std-ref">cmake.mingwSearchDirs</span></a> is respected again.</p></li>
+<li><p>CMake Tools will attempt to set the path to the debugger (<code class="docutils literal notranslate"><span class="pre">gdb</span></code> or <code class="docutils literal notranslate"><span class="pre">lldb</span></code>)
+during Quick Debugging.</p></li>
+<li><p>Fix for intermittent “Not yet configured” errors.</p></li>
 </ul>
 <p>A few issues slated for 1.0.0 fell through as the schedule slipped. If you
 expected a feature in 1.0.0 that isn’t listed above, it will be available in
 1.0.1.</p>
-<table class="docutils footnote" frame="void" id="counter" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id13">[1]</a></td><td>If you don’t agree, please open a bug report!</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="counter"><span class="brackets"><a class="fn-backref" href="#id13">1</a></span></dt>
+<dd><p>If you don’t agree, please open a bug report!</p>
+</dd>
+</dl>
 </div>
 <div class="section" id="changes-0-11-0">
 <span id="id14"></span><h2>0.11.1<a class="headerlink" href="#changes-0-11-0" title="Permalink to this headline">¶</a></h2>
 <p>Several bugfixes and tweaks:</p>
 <ul class="simple">
-<li>Attempted fix for “No build system was generated yet” by implementing more
+<li><p>Attempted fix for “No build system was generated yet” by implementing more
 reliable dirty-checks when running a build/configure.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/385">#385</a>)</li>
-<li>Fix handling spaces in filepaths when running <code class="docutils literal notranslate"><span class="pre">vswhere.exe</span></code>.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/pull/381">#381</a>)</li>
-<li>Fix environment variables from <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> being ignored when using
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/385">#385</a>)</p></li>
+<li><p>Fix handling spaces in filepaths when running <code class="docutils literal notranslate"><span class="pre">vswhere.exe</span></code>.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/pull/381">#381</a>)</p></li>
+<li><p>Fix environment variables from <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> being ignored when using
 legacy (non-cmake-server) mode.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/384">#384</a>)</li>
-<li>Do not case-normalize diagnostics on Windows. This prevents VSCode from
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/384">#384</a>)</p></li>
+<li><p>Do not case-normalize diagnostics on Windows. This prevents VSCode from
 considering two equivalent paths to be different when opening them from the
 problems panel.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/pull/395">#395</a>)</li>
-<li>Reset progress when build finishes. Stops a flash of “%100” when starting a
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/pull/395">#395</a>)</p></li>
+<li><p>Reset progress when build finishes. Stops a flash of “%100” when starting a
 new build.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/pull/394">#394</a>)</li>
-<li>Better error message when trying to use debugging on non-cmake-server.
-(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/388">#388</a>)</li>
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/pull/394">#394</a>)</p></li>
+<li><p>Better error message when trying to use debugging on non-cmake-server.
+(<a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues/388">#388</a>)</p></li>
 </ul>
 </div>
 <div class="section" id="id21">
@@ -223,11 +221,11 @@ functionality, but new infrastructure and maintainers behind the extension.</p>
 followed by months of beta (when it should have been a few weeks).</p>
 <p>Here’s a quick summary:</p>
 <ul class="simple">
-<li><a class="reference internal" href="kits.html#kits"><span class="std std-ref">“Kits” provide a new way to encapsulate the toolset used to build a
-project.</span></a></li>
-<li>Opt-in automatic error reporting.</li>
-<li>Lots of stability and backend cleanup.</li>
-<li>All new documentation!</li>
+<li><p><a class="reference internal" href="kits.html#kits"><span class="std std-ref">“Kits” provide a new way to encapsulate the toolset used to build a
+project.</span></a></p></li>
+<li><p>Opt-in automatic error reporting.</p></li>
+<li><p>Lots of stability and backend cleanup.</p></li>
+<li><p>All new documentation!</p></li>
 </ul>
 </div>
 <div class="section" id="x-and-older">
@@ -243,7 +241,7 @@ project.</span></a></li>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+              <img class="logo" src="_static/logo.svg" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
@@ -275,13 +273,11 @@ project.</span></a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -299,13 +295,13 @@ project.</span></a></li>
         <li class="right" >
           <a href="development.html" title="How to Contribute"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>
 </html>

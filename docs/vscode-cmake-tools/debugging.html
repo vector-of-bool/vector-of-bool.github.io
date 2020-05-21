@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Target Debugging and Launching &#8212; CMake Tools 1.1.3
+    <meta charset="utf-8" />
+    <title>Target Debugging and Launching &#8212; CMake Tools 1.4.0
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,8 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="_static/icon_64.png"/>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/logo_64.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Configuring CMake Tools" href="settings.html" />
@@ -33,7 +31,7 @@
         <li class="right" >
           <a href="building.html" title="CMake Building"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -52,11 +50,11 @@ and error-prone.</p>
 <p>If you define any executable targets via CMake, CMake Tools will be aware of
 them and allow you to start a debugger on them.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Debugging is only supported when using <em>CMake Server</em> mode. This mode will
 be enabled automatically on CMake versions at least as new as 3.7.2, but is
 completely unavailable on older CMake versions.</p>
-<p class="last">Target debugging used to be supported on prior versions, but was difficult
+<p>Target debugging used to be supported on prior versions, but was difficult
 and error-prone, creating more problems than it solved. If you are running
 an older CMake version and wish to use target debugging, you’ll have to
 update your CMake version.</p>
@@ -64,8 +62,8 @@ update your CMake version.</p>
 <p>By default, the launch or debug of an executable target will cause it to be
 built.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">The build on launch can be disabled with a setting, see
+<p class="admonition-title">Note</p>
+<p>The build on launch can be disabled with a setting, see
 <a class="reference internal" href="settings.html#conf-cmake-buildbeforerun"><span class="std std-ref">cmake.buildBeforeRun</span></a>.</p>
 </div>
 <div class="section" id="selecting-a-launch-target">
@@ -84,8 +82,8 @@ the active launch target.</p>
 <p>Quick-debugging lets you start a debugger on a target without ever creating
 a <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">At the moment, only the debugger from Microsoft’s <code class="docutils literal notranslate"><span class="pre">vscode-cpptools</span></code>
+<p class="admonition-title">Note</p>
+<p>At the moment, only the debugger from Microsoft’s <code class="docutils literal notranslate"><span class="pre">vscode-cpptools</span></code>
 extension is supported with quick-debugging. See <a class="reference internal" href="#debugging-launch-json"><span class="std std-ref">Debugging with CMake Tools and launch.json</span></a>
 below for using <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> and other debuggers.</p>
 </div>
@@ -93,8 +91,8 @@ below for using <code class="docutils literal notranslate"><span class="pre">lau
 the command pallette, or by pressing the associated hotkey (the default is
 <kbd class="kbd docutils literal notranslate">Ctrl+F5</kbd>).</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Quick-debugging does not let you specify program arguments or other
+<p class="admonition-title">Note</p>
+<p>Quick-debugging does not let you specify program arguments or other
 debugging options. See <a class="reference internal" href="#debugging-launch-json"><span class="std std-ref">Debugging with CMake Tools and launch.json</span></a> for more options.</p>
 </div>
 </div>
@@ -112,37 +110,39 @@ the process selection when attaching to a running process. It works by simply
 specifying a a command-based substitution in the appropriate field of
 <code class="docutils literal notranslate"><span class="pre">launch.json</span></code>.</p>
 <p>Here is a minimal example of a <code class="docutils literal notranslate"><span class="pre">launch.json</span></code> that uses the
-<code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> to start a debugger on the active selected launch
-target:</p>
-<div class="code javascript highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;configurations&quot;</span><span class="p">:</span> <span class="p">[</span>
+<code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> and <code class="docutils literal notranslate"><span class="pre">cmake.launchTargetDirectory</span></code> to start a debugger
+on the active selected launch target:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;configurations&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;(gdb) Launch&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;cppdbg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;request&quot;</span><span class="p">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
-            <span class="o">//</span> <span class="n">Resolved</span> <span class="n">by</span> <span class="n">CMake</span> <span class="n">Tools</span><span class="p">:</span>
-            <span class="s2">&quot;program&quot;</span><span class="p">:</span> <span class="s2">&quot;${command:cmake.launchTargetPath}&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;args&quot;</span><span class="p">:</span> <span class="p">[],</span>
-            <span class="s2">&quot;stopAtEntry&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
-            <span class="s2">&quot;cwd&quot;</span><span class="p">:</span> <span class="s2">&quot;$</span><span class="si">{workspaceFolder}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;environment&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;(gdb) Launch&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;cppdbg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;request&quot;</span><span class="o">:</span> <span class="s2">&quot;launch&quot;</span><span class="p">,</span>
+            <span class="c1">// Resolved by CMake Tools:</span>
+            <span class="s2">&quot;program&quot;</span><span class="o">:</span> <span class="s2">&quot;${command:cmake.launchTargetPath}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">[],</span>
+            <span class="s2">&quot;stopAtEntry&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="s2">&quot;cwd&quot;</span><span class="o">:</span> <span class="s2">&quot;${workspaceFolder}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;environment&quot;</span><span class="o">:</span> <span class="p">[</span>
                 <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;PATH&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;$PATH:$HOME/some_path&quot;</span>
+                    <span class="c1">// add the directory where our target was built to the PATHs</span>
+                    <span class="c1">// it gets resolved by CMake Tools:</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;PATH&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;$PATH:${command:cmake.launchTargetDirectory}&quot;</span>
                 <span class="p">},</span>
                 <span class="p">{</span>
-                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OTHER_VALUE&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Something something&quot;</span>
+                    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;OTHER_VALUE&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;value&quot;</span><span class="o">:</span> <span class="s2">&quot;Something something&quot;</span>
                 <span class="p">}</span>
             <span class="p">],</span>
-            <span class="s2">&quot;externalConsole&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
-            <span class="s2">&quot;MIMode&quot;</span><span class="p">:</span> <span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;setupCommands&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">&quot;externalConsole&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;MIMode&quot;</span><span class="o">:</span> <span class="s2">&quot;gdb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;setupCommands&quot;</span><span class="o">:</span> <span class="p">[</span>
                 <span class="p">{</span>
-                    <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;Enable pretty-printing for gdb&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;-enable-pretty-printing&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;ignoreFailures&quot;</span><span class="p">:</span> <span class="n">true</span>
+                    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Enable pretty-printing for gdb&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;text&quot;</span><span class="o">:</span> <span class="s2">&quot;-enable-pretty-printing&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ignoreFailures&quot;</span><span class="o">:</span> <span class="kc">true</span>
                 <span class="p">}</span>
             <span class="p">]</span>
         <span class="p">}</span>
@@ -153,9 +153,9 @@ target:</p>
 <p>The value of the <code class="docutils literal notranslate"><span class="pre">program</span></code> attribute is resolved by CMake Tools to the
 absolute path to the program to run.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">A successful <a class="reference internal" href="configuring.html#configuring"><span class="std std-ref">configure</span></a> must be executed before
-<code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> will resolve correctly.</p>
+<p class="admonition-title">Note</p>
+<p>A successful <a class="reference internal" href="configuring.html#configuring"><span class="std std-ref">configure</span></a> must be executed before
+<code class="docutils literal notranslate"><span class="pre">cmake.launchTargetPath</span></code> and <code class="docutils literal notranslate"><span class="pre">cmake.launchTargetDirectory</span></code> will resolve correctly.</p>
 </div>
 </div>
 <div class="section" id="running-targets-without-a-debugger">
@@ -174,7 +174,7 @@ or the associated keybinding (the default is <kbd class="kbd docutils literal no
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+              <img class="logo" src="_static/logo.svg" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
@@ -201,13 +201,11 @@ or the associated keybinding (the default is <kbd class="kbd docutils literal no
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -228,13 +226,13 @@ or the associated keybinding (the default is <kbd class="kbd docutils literal no
         <li class="right" >
           <a href="building.html" title="CMake Building"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>
 </html>

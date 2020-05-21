@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>CMake Kits &#8212; CMake Tools 1.1.3
+    <meta charset="utf-8" />
+    <title>CMake Kits &#8212; CMake Tools 1.4.0
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,8 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="_static/icon_64.png"/>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/logo_64.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CMake Variants" href="variants.html" />
@@ -33,7 +31,7 @@
         <li class="right" >
           <a href="getting_started.html" title="Getting Started"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -48,33 +46,33 @@
 <p>A <em>kit</em> encompasses project-agnostic and configuration-agnostic information
 about how to build code. A kit can include:</p>
 <ul class="simple">
-<li><em>A set of compilers for some set of languages</em> - These are locked at specific
-versions such that you can switch your compiler version quickly and easily.</li>
-<li><em>A Visual Studio installation</em> - Building for VS is more complicated than
+<li><p><em>A set of compilers for some set of languages</em> - These are locked at specific
+versions such that you can switch your compiler version quickly and easily.</p></li>
+<li><p><em>A Visual Studio installation</em> - Building for VS is more complicated than
 simply finding the necessary compiler executable. Visual C++ requires certain
 environment variables to be set to tell it how to find and link to the
-Visual C++ toolchain headers and libraries.</li>
-<li><em>A toolchain file</em> - This is the lowest-level way to instruct CMake how to
+Visual C++ toolchain headers and libraries.</p></li>
+<li><p><em>A toolchain file</em> - This is the lowest-level way to instruct CMake how to
 compile and link for a target. CMake Tools handles toolchain files using
-kits.</li>
+kits.</p></li>
 </ul>
 <p>Kits are mostly CMake-generator-agnostic, although Visual Studio kits will have
 a “preferred” generator that will be used as a fallback to ensure a matching
 MSBuild and .sln generator is used for the Visual C++ compiler.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you use <a class="reference external" href="https://ninja-build.org/">Ninja</a> there is no need to worry
+<p class="admonition-title">Note</p>
+<p>If you use <a class="reference external" href="https://ninja-build.org/">Ninja</a> there is no need to worry
 about Visual Studio CMake Generators. CMake Tools will prefer Ninja if it is
 present unless configured otherwise.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">If you change the active Kit while a project is configured, the project
+<p class="admonition-title">Note</p>
+<p>If you change the active Kit while a project is configured, the project
 configuration will be re-generated with the chosen kit.</p>
 </div>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Using a kit is recommended but optional. Opting-out of using kits will
+<p class="admonition-title">Note</p>
+<p>Using a kit is recommended but optional. Opting-out of using kits will
 cause CMake to perform its own automatic detection.</p>
 </div>
 <div class="section" id="how-are-kits-found-and-defined">
@@ -95,8 +93,8 @@ by invoking <em>Edit CMake Kits</em> from the command palette. It will open the
 of this file will also be automatically controlled by CMake Tools via the
 <a class="reference internal" href="#kit-scan"><span class="std std-ref">automated kit scanning</span></a>.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Don’t modify any of the kits that CMake Tools defines itself: It will
+<p class="admonition-title">Warning</p>
+<p>Don’t modify any of the kits that CMake Tools defines itself: It will
 overwrite any modifications during <a class="reference internal" href="#kit-scan"><span class="std std-ref">kit scanning</span></a>. See
 below for more information.</p>
 </div>
@@ -120,7 +118,7 @@ collaboration on the named toolchain.</p>
 <p><a class="reference internal" href="#user-local-kits"><span class="std std-ref">User-Local Kits</span></a> can be updated by running <em>Scan for Kits</em> in the
 command palette. The following process occurs to find available kits:</p>
 <ol class="arabic">
-<li><p class="first"><strong>Search the current PATH for compilers</strong></p>
+<li><p><strong>Search the current PATH for compilers</strong></p>
 <blockquote>
 <div><p>CMake tools will use the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environment variable for a list of
 directories where compilers can be found.</p>
@@ -131,33 +129,34 @@ directory it is added to the kit as the corresponding C++ compiler. The
 same applies for a <code class="docutils literal notranslate"><span class="pre">clang++</span></code> binary in the directory of a <code class="docutils literal notranslate"><span class="pre">clang</span></code>
 executable.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">At the moment, CMake Tools will automatically detect <em>Clang</em> and
+<p class="admonition-title">Note</p>
+<p>At the moment, CMake Tools will automatically detect <em>Clang</em> and
 <em>GCC</em> only. If you’d like auto-detection for more tools,
 please open an issue on the GitHub page with information about the
 compiler binary names and how to parse its version information.</p>
 </div>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Ask VSWhere about Visual Studio installations</strong></p>
+<li><p><strong>Ask VSWhere about Visual Studio installations</strong></p>
 <blockquote>
 <div><p>CMake tools includes a bundled <code class="docutils literal notranslate"><span class="pre">vswhere.exe</span></code> which it uses to ask about
 existing Visual Studio instances installed on the system.</p>
-<p>For each of <code class="docutils literal notranslate"><span class="pre">x86</span></code>, <code class="docutils literal notranslate"><span class="pre">amd64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_amd64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_arm</span></code>, <code class="docutils literal notranslate"><span class="pre">amd64_arm</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">amd64_x86</span></code>, CMake Tools will check for installed Visual C++
-environments. A kit is generated for each existing MSVC toolchain.</p>
+<p>For each of <code class="docutils literal notranslate"><span class="pre">x86</span></code>, <code class="docutils literal notranslate"><span class="pre">amd64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_amd64</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_arm</span></code>, <code class="docutils literal notranslate"><span class="pre">x86_arm64</span></code>,
+<code class="docutils literal notranslate"><span class="pre">amd64_x86</span></code>, <code class="docutils literal notranslate"><span class="pre">amd64_arm</span></code>, and <code class="docutils literal notranslate"><span class="pre">amd64_arm64</span></code>, CMake Tools will check
+// for installed Visual C++ environments.
+// A kit is generated for each existing MSVC toolchain.</p>
 </div></blockquote>
 </li>
-<li><p class="first"><strong>Save results to the user-local kits file</strong></p>
+<li><p><strong>Save results to the user-local kits file</strong></p>
 <blockquote>
 <div><p>When finished, the <a class="reference internal" href="#user-local-kits"><span class="std std-ref">user-local</span></a> <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>
 file will be updated with the new kit information.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
+<p class="admonition-title">Warning</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">name</span></code> of each kit is generated from the kit compiler
 and version information, and kits with the same name will be
 overwritten in the file.</p>
-<p class="last">To prevent custom kits from being overwritten, give them unique names.
+<p>To prevent custom kits from being overwritten, give them unique names.
 CMake Tools will not delete entries from <code class="docutils literal notranslate"><span class="pre">cmake-kits.json</span></code>, only add
 and update existing ones.</p>
 </div>
@@ -173,9 +172,9 @@ their definition in <code class="docutils literal notranslate"><span class="pre"
 mixed-and-matched as needed. For example, A single kit may request a
 Visual Studio environment while specifying <code class="docutils literal notranslate"><span class="pre">clang-cl</span></code> as a compiler.</p>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<ul class="last simple">
-<li><a class="reference internal" href="configuring.html#configuring-how"><span class="std std-ref">How CMake Tools Configures</span></a> - Explains how kits are applied during configuration</li>
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="configuring.html#configuring-how"><span class="std std-ref">How CMake Tools Configures</span></a> - Explains how kits are applied during configuration</p></li>
 </ul>
 </div>
 <div class="section" id="compilers">
@@ -184,12 +183,12 @@ Visual Studio environment while specifying <code class="docutils literal notrans
 for CMake languages.</p>
 <p>The most common CMake languages are <code class="docutils literal notranslate"><span class="pre">C</span></code> and <code class="docutils literal notranslate"><span class="pre">CXX</span></code>, and CMake Tools has
 built-in support for finding these, but any language can be specified:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Compiler Kit&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;compilers&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/gcc&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;CXX&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/g++&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Fortran&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/gfortran&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;My Compiler Kit&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;compilers&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;C&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/gcc&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;CXX&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/g++&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;Fortran&quot;</span><span class="p">:</span> <span class="s2">&quot;/usr/bin/gfortran&quot;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -199,9 +198,9 @@ built-in support for finding these, but any language can be specified:</p>
 <span id="kits-types-toolchain"></span><h3>Toolchain<a class="headerlink" href="#toolchain" title="Permalink to this headline">¶</a></h3>
 <p>CMake Tools will not automatically detect them, but you can also specify a
 CMake toolchain file in a kit:</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;toolchainFile&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/emscripten/toolchain.cmake&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Emscripten&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;toolchainFile&quot;</span><span class="p">:</span> <span class="s2">&quot;/path/to/emscripten/toolchain.cmake&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -212,10 +211,10 @@ CMake toolchain file in a kit:</p>
 <p>CMake Tools will automatically setup the environment for working with Visual C++
 when you use a Visual Studio code. It is advised to let CMake Tools
 generate the kits first, then duplicate them and modify them.</p>
-<div class="code json highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A Visual Studio&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;visualStudio&quot;</span><span class="p">:</span> <span class="s2">&quot;Visual Studio Build Tools 2017&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;visualStudioArchitecture&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;A Visual Studio&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;visualStudio&quot;</span><span class="p">:</span> <span class="s2">&quot;Visual Studio Build Tools 2017&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;visualStudioArchitecture&quot;</span><span class="p">:</span> <span class="s2">&quot;amd64&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -224,8 +223,8 @@ obtained from VSWhere. The <code class="docutils literal notranslate"><span clas
 Visual Studio target architecture that would be passed to the <code class="docutils literal notranslate"><span class="pre">vcvarsall.bat</span></code>
 file when entering the VS dev environment.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">To use Visual C++, <em>both</em> of <code class="docutils literal notranslate"><span class="pre">visualStudio</span></code> and
+<p class="admonition-title">Note</p>
+<p>To use Visual C++, <em>both</em> of <code class="docutils literal notranslate"><span class="pre">visualStudio</span></code> and
 <code class="docutils literal notranslate"><span class="pre">visualStudioArchitecture</span></code> <em>must</em> be specified. Omitting one will not
 work.</p>
 </div>
@@ -233,24 +232,23 @@ work.</p>
 <div class="section" id="generic-options">
 <span id="kits-common"></span><h3>Generic Options<a class="headerlink" href="#generic-options" title="Permalink to this headline">¶</a></h3>
 <p>In addition to the above options, the following may be specified:</p>
-<dl class="docutils" id="kits-common-preferredgenerator">
-<dt><code class="docutils literal notranslate"><span class="pre">preferredGenerator</span></code></dt>
-<dd>The CMake generator that should be used with this kit if not the default.
+<dl class="simple" id="kits-common-preferredgenerator">
+<dt><code class="docutils literal notranslate"><span class="pre">preferredGenerator</span></code></dt><dd><p>The CMake generator that should be used with this kit if not the default.
 CMake Tools will still search in <code class="docutils literal notranslate"><span class="pre">cmake.preferredGenerators</span></code> from
 <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>, but will fall back to this option if no generator
-from the user settings is available</dd>
+from the user settings is available</p>
+</dd>
 </dl>
-<dl class="docutils" id="kits-common-cmakesettings">
-<dt><code class="docutils literal notranslate"><span class="pre">cmakeSettings</span></code></dt>
-<dd><p class="first">A JSON object that will be passed as a list of cache settings when running
+<dl id="kits-common-cmakesettings">
+<dt><code class="docutils literal notranslate"><span class="pre">cmakeSettings</span></code></dt><dd><p>A JSON object that will be passed as a list of cache settings when running
 CMake configure. Don’t use this for project-specific settings and options:
 Prefer to use the <code class="docutils literal notranslate"><span class="pre">settings.json</span></code> for that purpose.</p>
-<p class="last">This setting is most useful when the toolchain file respects additional
+<p>This setting is most useful when the toolchain file respects additional
 options that can be passed as cache variables.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">environmentVariables</span></code></dt>
-<dd>A JSON object of key-value pairs specifying additional environment
-variables to be defined when using this kit.</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">environmentVariables</span></code></dt><dd><p>A JSON object of key-value pairs specifying additional environment
+variables to be defined when using this kit.</p>
+</dd>
 </dl>
 </div>
 </div>
@@ -263,7 +261,7 @@ variables to be defined when using this kit.</dd>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+              <img class="logo" src="_static/logo.svg" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
@@ -299,13 +297,11 @@ variables to be defined when using this kit.</dd>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -326,13 +322,13 @@ variables to be defined when using this kit.</dd>
         <li class="right" >
           <a href="getting_started.html" title="Getting Started"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>
 </html>

@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>CMake Variants &#8212; CMake Tools 1.1.3
+    <meta charset="utf-8" />
+    <title>CMake Variants &#8212; CMake Tools 1.4.0
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,8 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="_static/icon_64.png"/>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/logo_64.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CMake Configuring" href="configuring.html" />
@@ -33,7 +31,7 @@
         <li class="right" >
           <a href="kits.html" title="CMake Kits"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -56,8 +54,8 @@ each corresponding to a default CMake build type: <em>Release</em>, <em>Debug</e
 <em>MinSizeRel</em>, and <em>RelWithDebInfo</em>. Selecting one of these variants will
 configure and build with that build type.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">CMake Tools does not presently respect <code class="docutils literal notranslate"><span class="pre">CMAKE_CONFIGURATION_TYPES</span></code>. Only
+<p class="admonition-title">Note</p>
+<p>CMake Tools does not presently respect <code class="docutils literal notranslate"><span class="pre">CMAKE_CONFIGURATION_TYPES</span></code>. Only
 the default four will be present. A custom variant file is required to load
 these build types.</p>
 </div>
@@ -68,12 +66,12 @@ additional build variants.</p>
 <p>The variants file can be placed in the root of the project directory, or in the
 <code class="docutils literal notranslate"><span class="pre">.vscode</span></code> subdirectory for the project.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>CMake Tools provides a YAML validation schema, which is only checked in the
 editor when using the <em>YAML Support by Red Hat</em> extension.</p>
 <p>You can use either <code class="docutils literal notranslate"><span class="pre">cmake-variants.json</span></code> or <code class="docutils literal notranslate"><span class="pre">cmake-variants.yaml</span></code>. Both
 will have the same end result.</p>
-<p class="last">The examples in this page will use the YAML format, but everything can be
+<p>The examples in this page will use the YAML format, but everything can be
 done in the JSON format as well.</p>
 </div>
 <div class="section" id="what-does-it-look-like">
@@ -102,16 +100,16 @@ that controls the <code class="docutils literal notranslate"><span class="pre">E
 <div class="section" id="variant-settings">
 <h3>Variant Settings<a class="headerlink" href="#variant-settings" title="Permalink to this headline">¶</a></h3>
 <p>Each <em>setting</em> in the variant is an object with only the following keys:</p>
-<dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt>
-<dd>A string to set as the default <em>choice</em> for the variant option. The string
-here must correspond to an option from <code class="docutils literal notranslate"><span class="pre">choices</span></code>.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt>
-<dd>An optional string to describe what the option controls. CMake Tools ignores
-this string.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">choices</span></code></dt>
-<dd>A mapping of possible options for the setting. A variant setting can have an
-arbitrary number of possible options. See the section below on options.</dd>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">default</span></code></dt><dd><p>A string to set as the default <em>choice</em> for the variant option. The string
+here must correspond to an option from <code class="docutils literal notranslate"><span class="pre">choices</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">description</span></code></dt><dd><p>An optional string to describe what the option controls. CMake Tools ignores
+this string.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">choices</span></code></dt><dd><p>A mapping of possible options for the setting. A variant setting can have an
+arbitrary number of possible options. See the section below on options.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="variant-options">
@@ -121,27 +119,27 @@ required to have an unique name, but the name itself is unimportant to CMake
 Tools.</p>
 <p>A choice may specify any of the following options (the only requirement is the
 <code class="docutils literal notranslate"><span class="pre">short</span></code>):</p>
-<dl class="docutils">
-<dt><code class="docutils literal notranslate"><span class="pre">short</span></code></dt>
-<dd>A short human-readable string to describe the option.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">long</span></code> (Optional)</dt>
-<dd>A lengthier human-readable string to describe the option.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">buildType</span></code> (Optional)</dt>
-<dd>An optional string to set for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> when the option is
-active.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">linkage</span></code> (Optional)</dt>
-<dd>Either <code class="docutils literal notranslate"><span class="pre">static</span></code> or <code class="docutils literal notranslate"><span class="pre">shared</span></code>. Sets the value of
-<code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_SHARED_LIBS</span></code>. This value is optional.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">settings</span></code> (Optional)</dt>
-<dd>A map of arbitrary CMake cache options to pass via the CMake command line
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">short</span></code></dt><dd><p>A short human-readable string to describe the option.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">long</span></code> (Optional)</dt><dd><p>A lengthier human-readable string to describe the option.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">buildType</span></code> (Optional)</dt><dd><p>An optional string to set for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code> when the option is
+active.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">linkage</span></code> (Optional)</dt><dd><p>Either <code class="docutils literal notranslate"><span class="pre">static</span></code> or <code class="docutils literal notranslate"><span class="pre">shared</span></code>. Sets the value of
+<code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_SHARED_LIBS</span></code>. This value is optional.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">settings</span></code> (Optional)</dt><dd><p>A map of arbitrary CMake cache options to pass via the CMake command line
 with <code class="docutils literal notranslate"><span class="pre">-D</span></code>. Similar to the <code class="docutils literal notranslate"><span class="pre">cmake.configureSettings</span></code> in
-<code class="docutils literal notranslate"><span class="pre">settings.json</span></code>.</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">env</span></code> (Optional)</dt>
-<dd>A map of key-value string pairs specifying additional environment variables
+<code class="docutils literal notranslate"><span class="pre">settings.json</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">env</span></code> (Optional)</dt><dd><p>A map of key-value string pairs specifying additional environment variables
 to set during CMake <em>configure</em> (not build). These environment variables
 take precedence over environment variables from <code class="docutils literal notranslate"><span class="pre">settings.json</span></code>, the
 currently set <a class="reference internal" href="kits.html#kits"><span class="std std-ref">kit</span></a>, and environment variables set by the
-system.</dd>
+system.</p>
+</dd>
 </dl>
 <p>The above options are only valid under entries in the <code class="docutils literal notranslate"><span class="pre">choices</span></code> map.</p>
 </div>
@@ -153,97 +151,97 @@ system.</dd>
 values from the currently active variant to determine the values to pass to the
 CMake process:</p>
 <ol class="arabic simple">
-<li>Properties from all active options are merged. For <code class="docutils literal notranslate"><span class="pre">env</span></code> and <code class="docutils literal notranslate"><span class="pre">settings</span></code>,
+<li><p>Properties from all active options are merged. For <code class="docutils literal notranslate"><span class="pre">env</span></code> and <code class="docutils literal notranslate"><span class="pre">settings</span></code>,
 the objects themselves are merged. The merge order is unspecified, so
-conflicting properties in options will result in unspecified behavior.</li>
-<li>All <code class="docutils literal notranslate"><span class="pre">settings</span></code> from the chosen options are passed as <code class="docutils literal notranslate"><span class="pre">-D</span></code> arguments to
-the CMake process.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">buildType</span></code> is used for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code>, the <code class="docutils literal notranslate"><span class="pre">--config</span></code>
+conflicting properties in options will result in unspecified behavior.</p></li>
+<li><p>All <code class="docutils literal notranslate"><span class="pre">settings</span></code> from the chosen options are passed as <code class="docutils literal notranslate"><span class="pre">-D</span></code> arguments to
+the CMake process.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">buildType</span></code> is used for <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE</span></code>, the <code class="docutils literal notranslate"><span class="pre">--config</span></code>
 flag for the build (For multi-conf generators), and for the CTest
-<code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</li>
-<li>If <code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code>. If
+<code class="docutils literal notranslate"><span class="pre">--config</span></code> flag.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">ON</span></code>. If
 <code class="docutils literal notranslate"><span class="pre">linkage</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> is set to <code class="docutils literal notranslate"><span class="pre">OFF</span></code>. If not
-specified, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> will not be set on the CMake command line.</li>
-<li>The environment variables from <code class="docutils literal notranslate"><span class="pre">env</span></code> are set for the CMake process.</li>
+specified, <code class="docutils literal notranslate"><span class="pre">BUILD_SHARED_LIBS</span></code> will not be set on the CMake command line.</p></li>
+<li><p>The environment variables from <code class="docutils literal notranslate"><span class="pre">env</span></code> are set for the CMake process.</p></li>
 </ol>
 </div>
 <div class="section" id="a-big-example">
 <h2>A Big Example<a class="headerlink" href="#a-big-example" title="Permalink to this headline">¶</a></h2>
 <p>Suppose the following variants file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">debug</span>
-  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">debug</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Debug</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Emit debug information</span>
-      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Debug</span>
-    <span class="l l-Scalar l-Scalar-Plain">release</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Release</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Optimize generated code</span>
-      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Release</span>
-    <span class="l l-Scalar l-Scalar-Plain">asan</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asan</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Instrument with Address Sanitizer</span>
-      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asan</span>
-    <span class="l l-Scalar l-Scalar-Plain">tsan</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Tsan</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Instrument with Thread Sanitizer</span>
-      <span class="l l-Scalar l-Scalar-Plain">buildType</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Tsan</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">buildType</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">debug</span>
+  <span class="nt">choices</span><span class="p">:</span>
+    <span class="nt">debug</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Debug</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Emit debug information</span>
+      <span class="nt">buildType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Debug</span>
+    <span class="nt">release</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Release</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Optimize generated code</span>
+      <span class="nt">buildType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Release</span>
+    <span class="nt">asan</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Asan</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Instrument with Address Sanitizer</span>
+      <span class="nt">buildType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Asan</span>
+    <span class="nt">tsan</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tsan</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Instrument with Thread Sanitizer</span>
+      <span class="nt">buildType</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Tsan</span>
 
-<span class="l l-Scalar l-Scalar-Plain">linkage</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">static</span>
-  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">static</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Static</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create static libraries</span>
-      <span class="l l-Scalar l-Scalar-Plain">linkage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">static</span>
-    <span class="l l-Scalar l-Scalar-Plain">shared</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Shared</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create shared libraries/DLLs</span>
-      <span class="l l-Scalar l-Scalar-Plain">linkage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">shared</span>
+<span class="nt">linkage</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">static</span>
+  <span class="nt">choices</span><span class="p">:</span>
+    <span class="nt">static</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Static</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create static libraries</span>
+      <span class="nt">linkage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">static</span>
+    <span class="nt">shared</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Shared</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create shared libraries/DLLs</span>
+      <span class="nt">linkage</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">shared</span>
 
-<span class="l l-Scalar l-Scalar-Plain">engine</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ogl</span>
-  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">ogl</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL rendering</span>
-      <span class="l l-Scalar l-Scalar-Plain">settings</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL</span>
-    <span class="l l-Scalar l-Scalar-Plain">d3d</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D rendering</span>
-      <span class="l l-Scalar l-Scalar-Plain">settings</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D</span>
-    <span class="l l-Scalar l-Scalar-Plain">vulkan</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan rendering</span>
-      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan</span>
-    <span class="l l-Scalar l-Scalar-Plain">software</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Software</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Software rendering</span>
-      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">ENGINE</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Software</span>
+<span class="nt">engine</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ogl</span>
+  <span class="nt">choices</span><span class="p">:</span>
+    <span class="nt">ogl</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL rendering</span>
+      <span class="nt">settings</span><span class="p">:</span>
+        <span class="nt">ENGINE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">OpenGL</span>
+    <span class="nt">d3d</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D rendering</span>
+      <span class="nt">settings</span><span class="p">:</span>
+        <span class="nt">ENGINE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Direct3D</span>
+    <span class="nt">vulkan</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan rendering</span>
+      <span class="nt">setting</span><span class="p">:</span>
+        <span class="nt">ENGINE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Vulkan</span>
+    <span class="nt">software</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Software</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Software rendering</span>
+      <span class="nt">setting</span><span class="p">:</span>
+        <span class="nt">ENGINE</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Software</span>
 
-<span class="l l-Scalar l-Scalar-Plain">network</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">boost</span>
-  <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">boost</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Boost.Asio</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Use Boost.Asio for networking</span>
-      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">NETWORK</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Boost</span>
-    <span class="l l-Scalar l-Scalar-Plain">asio</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asio</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Use standalone-Asio for networking</span>
-      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">NETWORK</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Asio</span>
-    <span class="l l-Scalar l-Scalar-Plain">net-ts</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">short</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">NetTS</span>
-      <span class="l l-Scalar l-Scalar-Plain">long</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Use the C++ Networking TS for networking</span>
-      <span class="l l-Scalar l-Scalar-Plain">setting</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">NETWORK</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">net-ts</span>
+<span class="nt">network</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">boost</span>
+  <span class="nt">choices</span><span class="p">:</span>
+    <span class="nt">boost</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Boost.Asio</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Use Boost.Asio for networking</span>
+      <span class="nt">setting</span><span class="p">:</span>
+        <span class="nt">NETWORK</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Boost</span>
+    <span class="nt">asio</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Asio</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Use standalone-Asio for networking</span>
+      <span class="nt">setting</span><span class="p">:</span>
+        <span class="nt">NETWORK</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Asio</span>
+    <span class="nt">net-ts</span><span class="p">:</span>
+      <span class="nt">short</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">NetTS</span>
+      <span class="nt">long</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Use the C++ Networking TS for networking</span>
+      <span class="nt">setting</span><span class="p">:</span>
+        <span class="nt">NETWORK</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">net-ts</span>
 </pre></div>
 </div>
 <p>CMake Tools will present the cartesian product of all options, meaning the
@@ -262,7 +260,7 @@ combinations, and persist the selection between sessions.</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+              <img class="logo" src="_static/logo.svg" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
@@ -293,13 +291,11 @@ combinations, and persist the selection between sessions.</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -320,13 +316,13 @@ combinations, and persist the selection between sessions.</p>
         <li class="right" >
           <a href="kits.html" title="CMake Kits"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>
 </html>

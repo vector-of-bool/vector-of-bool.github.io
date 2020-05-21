@@ -1,12 +1,10 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Troubleshooting CMake Tools &#8212; CMake Tools 1.1.3
+    <meta charset="utf-8" />
+    <title>Troubleshooting CMake Tools &#8212; CMake Tools 1.4.0
  documentation</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -14,8 +12,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="shortcut icon" href="_static/icon_64.png"/>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/logo_64.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Frequently Asked Questions" href="faq.html" />
@@ -33,7 +31,7 @@
         <li class="right" >
           <a href="common_issues.html" title="Common Issues and Resolutions"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -48,13 +46,13 @@
 <p>CMake Tools, like any piece of software, may misbehave. There are several things
 to do to check what is going wrong.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
+<p class="admonition-title">Note</p>
 <p>Should any of the below actions be necessary for any reason <strong>be aware that
 you have encountered a bug</strong>.</p>
 <p>If CMake Tools hasn’t given you a useful help or error message, or has
 behaved in a counter-intuitive way without being otherwise documented, then
 the behavior can <em>and should</em> be considered a bug.</p>
-<p class="last">Please visit
+<p>Please visit
 <a class="reference external" href="https://gitter.im/vscode-cmake-tools/support">the support chat</a>, and/or
 check for or open a relevant
 <a class="reference external" href="https://github.com/vector-of-bool/vscode-cmake-tools/issues">GitHub issue</a>.</p>
@@ -66,8 +64,8 @@ opaque to the user. This includes things like the active target and variant.
 If this state were to somehow be corrupted or inconsistent, this state can be
 reset via the <em>CMake: Reset CMake Tools extension state</em> command.</p>
 <div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Resetting the state will automatically reload the current workspace!</p>
+<p class="admonition-title">Warning</p>
+<p>Resetting the state will automatically reload the current workspace!</p>
 </div>
 </div>
 <div class="section" id="increasing-the-log-level">
@@ -82,8 +80,8 @@ output written to the <em>CMake/Build</em> output channel.</p>
 all levels to a user-local log file. This file can be opened with the
 <em>CMake: Open the CMake Tools log file</em> command.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This file is user-local, <em>not</em> workspace-local. This file includes all log
+<p class="admonition-title">Note</p>
+<p>This file is user-local, <em>not</em> workspace-local. This file includes all log
 entries since the extension was installed. It may be very large.</p>
 </div>
 </div>
@@ -97,8 +95,8 @@ you have</a>.</p>
 <h2>Ask Around the Support Chat<a class="headerlink" href="#ask-around-the-support-chat" title="Permalink to this headline">¶</a></h2>
 <p>CMake Tools has <a class="reference external" href="https://gitter.im/vscode-cmake-tools/support">a Gitter chat room for end-user support</a>.</p>
 <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">People in this chat are volunteers and may not be available at all times of
+<p class="admonition-title">Note</p>
+<p>People in this chat are volunteers and may not be available at all times of
 the day. Please be patient.</p>
 </div>
 </div>
@@ -119,7 +117,7 @@ are all we have to go on!</p>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/icon_190.svg" alt="Logo"/>
+              <img class="logo" src="_static/logo.svg" alt="Logo"/>
             </a></p>
   <h3><a href="index.html">Table of Contents</a></h3>
   <ul>
@@ -148,13 +146,11 @@ are all we have to go on!</p>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" />
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
@@ -175,13 +171,13 @@ are all we have to go on!</p>
         <li class="right" >
           <a href="common_issues.html" title="Common Issues and Resolutions"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.1.3
+        <li class="nav-item nav-item-0"><a href="index.html">CMake Tools 1.4.0
  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright .
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.1.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.1.
     </div>
   </body>
 </html>
