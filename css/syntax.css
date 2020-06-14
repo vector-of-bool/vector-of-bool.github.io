@@ -1,11 +1,10 @@
 .highlight {
-    padding: .2em .9em;
+    padding: .8em .9em;
     font: normal normal normal normal/normal Monaco,'Courier New','DejaVu Sans Mono','Bitstream Vera Sans Mono',monospace!important;
     line-height: 1.1em;
 }
 
 h3>code,li>code,p>a>code,p>code {
-    background-image: url(/images/opaque_20.png);
     font-family: Consolas,"Courier New",Courier,"Liberation Mono",monospace;
 }
 
@@ -99,3 +98,20 @@ code,pre {
 .highlight .vi { color: #40ffff } /* Name.Variable.Instance */
 .highlight .vm { color: #40ffff } /* Name.Variable.Magic */
 .highlight .il { color: #f9ebb0 } /* Literal.Number.Integer.Long */
+
+@supports(--custom-var: foo) {
+  pre.highlight {
+    /* Same line height for all boxes */
+    --line-height: 1.1em;
+    --start-off: 0.8em;
+    --stripe-bottom: calc(var(--start-off) + var(--line-height));
+    background-image:
+      repeating-linear-gradient(
+        #1a1a1a var(--start-off),
+        #1a1a1a var(--stripe-bottom),
+        #222 var(--stripe-bottom),
+        #222 calc(var(--stripe-bottom) + var(--line-height))
+      );
+    background-color: transparent;
+  }
+}
