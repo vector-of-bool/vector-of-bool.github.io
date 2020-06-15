@@ -742,7 +742,7 @@ month_it += "lolwut?";
 
 and we'll get a nasty compile error instead of having the `+=` operator have
 no candidates. This was the old way, and it is not "SFINAE"-friendly, and
-therefore break's `requires`-expressions that check:
+therefore breaks `requires`-expressions that check:
 
 ```c++
 template <typename T, typename Addend>
@@ -823,7 +823,7 @@ implicitly convertible to `infer_difference_type_t<self_type>`.
 `infer_difference_type_t<self_type>` is the return type of
 `self_type::distance_to` (if present), or `std::ptrdiff_t`.
 
-With this slight-of-hand, we are able to declare a function that takes a
+With this sleight-of-hand, we are able to declare a function that takes a
 parameter *of a type that we can't possibly know yet*. The compiler sees this
 as a constrained function template, but we can think of it as a function with
 a yet-to-be-determined parameter type.
@@ -930,7 +930,7 @@ public:
 
   void increment()      { _cur = month(int(_cur) + 1); }
   void decrement()      { _cur = month(int(_cur) - 1); }
-  void advance(int off) { _cur = month(int(off) + off); }
+  void advance(int off) { _cur = month(int(_cur) + off); }
 
   const month& dereference() const { return _cur; }
 
