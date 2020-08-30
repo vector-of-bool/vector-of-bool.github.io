@@ -7,10 +7,29 @@
   <link rel="icon" href="favicon.png" type="image/png">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepand: site.url }}">
-  <link rel="alternate" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" type="application/rss+xml" title="{{site.title|escape}}">
+  <link rel="alternate" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" type="application/rss+xml"
+    title="{{site.title|escape}}">
+
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepand: site.url }}">
+
+  {% if page.title -%}
+  <meta property="og:title" content="{{page.title|strip|escape}}">
+  <meta name="twitter:title" content="{{page.title|strip|escape}}">
+  {%- endif %}
+
+  {% if page.date -%}
+  <meta property="article:published_time" content="{{page.date}}">
+  <meta property="article:modified_time" content="{{page.date}}">
+  {%- endif %}
+
+  {% if page.desc -%}
+  <meta property="og:type" content="article">
+  <meta property="og:description" content="{{page.desc|strip|escape}}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:description" content="{{page.desc|strip|escape}}">
+  {%- endif %}
 
   <base href="{{site.baseurl | prepend: site.url}}/">
-
   <style>
     {% include inline-styles.css %}
   </style>
