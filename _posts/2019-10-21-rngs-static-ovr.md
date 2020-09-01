@@ -902,7 +902,7 @@ must wrap it in a lambda expression:
 auto unopt_each = [&](auto&& rng) {
                       return rng
                         |> only_engaged()
-                        |> unopt_each();
+                        |> deref_each();
                   };
 ```
 
@@ -961,7 +961,7 @@ auto only_engaged = [&](auto&& rng) {
 auto unopt_each = [&](auto&& rng) {
                       return rng
                         |> only_engaged()
-                        |> unopt_each();
+                        |> deref_each();
                   };
 ```
 
