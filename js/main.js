@@ -1,7 +1,3 @@
-import { revealComments } from "./comments.js";
-
-document.revealComments = revealComments;
-
 function waitFinished(what) {
   return new Promise(resolve => {
     what.addEventListener('finish', () => {
@@ -30,15 +26,15 @@ function connectRevealButtons() {
     b.addEventListener('click', e => {
       target.setAttribute('reveal-show', '');
       target.animate([{
-          opacity: 0,
-          transform: 'translateY(10px)'
-        }, {
-          opacity: 1,
-          transform: 'translateY(0)'
-        }], {
-          duration: 200,
-          easing: 'ease-out',
-        });
+        opacity: 0,
+        transform: 'translateY(10px)'
+      }, {
+        opacity: 1,
+        transform: 'translateY(0)'
+      }], {
+        duration: 200,
+        easing: 'ease-out',
+      });
       b.remove();
     });
     b.setAttribute('reveal-linked', '');
@@ -136,9 +132,9 @@ class SmartContentManager {
             transform: 'translateX(-30px)',
           }
         ], {
-            duration: 300,
-            easing: 'ease-in-out',
-          });
+          duration: 300,
+          easing: 'ease-in-out',
+        });
         animOutPromise = waitFinished(anim);
       }
       // When the animation finishes, remove the content node
@@ -166,8 +162,8 @@ class SmartContentManager {
           { height: `${oldHeight}px` },
           { height: `${newHeight}px` },
         ], {
-            duration: 300,
-          });
+          duration: 300,
+        });
         // Animate the content in from the right, if applicable. This time, _do_
         // wait for the animation to finish (we have no more work to do until these
         // animations finish)
@@ -181,9 +177,9 @@ class SmartContentManager {
             transform: 'translateX(0)',
           },
         ], {
-            duration: 300,
-            easing: 'ease-in-out',
-          }));
+          duration: 300,
+          easing: 'ease-in-out',
+        }));
       }
       // Wait until the content has slid to the side and been removed
       await removeOldPromise;
