@@ -1,19 +1,9 @@
-.highlight {
-    padding: .8em .9em;
-    font: normal normal normal normal/normal Monaco,'Courier New','DejaVu Sans Mono','Bitstream Vera Sans Mono',monospace!important;
-    line-height: 1.1em;
-}
-
 h3>code,li>code,p>a>code,p>code {
     font-family: Consolas,"Courier New",Courier,"Liberation Mono",monospace;
 }
 
 p>a>code {
     color: #95be7d
-}
-
-code,pre {
-    font-family: Consolas,"Courier New",Courier,FreeMono,monospace;
 }
 
 .highlight span {
@@ -102,7 +92,7 @@ code,pre {
 @supports(--custom-var: foo) {
   pre.highlight {
     /* Same line height for all boxes */
-    --line-height: 1.1em;
+    --line-height: 1.2em;
     --start-off: 0.8em;
     --stripe-bottom: calc(var(--start-off) + var(--line-height));
     background-image:
