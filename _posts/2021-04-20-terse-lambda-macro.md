@@ -76,7 +76,7 @@ expression into generic APIs. This is simple enough to fix:
 #define TerseLambda(...)
     [&] (auto&& _1) mutable
         noexcept(noexcept(__VA_ARGS__))
-    -> decltype(auto) { return __VA_ARGS__; }
+    -> decltype(auto)
         requires requires { __VA_ARGS__; }
     { return __VA_ARGS__; }
 ```
@@ -146,8 +146,8 @@ local variables!
 
 In the above, within the expansion of `__VA_ARGS__` in the `return` statement,
 the `_1`, `_2`, `_3`, and `_4` identifiers will refer to the first, second,
-third, and fourth lambda parameters respectively. It takes a bit of magic to
-implement `nth_arg`, however:
+third, and fourth lambda parameters respectively. It takes a small bit of
+code to implement `nth_arg`:
 
 ```c++
 struct nothing_t {};
