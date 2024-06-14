@@ -11,7 +11,7 @@ permalink: /projects/
     </div>
     <div class="body">
       <a href="https://github.com/vector-of-bool/vscode-cmake-tools" class="icon-container">
-        <img src="res/cmt_128.png" alt="CMake Tools Icon" class="icon">
+        <img src="/res/cmt_128.png" alt="CMake Tools Icon" class="icon">
       </a>
       <div class="desc">
         CMake Tools is an extension for Visual Studio code designed to make it
@@ -34,7 +34,7 @@ permalink: /projects/
     <div class="header">Pitchfork</div>
     <div class="body">
       <a href="https://github.com/vector-of-bool/pitchfork" class="icon-container">
-        <img src="res/pf_128.png" alt="Pitchfork Icon" class="icon">
+        <img src="/res/pf_128.png" alt="Pitchfork Icon" class="icon">
       </a>
       <div class="desc">
         Pitchfork is two things:
@@ -64,7 +64,7 @@ permalink: /projects/
     <div class="header">PMM</div>
     <div class="body">
       <a href="https://github.com/vector-of-bool/pmm">
-        <img src="res/pmm_128.png" alt="PMM Icon" class="icon">
+        <img src="/res/pmm_128.png" alt="PMM Icon" class="icon">
       </a>
       <div class="desc">
         PMM is the CMake <em>Package Manager Manager</em>

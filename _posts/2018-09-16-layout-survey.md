@@ -198,7 +198,7 @@ The Original Question:
 
 The results:
 
-![Test placement results](res/test_placement.png)
+![Test placement results](/res/test_placement.png)
 
 This may be one of the most interesting results in the survey, simply because of
 the contrast between the responses on *Option 3* and the ideas proposed by John

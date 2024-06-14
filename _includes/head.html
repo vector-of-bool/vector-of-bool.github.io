@@ -4,7 +4,7 @@
   <meta name="theme-color" content="#777777">
   <title>{% if page.title %}{{page.title|escape}}{% else %}{{site.title|escape}}{% endif %}</title>
   <meta name="description" content="{{page.excerpt | default: site.description | normalize_whitespace | escape}}">
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="icon" href="/favicon.png" type="image/png">
 
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepand: site.url }}">
   <link rel="alternate" href="{{ '/feed.xml' | prepend: site.baseurl | prepend: site.url }}" type="application/rss+xml"
@@ -29,7 +29,6 @@
   <meta name="twitter:description" content="{{page.desc|strip|escape}}">
   {%- endif %}
 
-  <base href="{{site.baseurl | prepend: site.url}}/">
   <style>
     {% include inline-styles.css %}
   </style>
@@ -49,6 +48,6 @@
     document.getElementById('noJSSafetyStyles').remove();
     document.getElementById('JSEnabledStyles').removeAttribute('media');
   </script>
-  <script src="js/main.js" type="module" defer></script>
+  <script src="/js/main.js" type="module" defer></script>
   <link rel="preload" href="/">
 </head>
