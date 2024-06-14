@@ -15,4 +15,5 @@ gem "minima"
 
 gem "jekyll-minifier"
 
+gem "webrick"
 gem "github-pages", group: :jekyll_plugins
