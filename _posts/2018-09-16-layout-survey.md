@@ -68,7 +68,7 @@ Original Question:
 The Results:
 
 <div class="image-frame" markdown="1">
-![external directory name](res/external_dirname.png)
+![external directory name](/res/external_dirname.png)
 </div>
 
 From the looks of it, `deps/` and `extern/` are completely out, which echoes a
@@ -115,7 +115,7 @@ The Original Question:
 The Results:
 
 <div class="image-frame" markdown="1">
-![Source directory name](res/src_dirname.png)
+![Source directory name](/res/src_dirname.png)
 </div>
 
 This was honestly the least surprising result, with only ten "Never!" responses
@@ -152,7 +152,7 @@ The Original Question:
 The Results:
 
 <div class="image-frame" markdown="1">
-![Submodules directorty results](res/submod_dirname.png)
+![Submodules directorty results](/res/submod_dirname.png)
 </div>
 
 `libs/` is a clear winner amongst the given choices, but the written responses
@@ -261,7 +261,7 @@ Original Question:
 The Response:
 
 <div class="image-frame" markdown="1">
-![Should exe/lib be separated](res/exe_lib_sep_yesno.png)
+![Should exe/lib be separated](/res/exe_lib_sep_yesno.png)
 </div>
 
 Clearly, the majority of respondents favor some physical distinction between
@@ -359,7 +359,7 @@ alternatives were proposed:
 The Results:
 
 <div class="image-frame" markdown="1">
-![Should exe/lib be separated](res/exe_lib_sep_how.png)
+![Should exe/lib be separated](/res/exe_lib_sep_how.png)
 </div>
 
 People are not a fan of Option 3.
